@@ -8,9 +8,10 @@ import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata: any = {
     title: "Teach with Pear",
-    description: "Teach with Pear",
+    description: "Making it easy for teachers to check-in with their students",
+    icon: "/icons/pearemoji.png",
 };
 
 export default function RootLayout({
