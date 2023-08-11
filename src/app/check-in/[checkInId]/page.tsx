@@ -11,10 +11,6 @@ type Props = {
     };
 };
 const CheckIn = async ({ params: { checkInId } }: Props) => {
-    const session = await getAuthSession();
-    if (!session?.user) {
-        return redirect("/");
-    }
     const checkIn = await prisma.checkIn.findUnique({
         where: {
             id: checkInId,
@@ -27,6 +23,7 @@ const CheckIn = async ({ params: { checkInId } }: Props) => {
                     options: true,
                 },
             },
+            user: true,
         },
     });
 

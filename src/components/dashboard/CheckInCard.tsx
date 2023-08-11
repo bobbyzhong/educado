@@ -27,7 +27,7 @@ const CheckInCard = (props: Props) => {
                             strokeWidth={2}
                             color="#86D20A"
                         />
-                        <CardTitle className="text-[19px] font-bold tracking-tight">
+                        <CardTitle className="text-[19px] font-bold ">
                             Create a Check-In
                         </CardTitle>
                     </CardHeader>

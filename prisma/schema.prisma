@@ -69,6 +69,7 @@ model CheckIn {
   timeEnded   DateTime?
   checkInType    CheckInType
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  results    Result[]
 
   @@index([userId])
 }
@@ -107,3 +108,20 @@ model Question {
 
   @@index([checkInId])
 }
+
+model Result {
+  id                String   @id @default(cuid())
+  studentName      String
+  checkInId         String
+  questionResults  Json? // array containing questions and whether they were correct or not
+
+  checkIn CheckIn @relation(fields: [checkInId], references: [id])
+
+  @@index([checkInId])
+}
+
+// {
+//   pairs: [
+//     {questionString, studentAnswer, correct}, {question, studentAnswer, incorrect},
+//   ]
+// }

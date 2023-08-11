@@ -9,22 +9,44 @@ import {
 } from "lucide-react";
 import React, { use } from "react";
 import { differenceInSeconds } from "date-fns";
-import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Button, buttonVariants } from "./ui/button";
 import MCQCounter from "./MCQCounter";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { checkAnswerSchema } from "@/schemas/form/quiz";
+import { checkAnswerSchema, checkInResponseSchema } from "@/schemas/form/quiz";
 import { z } from "zod";
 import { useToast } from "./ui/use-toast";
 import { cn, formatTimeDelta } from "@/lib/utils";
 import Link from "next/link";
+import {
+    Form,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormControl,
+    FormDescription,
+    FormMessage,
+} from "./ui/form";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "./ui/card";
+import { Input } from "./ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Textarea } from "./ui/textarea";
 
 type Props = {
     checkIn: CheckIn & {
         questions: Pick<Question, "id" | "options" | "question">[];
-    };
+    } & { user: any };
 };
+
+type Input = z.infer<typeof checkInResponseSchema>;
 
 const MCQ = ({ checkIn }: Props) => {
     const [questionIndex, setQuestionIndex] = React.useState(0);
@@ -33,17 +55,22 @@ const MCQ = ({ checkIn }: Props) => {
     const [wrongAnswers, setWrongAnswers] = React.useState<number>(0);
     const [hasEnded, setHasEnded] = React.useState<boolean>(false);
     const [now, setNow] = React.useState<Date>(new Date());
-
+    const [questionResults, setQuestionResults] = React.useState<any>([]);
+    const [studentName, setStudentName] = React.useState<string>("");
+    const [attempt, setAttempt] = React.useState<any>();
+    const router = useRouter();
     const { toast } = useToast();
 
-    // React.useEffect(() => {
-    //     if (!hasEnded) {
-    //         const interval = setInterval(() => {
-    //             setNow(new Date());
-    //         }, 1000);
-    //         return () => clearInterval(interval);
-    //     }
-    // }, [hasEnded]);
+    const form = useForm<Input>({
+        resolver: zodResolver(checkInResponseSchema),
+        defaultValues: {
+            name: "",
+        },
+    });
+
+    function onSubmit(input: Input) {
+        setStudentName(input.name);
+    }
 
     const currentQuestion = React.useMemo(() => {
         return checkIn.questions[questionIndex];
@@ -60,8 +87,40 @@ const MCQ = ({ checkIn }: Props) => {
         },
     });
 
+    const submitAttempt = React.useCallback(async () => {
+        try {
+            const res = await axios.post("/api/submitAttempt", {
+                studentName: studentName,
+                checkInId: checkIn.id,
+                questionResults: questionResults,
+            });
+
+            console.log("RESULT: ", res.data);
+            setAttempt(res.data);
+
+            console.log("ATTEMPT: ", attempt);
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
+    React.useEffect(() => {
+        submitAttempt();
+    }, [submitAttempt]);
+
+    const delayedSubmitAttempt = React.useCallback(() => {
+        setTimeout(submitAttempt, 1000);
+        setHasEnded(true); // Delayed execution by 1000 milliseconds (1 second)
+    }, []);
+
     const handleNext = React.useCallback(() => {
         if (isChecking) return;
+
+        let questionResult = {
+            currentQuestion: currentQuestion.question,
+            studentAnswer: options[selectedChoice],
+            isCorrect: false,
+        };
 
         checkAnswer(undefined, {
             onSuccess: ({ isCorrect }) => {
@@ -71,6 +130,7 @@ const MCQ = ({ checkIn }: Props) => {
                         description: "Correct Answer",
                     });
                     setCorrectAnswers((prev) => prev + 1);
+                    questionResult.isCorrect = true;
                 } else {
                     toast({
                         title: "Wrong!",
@@ -78,9 +138,13 @@ const MCQ = ({ checkIn }: Props) => {
                         variant: "destructive",
                     });
                     setWrongAnswers((prev) => prev + 1);
+                    questionResult.isCorrect = false;
                 }
+                questionResults.push(questionResult);
+                console.log(questionResults);
+
                 if (questionIndex === checkIn.questions.length - 1) {
-                    setHasEnded(true);
+                    delayedSubmitAttempt();
                     return;
                 }
                 setQuestionIndex((prev) => prev + 1);
@@ -124,7 +188,7 @@ const MCQ = ({ checkIn }: Props) => {
         return JSON.parse(currentQuestion.options as string) as string[];
     }, [currentQuestion]);
 
-    if (hasEnded) {
+    if (hasEnded && attempt.questionResults.length >= 1) {
         return (
             <div className="absolute flex flex-col justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 <div className="px-4 py-2 mt-2 font-semibold text-green  rounded-md whitespace-nowrap">
@@ -143,6 +207,58 @@ const MCQ = ({ checkIn }: Props) => {
                     View Statistics
                     <BarChart className="w-4 h-4 ml-2" />
                 </Link>
+                <div>{attempt.checkInId}</div>
+            </div>
+        );
+    }
+
+    if (!studentName) {
+        return (
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="font-bold text-2xl">
+                            Enter your name
+                        </CardTitle>
+                        <CardDescription>
+                            This check-in's topic: {checkIn.topic} <br />
+                            Teacher Name: {checkIn.user.name}
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <Form {...form}>
+                            <form
+                                onSubmit={form.handleSubmit(onSubmit)}
+                                className="space-y-8"
+                            >
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Your Name</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    placeholder="John Smith"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormDescription>
+                                                Make sure you put your full name
+                                                and have no typos
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <Button variant={"green"} type="submit">
+                                    Continue
+                                </Button>
+                            </form>
+                        </Form>
+                    </CardContent>
+                </Card>
             </div>
         );
     }

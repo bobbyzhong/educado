@@ -18,7 +18,6 @@ type Props = {
 const StatisticsPage = async ({ params: { checkInId } }: Props) => {
     const session = await getAuthSession();
 
-    console.log("HELLOOO");
     if (!session?.user) {
         return redirect("/");
     }

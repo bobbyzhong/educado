@@ -22,10 +22,11 @@ export async function POST(req: Request, res: Response) {
                 }
             );
         }
-        await prisma.question.update({
-            where: { id: questionId },
-            data: { userAnswer },
-        });
+        // await prisma.question.update({
+        //     where: { id: questionId },
+        //     data: { userAnswer },
+        // });
+
         if (question.questionType === "mcq") {
             const isCorrect =
                 question.answer.toLowerCase().trim() ===

@@ -13,3 +13,9 @@ export const checkAnswerSchema = z.object({
     questionId: z.string(),
     userAnswer: z.string(),
 });
+
+export const checkInResponseSchema = z.object({
+    name: z
+        .string()
+        .min(1, { message: "Name must be at least 1 character long" }),
+});
