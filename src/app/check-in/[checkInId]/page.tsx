@@ -28,7 +28,7 @@ const CheckIn = async ({ params: { checkInId } }: Props) => {
     });
 
     if (!checkIn || checkIn.checkInType !== "mcq") {
-        return redirect("/quiz");
+        return redirect("/new-check-in");
     }
 
     return <MCQ checkIn={checkIn} />;

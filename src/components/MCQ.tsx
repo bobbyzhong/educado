@@ -87,31 +87,39 @@ const MCQ = ({ checkIn }: Props) => {
         },
     });
 
-    const submitAttempt = React.useCallback(async () => {
-        try {
-            const res = await axios.post("/api/submitAttempt", {
+    const { mutate: createResult, isLoading } = useMutation({
+        mutationFn: async ({
+            studentName,
+            checkInId,
+            questionResults,
+        }: any) => {
+            // response makes api call to create new game in db and then returns the game id
+            const response = await axios.post("/api/submitAttempt", {
+                studentName,
+                checkInId,
+                questionResults,
+            });
+            return response.data;
+        },
+    });
+
+    function onSubmitAttempt() {
+        createResult(
+            {
                 studentName: studentName,
                 checkInId: checkIn.id,
                 questionResults: questionResults,
-            });
-
-            console.log("RESULT: ", res.data);
-            setAttempt(res.data);
-
-            console.log("ATTEMPT: ", attempt);
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
-
-    React.useEffect(() => {
-        submitAttempt();
-    }, [submitAttempt]);
-
-    const delayedSubmitAttempt = React.useCallback(() => {
-        setTimeout(submitAttempt, 1000);
-        setHasEnded(true); // Delayed execution by 1000 milliseconds (1 second)
-    }, []);
+            },
+            {
+                onSuccess: ({ resultId }) => {
+                    router.push(`/result/${resultId}`);
+                },
+                onError: () => {
+                    console.log("Could not generate");
+                },
+            }
+        );
+    }
 
     const handleNext = React.useCallback(() => {
         if (isChecking) return;
@@ -120,10 +128,12 @@ const MCQ = ({ checkIn }: Props) => {
             currentQuestion: currentQuestion.question,
             studentAnswer: options[selectedChoice],
             isCorrect: false,
+            answer: "",
         };
 
         checkAnswer(undefined, {
-            onSuccess: ({ isCorrect }) => {
+            onSuccess: ({ isCorrect, answer }) => {
+                questionResult.answer = answer;
                 if (isCorrect) {
                     toast({
                         title: "Correct",
@@ -137,14 +147,13 @@ const MCQ = ({ checkIn }: Props) => {
                         description: "Incorrect Answer",
                         variant: "destructive",
                     });
-                    setWrongAnswers((prev) => prev + 1);
                     questionResult.isCorrect = false;
                 }
                 questionResults.push(questionResult);
                 console.log(questionResults);
 
                 if (questionIndex === checkIn.questions.length - 1) {
-                    delayedSubmitAttempt();
+                    onSubmitAttempt();
                     return;
                 }
                 setQuestionIndex((prev) => prev + 1);
@@ -158,59 +167,11 @@ const MCQ = ({ checkIn }: Props) => {
         checkIn.questions.length,
     ]);
 
-    React.useEffect(() => {
-        const handleKeyDown = (event: KeyboardEvent) => {
-            const key = event.key;
-
-            if (key === "1") {
-                setSelectedChoice(0);
-            } else if (key === "2") {
-                setSelectedChoice(1);
-            } else if (key === "3") {
-                setSelectedChoice(2);
-            } else if (key === "4") {
-                setSelectedChoice(3);
-            } else if (key === "Enter") {
-                handleNext();
-            }
-        };
-
-        document.addEventListener("keydown", handleKeyDown);
-
-        return () => {
-            document.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [handleNext]);
-
     const options = React.useMemo(() => {
         if (!currentQuestion) return [];
         if (!currentQuestion.options) return [];
         return JSON.parse(currentQuestion.options as string) as string[];
     }, [currentQuestion]);
-
-    if (hasEnded && attempt.questionResults.length >= 1) {
-        return (
-            <div className="absolute flex flex-col justify-center -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <div className="px-4 py-2 mt-2 font-semibold text-green  rounded-md whitespace-nowrap">
-                    Completed in{" "}
-                    {formatTimeDelta(
-                        differenceInSeconds(now, checkIn.timeStarted)
-                    )}
-                </div>
-                <Link
-                    href={`/statistics/${checkIn.id}`}
-                    className={cn(
-                        buttonVariants({ size: "lg", variant: "green" }),
-                        "mt-2"
-                    )}
-                >
-                    View Statistics
-                    <BarChart className="w-4 h-4 ml-2" />
-                </Link>
-                <div>{attempt.checkInId}</div>
-            </div>
-        );
-    }
 
     if (!studentName) {
         return (

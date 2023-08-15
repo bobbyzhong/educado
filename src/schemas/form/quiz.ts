@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { any, z } from "zod";
 
 export const quizCreationSchema = z.object({
     topic: z
@@ -18,4 +18,10 @@ export const checkInResponseSchema = z.object({
     name: z
         .string()
         .min(1, { message: "Name must be at least 1 character long" }),
+});
+
+export const createResultSchema = z.object({
+    studentName: z.string(),
+    checkInId: z.string(),
+    questionResults: any(),
 });

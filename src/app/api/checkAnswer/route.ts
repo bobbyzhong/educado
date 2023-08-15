@@ -37,7 +37,8 @@ export async function POST(req: Request, res: Response) {
             });
             return NextResponse.json(
                 {
-                    isCorrect,
+                    isCorrect: isCorrect,
+                    answer: question.answer,
                 },
                 { status: 200 }
             );

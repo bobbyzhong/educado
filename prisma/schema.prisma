@@ -68,7 +68,7 @@ model CheckIn {
   topic       String
   timeEnded   DateTime?
   checkInType    CheckInType
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
   results    Result[]
 
   @@index([userId])
@@ -114,6 +114,7 @@ model Result {
   studentName      String
   checkInId         String
   questionResults  Json? // array containing questions and whether they were correct or not
+  score            Float?
 
   checkIn CheckIn @relation(fields: [checkInId], references: [id])
 

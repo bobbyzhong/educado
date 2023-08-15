@@ -16,7 +16,6 @@ const CheckInCard = (props: Props) => {
             <Card
                 className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-6"
                 onClick={() => {
-                    setShowModal(true);
                     router.push("/history");
                 }}
             >
