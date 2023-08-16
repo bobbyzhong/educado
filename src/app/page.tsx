@@ -11,6 +11,7 @@ import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 import SignInButtonLg from "@/components/SignInButtonLg";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -21,26 +22,39 @@ export default async function Home() {
     }
 
     return (
-        <div className="absolute -translate-x-1/2 lg:-translate-y-[85%] -translate-y-[50%] top-1/2 left-1/2 flex flex-col items-center w-full">
-            <div className="TEXT-SECTION font-outfit text-center flex flex-col items-center">
-                <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] mb-5 w-10/12 md:w-6/12">
-                    Easily check-in with your students in seconds
-                </h1>
-                <p className="md:w-[55%] w-[80%] text-[19px] leading-snug mb-5">
-                    See how well your students are grasping a certain topic and
-                    receive data driven insights to see who needs help with what
-                    and prevent any students from falling behind.
-                </p>
-            </div>
-            <div className="flex flex-row gap-3">
-                <Link href={"/demo"}>
-                    <Button className="" size={"xl"} variant={"greenOutline"}>
-                        Book Demo
-                    </Button>
-                </Link>
+        <div className="flex flex-row items-center">
+            <div className="lg:w-1/2 lg:pl-10 lg:h-auto h-[93vh] lg:pt-0 pt-36  lg:text-black text-white1 lg:text-left text-center lg:-translate-y-10 lg:bg-none bg-[url('/landing2.png')] bg-cover">
+                <div className="TEXT-SECTION font-outfit flex flex-col lg:items-start items-center">
+                    <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] w-11/12 mb-5">
+                        Easily check-in with your students in seconds
+                    </h1>
+                    <p className="text-[19px] leading-snug mb-5 w-10/12">
+                        See how well your students are grasping a certain topic
+                        and receive data driven insights to see who needs help
+                        with what and prevent any students from falling behind.
+                    </p>
+                </div>
+                <div className="flex flex-row gap-3 lg:justify-start justify-center ">
+                    <Link href={"/demo"}>
+                        <Button
+                            className=""
+                            size={"xl"}
+                            variant={"greenOutline"}
+                        >
+                            Book Demo
+                        </Button>
+                    </Link>
 
-                <SignInButtonLg text="Get Started" />
+                    <SignInButtonLg text="Get Started" />
+                </div>
             </div>
+            <Image
+                className="w-6/12 lg:block hidden max-h-[93vh] object-cover"
+                src={"/landing.png"}
+                height={900}
+                width={900}
+                alt=""
+            />
         </div>
     );
 }
