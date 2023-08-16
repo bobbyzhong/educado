@@ -25,6 +25,9 @@ const AllResultsTable = async ({ checkInId }: Props) => {
         where: {
             checkInId,
         },
+        orderBy: {
+            timeSubmitted: "desc",
+        },
     });
 
     return (
@@ -42,7 +45,7 @@ const AllResultsTable = async ({ checkInId }: Props) => {
                     <>
                         {results.map((result: any, index: any) => {
                             return (
-                                <TableRow key={index}>
+                                <TableRow key={index} className="h-[50px]">
                                     <TableCell className="font-medium w-[10px]">
                                         {index + 1}
                                     </TableCell>

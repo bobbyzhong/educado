@@ -31,6 +31,7 @@ export async function POST(req: Request, res: Response) {
                 checkInId: checkInId,
                 questionResults: questionResults,
                 score: score,
+                timeSubmitted: new Date(),
             },
         });
 

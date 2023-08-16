@@ -2,7 +2,7 @@
 
 import { getAuthSession } from "@/lib/nextauth";
 import { NextResponse } from "next/server";
-import { quizCreationSchema } from "@/schemas/form/quiz";
+import { quizCreationSchema, textbookCheckInSchema } from "@/schemas/form/quiz";
 import { ZodError } from "zod";
 import { prisma } from "@/lib/db";
 import axios from "axios";
@@ -21,24 +21,27 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, topic, type } = quizCreationSchema.parse(body);
+        const { amount, topic, type, textbook, chapters } =
+            textbookCheckInSchema.parse(body);
 
         const checkIn = await prisma.checkIn.create({
             data: {
                 checkInType: type,
                 timeStarted: new Date(),
                 userId: session.user.id,
-                topic,
-                contentSource: "plain content",
+                topic: topic,
+                contentSource: "textbook",
             },
         });
 
         const { data } = await axios.post(
-            `${process.env.API_URL}/api/questions`,
+            `${process.env.API_URL}/api/createTextbookQuestions`,
             {
                 amount,
                 topic,
                 type,
+                textbook,
+                chapters,
             }
         );
 

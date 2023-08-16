@@ -5,6 +5,7 @@ import UserAccountNav from "./UserAccountNav";
 import { ThemeToggle } from "./ThemeToggle";
 import { getAuthSession } from "@/lib/nextauth";
 import SignInButton from "./SignInButton";
+import { Button } from "./ui/button";
 
 const Navbar = async () => {
     const session = await getAuthSession();

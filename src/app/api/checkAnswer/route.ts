@@ -39,6 +39,7 @@ export async function POST(req: Request, res: Response) {
                 {
                     isCorrect: isCorrect,
                     answer: question.answer,
+                    userAnswer: userAnswer,
                 },
                 { status: 200 }
             );

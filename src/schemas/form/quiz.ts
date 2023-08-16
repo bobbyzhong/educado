@@ -25,3 +25,14 @@ export const createResultSchema = z.object({
     checkInId: z.string(),
     questionResults: any(),
 });
+
+export const textbookCheckInSchema = z.object({
+    topic: z
+        .string()
+        .min(4, { message: "Topic must be at least 4 characters long" })
+        .max(50),
+    type: z.enum(["mcq", "open_ended"]),
+    amount: z.number().min(1).max(10),
+    textbook: z.string().min(3, { message: "Must select a textbook" }),
+    chapters: z.string().min(1, { message: "Must select a chapter" }),
+});

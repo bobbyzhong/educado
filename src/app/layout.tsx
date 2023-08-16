@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: any = {
     title: "Teach with Pear",
     description: "Making it easy for teachers to check-in with their students",
-    icon: "/icons/pearemoji.png",
 };
 
 export default function RootLayout({
@@ -21,6 +20,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+            <link rel="icon" href="/icons/pearemoji.png" />
             <body
                 className={cn(
                     inter.className,

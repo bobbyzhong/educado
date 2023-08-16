@@ -4,6 +4,7 @@ import {
     BarChart,
     ChevronRight,
     ChevronRightIcon,
+    Divide,
     Loader2,
     Timer,
 } from "lucide-react";
@@ -58,6 +59,7 @@ const MCQ = ({ checkIn }: Props) => {
     const [questionResults, setQuestionResults] = React.useState<any>([]);
     const [studentName, setStudentName] = React.useState<string>("");
     const [attempt, setAttempt] = React.useState<any>();
+    const [submitLoading, setSubmitLoading] = React.useState<boolean>(false);
     const router = useRouter();
     const { toast } = useToast();
 
@@ -126,33 +128,27 @@ const MCQ = ({ checkIn }: Props) => {
 
         let questionResult = {
             currentQuestion: currentQuestion.question,
-            studentAnswer: options[selectedChoice],
+            studentAnswer: "",
             isCorrect: false,
             answer: "",
         };
 
         checkAnswer(undefined, {
-            onSuccess: ({ isCorrect, answer }) => {
+            onSuccess: ({ isCorrect, answer, userAnswer }) => {
                 questionResult.answer = answer;
+                questionResult.studentAnswer = userAnswer;
                 if (isCorrect) {
-                    toast({
-                        title: "Correct",
-                        description: "Correct Answer",
-                    });
                     setCorrectAnswers((prev) => prev + 1);
                     questionResult.isCorrect = true;
                 } else {
-                    toast({
-                        title: "Wrong!",
-                        description: "Incorrect Answer",
-                        variant: "destructive",
-                    });
+                    setWrongAnswers((prev) => prev + 1);
                     questionResult.isCorrect = false;
                 }
                 questionResults.push(questionResult);
                 console.log(questionResults);
 
                 if (questionIndex === checkIn.questions.length - 1) {
+                    setSubmitLoading(true);
                     onSubmitAttempt();
                     return;
                 }
@@ -227,20 +223,15 @@ const MCQ = ({ checkIn }: Props) => {
     return (
         <div className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2">
             <div className="flex flex-row justify-between">
-                <div className="flex flex-col justify-center ">
+                <div className="flex flex-col justify-center mb-1">
                     {/* Topic */}
                     <p>
-                        <span className="bg-green px-2 py-1  rounded-lg text-white1 mr-2">
+                        <span className="bg-green px-2 py-1  rounded-lg text-white1 mr-2 ">
                             Topic/Concepts
                         </span>
                         <span className="  text-zinc-700">{checkIn.topic}</span>
                     </p>
                 </div>
-
-                <MCQCounter
-                    correct_answers={correctAnswers}
-                    wrong_answers={wrongAnswers}
-                />
             </div>
 
             <Card className="w-full mt-4">
@@ -251,7 +242,7 @@ const MCQ = ({ checkIn }: Props) => {
                             {checkIn.questions.length}
                         </div>
                     </CardTitle>
-                    <CardDescription className="flex-grow text-lg">
+                    <CardDescription className="flex-grow text-lg select-none">
                         {currentQuestion.question}
                     </CardDescription>
                 </CardHeader>
@@ -280,18 +271,22 @@ const MCQ = ({ checkIn }: Props) => {
                         </Button>
                     );
                 })}
-                <Button
-                    variant="green"
-                    className="mt-2"
-                    size="lg"
-                    disabled={isChecking}
-                    onClick={handleNext}
-                >
-                    {isChecking && (
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    )}
-                    Next <ChevronRight className="w-4 h-4 ml-2" />
-                </Button>
+                {!submitLoading ? (
+                    <Button
+                        variant="green"
+                        className="mt-2"
+                        size="lg"
+                        disabled={isChecking}
+                        onClick={handleNext}
+                    >
+                        {isChecking && (
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        )}
+                        Next <ChevronRight className="w-4 h-4 ml-2" />
+                    </Button>
+                ) : (
+                    <div>Submitting...</div>
+                )}
             </div>
         </div>
     );

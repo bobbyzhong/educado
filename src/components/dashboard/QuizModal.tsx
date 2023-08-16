@@ -52,14 +52,14 @@ export const QuizModal = ({
                         the material yourself!
                     </QuizModalLink>
                     <QuizModalLink
-                        link={"/createTextbookQuiz"}
+                        link={"/new-textbook-check-in"}
                         title={"Textbook"}
                         icon={"/icons/textbookicon.svg"}
                     >
                         Create a quiz based off of a specific textbook. Quiz key
                         concepts or chapters of a textbook.
                     </QuizModalLink>
-                    <QuizModalLink
+                    {/* <QuizModalLink
                         link={"/comingsoon"}
                         title={"Online Article/Website"}
                         icon={"/icons/qrcodeicon.svg"}
@@ -74,7 +74,7 @@ export const QuizModal = ({
                     >
                         Create a quiz based off a youtube video. Provide the
                         link to the video and we’ll take care of the rest!
-                    </QuizModalLink>
+                    </QuizModalLink> */}
                 </div>
             </div>
         </div>
