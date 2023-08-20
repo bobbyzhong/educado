@@ -34,8 +34,8 @@ const ContactCard = (props: Props) => {
                         <p className="text-[14.5px] text-muted-foreground leading-6 w-[98%]">
                             Feel free contact Bobby (the founder of Pear) for
                             any reason at any time. Whether you need help, have
-                            a feature request, or have a complain don't hesitate
-                            to reach out!
+                            a feature request, or have a complaint, don't
+                            hesitate to reach out!
                         </p>
                     </CardContent>
                 </div>

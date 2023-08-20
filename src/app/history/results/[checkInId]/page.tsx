@@ -9,10 +9,7 @@ type Props = {
     };
 };
 const ResultsPage = async ({ params: { checkInId } }: Props) => {
-    const session = await getAuthSession();
-    if (!session?.user) {
-        return redirect("/");
-    }
+    // const session = await getAuthSession();
 
     const checkIn = await prisma.checkIn.findUnique({
         where: { id: checkInId },
@@ -27,7 +24,7 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
                 <div className="flex items-center justify-between space-y-2">
                     <div className="flex flex-col gap-1">
                         <h2 className="mr-2 text-[28px] font-medium tracking-tight">
-                            Results for: {checkIn.topic} Check-In
+                            Results of: {checkIn.topic} Check-In
                         </h2>
                     </div>
                     {/* <div className="flex items-center space-x-2">

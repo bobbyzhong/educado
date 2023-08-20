@@ -16,10 +16,10 @@ import Link from "next/link";
 type Props = { checkInId: string };
 
 const AllResultsTable = async ({ checkInId }: Props) => {
-    const session = await getAuthSession();
-    if (!session?.user) {
-        return redirect("/");
-    }
+    // const session = await getAuthSession();
+    // if (!session?.user) {
+    //     return redirect("/");
+    // }
 
     const results = await prisma.result.findMany({
         where: {
@@ -36,7 +36,6 @@ const AllResultsTable = async ({ checkInId }: Props) => {
                 <TableCaption>End of list.</TableCaption>
                 <TableHeader>
                     <TableRow className="">
-                        <TableHead className="w-[10px]">No.</TableHead>
                         <TableHead className="w-[35%]">Student Name</TableHead>
                         <TableHead>Score</TableHead>
                     </TableRow>
@@ -46,9 +45,6 @@ const AllResultsTable = async ({ checkInId }: Props) => {
                         {results.map((result: any, index: any) => {
                             return (
                                 <TableRow key={index} className="h-[50px]">
-                                    <TableCell className="font-medium w-[10px]">
-                                        {index + 1}
-                                    </TableCell>
                                     <TableCell>{result.studentName}</TableCell>
                                     <TableCell>{result.score}%</TableCell>
 

@@ -27,6 +27,7 @@ const PreviewCheckIn = async ({ params: { checkInId } }: Props) => {
                     options: true,
                 },
             },
+            user: true,
         },
     });
 
@@ -34,6 +35,6 @@ const PreviewCheckIn = async ({ params: { checkInId } }: Props) => {
         return redirect("/quiz");
     }
 
-    return <MCQ game={checkIn} />;
+    return <MCQ checkIn={checkIn} />;
 };
 export default PreviewCheckIn;

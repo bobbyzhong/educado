@@ -72,11 +72,11 @@ const HistoryTable = async ({ limit, userId }: Props) => {
 
                                     <TableCell className="text-right">
                                         <Link
-                                            className="px-8 py-2 bg-green rounded-sm text-white"
+                                            className="px-5 py-2 bg-green rounded-sm text-white"
                                             href={`/history/results/${checkIn.id}`}
                                             target="_blank"
                                         >
-                                            View
+                                            Results
                                         </Link>
                                     </TableCell>
                                 </TableRow>

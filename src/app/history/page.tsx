@@ -20,7 +20,7 @@ const HistoryPage = async (props: Props) => {
                 <div className="flex items-center justify-between space-y-2">
                     <div className="flex flex-col gap-1">
                         <h2 className="mr-2 text-[28px] font-medium tracking-tight">
-                            History
+                            Your Past Check-Ins
                         </h2>
                     </div>
                     {/* <div className="flex items-center space-x-2">
@@ -46,31 +46,6 @@ const HistoryPage = async (props: Props) => {
                             </div>
                         </Link>
                     </div> */}
-                </div>
-
-                <div className="grid gap-4 mt-4 md:grid-cols-2">
-                    {/* <Card className=" hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
-                        <CardHeader className="flex flex-col gap-2 mb-2 p-0">
-                            <CardTitle className="text-[19px] font-bold tracking-tight">
-                                Student Name
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-0">
-                            <p className="  leading-6 w-[98%]">
-                                {result.studentName}
-                            </p>
-                        </CardContent>
-                    </Card> */}
-                    {/* <Card className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
-                        <CardHeader className="flex flex-col gap-2 mb-2 p-0">
-                            <CardTitle className="text-[19px] font-bold tracking-tight">
-                                Topic
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-0">
-                            <p className="  leading-6 w-[98%]">3</p>
-                        </CardContent>
-                    </Card> */}
                 </div>
 
                 <HistoryTable limit={100} userId={session.user.id} />
