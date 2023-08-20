@@ -12,6 +12,7 @@ import { redirect } from "next/navigation";
 import SignInButtonLg from "@/components/SignInButtonLg";
 import Link from "next/link";
 import Image from "next/image";
+import { ChevronsDown } from "lucide-react";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -49,6 +50,10 @@ export default async function Home() {
 
                         <SignInButtonLg text="Get Started" />
                     </div>
+                    <div className="translate-y-64 flex flex-row">
+                        <ChevronsDown width={20} />
+                        <h1 className="ml-1">Scroll down to watch a demo!</h1>
+                    </div>
                 </div>
                 <Image
                     className="w-6/12 lg:block hidden max-h-[93vh] object-cover"
@@ -58,13 +63,18 @@ export default async function Home() {
                     alt=""
                 />
             </div>
-            <div className="w-full flex-col flex items-center justify-center mt-16 mb-10">
+            <div className="w-full flex-col flex items-center justify-center mt-20 mb-10">
                 <h1 className="text-4xl font-semibold mb-5">
                     See how it works
                 </h1>
-                <video autoPlay loop controls className="w-8/12 ">
-                    <source src="/peardemo.mp4" />
-                </video>
+                <iframe
+                    width="900"
+                    height="510"
+                    src="https://www.youtube.com/embed/UWvj2qVlvsM"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
             </div>
         </div>
     );

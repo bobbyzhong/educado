@@ -19,9 +19,9 @@ const Navbar = async () => {
                     </p>
                 </Link>
                 <div className="flex items-center">
-                    <ThemeToggle className="mr-4" />
                     {session?.user ? (
                         <>
+                            <ThemeToggle className="mr-4" />
                             <UserAccountNav user={session.user} />
                             <div className="ml-3 border-l-2 pl-3">
                                 <h1 className="text-lg font-semibold ">
@@ -31,7 +31,12 @@ const Navbar = async () => {
                             </div>
                         </>
                     ) : (
-                        <SignInButton text={"Sign In"} />
+                        <div className="flex flex-row items-center justify-center space-x-6 font-outfit">
+                            <Link href={"/contact"}>Contact</Link>
+                            <Link href={"/demo"}>Book Demo</Link>
+
+                            <SignInButton text={"Sign In"} />
+                        </div>
                     )}
                 </div>
             </div>
