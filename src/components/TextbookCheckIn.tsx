@@ -139,14 +139,13 @@ const TextbookCheckIn = (props: Props) => {
                                                     History of the American
                                                     People
                                                 </SelectItem>
-                                                <SelectItem value="book 2">
-                                                    Coming Soon!
-                                                </SelectItem>
                                             </SelectContent>
                                         </Select>
                                         <FormDescription>
                                             Select the textbook you want to base
-                                            the check-in off of
+                                            the check-in off of. Contact Bobby
+                                            via email or phone if you want to
+                                            add a certain textbook!
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
