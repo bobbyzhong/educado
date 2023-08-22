@@ -47,8 +47,13 @@ export default async function Home() {
                                 Book Demo
                             </Button>
                         </Link>
+                        <Link href={"/getAccess"}>
+                            <Button variant={"green"} className="" size={"xl"}>
+                                Get Started
+                            </Button>
+                        </Link>
 
-                        <SignInButtonLg text="Get Started" />
+                        {/* <SignInButtonLg text="Get Started" /> */}
                     </div>
                     <div className="translate-y-64 flex flex-row">
                         <ChevronsDown width={20} />

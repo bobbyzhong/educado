@@ -26,11 +26,12 @@ const buttonVariants = cva(
                     "border border-input border-green text-green hover:bg-green/90 shadow-sm hover:bg-accent hover:text-green/90",
             },
             size: {
-                default: "h-9 px-5 py-2",
+                default: "h-9 px-5 py-2 font-semibold tracking-wider",
                 signIn: "h-9 px-5 py-2 text-[15.5px] ",
                 sm: "h-8 rounded-md px-3 text-xs",
                 lg: "h-10 rounded-md px-8",
                 xl: "h-11 rounded-md px-9 font-semibold tracking-wide",
+                login: "h-11 rounded-md px-5 font-semibold tracking-wide",
                 icon: "h-9 w-9",
             },
         },

@@ -34,8 +34,13 @@ const Navbar = async () => {
                         <div className="flex flex-row items-center justify-center space-x-6 font-outfit">
                             <Link href={"/contact"}>Contact</Link>
                             <Link href={"/demo"}>Book Demo</Link>
+                            <Link href={"/getAccess"}>
+                                <Button variant={"green"} className="">
+                                    Get Started
+                                </Button>
+                            </Link>
 
-                            <SignInButton text={"Sign In"} />
+                            {/* <SignInButton text={"Sign In"} /> */}
                         </div>
                     )}
                 </div>

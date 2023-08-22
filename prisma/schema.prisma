@@ -51,6 +51,15 @@ model User {
   sessions      Session[]
 }
 
+model AccessRequest {
+  id            String    @id @default(cuid())
+  name          String?
+  school        String
+  subject       String
+  contact       String
+  
+}
+
 enum GameType {
   mcq
   open_ended
