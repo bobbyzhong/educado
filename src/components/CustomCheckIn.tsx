@@ -41,7 +41,7 @@ type Props = {};
 
 type Input = z.infer<typeof textbookCheckInSchema>;
 
-const TextbookCheckIn = (props: Props) => {
+const CustomCheckIn = (props: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
         mutationFn: async ({
@@ -52,7 +52,7 @@ const TextbookCheckIn = (props: Props) => {
             chapters,
         }: Input) => {
             // response makes api call to create new game in db and then returns the game id
-            const response = await axios.post("/api/textbook-check-in", {
+            const response = await axios.post("/api/custom-check-in", {
                 amount,
                 topic,
                 type,
@@ -112,7 +112,7 @@ const TextbookCheckIn = (props: Props) => {
             <Card className="mt-32 mb-5 w-full max-w-[38rem]">
                 <CardHeader>
                     <CardTitle className="font-bold text-2xl">
-                        New Textbook Check-In
+                        New Custom Check-In
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -276,4 +276,4 @@ const TextbookCheckIn = (props: Props) => {
         </div>
     );
 };
-export default TextbookCheckIn;
+export default CustomCheckIn;

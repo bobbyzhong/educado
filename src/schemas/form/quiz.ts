@@ -55,3 +55,16 @@ export const getAccessSchema = z.object({
         .min(2, { message: "Subject name must be at least 2 characters long" })
         .max(50),
 });
+
+export const contentRequestSchema = z.object({
+    content: z
+        .string()
+        .min(4, { message: "Topic must be at least 4 characters long" }),
+});
+
+export const contentRequestSchemaAPI = z.object({
+    name: z.string(),
+    content: z
+        .string()
+        .min(4, { message: "Topic must be at least 4 characters long" }),
+});

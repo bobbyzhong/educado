@@ -59,6 +59,14 @@ export const QuizModal = ({
                         Create a quiz based off of a specific textbook. Quiz key
                         concepts or chapters of a textbook.
                     </QuizModalLink>
+                    <QuizModalLink
+                        link={"/new-custom-check-in"}
+                        title={"Custom Content"}
+                        icon={"/icons/custom-icon.svg"}
+                    >
+                        Create a quiz based off your uploaded custom content.
+                        Slides, docs, websites, etc.
+                    </QuizModalLink>
                     {/* <QuizModalLink
                         link={"/comingsoon"}
                         title={"Online Article/Website"}

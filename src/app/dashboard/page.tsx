@@ -6,6 +6,7 @@ import HotTopicsCard from "./HotTopicsCard";
 import RecentActivityCard from "./RecentAcitivities";
 import CheckInCard from "@/components/dashboard/CheckInCard";
 import ContactCard from "@/components/dashboard/ContactCard";
+import ContentRequestCard from "@/components/dashboard/ContentRequestCard";
 
 type Props = {};
 
@@ -37,6 +38,7 @@ const Dashboard = async (props: Props) => {
                 <CheckInCard />
                 <HistoryCard />
                 <ContactCard />
+                <ContentRequestCard />
 
                 {/* <CheckInCard /> */}
                 {/* <QuizMeCard /> */}
