@@ -2,7 +2,7 @@
 
 import { getAuthSession } from "@/lib/nextauth";
 import { NextResponse } from "next/server";
-import { quizCreationSchema, textbookCheckInSchema } from "@/schemas/form/quiz";
+import { customCheckInSchema } from "@/schemas/form/quiz";
 import { ZodError } from "zod";
 import { prisma } from "@/lib/db";
 import axios from "axios";
@@ -21,78 +21,80 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, topic, type, textbook, chapters } =
-            textbookCheckInSchema.parse(body);
+        const { amount, content, type, emphasize } =
+            customCheckInSchema.parse(body);
 
-        // const checkIn = await prisma.checkIn.create({
-        //     data: {
-        //         checkInType: type,
-        //         timeStarted: new Date(),
-        //         userId: session.user.id,
-        //         topic: topic,
-        //         contentSource: "textbook",
-        //     },
-        // });
+        const name = session.user.name;
 
-        // const { data } = await axios.post(
-        //     `${process.env.API_URL}/api/createTextbookQuestions`,
-        //     {
-        //         amount,
-        //         topic,
-        //         type,
-        //         textbook,
-        //         chapters,
-        //     }
-        // );
+        const checkIn = await prisma.checkIn.create({
+            data: {
+                checkInType: type,
+                timeStarted: new Date(),
+                userId: session.user.id,
+                topic: content,
+                contentSource: "custom",
+            },
+        });
 
-        // if (type == "mcq") {
-        //     type mcqQuestion = {
-        //         question: string;
-        //         answer: string;
-        //         option1: string;
-        //         option2: string;
-        //         option3: string;
-        //     };
-        //     let manyData = data.questions.map((question: mcqQuestion) => {
-        //         let options = [
-        //             question.answer,
-        //             question.option1,
-        //             question.option2,
-        //             question.option3,
-        //         ];
-        //         options = options.sort(() => Math.random() - 0.5);
-        //         return {
-        //             question: question.question,
-        //             answer: question.answer,
-        //             options: JSON.stringify(options),
-        //             checkInId: checkIn.id,
-        //             questionType: "mcq",
-        //         };
-        //     });
-        //     await prisma.question.createMany({
-        //         data: manyData,
-        //     });
-        // } else if (type === "open_ended") {
-        //     type openQuestion = {
-        //         question: string;
-        //         answer: string;
-        //     };
-        //     let manyData = data.questions.map((question: openQuestion) => {
-        //         return {
-        //             question: question.question,
-        //             answer: question.answer,
-        //             checkInId: checkIn.id,
-        //             questionType: "open_ended",
-        //         };
-        //     });
+        const { data } = await axios.post(
+            `${process.env.API_URL}/api/createCustomQuestions`,
+            {
+                amount,
+                name,
+                content,
+                type,
+                emphasize,
+            }
+        );
 
-        //     await prisma.question.createMany({
-        //         data: manyData,
-        //     });
-        // }
+        if (type == "mcq") {
+            type mcqQuestion = {
+                question: string;
+                answer: string;
+                option1: string;
+                option2: string;
+                option3: string;
+            };
+            let manyData = data.questions.map((question: mcqQuestion) => {
+                let options = [
+                    question.answer,
+                    question.option1,
+                    question.option2,
+                    question.option3,
+                ];
+                options = options.sort(() => Math.random() - 0.5);
+                return {
+                    question: question.question,
+                    answer: question.answer,
+                    options: JSON.stringify(options),
+                    checkInId: checkIn.id,
+                    questionType: "mcq",
+                };
+            });
+            await prisma.question.createMany({
+                data: manyData,
+            });
+        } else if (type === "open_ended") {
+            type openQuestion = {
+                question: string;
+                answer: string;
+            };
+            let manyData = data.questions.map((question: openQuestion) => {
+                return {
+                    question: question.question,
+                    answer: question.answer,
+                    checkInId: checkIn.id,
+                    questionType: "open_ended",
+                };
+            });
+
+            await prisma.question.createMany({
+                data: manyData,
+            });
+        }
 
         return NextResponse.json({
-            checkInId: "checkIn.id,",
+            checkInId: checkIn.id,
         });
     } catch (error) {
         if (error instanceof ZodError) {

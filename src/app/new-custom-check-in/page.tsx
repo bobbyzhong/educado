@@ -1,6 +1,7 @@
 import CustomCheckIn from "@/components/CustomCheckIn";
 import TextbookCheckIn from "@/components/TextbookCheckIn";
 import TopicCheckIn from "@/components/TopicCheckIn";
+import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -17,6 +18,12 @@ const NewCustomCheckInPage = async (props: Props) => {
         redirect("/");
     }
 
-    return <CustomCheckIn />;
+    const user = await prisma.user.findUnique({
+        where: {
+            id: session.user.id,
+        },
+    });
+
+    return <CustomCheckIn uploadedContent={user?.uploadedContent!} />;
 };
 export default NewCustomCheckInPage;

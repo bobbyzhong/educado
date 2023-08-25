@@ -33,7 +33,7 @@ const ReviewPage = async ({ params: { checkInId } }: Props) => {
         include: { questions: true },
     });
     if (!checkIn) {
-        return redirect("/quiz");
+        return redirect("/dashboard");
     }
 
     return (

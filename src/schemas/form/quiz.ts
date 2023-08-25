@@ -68,3 +68,22 @@ export const contentRequestSchemaAPI = z.object({
         .string()
         .min(4, { message: "Topic must be at least 4 characters long" }),
 });
+
+export const customCheckInSchema = z.object({
+    content: z
+        .string()
+        .min(3, { message: "Content must be at least 3 characters long" }),
+    type: z.enum(["mcq", "open_ended"]),
+    amount: z.number().min(1).max(10),
+    emphasize: z.string().max(100),
+});
+
+export const customCheckInSchemaAPI = z.object({
+    content: z
+        .string()
+        .min(3, { message: "Content must be at least 3 characters long" }),
+    type: z.enum(["mcq", "open_ended"]),
+    amount: z.number().min(1).max(10),
+    name: z.string(),
+    emphasize: z.string().max(100),
+});
