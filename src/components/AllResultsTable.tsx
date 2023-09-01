@@ -38,6 +38,7 @@ const AllResultsTable = async ({ checkInId }: Props) => {
                     <TableRow className="">
                         <TableHead className="w-[35%]">Student Name</TableHead>
                         <TableHead>Score</TableHead>
+                        <TableHead>Percentage</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -46,6 +47,10 @@ const AllResultsTable = async ({ checkInId }: Props) => {
                             return (
                                 <TableRow key={index} className="h-[50px]">
                                     <TableCell>{result.studentName}</TableCell>
+                                    <TableCell>
+                                        {result.totalCorrect}/
+                                        {result.totalQuestions}
+                                    </TableCell>
                                     <TableCell>{result.score}%</TableCell>
 
                                     <TableCell className="text-right">

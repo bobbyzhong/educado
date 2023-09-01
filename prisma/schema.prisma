@@ -58,7 +58,7 @@ model AccessRequest {
   school        String
   subject       String
   contact       String
-  
+
 }
 
 enum GameType {
@@ -125,6 +125,8 @@ model Result {
   studentName      String
   checkInId         String
   questionResults  Json? // array containing questions and whether they were correct or not
+  totalRight      Int?
+  totalQuestions  Int?
   score            Float?
   timeSubmitted     DateTime
 

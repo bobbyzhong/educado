@@ -30,6 +30,8 @@ export async function POST(req: Request, res: Response) {
                 studentName: studentName,
                 checkInId: checkInId,
                 questionResults: questionResults,
+                totalRight: totalCorrect,
+                totalQuestions: questionResults.length,
                 score: score,
                 timeSubmitted: new Date(),
             },

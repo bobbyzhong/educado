@@ -87,3 +87,22 @@ export const customCheckInSchemaAPI = z.object({
     name: z.string(),
     emphasize: z.string().max(100),
 });
+
+export const editQuestionSchema = z.object({
+    questionId: z.string(),
+    question: z
+        .string()
+        .min(3, { message: "Question must be at least 3 characters long" }),
+    answer: z
+        .string()
+        .min(1, { message: "Answer must be at least 1 character long" }),
+    option2: z
+        .string()
+        .min(1, { message: "Option 2 must be at least 1 character long" }),
+    option3: z
+        .string()
+        .min(1, { message: "Option 3 must be at least 1 character long" }),
+    option4: z
+        .string()
+        .min(1, { message: "Option 4 must be at least 1 character long" }),
+});

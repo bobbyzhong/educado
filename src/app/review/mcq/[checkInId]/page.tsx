@@ -100,6 +100,10 @@ const ReviewPage = async ({ params: { checkInId } }: Props) => {
                         </CardContent>
                     </Card>
                 </div>
+                <div className="text-sm text-zinc-500 mt-3">
+                    <b>Note:</b> After each edit you'll need to refresh to see
+                    the changes you made
+                </div>
                 <ReviewList questions={checkIn.questions} />
             </div>
         </>
