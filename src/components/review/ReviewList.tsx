@@ -12,14 +12,25 @@ import {
 } from "@/components/ui/table";
 import { Question } from "@prisma/client";
 import EditQuestionModal from "../EditQuestionModal";
+import { PlusIcon, RefreshCcw, RotateCw } from "lucide-react";
+import { Button } from "../ui/button";
+import AddQuestionModal from "../AddQuestionModal";
+import { useRouter } from "next/navigation";
 type Props = {
     questions: Question[];
+    checkInId: string;
 };
 
-const ReviewList = ({ questions }: Props) => {
+const ReviewList = ({ questions, checkInId }: Props) => {
+    const router = useRouter();
+    const [addQuestionModal, setAddQuestionModal] = React.useState(false);
     const [modalVisibility, setModalVisibility] = React.useState<
         Record<string, boolean>
     >({});
+
+    const handleRefresh = () => {
+        router.refresh();
+    };
 
     const openModal = (id: string) => {
         setModalVisibility((prevState) => ({ ...prevState, [id]: true }));
@@ -31,6 +42,25 @@ const ReviewList = ({ questions }: Props) => {
 
     return (
         <div>
+            <div className="flex flex-row w-full gap-2">
+                <Button
+                    size={"square"}
+                    variant={"green"}
+                    onClick={handleRefresh}
+                >
+                    <RotateCw strokeWidth={2} size={22} />
+                </Button>
+                <Button
+                    onClick={() => {
+                        setAddQuestionModal(true);
+                    }}
+                    size={"md"}
+                    variant={"green"}
+                >
+                    <PlusIcon size={18} className="mr-1" /> Add Question
+                </Button>
+            </div>
+
             <Table className="mt-4">
                 <TableCaption>End of list.</TableCaption>
                 <TableHeader>
@@ -132,6 +162,14 @@ const ReviewList = ({ questions }: Props) => {
                     </>
                 </TableBody>
             </Table>
+
+            <AddQuestionModal
+                isVisible={addQuestionModal}
+                onClose={() => {
+                    setAddQuestionModal(false);
+                }}
+                checkInId={checkInId}
+            />
         </div>
     );
 };

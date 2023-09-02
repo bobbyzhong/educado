@@ -28,6 +28,8 @@ const buttonVariants = cva(
             size: {
                 default: "h-9 px-5 py-2 font-semibold tracking-wider",
                 signIn: "h-9 px-5 py-2 text-[15.5px] ",
+                square: "p-1 px-2",
+                md: "h-9 px-3 py-2 font-semibold tracking-wider text-[13.5px] font-[575]",
                 sm: "h-8 rounded-md px-3 text-xs",
                 lg: "h-10 rounded-md px-8",
                 xl: "h-11 rounded-md px-9 font-semibold tracking-wide",

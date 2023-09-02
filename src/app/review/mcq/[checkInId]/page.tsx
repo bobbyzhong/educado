@@ -1,20 +1,13 @@
 import { prisma } from "@/lib/db";
-import {
-    ArrowRight,
-    ClipboardSignature,
-    LucideLayoutDashboard,
-} from "lucide-react";
 import { getAuthSession } from "@/lib/nextauth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import Image from "next/image";
-
-import ResultsCard from "@/components/statistics/ResultsCard";
-import AccuracyCard from "@/components/statistics/AccuracyCard";
-import TimeTakenCard from "@/components/statistics/TimeTakenCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ReviewList from "@/components/review/ReviewList";
+
+import { Button } from "@/components/ui/button";
 
 type Props = {
     params: {
@@ -32,6 +25,7 @@ const ReviewPage = async ({ params: { checkInId } }: Props) => {
         where: { id: checkInId },
         include: { questions: true },
     });
+
     if (!checkIn) {
         return redirect("/dashboard");
     }
@@ -100,11 +94,15 @@ const ReviewPage = async ({ params: { checkInId } }: Props) => {
                         </CardContent>
                     </Card>
                 </div>
-                <div className="text-sm text-zinc-500 mt-3">
-                    <b>Note:</b> After each edit you'll need to refresh to see
-                    the changes you made
+
+                <div className="text-sm text-zinc-500 my-3">
+                    <b>Note:</b> After each edit the changes will be made but
+                    you'll need to refresh to see the changes
                 </div>
-                <ReviewList questions={checkIn.questions} />
+                <ReviewList
+                    checkInId={checkInId}
+                    questions={checkIn.questions}
+                />
             </div>
         </>
     );

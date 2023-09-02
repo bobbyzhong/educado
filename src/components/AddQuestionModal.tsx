@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { editQuestionSchema } from "@/schemas/form/quiz";
+import { editQuestionSchema, newQuestionSchema } from "@/schemas/form/quiz";
 import { z } from "zod";
 import {
     Card,
@@ -34,22 +34,12 @@ import { useRouter } from "next/navigation";
 type Props = {
     isVisible: any;
     onClose: any;
-    questionId: string;
-    answer: string;
-    question: string;
-    options: string[];
+    checkInId: string;
 };
 
-type Input = z.infer<typeof editQuestionSchema>;
+type Input = z.infer<typeof newQuestionSchema>;
 
-const EditQuestionModal = ({
-    isVisible,
-    onClose,
-    questionId,
-    answer,
-    question,
-    options,
-}: Props) => {
+const AddQuestionModal = ({ isVisible, onClose, checkInId }: Props) => {
     if (!isVisible) return null;
     const router = useRouter();
 
@@ -59,19 +49,19 @@ const EditQuestionModal = ({
         if (e.target.id === "wrapper") onClose();
     };
 
-    const { mutate: submitEdit, isLoading } = useMutation({
+    const { mutate: submitNew, isLoading } = useMutation({
         mutationFn: async ({
-            questionId,
-            answer,
+            checkInId,
             question,
+            answer,
             option2,
             option3,
             option4,
         }: Input) => {
-            const response = await axios.post("/api/editQuestion", {
-                questionId,
-                answer,
+            const response = await axios.post("/api/addQuestion", {
+                checkInId,
                 question,
+                answer,
                 option2,
                 option3,
                 option4,
@@ -82,42 +72,32 @@ const EditQuestionModal = ({
         },
     });
 
-    async function deleteQuestion(questionId: string) {
-        const response = await axios.post("/api/deleteQuestion", {
-            questionId,
-        });
-        console.log(response.data);
-        onClose();
-        return response.data;
-    }
-
     const form = useForm<Input>({
         resolver: zodResolver(contentRequestSchema),
         defaultValues: {
-            questionId: questionId,
-            answer: answer,
-            question: question,
-            option2: options[1],
-            option3: options[2],
-            option4: options[3],
+            question: "",
+            answer: "",
+            option2: "",
+            option3: "",
+            option4: "",
         },
     });
 
     function onSubmit(input: Input) {
         try {
             setShowLoader(true);
-            submitEdit(
+            submitNew(
                 {
-                    questionId: input.questionId,
-                    answer: input.answer,
+                    checkInId: checkInId,
                     question: input.question,
+                    answer: input.answer,
                     option2: input.option2,
                     option3: input.option3,
                     option4: input.option4,
                 },
                 {
                     onSuccess: () => {
-                        console.log("SAVED!");
+                        console.log("NEW ADDED!");
                         // SHOW TOAST
                         onClose();
                     },
@@ -145,12 +125,10 @@ const EditQuestionModal = ({
                 <Card className="max-w-[38rem]">
                     <CardHeader>
                         <CardTitle className="font-bold w-full flex justify-between flex-row text-2xl">
-                            <div>Edit Question</div>
+                            <div>Add Question</div>
                             <X onClick={onClose} cursor={"pointer"} />
                         </CardTitle>
-                        <CardDescription>
-                            Don't forget to save your changes!
-                        </CardDescription>
+                        <CardDescription></CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Form {...form}>
@@ -236,10 +214,10 @@ const EditQuestionModal = ({
                                         <FormItem>
                                             <FormLabel>Option 2</FormLabel>
                                             <FormControl>
-                                                <Textarea
+                                                <Input
                                                     placeholder=""
                                                     {...field}
-                                                    rows={1}
+                                                    // rows={1}
                                                 />
                                             </FormControl>
                                             <FormMessage />
@@ -253,16 +231,8 @@ const EditQuestionModal = ({
                                         disabled={isLoading}
                                         type="submit"
                                     >
-                                        Save
+                                        Add Question
                                     </Button>
-                                    <h1
-                                        onClick={() =>
-                                            deleteQuestion(questionId)
-                                        }
-                                        className="text-sm text-red-500 underline cursor-pointer"
-                                    >
-                                        Delete Question
-                                    </h1>
                                 </div>
                             </form>
                         </Form>
@@ -272,4 +242,4 @@ const EditQuestionModal = ({
         </div>
     );
 };
-export default EditQuestionModal;
+export default AddQuestionModal;

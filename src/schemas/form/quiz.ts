@@ -106,3 +106,21 @@ export const editQuestionSchema = z.object({
         .string()
         .min(1, { message: "Option 4 must be at least 1 character long" }),
 });
+export const newQuestionSchema = z.object({
+    checkInId: z.string(),
+    question: z
+        .string()
+        .min(3, { message: "Question must be at least 3 characters long" }),
+    answer: z
+        .string()
+        .min(1, { message: "Answer must be at least 1 character long" }),
+    option2: z
+        .string()
+        .min(1, { message: "Option 2 must be at least 1 character long" }),
+    option3: z
+        .string()
+        .min(1, { message: "Option 3 must be at least 1 character long" }),
+    option4: z
+        .string()
+        .min(1, { message: "Option 4 must be at least 1 character long" }),
+});
