@@ -212,7 +212,7 @@ const AddQuestionModal = ({ isVisible, onClose, checkInId }: Props) => {
                                     name="option4"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Option 2</FormLabel>
+                                            <FormLabel>Option 4</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     placeholder=""
