@@ -33,7 +33,7 @@ const AllResultsTable = async ({ checkInId }: Props) => {
     return (
         <div>
             <Table className="mt-4">
-                <TableCaption>End of list.</TableCaption>
+                <TableCaption>End of list</TableCaption>
                 <TableHeader>
                     <TableRow className="">
                         <TableHead className="w-[35%]">Student Name</TableHead>
