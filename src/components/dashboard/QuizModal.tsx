@@ -23,7 +23,7 @@ export const QuizModal = ({
             id="wrapper"
             onClick={handleClose}
         >
-            <div className="w-[550px] flex flex-col bg-white1 py-6 px-8 mb-5">
+            <div className="w-[550px] rounded-md flex flex-col bg-white1 py-10 px-7 mb-5">
                 <div className="flex flex-row justify-between mb-3">
                     <Image
                         src={"/icons/quizmodalicons.svg"}
@@ -35,7 +35,7 @@ export const QuizModal = ({
                 </div>
                 <div className="flex flex-col TEXT mb-4">
                     <h1 className="font-semibold text-lg tracking-tight mb-1">
-                        Select Quiz Type
+                        Select Check-In Type
                     </h1>
                     <p className="text-zinc-500 text-sm">
                         Choose where the content of your quiz will be coming
@@ -48,24 +48,24 @@ export const QuizModal = ({
                         title={"Plain Content"}
                         icon={"/icons/pageicon.svg"}
                     >
-                        Create a quiz based off your own content. Copy and paste
-                        the material yourself!
+                        Create a check-in based off your own content. Copy and
+                        paste the material yourself!
                     </QuizModalLink>
                     <QuizModalLink
                         link={"/new-textbook-check-in"}
                         title={"Textbook"}
                         icon={"/icons/textbookicon.svg"}
                     >
-                        Create a quiz based off of a specific textbook. Quiz key
-                        concepts or chapters of a textbook.
+                        Create a check-in based off of a specific textbook. Quiz
+                        key concepts or chapters of a textbook.
                     </QuizModalLink>
                     <QuizModalLink
                         link={"/new-custom-check-in"}
                         title={"Custom Content"}
                         icon={"/icons/custom-icon.svg"}
                     >
-                        Create a quiz based off your uploaded custom content.
-                        Slides, docs, websites, etc.
+                        Create a check-in based off your uploaded custom
+                        content. Slides, docs, websites, etc.
                     </QuizModalLink>
                     {/* <QuizModalLink
                         link={"/comingsoon"}
