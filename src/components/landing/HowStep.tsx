@@ -19,7 +19,7 @@ const HowStep = ({ step, title, description, image }: Props) => {
             <h1 className="text-[11rem] text-[#8bb83f]/[0.4] font-bold leading-[1.1]">
               {step}
             </h1>
-            <h1 className="text-6xl font-bold ">{title}</h1>
+            <h1 className="text-6xl font-bold text-left ">{title}</h1>
           </div>
           <p className=" text-2xl text-left text-[#634848] w-[80%]">
             {description}
