@@ -39,9 +39,6 @@ const Dashboard = async (props: Props) => {
                 <HistoryCard />
                 <ContactCard />
                 <ContentRequestCard />
-
-                {/* <CheckInCard /> */}
-                {/* <QuizMeCard /> */}
             </div>
         </main>
     );
