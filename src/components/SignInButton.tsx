@@ -9,7 +9,7 @@ const SignInButton = ({ text }: Props) => {
     return (
         <Button
             variant={"green"}
-            size={"signIn"}
+            size={"login"}
             onClick={() => {
                 signIn("google").catch(console.error);
             }}

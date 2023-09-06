@@ -37,11 +37,8 @@ export default async function Home() {
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
-                    <Link href={"/getAccess"}>
-                        <Button variant={"green"} className="" size={"xl"}>
-                            Get Started
-                        </Button>
-                    </Link>
+                    <SignInButtonLg text={"Try It Out"} />
+
                     <Link href={"/demo"}>
                         <Button
                             className=""
