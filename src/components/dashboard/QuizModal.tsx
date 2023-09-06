@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { QuizModalLink } from "./QuizModalLink";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import { X } from "lucide-react";
 import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "../PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
+import React from "react";
 
 export const QuizModal = ({
     isVisible,
@@ -91,7 +93,7 @@ export const QuizModal = ({
                 id="wrapper"
                 onClick={handleClose}
             >
-                <div className="w-[550px] rounded-md flex flex-col bg-white1 py-10 px-7 mb-5">
+                <div className="w-[575px] rounded-md flex flex-col bg-white1 py-10 px-7 mb-5">
                     <div className="flex flex-row justify-between mb-3">
                         <Image
                             src={"/icons/quizmodalicons.svg"}
@@ -103,13 +105,20 @@ export const QuizModal = ({
                     </div>
                     <div className="flex flex-col TEXT mb-4">
                         <h1 className="font-semibold text-lg tracking-tight mb-1">
-                            Need to Subscribe
+                            Subscribe to make more check-ins!
                         </h1>
                         <p className="text-zinc-500 text-sm">
-                            It will cost $5 a month to continue using Pear. This
-                            is just to cover our costs of running the service.
+                            You've used up your three free check-ins. It will
+                            cost $5 a month to continue using Pear. This is just
+                            to cover our costs of running Pear.
+                        </p>
+                        <p className="text-zinc-500 text-sm mt-3">
+                            Please contact Bobby if you have any issues with
+                            paying that amount at the moment and we can work
+                            something out!
                         </p>
                     </div>
+
                     <Elements stripe={stripePromise}>
                         <PaymentForm userId={userId} />
                     </Elements>

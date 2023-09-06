@@ -1,9 +1,17 @@
 "use client";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {
+    CardElement,
+    Elements,
+    PaymentElement,
+    useElements,
+    useStripe,
+} from "@stripe/react-stripe-js";
 import React from "react";
 import { Button } from "./ui/button";
 import { set } from "date-fns";
 import { useRouter } from "next/navigation";
+import { Input } from "./ui/input";
+import { loadStripe } from "@stripe/stripe-js";
 
 type Props = { userId: string };
 const PaymentForm = ({ userId }: Props) => {
@@ -14,6 +22,12 @@ const PaymentForm = ({ userId }: Props) => {
     const elements = useElements();
 
     const router = useRouter();
+
+    const paymentElementOptions: any = {
+        appearance: {
+            theme: "stripe",
+        },
+    };
 
     const createSubscription = async () => {
         try {
@@ -53,20 +67,30 @@ const PaymentForm = ({ userId }: Props) => {
 
     return (
         <div>
-            Name:{" "}
-            <input
-                type="text"
+            <h1 className="text-sm font-semibold text-zinc-500 tracking-wide mb-1">
+                Name
+            </h1>
+            <Input
+                placeholder="John Doe"
                 value={name}
+                type="text"
+                min={1}
+                max={10}
                 onChange={(e) => setName(e.target.value)}
             />
-            Email:{" "}
-            <input
+            <h1 className="text-sm font-semibold text-zinc-500 tracking-wide mt-3 mb-1">
+                Email
+            </h1>
+            <Input
+                placeholder="example@gmail.com"
                 type="text"
+                min={1}
+                max={10}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <br />
-            <CardElement /> <br />
+            <CardElement options={paymentElementOptions} /> <br />
             <Button
                 variant={"green"}
                 disabled={loading}
@@ -74,7 +98,10 @@ const PaymentForm = ({ userId }: Props) => {
             >
                 Subscribe
             </Button>
-            <div>Refresh Page after</div>
+            <div className="text-[13px] font-semibold text-zinc-500 mt-3">
+                Note: You may need to refresh the page if you've already paid
+                but it's not showing up
+            </div>
         </div>
     );
 };
