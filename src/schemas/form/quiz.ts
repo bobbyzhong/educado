@@ -124,3 +124,9 @@ export const newQuestionSchema = z.object({
         .string()
         .min(1, { message: "Option 4 must be at least 1 character long" }),
 });
+
+export const subscribeRequest = z.object({
+    name: z.string(),
+    email: z.string().email(),
+    paymentMethod: z.string(),
+});
