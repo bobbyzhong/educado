@@ -1,12 +1,10 @@
 import HistoryCard from "@/components/dashboard/HistoryCard";
-import QuizMeCard from "@/components/dashboard/QuizMeCard";
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
-import HotTopicsCard from "./HotTopicsCard";
-import RecentActivityCard from "./RecentAcitivities";
 import CheckInCard from "@/components/dashboard/CheckInCard";
 import ContactCard from "@/components/dashboard/ContactCard";
 import ContentRequestCard from "@/components/dashboard/ContentRequestCard";
+import { prisma } from "@/lib/db";
 
 type Props = {};
 
@@ -19,6 +17,11 @@ const Dashboard = async (props: Props) => {
     if (!session?.user) {
         return redirect("/");
     }
+    const user = await prisma.user.findUnique({
+        where: {
+            id: session.user.id,
+        },
+    });
 
     return (
         <main className="p-8 mx-auto max-w-7xl">
@@ -35,13 +38,13 @@ const Dashboard = async (props: Props) => {
             </div>
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
-                <CheckInCard />
+                <CheckInCard
+                    subscribed={user?.subscribed!}
+                    userId={session.user.id}
+                />
                 <HistoryCard />
                 <ContactCard />
                 <ContentRequestCard />
-
-                {/* <CheckInCard /> */}
-                {/* <QuizMeCard /> */}
             </div>
         </main>
     );
