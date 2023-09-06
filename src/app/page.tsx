@@ -24,13 +24,13 @@ export default async function Home() {
     }
 
     return (
-        <div className="flex flex-col font-outfit">
+        <div className="flex flex-col font-outfit w-full">
             <div className="flex  flex-col justify-center items-center">
-                <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[4%]">
-                    <h1 className="text-7xl font-[600] md:font-[650] w-6/12 mb-5">
+                <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
+                    <h1 className="md:text-7xl text-5xl font-[600] md:font-[650] w-11/12 md:w-8/12 lg:w-6/12 mb-2 md:mb-4">
                         Check-ins made quick and easy
                     </h1>
-                    <p className="text-[19px] leading-snug my-7 w-7/12 text-[#6F6060]">
+                    <p className="text-[19px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-[#6F6060]">
                         Effortlessly generate insightful check-ins in seconds.
                         Pinpoint crucial topics for the next class and identify
                         which students require additional attention.
@@ -71,10 +71,10 @@ export default async function Home() {
 
             {/* WHY PEAR */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="text-5xl font-[600] md:font-[650] w-6/12 mb-[7%] text-[#725D5D]">
+                <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-[#725D5D]">
                     WHY PEAR
                 </h1>
-                <div className="flex flex-wrap w-[90%] justify-center gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
                     <WhyUsCard
                         icon="⚡"
                         title="️Instant Results"
@@ -99,8 +99,8 @@ export default async function Home() {
             </div>
 
             {/* HOW PEAR WORKS */}
-            <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="text-5xl font-[600] md:font-[650] w-6/12 mb-[2%] text-[#725D5D]">
+            <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
+                <h1 className="text-4xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-6/12 mt-5 mb-[2%] text-[#725D5D]">
                     HOW PEAR WORKS
                 </h1>
                 <HowStep
@@ -138,7 +138,7 @@ export default async function Home() {
             {/* FOOTER */}
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
                 <div className="w-[100%] justify-center items-center flex bg-[#8bb83f]/[0.2] py-[2%] rounded-b-[20%] ">
-                    <h1 className=" text-center text-7xl font-[600] md:font-[650] w-4/12 mb-5">
+                    <h1 className=" text-center text-5xl md:text-7xl font-[600] md:font-[650] w-10/12 md:w-4/12 mb-5">
                         Check-ins made quick and easy
                     </h1>
                 </div>
@@ -166,12 +166,9 @@ export default async function Home() {
                     See how it works
                 </h1>
                 <iframe
-                    width="900"
-                    height="510"
+                    className="md:w-[60rem] md:h-[33rem] w-[20rem] h-[12rem]"
                     src="https://www.youtube.com/embed/UWvj2qVlvsM"
                     title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
                 ></iframe>
             </div>
         </div>

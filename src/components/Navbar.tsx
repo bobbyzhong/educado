@@ -11,11 +11,11 @@ const Navbar = async () => {
     const session = await getAuthSession();
     return (
         <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300  py-3 ">
-            <div className="flex items-center justify-between h-full gap-2 px-8 mx-auto max-w-7xl">
+            <div className="flex items-center justify-between h-full gap-2 md:px-8 px-3 mx-auto max-w-7xl">
                 {/* Logo */}
-                <Link href={"/"} className="flex items-center gap-2">
-                    <p className="font-outfit text-3xl transition-all hover:-translate-y-[2px] md:block dark:text-white1">
-                        🍐 <span className="text-3xl">Pear</span>
+                <Link href={"/"} className="flex items-center gap-1 md:gap-2">
+                    <p className="font-outfit md:text-3xl text-2xl transition-all hover:-translate-y-[2px] md:block dark:text-white1">
+                        🍐 <span className="md:text-3xl text-2xl">Pear</span>
                     </p>
                 </Link>
                 <div className="flex items-center">
@@ -31,7 +31,7 @@ const Navbar = async () => {
                             </div>
                         </>
                     ) : (
-                        <div className="flex flex-row items-center justify-center space-x-6 font-outfit">
+                        <div className="flex flex-row items-center justify-center space-x-3 md:space-x-6 font-outfit">
                             <Link href={"/contact"}>Contact</Link>
                             <Link href={"/demo"}>Book Demo</Link>
 
