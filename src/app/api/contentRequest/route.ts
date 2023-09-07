@@ -24,6 +24,7 @@ export async function POST(req: Request, res: Response) {
                 }
             );
         }
+        // Google
         const body = await req.json();
         const { name, content } = contentRequestSchemaAPI.parse(body);
 
