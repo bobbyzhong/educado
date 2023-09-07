@@ -7,6 +7,13 @@
         "build": "prisma generate && next build",
         "start": "next start",
         "lint": "next lint",
+        "migrate:dev": "npx dotenv -e .env.local -- prisma migrate dev",
+        "db:push": "npx dotenv -e .env.local -- prisma db push",
+        "migrate:reset": "npx dotenv -e .env.local -- prisma migrate reset",
+        "db:seed": "npx dotenv -e .env.local -- prisma db seed",
+        "prisma:generate": "npx dotenv -e .env.local -- prisma generate",
+        "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
+        "production:build": "npx prisma generate && npx prisma migrate deploy && next build",
         "postinstall": "prisma generate"
     },
     "dependencies": {
@@ -37,6 +44,7 @@
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "date-fns": "^2.30.0",
+        "dotenv-cli": "^7.3.0",
         "eslint": "8.46.0",
         "eslint-config-next": "13.4.12",
         "keyword-extractor": "^0.0.25",
