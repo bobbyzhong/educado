@@ -16,7 +16,7 @@ export const POST = async (req: Request, res: Response) => {
 
         const { amount, topic, type, context } = getQuestionsSchema.parse(body);
 
-        const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". Try to base it 
+        const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". Base the questions 
         on this context if possible: "${context}". If there is no context just create it based what you know. The length of the answer should not exceed 15 words, store all the pairs of answers and questions in a JSON object.
                  You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
                  that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
@@ -27,7 +27,8 @@ export const POST = async (req: Request, res: Response) => {
                   Your output will be parsed and type-checked according to the provided schema instance, so make sure all fields in your output match the schema
                     exactly and there are no trailing commas! Here is an example: {"questions": [{"question": "What is the capital of France?", "answer": "Paris"}, {"question": "What is the capital of Spain?", "answer": "Madrid"}]}.]}`;
 
-        const template2 = `You are a helpful AI that is able to generate ${amount} sets of mcq questions about this specific topic: "${topic}". The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+        const template2 = `You are a helpful AI that is able to generate ${amount} sets of mcq questions about this specific topic: "${topic}". Base the questions 
+        on this context if possible: "${context}". If there is no context just create it based what you know. The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
                 Store all the sets of question, answer, and options in a JSON object.
                  You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
                  that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance

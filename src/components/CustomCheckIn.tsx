@@ -51,7 +51,7 @@ type Input = z.infer<typeof customCheckInSchema>;
 
 const CustomCheckIn = ({ uploadedContent }: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
-    const [apiError, setApiError] = React.useState(true);
+    const [apiError, setApiError] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
         mutationFn: async ({ amount, content, type, emphasize }: Input) => {
             // response makes api call to create new game in db and then returns the game id
