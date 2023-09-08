@@ -78,6 +78,7 @@ export const customCheckInSchema = z.object({
     type: z.enum(["mcq", "open_ended"]),
     amount: z.number().min(1).max(10),
     emphasize: z.string().max(100),
+    standard: z.string().min(0).max(100),
 });
 
 export const customCheckInSchemaAPI = z.object({
@@ -88,6 +89,7 @@ export const customCheckInSchemaAPI = z.object({
     amount: z.number().min(1).max(10),
     name: z.string(),
     emphasize: z.string().max(100),
+    standard: z.string().min(0).max(100),
 });
 
 export const editQuestionSchema = z.object({

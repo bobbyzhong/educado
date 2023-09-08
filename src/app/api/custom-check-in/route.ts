@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, content, type, emphasize } =
+        const { amount, content, type, emphasize, standard } =
             customCheckInSchema.parse(body);
 
         const name = session.user.name;
@@ -33,6 +33,7 @@ export async function POST(req: Request, res: Response) {
                 userId: session.user.id,
                 topic: content,
                 contentSource: "custom",
+                standard,
             },
         });
 
@@ -44,6 +45,7 @@ export async function POST(req: Request, res: Response) {
                 content,
                 type,
                 emphasize,
+                standard,
             }
         );
 

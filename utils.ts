@@ -86,10 +86,12 @@ export const customEmbedInputAndQueryLLM = async (
     indexName: any,
     promptObj: any
 ) => {
-    const { amount, name, content, type, emphasize } =
+    const { amount, name, content, type, emphasize, standard } =
         customCheckInSchemaAPI.parse(promptObj);
 
-    const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) associated with ${name}: "${content}".
+    let question: string;
+    if (standard === "none") {
+        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) associated with ${name}: "${content}".
      Do not create the questions based on any content besides those associated with ${name}. Put an emphasis on these conepts if possible: "${emphasize}".
     The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
@@ -102,7 +104,21 @@ export const customEmbedInputAndQueryLLM = async (
     Your output will be parsed and type-checked according to the provided schema instance, so make sure all fields in your output match the schema
         exactly and there are no trailing commas! Here is an example: {"questions": [{"question": "What is the capital of France?", "answer": "Paris", "option1": "Albany", "option2": "Istanbul", "option3": "Madrid"},
         {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
-
+    } else {
+        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) associated with ${name}: "${content}" based on this academic standard: "${standard}".
+     Do not create the questions based on any content besides those associated with ${name} and this standard, "${standard}". Put an emphasis on these conepts if possible: "${emphasize}".
+    The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+    Store all the sets of question, answer, and options in a JSON object.
+    You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
+    that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
+    {{"properties": {{"foo": {{"description": "a list of test words", "type": "array", "items": {{"type": "string"}}}}}}, "required": ["foo"]}}}} 
+    would match an object with one required property, "foo". The "type" property specifies "foo" must be an "array", and the "description" property 
+    semantically describes it as "a list of test words". The items within "foo" must be strings. Thus, the object {{"foo": ["bar", "baz"]}} is a 
+    well-formatted instance of this example "JSON Schema". The object {{"properties": {{"foo": ["bar", "baz"]}}}} is not well-formatted. 
+    Your output will be parsed and type-checked according to the provided schema instance, so make sure all fields in your output match the schema
+        exactly and there are no trailing commas! Here is an example: {"questions": [{"question": "What is the capital of France?", "answer": "Paris", "option1": "Albany", "option2": "Istanbul", "option3": "Madrid"},
+        {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
+    }
     // 1. Start query process
     console.log("Querying Pinecone vector store...");
     // 2. Retrieve the Pinecone index

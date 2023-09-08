@@ -30,6 +30,7 @@ export async function POST(req: Request, res: Response) {
                 timeStarted: new Date(),
                 userId: session.user.id,
                 topic,
+                standard,
                 contentSource: "plain content",
             },
         });

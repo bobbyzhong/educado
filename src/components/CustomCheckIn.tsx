@@ -53,13 +53,20 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
     const [apiError, setApiError] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
-        mutationFn: async ({ amount, content, type, emphasize }: Input) => {
+        mutationFn: async ({
+            amount,
+            content,
+            type,
+            emphasize,
+            standard,
+        }: Input) => {
             // response makes api call to create new game in db and then returns the game id
             const response = await axios.post("/api/custom-check-in", {
                 amount,
                 content,
                 type,
                 emphasize,
+                standard,
             });
             console.log("RESPONSE DATA");
             console.log(response.data);
@@ -76,6 +83,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
             content: "",
             type: "mcq",
             emphasize: "",
+            standard: "none",
         },
     });
 
@@ -88,6 +96,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                 content: input.content,
                 type: input.type,
                 emphasize: input.emphasize,
+                standard: input.standard,
             },
             {
                 onSuccess: ({ checkInId }) => {
@@ -208,6 +217,47 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                                                 check-in
                                             </FormDescription>
 
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="standard"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>
+                                                Curriculum/Standards
+                                            </FormLabel>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="Select a curriculum or standard" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="none">
+                                                        none
+                                                    </SelectItem>
+                                                    <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
+                                                        Oklahoma Academic
+                                                        Standards for Science
+                                                        6th Grade
+                                                    </SelectItem>
+                                                    <SelectItem value="NGSS Middle School Science Standards">
+                                                        NGSS Middle School
+                                                        Science Standards
+                                                    </SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormDescription>
+                                                Send a request for a curriculum
+                                                or standard if you want yours
+                                                listed
+                                            </FormDescription>
                                             <FormMessage />
                                         </FormItem>
                                     )}

@@ -79,6 +79,7 @@ model CheckIn {
   timeStarted DateTime
   topic       String
   timeEnded   DateTime?
+  standard    String?
   checkInType    CheckInType
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
   results    Result[]
