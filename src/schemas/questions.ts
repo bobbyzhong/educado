@@ -11,6 +11,7 @@ export const getQuestionsSchema = z.object({
         }),
     type: z.enum(["mcq", "open_ended"]),
     amount: z.number().min(1).max(10),
+    context: z.string(),
 });
 
 export const checkAnswerSchema = z.object({

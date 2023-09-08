@@ -7,18 +7,6 @@ import { ZodError } from "zod";
 // POST /api/questions
 export const POST = async (req: Request, res: Response) => {
     try {
-        // const session = await getAuthSession();
-        // if (!session?.user) {
-        //     return NextResponse.json(
-        //         {
-        //             error: "You must be logged in to create a quiz.",
-        //         },
-        //         {
-        //             status: 401,
-        //         }
-        //     );
-        // }
-
         const body = await req.json();
 
         const model = new OpenAI({
@@ -26,9 +14,10 @@ export const POST = async (req: Request, res: Response) => {
             temperature: 0,
         });
 
-        const { amount, topic, type } = getQuestionsSchema.parse(body);
+        const { amount, topic, type, context } = getQuestionsSchema.parse(body);
 
-        const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". The length of the answer should not exceed 15 words, store all the pairs of answers and questions in a JSON object.
+        const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". Try to base it 
+        on this context if possible: "${context}". If there is no context just create it based what you know. The length of the answer should not exceed 15 words, store all the pairs of answers and questions in a JSON object.
                  You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
                  that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
                   {{"properties": {{"foo": {{"description": "a list of test words", "type": "array", "items": {{"type": "string"}}}}}}, "required": ["foo"]}}}} 
@@ -74,6 +63,8 @@ export const POST = async (req: Request, res: Response) => {
             { status: 200 }
         );
     } catch (error) {
+        console.log("ERROR");
+        console.log(error);
         if (error instanceof ZodError) {
             return NextResponse.json(
                 {

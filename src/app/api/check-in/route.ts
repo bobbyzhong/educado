@@ -21,7 +21,7 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, topic, type } = quizCreationSchema.parse(body);
+        const { amount, topic, type, context } = quizCreationSchema.parse(body);
 
         const checkIn = await prisma.checkIn.create({
             data: {
@@ -39,6 +39,7 @@ export async function POST(req: Request, res: Response) {
                 amount,
                 topic,
                 type,
+                context,
             }
         );
 

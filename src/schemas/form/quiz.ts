@@ -7,6 +7,7 @@ export const quizCreationSchema = z.object({
         .max(50),
     type: z.enum(["mcq", "open_ended"]),
     amount: z.number().min(1).max(10),
+    context: z.string().min(0).max(1500),
 });
 
 export const checkAnswerSchema = z.object({

@@ -44,12 +44,13 @@ type Input = z.infer<typeof quizCreationSchema>;
 const TopicCheckIn = (props: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
-        mutationFn: async ({ amount, topic, type }: Input) => {
+        mutationFn: async ({ amount, topic, type, context }: Input) => {
             // response makes api call to create new game in db and then returns the game id
             const response = await axios.post("/api/check-in", {
                 amount,
                 topic,
                 type,
+                context,
             });
             console.log("RESPONSE DATA");
             console.log(response.data);
@@ -65,6 +66,7 @@ const TopicCheckIn = (props: Props) => {
             amount: 3,
             topic: "",
             type: "mcq",
+            context: "",
         },
     });
 
@@ -75,6 +77,7 @@ const TopicCheckIn = (props: Props) => {
                 amount: input.amount,
                 topic: input.topic,
                 type: input.type,
+                context: input.context,
             },
             {
                 onSuccess: ({ checkInId }) => {
@@ -96,7 +99,7 @@ const TopicCheckIn = (props: Props) => {
 
     return (
         <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-            <Card>
+            <Card className="mt-48 mb-5 w-full max-w-[38rem]">
                 <CardHeader>
                     <CardTitle className="font-bold text-2xl">
                         New Check-In
@@ -126,7 +129,39 @@ const TopicCheckIn = (props: Props) => {
                                         </FormControl>
                                         <FormDescription>
                                             Please provide a topic or concept to
-                                            base the check-in on
+                                            base the check-in on. Make sure to
+                                            put specific topics or concepts if
+                                            you want the check-in to be focused
+                                            on a specific topic.
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="context"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            Context (Optional)
+                                        </FormLabel>
+                                        <FormControl>
+                                            <Textarea
+                                                placeholder="The Estates-General met at Versailles on May 5, 1789. They were immediately divided over a fundamental issue: should they vote by head, giving the advantage to the Third Estate, or by estate, in which case the two privileged orders of the realm might outvote the third? On June 17 the bitter struggle over this legal issue finally drove the deputies of the Third Estate to declare themselves the National Assembly;"
+                                                {...field}
+                                                rows={6}
+                                            />
+                                            {/* <Input
+                                                placeholder="Enter a topic..."
+                                                {...field}
+                                            /> */}
+                                        </FormControl>
+                                        <FormDescription>
+                                            Put any context you want your
+                                            check-in to have. The content put
+                                            here will be the content that the
+                                            check-in is based on.
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
