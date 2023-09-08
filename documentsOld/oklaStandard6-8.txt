@@ -1,0 +1,152 @@
+Oklahoma Academic Standards for Science 6th Grade: [
+    Matter and Its Interactions (PS1): {
+        Core Ideas: [•Gases and liquids are made of molecules or inert atoms that are
+            moving about relative to each other. In a liquid, the molecules are
+            constantly in contact with others; in a gas, they are widely spaced
+            except when they happen to collide. In a solid, atoms are closely
+            spaced and may vibrate in position but do not change relative
+            locations.
+            • The changes of state that occur with variations in temperature or
+            pressure can be described and predicted using these models of
+            matter.
+            • The term “heat” as used in everyday language refers both to thermal
+            energy (the motion of atoms or molecules within a substance) and the
+            transfer of that thermal energy from one object to another. In science,
+            heat is used only for this second meaning; it refers to the energy
+            transferred due to the temperature difference between two objects.
+            • The temperature of a system is proportional to the average internal
+            kinetic energy and potential energy per atom or molecule (whichever
+            is the appropriate building block for the system’s material). The
+            details of that relationship depend on the type of atom or molecule
+            and the interactions among the atoms in the material.
+            • Temperature is not a direct measure of a system’s total thermal
+            energy. The total thermal energy (sometimes called the total internal
+            energy) of a system depends jointly on the temperature, the total
+            number of atoms in the system, and the state of the material.]
+    },
+    Energy (PS3): {
+        Core Ideas: [•Temperature is a measure of the average kinetic energy of particles
+            of matter.
+            • The relationship between the temperature and the total energy of a
+            system depends on the types, states, and amounts of matter present.
+            • Energy is spontaneously transferred out of hotter regions or objects
+            and into colder ones.
+            • The more precisely a design task’s criteria and constraints can be
+            defined, the more likely it is that the designed solution will be
+            successful.
+            • Specification of constraints includes consideration of scientific
+            principles and other relevant knowledge that is likely to limit possible
+            solutions.
+            • A solution needs to be tested, and then modified on the basis of the
+            test results in order to improve it.
+            • There are systematic processes for evaluating solutions with respect
+            to how well they meet criteria and constraints of a problem. 
+            • Temperature is a measure of the average kinetic energy of particles
+            of matter.
+            • The relationship between the temperature and the total energy of a
+            system depends on the types, states, and amounts of matter present.
+            • The amount of energy transfer needed to change the temperature of
+            a matter sample by a given amount depends on the nature of the
+            matter, the size of the sample, and the environment. ],
+        Crosscutting Concepts: [-Energy and Matter:
+                            • The transfer of energy can
+                            be tracked as energy flows
+                            through a designed or
+                            natural system. ]
+    },
+    Waves and Their Applications in Technologies for Information Transfer (PS4): {
+        Core Ideas: [• A sound wave needs a medium through which it is transmitted.
+                    • When light shines on an object, it is reflected, absorbed, or
+                    transmitted through the object, depending on the object’s material
+                    and the frequency (color) of the light.
+                    • The path that light can travel can be traced as straight lines, except
+                    at surfaces between different transparent materials (e.g., air and
+                    water, air and glass) where the light path bends.
+                    • A wave model of light is useful for explaining brightness, color, and
+                    the frequency-dependent bending of light at a surface between
+                    media. However, because light can travel through space, it cannot
+                    be a matter wave, like sound or water waves.]
+    },
+    From Molecules to Organisms: Structure and Processes (LS1): {
+        Core Ideas: [
+            • All living things are made up of cells, which is the smallest unit that
+            can be said to be alive.
+            • An organism may consist of one single cell (unicellular) or many
+            different numbers and types of cells (multicellular).
+            • Within cells, special structures are responsible for particular functions,
+            and the cell membrane forms the boundary that controls what enters
+            and leaves the cell. 
+            • In multicellular organisms, the body is a system of multiple interacting
+            subsystems. These subsystems are groups of cells that work together
+            to form tissues and organs that are specialized for particular body
+            functions.
+            • Each sense receptor responds to different inputs (electromagnetic,
+            mechanical, chemical), transmitting them as signals that travel along
+            nerve cells to the brain. The signals are then processed in the brain,
+            resulting in immediate behaviors or memories.   
+        ]
+    },
+    Earth’s Place in the Universe (ESS1): {
+        Core Ideas: [
+            • The geologic time scale interpreted from rock strata provides a way
+            to organize Earth’s history.
+            • Major historical events include the formation of mountain chains and
+            ocean basins, the adaptation and extinction of particular living
+            organisms, volcanic eruptions, periods of massive glaciation, and
+            development of watersheds and rivers through glaciation and water
+            erosion.
+            • Analyses of rock strata and the fossil record provide only relative
+            dates, not an absolute scale.
+        ]
+    },
+    Earth’s Systems (ESS2): {
+        Core Ideas: [
+            - All Earth processes are the result of energy flowing and matter
+            cycling within and among the planet’s systems. This energy is derived
+            from the sun and Earth’s hot interior. The energy that flows and
+            matter that cycles produces chemical and physical changes in Earth’s
+            materials.
+            • The planet’s systems interact over scales that
+            range from microscopic to global in size; these
+            interactions have shaped Earth’s history and will
+            determine its future.
+            • Water’s movements, both on the land and
+            underground, cause weathering and erosion,
+            which change the land’s surface features and
+            create underground formations
+            • Tectonic processes continually generate new ocean sea floor at
+            ridges and destroy old sea floor at trenches.
+            • Maps of ancient land and water patterns, based on investigations of
+            rocks and fossils, make clear how Earth’s plates have moved great
+            distances, collided, and spread apart. 
+            • Water continually cycles among land, ocean, and atmosphere via
+            transpiration, evaporation, condensation, and crystallization, and
+            precipitation, as well as downhill flows on land.
+            • Global movements of water and its changes in form are propelled by
+            sunlight and gravity. 
+            • Weather and climate are influenced by interactions involving sunlight,
+            the ocean, the atmosphere, ice, landforms, and living things.
+            • These interactions vary with latitude, altitude, and local and regional
+            geography, all of which can affect oceanic and atmospheric flow
+            patterns.
+            • Because these patterns are so complex, weather can be predicted
+            only probabilistically
+            • Variations in density due to variations in temperature and salinity
+            drive a global pattern on interconnected ocean currents.
+            • Weather and climate are influenced by interactions involving sunlight,
+            the ocean, the atmosphere, ice, landforms, and living things.
+            • These interactions vary with latitude, altitude, and local and regional
+            geography, all of which can affect oceanic and atmospheric flow
+            patterns.
+            • The ocean exerts a major influence on weather and climate by
+            absorbing energy from the sun, and globally redistributing it through
+            ocean currents.
+        ]
+    },
+    Earth and Human Activity (ESS3): {
+        Core Ideas: [• Mapping the history of natural hazards in a region, combined with an
+understanding of related geologic forces, can help forecast the
+locations and likelihoods of future events. ]
+    },
+
+]

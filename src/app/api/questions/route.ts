@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { OpenAI } from "langchain/llms/openai";
-
+import { PineconeClient } from "@pinecone-database/pinecone";
+import { indexName } from "../../../../config";
 import { getQuestionsSchema } from "@/schemas/questions";
 import { ZodError } from "zod";
+import { standardEmbedInputAndQueryLLM } from "../../../../utils";
 
 // POST /api/questions
 export const POST = async (req: Request, res: Response) => {
@@ -14,7 +16,8 @@ export const POST = async (req: Request, res: Response) => {
             temperature: 0,
         });
 
-        const { amount, topic, type, context } = getQuestionsSchema.parse(body);
+        const { amount, topic, type, context, standard } =
+            getQuestionsSchema.parse(body);
 
         const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". Base the questions 
         on this context if possible: "${context}". If there is no context just create it based what you know. The length of the answer should not exceed 15 words, store all the pairs of answers and questions in a JSON object.
@@ -41,18 +44,28 @@ export const POST = async (req: Request, res: Response) => {
                      {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
 
         let questions: any;
-        if (type === "open_ended") {
-            // ensure that we don't replace away apostrophes in text
 
-            let res = await model.call(template);
+        if (standard === "none") {
+            let res = await model.call(template2);
             res.replace(/(\w)"(\w)/g, "$1'$2");
             let resObj = JSON.parse(res);
 
             questions = resObj.questions;
-        } else if (type === "mcq") {
-            let res = await model.call(template2);
-            res.replace(/(\w)"(\w)/g, "$1'$2");
-            let resObj = JSON.parse(res);
+        } else {
+            console.log("Calling standards version");
+            const client = new PineconeClient();
+            await client.init({
+                apiKey: process.env.PINECONE_API_KEY || "",
+                environment: process.env.PINECONE_ENVIRONMENT || "",
+            });
+
+            const text = await standardEmbedInputAndQueryLLM(
+                client,
+                indexName,
+                body
+            );
+            text.replace(/(\w)"(\w)/g, "$1'$2");
+            let resObj = JSON.parse(text);
 
             questions = resObj.questions;
         }

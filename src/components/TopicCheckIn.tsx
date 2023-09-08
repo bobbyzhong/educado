@@ -45,13 +45,20 @@ const TopicCheckIn = (props: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
     const [apiError, setApiError] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
-        mutationFn: async ({ amount, topic, type, context }: Input) => {
+        mutationFn: async ({
+            amount,
+            topic,
+            type,
+            context,
+            standard,
+        }: Input) => {
             // response makes api call to create new game in db and then returns the game id
             const response = await axios.post("/api/check-in", {
                 amount,
                 topic,
                 type,
                 context,
+                standard,
             });
             console.log("RESPONSE DATA");
             console.log(response.data);
@@ -68,6 +75,7 @@ const TopicCheckIn = (props: Props) => {
             topic: "",
             type: "mcq",
             context: "",
+            standard: "none",
         },
     });
 
@@ -79,6 +87,7 @@ const TopicCheckIn = (props: Props) => {
                 topic: input.topic,
                 type: input.type,
                 context: input.context,
+                standard: input.standard,
             },
             {
                 onSuccess: ({ checkInId }) => {
@@ -200,34 +209,45 @@ const TopicCheckIn = (props: Props) => {
                                     </FormItem>
                                 )}
                             />
-                            <FormItem>
-                                <FormLabel>
-                                    Curriculum/Standards {"("}Coming Soon{")"}
-                                </FormLabel>
-                                <Select>
-                                    <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a curriculum or standard" />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        <SelectItem value="m@example.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                        <SelectItem value="m@google.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                        <SelectItem value="m@support.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                <FormDescription>
-                                    Standards from Cal Dept. of Ed are coming
-                                    soon!
-                                </FormDescription>
-                                <FormMessage />
-                            </FormItem>
+                            <FormField
+                                control={form.control}
+                                name="standard"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            Curriculum/Standards
+                                        </FormLabel>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a curriculum or standard" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                <SelectItem value="none">
+                                                    none
+                                                </SelectItem>
+                                                <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
+                                                    Oklahoma Academic Standards
+                                                    for Science 6th Grade
+                                                </SelectItem>
+                                                <SelectItem value="NGSS Middle School Science Standards">
+                                                    NGSS Middle School Science
+                                                    Standards
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                        <FormDescription>
+                                            Send a request for a curriculum or
+                                            standard if you want yours listed
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
 
                             <Button
                                 variant={"green"}
