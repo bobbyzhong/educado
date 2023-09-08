@@ -43,6 +43,7 @@ type Input = z.infer<typeof quizCreationSchema>;
 
 const TopicCheckIn = (props: Props) => {
     const [showLoader, setShowLoader] = React.useState(false);
+    const [apiError, setApiError] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
         mutationFn: async ({ amount, topic, type, context }: Input) => {
             // response makes api call to create new game in db and then returns the game id
@@ -89,6 +90,7 @@ const TopicCheckIn = (props: Props) => {
                 },
                 onError: () => {
                     setShowLoader(false);
+                    setApiError(true);
                     console.log("Could not generate");
                 },
             }
@@ -98,8 +100,8 @@ const TopicCheckIn = (props: Props) => {
     form.watch();
 
     return (
-        <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-            <Card className="mt-48 mb-5 w-full max-w-[38rem]">
+        <div className="absolute -translate-x-1/2 flex items-center justify-center flex-col left-1/2">
+            <Card className="mt-16 mb-5 w-full max-w-[38rem]">
                 <CardHeader>
                     <CardTitle className="font-bold text-2xl">
                         New Check-In
@@ -238,8 +240,20 @@ const TopicCheckIn = (props: Props) => {
                     </Form>
                 </CardContent>
             </Card>
+            {apiError && (
+                <div className="w-full flex flex-col items-center mb-5 justify-center ">
+                    <h1>Error Generating Check-In</h1>
+                    <p className="text-sm text-zinc-500 text-center w-9/12">
+                        Really sorry there was an error with the check-in! Due
+                        to the high amount of traffic we're receiving, you might
+                        need to refresh your page or try again. If it still
+                        doesn't work, we're really sorry, the team at Pear is
+                        working to fix any bugs.
+                    </p>
+                </div>
+            )}
             {showLoader && (
-                <div className="w-full flex flex-col items-center mt-5 justify-center ">
+                <div className="w-full flex flex-col items-center mt-5 mb-5 justify-center ">
                     <h1>Generating Quiz...</h1>
                     <p>This might take 15-30 seconds</p>
                 </div>
