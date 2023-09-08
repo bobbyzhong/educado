@@ -59,11 +59,12 @@ export const QuizModal = ({
                     <div className="flex flex-col gap-3">
                         <QuizModalLink
                             link={"/new-check-in"}
-                            title={"Plain Content"}
+                            title={"Topic Name"}
                             icon={"/icons/pageicon.svg"}
                         >
-                            Create a check-in based off your own content. Copy
-                            and paste the material yourself!
+                            Create a check-in based off the topic name. Base it
+                            off of state or school standards or just raw
+                            content.
                         </QuizModalLink>
                         <QuizModalLink
                             link={"/new-textbook-check-in"}
