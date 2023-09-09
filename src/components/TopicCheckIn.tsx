@@ -230,6 +230,7 @@ const TopicCheckIn = (props: Props) => {
                                                 <SelectItem value="none">
                                                     none
                                                 </SelectItem>
+
                                                 <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
                                                     Oklahoma Academic Standards
                                                     for Science 6th Grade

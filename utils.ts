@@ -1,13 +1,9 @@
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { StreamingTextResponse, LangChainStream, Message } from "ai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { OpenAI } from "langchain/llms/openai";
 import { loadQAStuffChain } from "langchain/chains";
 import { Document } from "langchain/document";
 import { timeout } from "./config";
-import { StructuredOutputParser } from "langchain/output_parsers";
-import { PromptTemplate } from "langchain/prompts";
-import { ChatOpenAI } from "langchain/chat_models/openai";
 import {
     customCheckInSchemaAPI,
     textbookCheckInSchema,
@@ -53,7 +49,7 @@ export const standardEmbedInputAndQueryLLM = async (
             includeValues: true,
         },
     });
-    console.log("HERE 3");
+
     // 5. Log the number of matches
     console.log(`Found ${queryResponse.matches.length} matches ...`);
     // 6. Log the questions being asked
@@ -132,8 +128,12 @@ export const customEmbedInputAndQueryLLM = async (
             vector: queryEmbedding,
             includeMetadata: true,
             includeValues: true,
+            filter: {
+                standard: { $eq: standard },
+            },
         },
     });
+
     // 5. Log the number of matches
     console.log(`Found ${queryResponse.matches.length} matches ...`);
     // 6. Log the questions being asked
@@ -305,6 +305,7 @@ export const updatePinecone = async (
                     loc: JSON.stringify(chunk.metadata.loc),
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
+                    standard: "NGSS Middle School Science Standards",
                 },
             };
             batch = [...batch, vector];
