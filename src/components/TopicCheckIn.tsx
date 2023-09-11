@@ -151,6 +151,46 @@ const TopicCheckIn = (props: Props) => {
                             />
                             <FormField
                                 control={form.control}
+                                name="standard"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>
+                                            Curriculum/Standards
+                                        </FormLabel>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                        >
+                                            <FormControl>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select a curriculum or standard" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent>
+                                                <SelectItem value="none">
+                                                    none
+                                                </SelectItem>
+
+                                                <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
+                                                    Oklahoma Academic Standards
+                                                    for Science 6th Grade
+                                                </SelectItem>
+                                                <SelectItem value="NGSS Middle School Science Standards">
+                                                    NGSS Middle School Science
+                                                    Standards
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                        <FormDescription>
+                                            Send a request for a curriculum or
+                                            standard if you want yours listed
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
                                 name="context"
                                 render={({ field }) => (
                                     <FormItem>
@@ -159,9 +199,9 @@ const TopicCheckIn = (props: Props) => {
                                         </FormLabel>
                                         <FormControl>
                                             <Textarea
-                                                placeholder="The Estates-General met at Versailles on May 5, 1789. They were immediately divided over a fundamental issue: should they vote by head, giving the advantage to the Third Estate, or by estate, in which case the two privileged orders of the realm might outvote the third? On June 17 the bitter struggle over this legal issue finally drove the deputies of the Third Estate to declare themselves the National Assembly;"
+                                                placeholder="You can put any facts or notes here if you want"
                                                 {...field}
-                                                rows={6}
+                                                rows={3}
                                             />
                                             {/* <Input
                                                 placeholder="Enter a topic..."
@@ -205,46 +245,6 @@ const TopicCheckIn = (props: Props) => {
                                             Number of questions on the check-in
                                         </FormDescription>
 
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="standard"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>
-                                            Curriculum/Standards
-                                        </FormLabel>
-                                        <Select
-                                            onValueChange={field.onChange}
-                                            defaultValue={field.value}
-                                        >
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Select a curriculum or standard" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value="none">
-                                                    none
-                                                </SelectItem>
-
-                                                <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
-                                                    Oklahoma Academic Standards
-                                                    for Science 6th Grade
-                                                </SelectItem>
-                                                <SelectItem value="NGSS Middle School Science Standards">
-                                                    NGSS Middle School Science
-                                                    Standards
-                                                </SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                        <FormDescription>
-                                            Send a request for a curriculum or
-                                            standard if you want yours listed
-                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}

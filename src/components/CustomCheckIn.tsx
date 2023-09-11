@@ -39,6 +39,7 @@ import {
     SelectValue,
 } from "./ui/select";
 import { ScrollArea } from "./ui/scroll-area";
+import Link from "next/link";
 
 type Props = { uploadedContent: string };
 
@@ -120,196 +121,230 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
 
     form.watch();
 
-    return (
-        <div className="">
-            <div className="absolute -translate-x-1/2 flex items-center justify-center flex-col left-1/2">
+    if (!uploadedContent || uploadedContent.length < 2) {
+        return (
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center flex-col top-1/2 left-1/2">
                 <Card className="mt-8 mb-5 w-full max-w-[30rem]">
                     <CardHeader>
                         <CardTitle className="font-bold text-2xl">
-                            New Custom Check-In
+                            Sorry, you don't have any uploaded content
                         </CardTitle>
                         <CardDescription>
-                            Enter the name of the content you've uploaded that
-                            you want to create a check-in on. Make sure to enter
-                            the name of the content exactly as it appears on the
-                            left.
+                            You can upload your own content by going to the
+                            dashboard and clicking the "Content Request" card.
+                            You can also just create a check-in based on a topic
+                            or school standard by going{" "}
+                            <Link
+                                className="text-green underline cursor-pointer"
+                                href={"/new-check-in"}
+                            >
+                                here
+                            </Link>
                         </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                        <Form {...form}>
-                            <form
-                                onSubmit={form.handleSubmit(onSubmit)}
-                                className="space-y-8"
-                            >
-                                <FormField
-                                    control={form.control}
-                                    name="content"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Content Name(s)
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Textarea
-                                                    placeholder="French Revolution Slides, Chapter 3 Slides, WWII Website, etc."
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormDescription>
-                                                Enter the name of the content
-                                                exactly as it appears on the
-                                                left
-                                            </FormDescription>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="emphasize"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Topics to Emphasize (Optional)
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Textarea
-                                                    placeholder="Impact on women and children, Important figures"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormDescription>
-                                                Enter subtopics from your
-                                                content you want to emphasize
-                                            </FormDescription>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <FormField
-                                    control={form.control}
-                                    name="amount"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Number of Questions
-                                            </FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder="Enter an amount"
-                                                    {...field}
-                                                    type="number"
-                                                    min={1}
-                                                    max={10}
-                                                    onChange={(e) => {
-                                                        form.setValue(
-                                                            "amount",
-                                                            parseInt(
-                                                                e.target.value
-                                                            )
-                                                        );
-                                                    }}
-                                                />
-                                            </FormControl>
-                                            <FormDescription>
-                                                Number of questions on the
-                                                check-in
-                                            </FormDescription>
-
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="standard"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Curriculum/Standards
-                                            </FormLabel>
-                                            <Select
-                                                onValueChange={field.onChange}
-                                                defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder="Select a curriculum or standard" />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value="none">
-                                                        none
-                                                    </SelectItem>
-                                                    <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
-                                                        Oklahoma Academic
-                                                        Standards for Science
-                                                        6th Grade
-                                                    </SelectItem>
-
-                                                    <SelectItem value="NGSS Middle School Science Standards">
-                                                        NGSS Middle School
-                                                        Science Standards
-                                                    </SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                            <FormDescription>
-                                                Send a request for a curriculum
-                                                or standard if you want yours
-                                                listed
-                                            </FormDescription>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <Button
-                                    variant={"green"}
-                                    disabled={isLoading}
-                                    type="submit"
-                                >
-                                    Submit
-                                </Button>
-                            </form>
-                        </Form>
-                    </CardContent>
                 </Card>
-                {apiError && (
-                    <div className="w-full flex flex-col items-center mb-5 justify-center ">
-                        <h1>Error Generating Check-In</h1>
-                        <p className="text-sm text-zinc-500 text-center w-9/12">
-                            Really sorry there was an error with the check-in!
-                            Due to the high amount of traffic we're receiving,
-                            you might need to refresh your page or try again. If
-                            it still doesn't work, we're really sorry, the team
-                            at Pear is working to fix any bugs.
-                        </p>
-                    </div>
-                )}
-                {showLoader && (
-                    <div className="w-full  flex flex-col items-center justify-center ">
-                        <h1>Generating Quiz...</h1>
-                        <p>This might take 15-30 seconds</p>
-                    </div>
-                )}
             </div>
-            <ScrollArea className="h-[30.5rem] w-[20rem] rounded-lg border  translate-x-[9rem] translate-y-[8.1rem]">
-                <div className="p-4">
-                    <div className="mb-4 font-medium leading-none">
-                        Your Uploaded Content
-                    </div>
-                    {uploadedContent?.split(",").map((content) => {
-                        return (
-                            <>
-                                <div className="text-sm">{content.trim()}</div>
-                                <Separator className="my-2" />
-                            </>
-                        );
-                    })}
+        );
+    } else {
+        return (
+            <div className="">
+                <div className="absolute -translate-x-1/2 flex items-center justify-center flex-col left-1/2">
+                    <Card className="mt-8 mb-5 w-full max-w-[30rem]">
+                        <CardHeader>
+                            <CardTitle className="font-bold text-2xl">
+                                New Custom Check-In
+                            </CardTitle>
+                            <CardDescription>
+                                Enter the name of the content you've uploaded
+                                that you want to create a check-in on. Make sure
+                                to enter the name of the content exactly as it
+                                appears on the left.
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <Form {...form}>
+                                <form
+                                    onSubmit={form.handleSubmit(onSubmit)}
+                                    className="space-y-8"
+                                >
+                                    <FormField
+                                        control={form.control}
+                                        name="content"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Content Name(s)
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Textarea
+                                                        placeholder="French Revolution Slides, Chapter 3 Slides, WWII Website, etc."
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    Enter the name of the
+                                                    content exactly as it
+                                                    appears on the left
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="emphasize"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Topics to Emphasize
+                                                    (Optional)
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Textarea
+                                                        placeholder="Impact on women and children, Important figures"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    Enter subtopics from your
+                                                    content you want to
+                                                    emphasize
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="amount"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Number of Questions
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Enter an amount"
+                                                        {...field}
+                                                        type="number"
+                                                        min={1}
+                                                        max={10}
+                                                        onChange={(e) => {
+                                                            form.setValue(
+                                                                "amount",
+                                                                parseInt(
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            );
+                                                        }}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    Number of questions on the
+                                                    check-in
+                                                </FormDescription>
+
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <FormField
+                                        control={form.control}
+                                        name="standard"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Curriculum/Standards
+                                                </FormLabel>
+                                                <Select
+                                                    onValueChange={
+                                                        field.onChange
+                                                    }
+                                                    defaultValue={field.value}
+                                                >
+                                                    <FormControl>
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Select a curriculum or standard" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="none">
+                                                            none
+                                                        </SelectItem>
+                                                        <SelectItem value="Oklahoma Academic Standards for Science 6th Grade">
+                                                            Oklahoma Academic
+                                                            Standards for
+                                                            Science 6th Grade
+                                                        </SelectItem>
+
+                                                        <SelectItem value="NGSS Middle School Science Standards">
+                                                            NGSS Middle School
+                                                            Science Standards
+                                                        </SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                                <FormDescription>
+                                                    Send a request for a
+                                                    curriculum or standard if
+                                                    you want yours listed
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <Button
+                                        variant={"green"}
+                                        disabled={isLoading}
+                                        type="submit"
+                                    >
+                                        Submit
+                                    </Button>
+                                </form>
+                            </Form>
+                        </CardContent>
+                    </Card>
+                    {apiError && (
+                        <div className="w-full flex flex-col items-center mb-5 justify-center ">
+                            <h1>Error Generating Check-In</h1>
+                            <p className="text-sm text-zinc-500 text-center w-9/12">
+                                Really sorry there was an error with the
+                                check-in! Due to the high amount of traffic
+                                we're receiving, you might need to refresh your
+                                page or try again. If it still doesn't work,
+                                we're really sorry, the team at Pear is working
+                                to fix any bugs.
+                            </p>
+                        </div>
+                    )}
+                    {showLoader && (
+                        <div className="w-full  flex flex-col items-center justify-center ">
+                            <h1>Generating Quiz...</h1>
+                            <p>This might take 15-30 seconds</p>
+                        </div>
+                    )}
                 </div>
-            </ScrollArea>
-        </div>
-    );
+                <ScrollArea className="h-[30.5rem] w-[20rem] rounded-lg border  translate-x-[9rem] translate-y-[8.1rem]">
+                    <div className="p-4">
+                        <div className="mb-4 font-medium leading-none">
+                            Your Uploaded Content
+                        </div>
+                        {uploadedContent?.split(",").map((content) => {
+                            return (
+                                <>
+                                    <div className="text-sm">
+                                        {content.trim()}
+                                    </div>
+                                    <Separator className="my-2" />
+                                </>
+                            );
+                        })}
+                    </div>
+                </ScrollArea>
+            </div>
+        );
+    }
 };
 export default CustomCheckIn;
