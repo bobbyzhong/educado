@@ -5,16 +5,17 @@ import { indexName } from "../../../../config";
 import { getQuestionsSchema } from "@/schemas/questions";
 import { ZodError } from "zod";
 import { standardEmbedInputAndQueryLLM } from "../../../../utils";
+import { initPinecone } from "@/lib/pineconeHelpers";
 
+const model = new OpenAI({
+    modelName: "gpt-3.5-turbo",
+    temperature: 0,
+});
+const client = initPinecone();
 // POST /api/questions
 export const POST = async (req: Request, res: Response) => {
     try {
         const body = await req.json();
-
-        const model = new OpenAI({
-            modelName: "gpt-3.5-turbo",
-            temperature: 0,
-        });
 
         const { amount, topic, type, context, standard } =
             getQuestionsSchema.parse(body);
@@ -54,11 +55,7 @@ export const POST = async (req: Request, res: Response) => {
         } else {
             console.log("Calling standards version");
             console.time("Pinecone init");
-            const client = new PineconeClient();
-            await client.init({
-                apiKey: process.env.PINECONE_API_KEY || "",
-                environment: process.env.PINECONE_ENVIRONMENT || "",
-            });
+
             console.timeEnd("Pinecone init");
             console.log("GOT HERE LOL");
             const text = await standardEmbedInputAndQueryLLM(
