@@ -305,7 +305,7 @@ export const updatePinecone = async (
                     loc: JSON.stringify(chunk.metadata.loc),
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
-                    standard: "NGSS Middle School Science Standards",
+                    // standard: "standard",
                 },
             };
             batch = [...batch, vector];

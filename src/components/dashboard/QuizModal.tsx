@@ -7,6 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import PaymentForm from "../PaymentForm";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
+import { Button } from "../ui/button";
 
 export const QuizModal = ({
     isVisible,
@@ -25,9 +26,31 @@ export const QuizModal = ({
         if (e.target.id === "wrapper") onClose();
     };
 
-    const stripePromise = loadStripe(
-        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-    );
+    const handlePayment = async () => {
+        try {
+            const STRIPE_PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
+            const stripe = await loadStripe(STRIPE_PK);
+            const priceId = "price_1NovihDcb7DT3eZHmKUbDKtk";
+            const res = await fetch("/api/checkout/", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({ priceId: priceId, userId: userId }),
+            });
+            const json = await res.json();
+            if (!json.ok) {
+                throw new Error("Something went wrong");
+            }
+
+            if (!stripe) {
+                throw new Error("Something went wrong");
+            }
+            await stripe.redirectToCheckout({ sessionId: json.result.id });
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     if (subscribed) {
         return (
@@ -120,9 +143,9 @@ export const QuizModal = ({
                         </p>
                     </div>
 
-                    <Elements stripe={stripePromise}>
-                        <PaymentForm userId={userId} />
-                    </Elements>
+                    <Button onClick={handlePayment} variant={"green"}>
+                        Subscribe
+                    </Button>
                 </div>
             </div>
         );
