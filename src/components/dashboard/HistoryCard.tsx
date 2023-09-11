@@ -50,12 +50,6 @@ const CheckInCard = (props: Props) => {
                     />
                 </div>
             </Card>
-            <QuizModal
-                isVisible={showModal}
-                onClose={() => {
-                    setShowModal(false);
-                }}
-            />
         </>
     );
 };

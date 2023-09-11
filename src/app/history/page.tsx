@@ -23,29 +23,6 @@ const HistoryPage = async (props: Props) => {
                             Your Past Check-Ins
                         </h2>
                     </div>
-                    {/* <div className="flex items-center space-x-2">
-                        <div className="font-light text-sm mr-3">
-                            Finished Reviewing?
-                        </div>
-                        <Link
-                            className={`"mt-8 mr-0 bg-green inline-block text-center max-w-fit text-sm 
-                    box-content hover:scale-[1.01] rounded-[5px] px-[20px] my-0 py-[10px] `}
-                            href={`/`}
-                        >
-                            <div className="flex flex-row gap-2 items-center">
-                                <div className="text-white1 font-semibold">
-                                    Share Check-In
-                                </div>
-
-                                <Image
-                                    src={"/icons/whitearrow.svg"}
-                                    height={20}
-                                    width={20}
-                                    alt={""}
-                                />
-                            </div>
-                        </Link>
-                    </div> */}
                 </div>
 
                 <HistoryTable limit={100} userId={session.user.id} />
