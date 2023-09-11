@@ -50,6 +50,9 @@ const UserAccountNav = ({ user }: Props) => {
                 <DropdownMenuItem asChild>
                     <Link href="/contact">Contact Us</Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link href="/dashboard">Dashboard</Link>
+                </DropdownMenuItem>
 
                 <DropdownMenuSeparator />
 
