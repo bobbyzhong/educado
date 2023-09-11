@@ -30,7 +30,7 @@ export const QuizModal = ({
         try {
             const STRIPE_PK = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!;
             const stripe = await loadStripe(STRIPE_PK);
-            const priceId = "price_1NovihDcb7DT3eZHmKUbDKtk";
+            const priceId = "price_1NoxZODcb7DT3eZH6HkMAX85";
             const res = await fetch("/api/checkout/", {
                 method: "POST",
                 headers: {
