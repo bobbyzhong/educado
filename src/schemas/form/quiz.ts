@@ -31,7 +31,7 @@ export const createResultSchema = z.object({
 export const textbookCheckInSchema = z.object({
     topic: z
         .string()
-        .min(4, { message: "Topic must be at least 4 characters long" })
+        .min(3, { message: "Must be at least 3 characters" })
         .max(50),
     type: z.enum(["mcq", "open_ended"]),
     amount: z.number().min(1).max(10),

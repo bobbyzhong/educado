@@ -29,7 +29,7 @@ export async function POST(req: Request, res: Response) {
                 checkInType: type,
                 timeStarted: new Date(),
                 userId: session.user.id,
-                topic: topic,
+                topic: "Chapters " + chapters,
                 contentSource: "textbook",
             },
         });

@@ -129,7 +129,7 @@ export const customEmbedInputAndQueryLLM = async (
             includeMetadata: true,
             includeValues: true,
             filter: {
-                standard: { $eq: standard },
+                custom: { $eq: "custom" },
             },
         },
     });
@@ -169,7 +169,7 @@ export const embedInputAndQueryLLM = async (
     const { amount, topic, type, textbook, chapters } =
         textbookCheckInSchema.parse(promptObj);
 
-    const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on chapter(s) "${chapters}" from textbook "${textbook}". Put an emphasis on these conepts: "${topic}". 
+    const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on chapter(s) "${chapters}" from textbook "${textbook}". Put an emphasis on these concepts if possible: "${topic}". 
     The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
@@ -305,7 +305,7 @@ export const updatePinecone = async (
                     loc: JSON.stringify(chunk.metadata.loc),
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
-                    // standard: "standard",
+                    // custom: "custom",
                 },
             };
             batch = [...batch, vector];

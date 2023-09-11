@@ -136,10 +136,10 @@ const TextbookCheckIn = (props: Props) => {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent className="">
-                                                <SelectItem value="The American Pageant: A History of the American People">
-                                                    The American Pageant: A
-                                                    History of the American
-                                                    People
+                                                <SelectItem value="The United States Through Industrialism 8th Grade Third Edition">
+                                                    The United States Through
+                                                    Industrialism 8th Grade
+                                                    Third Edition
                                                 </SelectItem>
                                             </SelectContent>
                                         </Select>
