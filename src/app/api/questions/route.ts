@@ -53,12 +53,14 @@ export const POST = async (req: Request, res: Response) => {
             questions = resObj.questions;
         } else {
             console.log("Calling standards version");
+            console.time("Pinecone init");
             const client = new PineconeClient();
             await client.init({
                 apiKey: process.env.PINECONE_API_KEY || "",
                 environment: process.env.PINECONE_ENVIRONMENT || "",
             });
-
+            console.timeEnd("Pinecone init");
+            console.log("GOT HERE LOL");
             const text = await standardEmbedInputAndQueryLLM(
                 client,
                 indexName,

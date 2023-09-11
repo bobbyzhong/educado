@@ -15,6 +15,7 @@ export const standardEmbedInputAndQueryLLM = async (
     indexName: any,
     promptObj: any
 ) => {
+    console.time("START");
     const { amount, topic, type, context, standard } =
         getQuestionsSchema.parse(promptObj);
 
@@ -55,6 +56,7 @@ export const standardEmbedInputAndQueryLLM = async (
     // 6. Log the questions being asked
     console.log(`Asking question: ${question} ...`);
     if (queryResponse.matches.length) {
+        console.time("START2");
         // 7. Create an OpenAI instance and load the QAStuffChain
         const llm = new OpenAI({ modelName: "gpt-3.5-turbo" });
         const chain = loadQAStuffChain(llm);
@@ -68,8 +70,10 @@ export const standardEmbedInputAndQueryLLM = async (
             ],
             question: question,
         });
+        console.timeEnd("START2");
         // 10. Log the answer
         console.log(`Answer: ${result.text}`);
+        console.timeEnd("START");
         return result.text;
     } else {
         // 11. Log that there are no matches so gpt will not be queried
