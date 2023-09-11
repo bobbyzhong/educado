@@ -89,7 +89,7 @@ const ContentRequest = ({ name }: Props) => {
                 "Custom Content" or "Textbook" check-in based on this content
                 within an hour or so. Thanks!
                 <div className="flex flex-row justify-between mt-5">
-                  <h1 className="">-Bobby</h1>
+                  <h1 className=''>-Bobby</h1>
                   <div className="flex items-center space-x-2">
                     <Link
                       href="/dashboard"
