@@ -11,9 +11,10 @@ const model = new OpenAI({
     modelName: "gpt-3.5-turbo",
     temperature: 0,
 });
-const client = initPinecone();
+
 // POST /api/questions
 export const POST = async (req: Request, res: Response) => {
+    const client = await initPinecone();
     try {
         const body = await req.json();
 
