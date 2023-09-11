@@ -11,6 +11,7 @@ type Props = { subscribed: boolean; userId: string };
 const CheckInCard = ({ subscribed, userId }: Props) => {
     const [showModal, setShowModal] = React.useState(false);
     const router = useRouter();
+
     return (
         <>
             <Card

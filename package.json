@@ -14,7 +14,8 @@
         "prisma:generate": "npx dotenv -e .env.local -- prisma generate",
         "prisma:studio": "npx dotenv -e .env.local -- prisma studio",
         "production:build": "npx prisma generate && npx prisma migrate deploy && next build",
-        "postinstall": "prisma generate"
+        "postinstall": "prisma generate",
+        "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhooks/checkout"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.1.1",
@@ -52,6 +53,7 @@
         "keyword-extractor": "^0.0.25",
         "langchain": "^0.0.99",
         "lucide-react": "^0.263.1",
+        "micro-cors": "^0.1.1",
         "next": "13.4.12",
         "next-auth": "^4.22.3",
         "next-themes": "^0.2.1",
@@ -76,6 +78,7 @@
         "zod": "^3.21.4"
     },
     "devDependencies": {
+        "@types/micro-cors": "^0.1.3",
         "@types/nodemailer": "^6.4.9",
         "@types/string-similarity": "^4.0.0",
         "prisma": "^5.2.0"
