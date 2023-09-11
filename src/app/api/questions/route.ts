@@ -11,19 +11,17 @@ import { standardEmbedInputAndQueryLLM } from "../../../../utils";
 export const POST = async (req: Request, res: Response) => {
     try {
         const body = await req.json();
-        const client = new PineconeClient();
-        await client.init({
-            apiKey: process.env.PINECONE_API_KEY || "",
-            environment: process.env.PINECONE_ENVIRONMENT || "",
-        });
 
         const model = new OpenAI({
             modelName: "gpt-3.5-turbo",
             temperature: 0,
         });
-
-        const { amount, topic, type, context, standard } =
-            getQuestionsSchema.parse(body);
+        const amount = body.amount;
+        const topic = body.topic;
+        const type = body.type;
+        const context = body.context;
+        const standard = body.standard;
+        const client = body.client;
 
         const template = `You are a helpful AI that is able to generate ${amount} pairs of questions and answers about this specific topic: "${topic}". Base the questions 
         on this context if possible: "${context}". If there is no context just create it based what you know. The length of the answer should not exceed 15 words, store all the pairs of answers and questions in a JSON object.

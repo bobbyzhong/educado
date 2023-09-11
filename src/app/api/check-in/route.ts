@@ -6,6 +6,7 @@ import { quizCreationSchema } from "@/schemas/form/quiz";
 import { ZodError } from "zod";
 import { prisma } from "@/lib/db";
 import axios from "axios";
+import { PineconeClient } from "@pinecone-database/pinecone";
 
 export async function POST(req: Request, res: Response) {
     try {
@@ -34,6 +35,11 @@ export async function POST(req: Request, res: Response) {
                 contentSource: "plain content",
             },
         });
+        const client = new PineconeClient();
+        await client.init({
+            apiKey: process.env.PINECONE_API_KEY || "",
+            environment: process.env.PINECONE_ENVIRONMENT || "",
+        });
 
         const { data } = await axios.post(
             `${process.env.API_URL}/api/questions`,
@@ -43,6 +49,7 @@ export async function POST(req: Request, res: Response) {
                 type,
                 context,
                 standard,
+                client,
             }
         );
 
