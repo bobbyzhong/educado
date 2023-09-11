@@ -87,8 +87,8 @@ export const customEmbedInputAndQueryLLM = async (
 
     let question: string;
     if (standard === "none") {
-        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) associated with ${name}: "${content}".
-     Do not create the questions based on any content besides those associated with ${name}. Put an emphasis on these conepts if possible: "${emphasize}".
+        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) from ${name}: "${content}".
+     Do not create the questions based on any content besides those associated with ${name}. Put an emphasis on these concepts if possible: "${emphasize}".
     The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
@@ -101,8 +101,8 @@ export const customEmbedInputAndQueryLLM = async (
         exactly and there are no trailing commas! Here is an example: {"questions": [{"question": "What is the capital of France?", "answer": "Paris", "option1": "Albany", "option2": "Istanbul", "option3": "Madrid"},
         {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
     } else {
-        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) associated with ${name}: "${content}" based on this academic standard: "${standard}".
-     Do not create the questions based on any content besides those associated with ${name} and this standard, "${standard}". Put an emphasis on these conepts if possible: "${emphasize}".
+        question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) from ${name}: "${content}". Base it on this academic standard: "${standard}".
+     Do not create the questions based on any content besides those associated with ${name} and this standard, "${standard}". Put an emphasis on these concepts if possible: "${emphasize}".
     The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
