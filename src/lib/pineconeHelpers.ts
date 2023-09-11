@@ -1,6 +1,6 @@
 import { PineconeClient } from "@pinecone-database/pinecone";
 
-let pinecone: PineconeClient | null = null;
+let pinecone: PineconeClient;
 
 export const initPinecone = async () => {
     if (!pinecone) {
