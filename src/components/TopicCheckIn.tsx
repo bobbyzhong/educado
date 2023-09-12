@@ -64,9 +64,21 @@ const TopicCheckIn = (props: Props) => {
                 console.log("RESPONSE DATA");
                 console.log(response.data);
                 return response.data;
-            } catch (e) {
+            } catch (e: any) {
                 console.log("ERROR");
                 console.log(e);
+                if (e.response.status === 504) {
+                    const response = await axios.post("/api/check-in", {
+                        amount,
+                        topic,
+                        type,
+                        context,
+                        standard,
+                    });
+                    console.log("RESPONSE DATA");
+                    console.log(response.data);
+                    return response.data;
+                }
                 throw e;
             }
         },
