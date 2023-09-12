@@ -53,34 +53,17 @@ const TopicCheckIn = (props: Props) => {
             standard,
         }: Input) => {
             // response makes api call to create new game in db and then returns the game id
-            try {
-                const response = await axios.post("/api/check-in", {
-                    amount,
-                    topic,
-                    type,
-                    context,
-                    standard,
-                });
-                console.log("RESPONSE DATA");
-                console.log(response.data);
-                return response.data;
-            } catch (e: any) {
-                console.log("ERROR");
-                console.log(e);
-                if (e.response.status === 504) {
-                    const response = await axios.post("/api/check-in", {
-                        amount,
-                        topic,
-                        type,
-                        context,
-                        standard,
-                    });
-                    console.log("RESPONSE DATA");
-                    console.log(response.data);
-                    return response.data;
-                }
-                throw e;
-            }
+
+            const response = await axios.post("/api/check-in", {
+                amount,
+                topic,
+                type,
+                context,
+                standard,
+            });
+            console.log("RESPONSE DATA");
+            console.log(response.data);
+            return response.data;
         },
     });
 
@@ -283,18 +266,15 @@ const TopicCheckIn = (props: Props) => {
                 <div className="w-full flex flex-col items-center mb-5 justify-center ">
                     <h1>Error Generating Check-In</h1>
                     <p className="text-sm text-zinc-500 text-center w-9/12">
-                        Really sorry there was an error with the check-in! Due
-                        to the high amount of traffic we're receiving, you might
-                        need to refresh your page or try again. If it still
-                        doesn't work, we're really sorry, the team at Pear is
-                        working to fix any bugs.
+                        Please refresh your page and try again. If this problem
+                        persists, please contact us.
                     </p>
                 </div>
             )}
             {showLoader && (
                 <div className="w-full flex flex-col items-center mt-5 mb-5 justify-center ">
                     <h1>Generating Quiz...</h1>
-                    <p>This might take 15-30 seconds</p>
+                    <p>This might take 10-15 seconds</p>
                 </div>
             )}
         </div>
