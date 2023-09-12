@@ -53,16 +53,22 @@ const TopicCheckIn = (props: Props) => {
             standard,
         }: Input) => {
             // response makes api call to create new game in db and then returns the game id
-            const response = await axios.post("/api/check-in", {
-                amount,
-                topic,
-                type,
-                context,
-                standard,
-            });
-            console.log("RESPONSE DATA");
-            console.log(response.data);
-            return response.data;
+            try {
+                const response = await axios.post("/api/check-in", {
+                    amount,
+                    topic,
+                    type,
+                    context,
+                    standard,
+                });
+                console.log("RESPONSE DATA");
+                console.log(response.data);
+                return response.data;
+            } catch (e) {
+                console.log("ERROR");
+                console.log(e);
+                throw e;
+            }
         },
     });
 
