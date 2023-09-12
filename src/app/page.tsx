@@ -49,11 +49,6 @@ export default async function Home() {
                         />
                     )}
 
-                    <SignInButtonLg
-                        text={"Try It Out"}
-                        isSignedIn={session?.user}
-                    />
-
                     <Link href={"/demo"}>
                         <Button
                             className=""
