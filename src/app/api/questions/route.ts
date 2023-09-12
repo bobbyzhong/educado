@@ -10,8 +10,7 @@ import { standardEmbedInputAndQueryLLM } from "../../../../utils";
 
 export const POST = async (req: Request, res: Response) => {
     try {
-        // setTimeout(() => {
-        // }, 9500);
+        setTimeout(() => {}, 9500);
         const body = await req.json();
         const client = new PineconeClient();
         await client.init({
