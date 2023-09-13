@@ -19,9 +19,9 @@ export const standardEmbedInputAndQueryLLM = async (
     const { amount, topic, type, context, standard } =
         getQuestionsSchema.parse(promptObj);
 
-    const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions about this specific topic: "${topic}" based on this academic standard: "${standard}". 
+    const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions about this specific topic: "${topic}" from this academic standard: "${standard}". 
         Make sure the questions on those topics are based on the standard's core ideas relating to that topic.
-        Base the questions on this context if possible: "${context}". The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+        Base the questions on this context if available: "${context}". The length of the answer should be less than 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
         You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
         that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
@@ -49,7 +49,7 @@ export const standardEmbedInputAndQueryLLM = async (
             includeMetadata: true,
             includeValues: true,
             filter: {
-                standard: { $eq: "standard" },
+                standardName: { $eq: standard },
             },
         },
     });
@@ -95,8 +95,8 @@ export const customEmbedInputAndQueryLLM = async (
     let question: string;
     if (standard === "none") {
         question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) from ${name}: "${content}".
-     Do not create the questions based on any content besides those associated with ${name}. Put an emphasis on these concepts if possible: "${emphasize}".
-    The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+     Do not create the questions based on any content besides those titled ${content}. Put an emphasis on these concepts if possible: "${emphasize}".
+    The length of the answer should be less than 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
     that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
@@ -109,8 +109,8 @@ export const customEmbedInputAndQueryLLM = async (
         {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
     } else {
         question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on the the following content(s) from ${name}: "${content}". Base it on this academic standard: "${standard}".
-     Do not create the questions based on any content besides those associated with ${name} and this standard, "${standard}". Put an emphasis on these concepts if possible: "${emphasize}".
-    The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+     Do not create the questions based on any content besides those associated with ${content} and this standard, "${standard}". Put an emphasis on these concepts if possible: "${emphasize}".
+    The length of the answer should be less than 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
     that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
@@ -136,7 +136,7 @@ export const customEmbedInputAndQueryLLM = async (
             includeMetadata: true,
             includeValues: true,
             filter: {
-                type: { $eq: "custom" },
+                userName: { $eq: name },
             },
         },
     });
@@ -177,7 +177,7 @@ export const embedInputAndQueryLLM = async (
         textbookCheckInSchema.parse(promptObj);
 
     const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions based on chapter(s) "${chapters}" from textbook "${textbook}". Put an emphasis on these concepts if possible: "${topic}". 
-    The length of the answer should not exceed 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+    The length of the answer should be less than 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
     You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
     that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
@@ -202,6 +202,9 @@ export const embedInputAndQueryLLM = async (
             vector: queryEmbedding,
             includeMetadata: true,
             includeValues: true,
+            filter: {
+                textbookName: { $eq: textbook },
+            },
         },
     });
     // 5. Log the number of matches
@@ -312,8 +315,13 @@ export const updatePinecone = async (
                     loc: JSON.stringify(chunk.metadata.loc),
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
-                    // custom: "custom",
-                    type: "custom",
+                    // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
+
+                    // standardName:
+                    //     "Oklahoma Academic Standards for Science 6th Grade",
+                    // userName: "Bethany Allen",
+                    // textbookName:
+                    //     "The United States Through Industrialism 8th Grade Third Edition",
                 },
             };
             batch = [...batch, vector];
