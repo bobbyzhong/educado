@@ -48,6 +48,9 @@ export const standardEmbedInputAndQueryLLM = async (
             vector: queryEmbedding,
             includeMetadata: true,
             includeValues: true,
+            filter: {
+                standard: { $eq: "standard" },
+            },
         },
     });
 
@@ -310,6 +313,7 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // custom: "custom",
+                    standard: "standard",
                 },
             };
             batch = [...batch, vector];
