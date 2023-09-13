@@ -136,7 +136,7 @@ export const customEmbedInputAndQueryLLM = async (
             includeMetadata: true,
             includeValues: true,
             filter: {
-                custom: { $eq: "custom" },
+                type: { $eq: "custom" },
             },
         },
     });
@@ -313,7 +313,7 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // custom: "custom",
-                    standard: "standard",
+                    type: "custom",
                 },
             };
             batch = [...batch, vector];
