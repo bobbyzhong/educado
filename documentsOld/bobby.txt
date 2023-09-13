@@ -38,36 +38,22 @@ Penguin Slides: `Few animals have evolved to survive the unforgiving Antarctic l
                 one seabird missing — the last flying penguin. The small, puffinlike bird probably lived in ancient New Zealand, but its fossils have proved 
                 elusive. “That would be the No. 1 thing I’d ask for if I had a genie,” he said.`
 
-French Revolution Article: `Throughout the 18th century, France faced a mounting economic crisis. A rapidly growing population had outpaced the food supply.
- A severe winter in 1788 resulted in famine and widespread starvation in the countryside. Rising prices in Paris brought bread riots. By 1789 France was 
- broke. The nobility refused to pay more taxes, and the peasants simply couldn't. Even the opulent King Louis XVI, fonder of hunting and locksmithing than
-  governing, recognized that a crisis loomed. He convened the Estates-General, made up of the Roman Catholic clergy (the First Estate) the nobility
-   (the Second Estate), and everyone else (The Third Estate). The First and Second Estates owned most of the land and were lightly taxed; the Third owned
-    little and was heavily taxed. Adams-French-1.jpg La Bastille, Courtesy: Library of Congress National Assembly On June 17, 1789, after Louis denied its 
-    petition for a one man-one vote policy, the Third Estate seceded and formed the National Assembly. On July 11 Louis XVI ordered the army to disband it.
-     On July 14 a mob stormed the Bastille prison in Paris looking for arms to protect itself from the king's forces. The capture of the Bastille ignited 
-     one of the greatest social upheavals in Western history, the French Revolution. Violence spread to the countryside, where peasants demanded the 
-     feudal system be dismantled. Fearing powerlessness, the nobility and landowners joined the National Assembly. On August 27, it issued the Declaration
-      of the Rights of Man, guaranteeing all French citizens freedom of speech, press, and religion, as well as a representative government and 
-      equality before the law. Some citizens, however, were more equal than others; women and slaves were excluded, and only property owners could hold 
-      seats in the new legislature. Adams_french_03.jpg King Louis XVI, courtesy: Corbis Liberte, Egalite, Fraternite! The following summer, the National 
-      Assembly created a new constitution. While King Louis XVI remained the nominal head of state, the National Assembly held all legislative power. On 
-      June 20, 1791, Louis and his family, including his despised Austrian queen, Marie-Antoinette, attempted to flee France and were captured. The newly 
-      created Legislative Assembly wanted to spread the revolution across Europe. In April 1792, France declared war on Austria. The war went badly, and 
-      Louis XVI was blamed. Accused of treason, he was stripped of his title and imprisoned. In September 1792 a new National Convention declared France a 
-      republic and abolished the monarchy. On January 21, 1793, Louis XVI was marched to the guillotine. His severed head was paraded for the gathered 
-      thousands and met with cries of "Vive la Republique!" Adams_french_04.jpg Maximilien Robespierre, Courtesy: Library of Congress Madame Guillotine On
-       September 5, 1793, Maximilien Robespierre began the Reign of Terror in response to the invasion of France by foreign troops. Thousands of so-called 
-       counterrevolutionaries were slaughtered; estimates range from 14,000 to 40,000. France remained in Robespierre's bloody grip for 10 months until he 
-       too was captured and beheaded. With the Reign of Terror over, France found some peace, but the country remained at war with Great Britain, the
-        Netherlands, and Spain following Louis XVI's execution. Adams_french_05.jpg Napoleon, Courtesy: Corbis Emperor of the French In 1795, a new 
-        constitution was adopted, with the Directory — five men elected from the National Assembly — acting as an executive branch and remaining in 
-        power throughout much of John Adams presidency. Four years later, Napoleon Bonaparte and his army overthrew the Directory and signed the Convention 
-        of 1800 with the United States, a commercial agreement that ended the so-called Quasi War. Napoleon would eventually declare himself "Emperor of the
-         French." John Adams had feared just such a chaotic end: A revolution of this sort, he had argued, would lead not to democracy but despotism. France
-          had abolished its monarchy only to find itself under the rule of an emperor. Years later Thomas Jefferson would admit that his own support for the
-           French Revolution was misguided: "Your prophecies," he wrote to Adams, "... proved truer than mine. ... I did not, in '89, believe they would have
-            lasted so long, nor have cost so much blood."`
+Cat Article: `Will cats, which require meat, eventually evolve to eat a broader array of foods as dogs do?
+
+Cats and dogs belong to a group of mammals known as Carnivora, and the wild ancestors of both species dined primarily on meat. Recent DNA analyses indicate that
+ over the course of their evolution, dogs have acquired more copies of the so-called amylase gene, which makes an enzyme that helps to break down starch. Having
+  more copies of this gene has allowed dogs to eat a more omnivorous diet. In contrast, the cat family, known as Felidae, lost the genes that encode several key 
+  enzymes—including those that manufacture vitamin A, prostaglandins and the amino acid taurine—early in its evolution. Whereas dogs (and humans) can synthesize
+   these substances from plant-based precursors, cats have to obtain them from meat. To expand their diet, cats would have to evolve physiological traits that allow
+    them to synthesize these and other key nutrients from plant foods. This capacity has not emerged during the 10 million years of felid evolution, so it seems 
+    unlikely to arise spontaneously in our domestic cats.
+
+Why do cats purr?
+
+Cats purr because they have something to say, which roughly translated is “please keep still and pay attention to me.” Kittens purr to persuade their mothers to 
+keep on nursing them, and pet cats purr when they want to be stroked. The vibrations emanating from the purr certainly have a calming effect on people. Yet sick 
+cats will also purr as a cry for help. So purring doesn’t always mean “I’m happy.” Some researchers have claimed that the vibrations from purring might help heal
+ bone damage in an injured cat.`
 
 
 ]
