@@ -22,11 +22,12 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, topic, type, context, standard } =
+        const { title, amount, topic, type, context, standard } =
             quizCreationSchema.parse(body);
 
         const checkIn = await prisma.checkIn.create({
             data: {
+                title: title,
                 checkInType: type,
                 timeStarted: new Date(),
                 userId: session.user.id,

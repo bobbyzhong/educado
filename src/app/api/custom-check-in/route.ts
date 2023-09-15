@@ -21,13 +21,14 @@ export async function POST(req: Request, res: Response) {
             );
         }
         const body = await req.json();
-        const { amount, content, type, emphasize, standard } =
+        const { title, amount, content, type, emphasize, standard } =
             customCheckInSchema.parse(body);
 
         const name = session.user.name;
 
         const checkIn = await prisma.checkIn.create({
             data: {
+                title: title,
                 checkInType: type,
                 timeStarted: new Date(),
                 userId: session.user.id,

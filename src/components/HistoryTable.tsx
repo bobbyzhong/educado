@@ -37,6 +37,7 @@ const HistoryTable = async ({ limit, userId }: Props) => {
                         <TableRow>
                             <TableHead className="w-[10px]">No.</TableHead>
                             <TableHead>Date Created</TableHead>
+                            <TableHead>Title</TableHead>
                             <TableHead className="">Topic</TableHead>
                             <TableHead className="">Share Check-In</TableHead>
                             <TableHead className="text-end">
@@ -56,6 +57,7 @@ const HistoryTable = async ({ limit, userId }: Props) => {
                         <TableRow>
                             <TableHead className="w-[10px]">No.</TableHead>
                             <TableHead>Date Created</TableHead>
+                            <TableHead>Title</TableHead>
                             <TableHead className="">Topic</TableHead>
                             <TableHead className="">Share Check-In</TableHead>
                             <TableHead className="text-end">
@@ -76,6 +78,7 @@ const HistoryTable = async ({ limit, userId }: Props) => {
                                             {index + 1}
                                         </TableCell>
                                         <TableCell>{date}</TableCell>
+                                        <TableCell>{checkIn.title}</TableCell>
                                         <TableCell>
                                             <span className="font-semibold">
                                                 {checkIn.topic}

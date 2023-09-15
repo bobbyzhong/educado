@@ -27,7 +27,10 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
                 <div className="flex items-center justify-between space-y-2">
                     <div className="flex flex-col gap-1">
                         <h2 className="mr-2 text-[28px] font-medium tracking-tight">
-                            Results of: {checkIn.topic} Check-In
+                            Results of: {checkIn.title}
+                        </h2>
+                        <h2 className=" text-[18px] font-semibold text-zinc-500 tracking-tight">
+                            Topic: {checkIn.topic}
                         </h2>
                     </div>
                 </div>

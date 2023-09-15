@@ -55,6 +55,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
     const [apiError, setApiError] = React.useState(false);
     const { mutate: getQuestions, isLoading } = useMutation({
         mutationFn: async ({
+            title,
             amount,
             content,
             type,
@@ -63,6 +64,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
         }: Input) => {
             // response makes api call to create new game in db and then returns the game id
             const response = await axios.post("/api/custom-check-in", {
+                title,
                 amount,
                 content,
                 type,
@@ -80,6 +82,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
     const form = useForm<Input>({
         resolver: zodResolver(customCheckInSchema),
         defaultValues: {
+            title: "Untitled",
             amount: 3,
             content: "",
             type: "mcq",
@@ -93,6 +96,7 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
 
         getQuestions(
             {
+                title: input.title,
                 amount: input.amount,
                 content: input.content,
                 type: input.type,
@@ -167,6 +171,30 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                                     onSubmit={form.handleSubmit(onSubmit)}
                                     className="space-y-8"
                                 >
+                                    <FormField
+                                        control={form.control}
+                                        name="title"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Title (Optional)
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Period 5 Matter/Atoms Check-In"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription>
+                                                    This is for your reference
+                                                    only. Anything put in here
+                                                    will not be used to create
+                                                    the check-in.
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                     <FormField
                                         control={form.control}
                                         name="content"

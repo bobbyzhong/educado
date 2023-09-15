@@ -1,6 +1,9 @@
 import { any, z } from "zod";
 
 export const quizCreationSchema = z.object({
+    title: z
+        .string()
+        .max(200, { message: "Title must be less than 200 characters" }),
     topic: z
         .string()
         .min(4, { message: "Topic must be at least 4 characters long" })
@@ -72,6 +75,9 @@ export const contentRequestSchemaAPI = z.object({
 });
 
 export const customCheckInSchema = z.object({
+    title: z
+        .string()
+        .max(200, { message: "Title must be less than 200 characters" }),
     content: z
         .string()
         .min(3, { message: "Content must be at least 3 characters long" }),
