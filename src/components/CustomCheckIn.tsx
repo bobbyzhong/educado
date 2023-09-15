@@ -278,6 +278,11 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                                                             Standards for
                                                             Science 6th Grade
                                                         </SelectItem>
+                                                        <SelectItem value="Oklahoma Academic Standards for Science 7th Grade">
+                                                            Oklahoma Academic
+                                                            Standards for
+                                                            Science 7th Grade
+                                                        </SelectItem>
 
                                                         <SelectItem value="NGSS Middle School Science Standards">
                                                             NGSS Middle School

@@ -80,6 +80,10 @@ model CheckIn {
   topic       String
   timeEnded   DateTime?
   standard    String?
+  reportCreated Boolean? @default(false)
+  mostMissed  String?
+  zeroStudents String?
+  average   Float?
   checkInType    CheckInType
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
   results    Result[]

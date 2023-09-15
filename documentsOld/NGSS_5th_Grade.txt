@@ -26,11 +26,16 @@ NGSS 5th Grade Science Standards: [
     Earth’s Systems: {
         Core Ideas: [
             ESS2.A: Earth Materials and Systems
-            Earth’s major systems are the geosphere (solid and molten rock, soil, and sediments), the hydrosphere (water and ice), the atmosphere (air), and the biosphere (living things, including humans). These systems interact in multiple ways to affect Earth’s surface materials and processes. The ocean supports a variety of ecosystems and organisms, shapes landforms, and influences climate. Winds and clouds in the atmosphere interact with the landforms to determine patterns of weather. (5-ESS2-1)
+            Earth’s major systems are the geosphere (solid and molten rock, soil, and sediments), the hydrosphere (water and ice), the 
+            atmosphere (air), and the biosphere (living things, including humans). These systems interact in multiple ways to affect
+             Earth’s surface materials and processes. The ocean supports a variety of ecosystems and organisms, shapes landforms, and
+              influences climate. Winds and clouds in the atmosphere interact with the landforms to determine patterns of weather. (5-ESS2-1)
             ESS2.C: The Roles of Water in Earth’s Surface Processes
-            Nearly all of Earth’s available water is in the ocean. Most fresh water is in glaciers or underground; only a tiny fraction is in streams, lakes, wetlands, and the atmosphere. (5-ESS2-2)
+            Nearly all of Earth’s available water is in the ocean. Most fresh water is in glaciers or underground; only a tiny fraction 
+            is in streams, lakes, wetlands, and the atmosphere. (5-ESS2-2)
             ESS3.C: Human Impacts on Earth Systems
-            Human activities in agriculture, industry, and everyday life have had major effects on the land, vegetation, streams, ocean, air, and even outer space. But individuals and communities are doing things to help protect Earth’s resources and environments. (5-ESS3-1)
+            Human activities in agriculture, industry, and everyday life have had major effects on the land, vegetation, streams, ocean, 
+            air, and even outer space. But individuals and communities are doing things to help protect Earth’s resources and environments. (5-ESS3-1)
         ]
     }
     Space Systems: Stars and the Solar System: {

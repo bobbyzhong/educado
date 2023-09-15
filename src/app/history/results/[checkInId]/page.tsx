@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { getAuthSession } from "@/lib/nextauth";
 import AllResultsTable from "@/components/AllResultsTable";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 type Props = {
     params: {
@@ -18,6 +19,8 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
         return redirect("/new-check-in");
     }
 
+    const mostMissed = checkIn.mostMissed?.split(",");
+
     return (
         <>
             <div className="p-8 mx-auto max-w-7xl">
@@ -27,55 +30,59 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
                             Results of: {checkIn.topic} Check-In
                         </h2>
                     </div>
-                    {/* <div className="flex items-center space-x-2">
-                        <div className="font-light text-sm mr-3">
-                            Finished Reviewing?
+                </div>
+
+                {checkIn.reportCreated && (
+                    <div>
+                        <div className="grid gap-4 mt-4 md:grid-cols-1">
+                            <Card className=" hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
+                                <CardHeader className="flex flex-col gap-2 mb-2 p-0">
+                                    <CardTitle className="text-[19px] font-bold tracking-tight">
+                                        Most Missed Questions (# missed)
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="flex flex-col justify-between p-0">
+                                    {mostMissed!.map((question) => {
+                                        return (
+                                            <p
+                                                key={question}
+                                                className="  leading-6 w-[98%]"
+                                            >
+                                                {question}
+                                            </p>
+                                        );
+                                    })}
+                                </CardContent>
+                            </Card>
                         </div>
-                        <Link
-                            className={`"mt-8 mr-0 bg-green inline-block text-center max-w-fit text-sm 
-                    box-content hover:scale-[1.01] rounded-[5px] px-[20px] my-0 py-[10px] `}
-                            href={`/`}
-                        >
-                            <div className="flex flex-row gap-2 items-center">
-                                <div className="text-white1 font-semibold">
-                                    Share Check-In
-                                </div>
-
-                                <Image
-                                    src={"/icons/whitearrow.svg"}
-                                    height={20}
-                                    width={20}
-                                    alt={""}
-                                />
-                            </div>
-                        </Link>
-                    </div> */}
-                </div>
-
-                <div className="grid gap-4 mt-4 md:grid-cols-2">
-                    {/* <Card className=" hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
-                        <CardHeader className="flex flex-col gap-2 mb-2 p-0">
-                            <CardTitle className="text-[19px] font-bold tracking-tight">
-                                Student Name
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-0">
-                            <p className="  leading-6 w-[98%]">
-                                {result.studentName}
-                            </p>
-                        </CardContent>
-                    </Card> */}
-                    {/* <Card className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
-                        <CardHeader className="flex flex-col gap-2 mb-2 p-0">
-                            <CardTitle className="text-[19px] font-bold tracking-tight">
-                                Topic
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col justify-between p-0">
-                            <p className="  leading-6 w-[98%]">3</p>
-                        </CardContent>
-                    </Card> */}
-                </div>
+                        <div className="grid gap-4 mt-4 md:grid-cols-2">
+                            <Card className=" hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
+                                <CardHeader className="flex flex-col gap-2 mb-2 p-0">
+                                    <CardTitle className="text-[19px] font-bold tracking-tight">
+                                        Students who got 0% this time
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="flex flex-col justify-between p-0">
+                                    <p className="  leading-6 w-[98%]">
+                                        {checkIn.zeroStudents}
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
+                                <CardHeader className="flex flex-col gap-2 mb-2 p-0">
+                                    <CardTitle className="text-[19px] font-bold tracking-tight">
+                                        Average
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="flex flex-col justify-between p-0">
+                                    <p className="  leading-6 w-[98%]">
+                                        {checkIn.average}%
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
+                )}
 
                 <AllResultsTable checkInId={checkInId} />
             </div>
