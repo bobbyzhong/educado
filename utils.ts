@@ -317,8 +317,7 @@ export const updatePinecone = async (
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
 
-                    standardName:
-                        "CA NGSS Discipline Specific Grade 8 - Science (CA Dept of Education)",
+                    standardName: "NGSS 5th Grade Science Standards",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",
