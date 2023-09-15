@@ -1,0 +1,179 @@
+CA NGSS Discipline Specific Grade 8 - Science (CA Dept of Education): [
+    MS-PS1 Matter and Its Interactions: {
+        Core Ideas: [
+            PS1.A: Structure and Properties of Matter
+            - Substances are made from different types of atoms,
+            which combine with one another in various ways.
+            Atoms form molecules that range in size from two to
+            thousands of atoms. (MS-PS1-1)
+            - Each pure substance has characteristic physical and
+            chemical properties (for any bulk quantity under
+            given conditions) that can be used to identify it.
+            (MS-PS1-2), (MS-PS1-3)
+            ***Supplemental DCI ESS3.C, LS4.D
+            - Gases and liquids are made of molecules or inert
+            atoms that are moving about relative to each other.
+            (MS-PS1-4)
+            - In a liquid, the molecules are constantly in contact
+            with others; in a gas, they are widely spaced except
+            when they happen to collide. In a solid, atoms are
+            closely spaced and may vibrate in position but do
+            not change relative locations. (MS-PS1-4)
+            - Solids may be formed from molecules, or they may
+            be extended structures with repeating subunits (e.g.,
+            crystals). (MS-PS1-1)
+            - The changes of state that occur with variations in
+            temperature or pressure can be described and predicted using these models of matter. (MS-PS1-4)
+            PS1.B: Chemical Reactions
+            - Substances react chemically in characteristic ways.
+            In a chemical process, the atoms that make up the
+            original substances are regrouped into different
+            molecules, and these new substances have different
+            properties from those of the reactants. (MS-PS1-2),
+            (MS-PS1-3)
+            ***Supplemental DCI ESS3.C, LS4.D (MS-PS1-5)
+            - The total number of each type of atom is conserved,
+            and thus the mass does not change. (MS-PS1-5)
+            - Some chemical reactions release energy, others
+            store energy. (MS-PS1-6)
+            PS3.A: Definitions of Energy
+            - The term “heat” as used in everyday language refers
+            both to thermal energy (the motion of atoms or
+            molecules within a substance) and the transfer of
+            that thermal energy from one object to another. In
+            science, heat is used only for this second meaning;
+            it refers to the energy transferred due to the temperature difference between two objects. (secondary
+            to MS-PS1-4)
+            - The temperature of a system is proportional to the
+            average internal kinetic energy and potential energy
+            per atom or molecule (whichever is the appropriate
+            building block for the system’s material). The details
+            of that relationship depend on the type of atom or
+            molecule and the interactions among the atoms in
+            the material. Temperature is not a direct measure of
+            a system’s total thermal energy. The total thermal
+            energy (sometimes called the total internal energy)
+            of a system depends jointly on the temperature, the
+            total number of atoms in the system, and the state
+            of the material. (secondary to MS-PS1-4)
+            ETS1.B: Developing Possible Solutions
+            - A solution needs to be tested, and then modified on
+            the basis of the test results, in order to improve it.
+            (secondary to MS-PS1-6)
+            ETS1.C: Optimizing the Design Solution
+            - Although one design may not perform the best
+            across all tests, identifying the characteristics of
+            the design that performed the best in each test can
+            provide useful information for the redesign process—
+            that is, some of the characteristics may be incorporated into the new design. (secondary to MS-PS1-6)
+            - The iterative process of testing the most promising
+            solutions and modifying what is proposed on the
+            basis of the test results leads to greater refinement
+            and ultimately to an optimal solution. (secondary to
+            MS-PS1-6)
+        ]
+    },
+
+    MS-PS2 Motion and Stability: Forces and Interactions: {
+        Core Ideas: [
+            PS2.A: Forces and Motion
+            - For any pair of interacting objects, the force exerted
+            by the first object on the second object is equal in
+            strength to the force that the second object exerts
+            on the first, but in the opposite direction (Newton’s
+            Third Law). (MS-PS2-1)
+            - The motion of an object is determined by the sum
+            of the forces acting on it; if the total force on the
+            object is not zero, its motion will change. The greater
+            the mass of the object, the greater the force needed
+            to achieve the same change in motion. For any given
+            object, a larger force causes a larger change in
+            motion. (MS-PS2-2)
+            - All positions of objects and the directions of forces
+            and motions must be described in an arbitrarily chosen reference frame and arbitrarily chosen units of
+            size. In order to share information with other people,
+            these choices must also be shared. (MS-PS2-2)
+            PS2.B: Types of Interactions
+            - Electric and magnetic (electromagnetic) forces can
+            be attractive or repulsive, and their sizes depend on
+            the magnitudes of the charges, currents, or magnetic strengths involved and on the distances between
+            the interacting objects. (MS-PS2-3)
+            - Gravitational forces are always attractive. There is a
+            gravitational force between any two masses, but it is
+            very small except when one or both of the objects
+            have large mass—e.g., Earth and the sun. (MSPS2-4)
+            ***Supplemental ESS1.A, ESS1.B
+            - Forces that act at a distance (electric, magnetic,
+            and gravitational) can be explained by fields that
+            extend through space and can be mapped by their
+            effect on a test object (a charged object, or a ball,
+            respectively). (MS-PS2-5)
+        ]
+    },
+    MS-PS3 Energy: {
+        Core Ideas: [
+            PS3.A: Definitions of Energy
+            - Motion energy is properly called kinetic energy; it is
+            proportional to the mass of the moving object and
+            grows with the square of its speed. (MS-PS3-1)
+            - A system of objects may also contain stored (potential) energy, depending on their relative positions.
+            (MS-PS3-2)
+            PS3.C: Relationship Between Energy and Forces
+            - When two objects interact, each one exerts a force
+            on the other that can cause energy to be transferred
+            to or from the object. (MS-PS3-2)
+            PS3.A: Definitions of Energy
+            - Temperature is a measure of the average kinetic energy of particles of matter. The relationship
+            between the temperature and the total energy of a
+            system depends on the types, states, and amounts
+            of matter present. (MS-PS3-3), (MS-PS3-4)
+            PS3.B: Conservation of Energy and Energy Transfer
+            - When the motion energy of an object changes, there
+            is inevitably some other change in energy at the
+            same time. (MS-PS3–5)
+            - The amount of energy transfer needed to change the
+            temperature of a matter sample by a given amount
+            depends on the nature of the matter, the size of the
+            sample, and the environment. (MS-PS3-4)
+            - Energy is spontaneously transferred out of hotter
+            regions or objects and into colder ones. (MS-PS3-3)
+            ETS1.A: Defining and Delimiting an Engineering
+            Problem
+            - The more precisely a design task’s criteria and constraints can be defined, the more likely it is that the
+            designed solution will be successful. Specification
+            of constraints includes consideration of scientific
+            principles and other relevant knowledge that is likely
+            to limit possible solutions. (secondary to MS-PS3-3)
+            ETS1.B: Developing Possible Solutions
+            - A solution needs to be tested, and then modified on
+            the basis of the test results in order to improve it.
+            There are systematic processes for evaluating solutions with respect to how well they meet criteria and
+            constraints of a problem. (secondary to MS-PS3-3)
+        ]
+    },
+    MS-PS4 Waves and Their Applications in Technologies for Information Transfer:{
+        Core Ideas: [
+            PS4.A: Wave Properties
+            - A simple wave has a repeating pattern with a
+            specific wavelength, frequency, and amplitude. (MSPS4-1)
+            - A sound wave needs a medium through which it is
+            transmitted. (MS-PS4-2)
+            PS4.B: Electromagnetic Radiation
+            - When light shines on an object, it is reflected,
+            absorbed, or transmitted through the object, depending on the object’s material and the frequency
+            (color) of the light. (MS-PS4-2)
+            - The path that light travels can be traced as straight
+            lines, except at surfaces between different transparent materials (e.g., air and water, air and glass)
+            where the light path bends. (MS-PS4-2)
+            - A wave model of light is useful for explaining brightness, color, and the frequency-dependent bending
+            of light at a surface between media. (MS-PS4-2)
+            - However, because light can travel through space, it
+            cannot be a matter wave, like sound or water waves.
+            (MS-PS4-2)
+            PS4.C: Information Technologies and Instrumentation
+            - Digitized signals (sent as wave pulses) are a more
+            reliable way to encode and transmit information.
+            (MS-PS4-3)
+        ]
+    }
+]

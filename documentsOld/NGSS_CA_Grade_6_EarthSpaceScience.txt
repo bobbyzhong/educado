@@ -1,0 +1,129 @@
+NGSS, Grade 6 Earth & Space Science - Science (CA Dept of Education): [
+    MS-ESS1 Earth’s Place in the Universe: {
+        Core Ideas: [
+            ESS1.A: The Universe and Its Stars
+            - Patterns of the apparent motion of the sun, the
+            moon, and stars in the sky can be observed,
+            described, predicted, and explained with models.
+            (MS-ESS1-1)
+            - Earth and its solar system are part of the Milky Way
+            galaxy, which is one of many galaxies in the universe.
+            (MS-ESS1-2)
+            ***Supplemental DCI PS2.B
+            ESS1.B: Earth and the Solar System
+            - The solar system consists of the sun and a collection of objects, including planets, their moons, and
+            asteroids that are held in orbit around the sun by
+            its gravitational pull on them. (MS-ESS1-2), (MSESS1-3)
+            ***Supplemental DCI PS2.B
+            - This model of the solar system can explain eclipses
+            of the sun and the moon. Earth’s spin axis is fixed
+            in direction over the short-term but tilted relative to
+            its orbit around the sun. The seasons are a result of
+            that tilt and are caused by the differential intensity
+            of sunlight on different areas of Earth across the
+            year. (MS-ESS1-1)
+            - The solar system appears to have formed from a
+            disk of dust and gas, drawn together by gravity. (MSESS1-2)
+            ESS1.C: The History of Planet Earth
+            - The geologic time scale interpreted from rock strata
+            provides a way to organize Earth’s history. Analyses
+            of rock strata and the fossil record provide only relative dates, not an absolute scale. (MS-ESS1-4)
+        ]
+    },
+    MS-ESS2 Earth’s Systems: {
+        Core Ideas: [
+            ESS1.C: The History of Planet Earth
+            - Tectonic processes continually generate new ocean
+            sea foor at ridges and destroy old sea foor at
+            trenches. (HS.ESS1.C GBE) (secondary to MSESS2-3)
+            ESS2.A: Earth’s Materials and Systems
+            - All Earth processes are the result of energy fowing
+            and matter cycling within and among the planet’s
+            systems. This energy is derived from the sun and
+            Earth’s hot interior. The energy that fows and matter
+            that cycles produce chemical and physical changes in
+            Earth’s materials and living organisms. (MS-ESS2-1)
+            ***Supplemental DCI PS1.A
+            - The planet’s systems interact over scales that range
+            from microscopic to global in size, and they operate
+            over fractions of a second to billions of years. These
+            interactions have shaped Earth’s history and will
+            determine its future. (MS-ESS2-2)
+            ESS2.B: Plate Tectonics and Large-Scale System
+            Interactions
+            - Maps of ancient land and water patterns, based on
+            investigations of rocks and fossils, make clear how
+            Earth’s plates have moved great distances, collided,
+            and spread apart. (MS-ESS2-3)
+            ***Supplemental DCI LS4.A
+            ESS2.C: The Roles of Water in Earth’s Surface
+            Processes
+            - Water’s movements—both on the land and underground—cause weathering and erosion, which
+            change the land’s surface features and create
+            underground formations. (MS-ESS2-2)
+            ESS2.C: The Roles of Water in Earth’s Surface
+            Processes
+            - Water continually cycles among land, ocean, and
+            atmosphere via transpiration, evaporation, condensation and crystallization, and precipitation, as well
+            as downhill flows on land. (MS-ESS2-4)
+            ***Supplemental DCI PS1.A
+            - The complex patterns of the changes and the
+            movement of water in the atmosphere, determined
+            by winds, landforms, and ocean temperatures and
+            currents, are major determinants of local weather
+            patterns. (MS-ESS2-5)
+             Global movements of water and its changes in form
+            are propelled by sunlight and gravity. (MS-ESS2-4)
+            - Variations in density due to variations in temperature and salinity drive a global pattern of interconnected ocean currents. (MS-ESS2-6)
+            ***Supplemental DCI PS3.B, PS4.B
+            ESS2.D: Weather and Climate
+            - Weather and climate are influenced by interactions
+            involving sunlight, the ocean, the atmosphere, ice,
+            landforms, and living things. These interactions
+            vary with latitude, altitude, and local and regional
+            geography, all of which can affect oceanic and atmospheric flow patterns. (MS-ESS2-6)
+            - Because these patterns are so complex, weather
+            can only be predicted probabilistically. (MS-ESS2-5)
+            - The ocean exerts a major influence on weather and
+            climate by absorbing energy from the sun, releasing
+            it over time, and globally redistributing it through
+            ocean currents. (MS-ESS2-6)
+        ]
+    },
+    MS-ESS3 Earth and Human Activity: {
+        Core Ideas: [
+            ESS3.A: Natural Resources
+            - Humans depend on Earth’s land, ocean, atmosphere, and biosphere for many different resources.
+            Minerals, fresh water, and biosphere resources are
+            limited, and many are not renewable or replaceable
+            over human lifetimes. These resources are distributed unevenly around the planet as a result of past
+            geologic processes. (MS-ESS3-1)
+            ESS3.B: Natural Hazards
+            - Mapping the history of natural hazards in a region,
+            combined with an understanding of related geologic
+            forces can help forecast the locations and likelihoods of future events. (MS-ESS3-2)
+            ESS3.C: Human Impacts on Earth Systems
+            - Typically as human populations and per-capita
+            consumption of natural resources increase, so do
+            the negative impacts on Earth unless the activities
+            and technologies involved are engineered otherwise.
+            (MS-ESS3-4)
+            ESS3.C: Human Impacts on Earth Systems
+            - Human activities have significantly altered the biosphere, sometimes damaging or destroying natural
+            habitats and causing the extinction of other species. But changes to Earth’s environments can have
+            different impacts (negative and positive) for different
+            living things. (MS-ESS3-3)
+            ESS3.D: Global Climate Change
+            - Human activities, such as the release of greenhouse gases from burning fossil fuels, are major
+            factors in the current rise in Earth’s mean surface
+            temperature (global warming). Reducing the level of
+            climate change and reducing human vulnerability
+            to whatever climate changes do occur depend on
+            the understanding of climate science, engineering
+            capabilities, and other kinds of knowledge, such as
+            understanding of human behavior and on applying
+            that knowledge wisely in decisions and activities.
+            (MS-ESS3–5)
+        ]
+    }
+]

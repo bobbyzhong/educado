@@ -1,0 +1,202 @@
+NGSS Grade Seven - Science (CA Dept of Education): [
+    MS-LS1 From Molecules to Organisms: Structures and Processes: {
+        Core Ideas: [
+            LS1.C: Organization for Matter and Energy Flow in
+            Organisms
+            - Plants, algae (including phytoplankton), and many
+            microorganisms use the energy from light to make
+            sugars (food) from carbon dioxide from the atmosphere and water through the process of photosynthesis, which also releases oxygen. These sugars can
+            be used immediately or stored for growth or later
+            use. (MS-LS1-6)
+            - Within individual organisms, food moves through
+            a series of chemical reactions in which it is broken
+            down and rearranged to form new molecules, to
+            support growth, or to release energy. (MS-LS1-7)
+            PS3.D: Energy in Chemical Processes and Everyday
+            Life
+            - The chemical reaction by which plants produce
+            complex food molecules (sugars) requires an energy
+            input (i.e., from sunlight) to occur. In this reaction,
+            carbon dioxide and water combine to form carbon-based organic molecules and release oxygen.
+            (secondary to MS-LS1-6)
+            - Cellular respiration in plants and animals involve
+            chemical reactions with oxygen that release stored
+            energy. In these processes, complex molecules
+            containing carbon react with oxygen to produce
+            carbon dioxide and other materials. (secondary to MS-LS1-7)
+        ]
+    },
+    MS-LS2 Ecosystems: Interactions, Energy, and Dynamics: {
+        Core Ideas: [
+            LS2.A: Interdependent Relationships in Ecosystems
+            - Organisms, and populations of organisms, are
+            dependent on their environmental interactions both
+            with other living things and with nonliving factors.
+            (MS-LS2-1)
+            - In any ecosystem, organisms and populations with
+            similar requirements for food, water, oxygen, or other
+            resources may compete with each other for limited
+            resources, access to which consequently constrains
+            their growth and reproduction. (MS-LS2-1)
+            - Growth of organisms and population increases are
+            limited by access to resources. (MS-LS2-1)
+            - Similarly, predatory interactions may reduce the
+            number of organisms or eliminate whole populations
+            of organisms. Mutually beneficial interactions, in
+            contrast, may become so interdependent that each
+            organism requires the other for survival. Although
+            the species involved in these competitive, predatory, and mutually beneficial interactions vary
+            across ecosystems, the patterns of interactions of
+            organisms with their environments, both living and
+            nonliving, are shared. (MS-LS2-2)
+            LS2.B: Cycle of Matter and Energy Transfer in
+            Ecosystems
+            - Food webs are models that demonstrate how matter
+            and energy is transferred between producers,
+            consumers, and decomposers as the three groups
+            interact within an ecosystem. Transfers of matter into
+            and out of the physical environment occur at every
+            level. Decomposers recycle nutrients from dead
+            plant or animal matter back to the soil in terrestrial
+            environments or to the water in aquatic environments. The atoms that make up the organisms in an
+            ecosystem are cycled repeatedly between the living
+            and nonliving parts of the ecosystem. (MS-LS2-3)
+            LS2.C: Ecosystem Dynamics, Functioning, and
+            Resilience
+            - Ecosystems are dynamic in nature; their characteristics can vary over time. Disruptions to any physical
+            or biological component of an ecosystem can lead
+            to shifts in all its populations. (MS-LS2-4)
+            - Biodiversity describes the variety of species found in
+            Earth’s terrestrial and oceanic ecosystems. The completeness or integrity of an ecosystem’s biodiversity is
+            often used as a measure of its health. (MS-LS2-5)
+            LS4.D: Biodiversity and Humans
+            - Changes in biodiversity can influence humans’
+            resources, such as food, energy, and medicines, as
+            well as ecosystem services that humans rely on—for
+            example, water purification and recycling. (secondary to MS-LS2-5)
+            ETS1.B: Developing Possible Solutions
+            - There are systematic processes for evaluating
+            solutions with respect to how well they meet the
+            criteria and constraints of a problem. (secondary to
+            MS-LS2-5)
+        ]
+    },
+    MS-ESS2 Earth’s Systems: {
+        Core Ideas: [
+            ESS1.C: The History of Planet Earth
+            - Tectonic processes continually generate new ocean
+            sea floor at ridges and destroy old sea floor at
+            trenches. (HS.ESS1.C GBE) (secondary to MSESS2-3)
+            ESS2.A: Earth’s Materials and Systems
+            - All Earth processes are the result of energy flowing
+            and matter cycling within and among the planet’s
+            systems. This energy is derived from the sun and
+            Earth’s hot interior. The energy that flows and matter
+            that cycles produce chemical and physical changes
+            in Earth’s materials and living organisms. (MSESS2-1)
+            - The planet’s systems interact over scales that range
+            from microscopic to global in size, and they operate
+            over fractions of a second to billions of years. These
+            interactions have shaped Earth’s history and will
+            determine its future. (MS-ESS2-2)
+            ESS2.B: Plate Tectonics and Large-Scale System
+            Interactions
+            - Maps of ancient land and water patterns, based on
+            investigations of rocks and fossils, make clear how
+            Earth’s plates have moved great distances, collided,
+            and spread apart. (MS-ESS2-3)
+            ESS2.C: The Roles of Water in Earth’s Surface
+            Processes
+            - Water’s movements—both on the land and underground—cause weathering and erosion, which
+            change the land’s surface features and create
+            underground formations. (MS-ESS2-2)
+        ]
+    },
+    MS-ESS3 Earth and Human Activity: {
+        Core Ideas: [
+            ESS3.A: Natural Resources
+            - Humans depend on Earth’s land, ocean, atmosphere, and biosphere for many different resources.
+            Minerals, fresh water, and biosphere resources are
+            limited, and many are not renewable or replaceable
+            over human lifetimes. These resources are distributed unevenly around the planet as a result of past
+            geologic processes. (MS-ESS3-1)
+            ESS3.B: Natural Hazards
+            - Mapping the history of natural hazards in a region,
+            combined with an understanding of related geologic
+            forces can help forecast the locations and likelihoods of future events. (MS-ESS3-2)
+        ]
+    },
+    MS-PS1 Matter and Its Interactions: {
+        Core Ideas: [
+            PS1.A: Structure and Properties of Matter
+            - Substances are made from different types of atoms,
+            which combine with one another in various ways.
+            Atoms form molecules that range in size from two to
+            thousands of atoms. (MS-PS1-1)
+            - Each pure substance has characteristic physical and
+            chemical properties (for any bulk quantity under
+            given conditions) that can be used to identify it.
+            (MS-PS1-2), (MS-PS1-3)
+            - Gases and liquids are made of molecules or inert
+            atoms that are moving about relative to each other.
+            (MS-PS1-4)
+            - In a liquid, the molecules are constantly in contact
+            with others; in a gas, they are widely spaced except
+            when they happen to collide. In a solid, atoms are
+            closely spaced and may vibrate in position but do
+            not change relative locations. (MS-PS1-4)
+            - Solids may be formed from molecules, or they may
+            be extended structures with repeating subunits (e.g.,
+            crystals). (MS-PS1-1)
+            - The changes of state that occur with variations in
+            temperature or pressure can be described and predicted using these models of matter. (MS-PS1-4)
+            PS1.B: Chemical Reactions
+            - Substances react chemically in characteristic ways.
+            In a chemical process, the atoms that make up the
+            original substances are regrouped into different
+            molecules, and these new substances have different
+            properties from those of the reactants. (MS-PS1-2),
+            (MS-PS1-3), (MS-PS1-5)
+            - The total number of each type of atom is conserved,
+            and thus the mass does not change. (MS-PS1-5)
+            - Some chemical reactions release energy, others
+            store energy. (MS-PS1-6)
+            PS3.A: Definitions of Energy
+            - The term “heat” as used in everyday language refers
+            both to thermal energy (the motion of atoms or
+            molecules within a substance) and the transfer of
+            that thermal energy from one object to another. In
+            science, heat is used only for this second meaning;
+            it refers to the energy transferred due to the temperature difference between two objects. (secondary
+            to MS-PS1-4)
+            - The temperature of a system is proportional to the
+            average internal kinetic energy and potential energy
+            per atom or molecule (whichever is the appropriate
+            building block for the system’s material). The details
+            of that relationship depend on the type of atom or
+            molecule and the interactions among the atoms in
+            the material. Temperature is not a direct measure
+            of a system’s total thermal energy. The total thermal
+            energy (sometimes called the total internal energy)
+            of a system depends jointly on the temperature, the
+            total number of atoms in the system, and the state
+            of the material. (secondary to MS-PS1-4)
+            ETS1.B: Developing Possible Solutions
+            - A solution needs to be tested, and then modified on
+            the basis of the test results, in order to improve it.
+            (secondary to MS-PS1-6)
+            ETS1.C: Optimizing the Design Solution
+            - Although one design may not perform the best
+            across all tests, identifying the characteristics of
+            the design that performed the best in each test can
+            provide useful information for the redesign process—
+            that is, some of the characteristics may be incorporated into the new design. (secondary to MS-PS1-6)
+            - The iterative process of testing the most promising
+            solutions and modifying what is proposed on the
+            basis of the test results leads to greater refinement
+            and ultimately to an optimal solution. (secondary to
+            MS-PS1-6)
+        ]
+    }
+
+]

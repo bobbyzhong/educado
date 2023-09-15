@@ -1,0 +1,183 @@
+Discipline Specific Grade 7 Life Sciences - Science (CA Dept of Education): [
+    MS-LS1 From Molecules to Organisms: Structures and Processes: {
+        Core Ideas: [
+            LS1.A: Structure and Function
+            - All living things are made up of cells. A cell is the
+            smallest unit that can be said to be alive. An organism may consist of one single cell (unicellular) or
+            many different numbers and types of cells (multicellular). (MS-LS1-1)
+            - Within cells, special structures are responsible for
+            particular functions, and the cell membrane forms
+            the boundary that controls what enters and leaves
+            the cell. (MS-LS1-2)
+            - In multicellular organisms, the body is a system of
+            multiple interacting subsystems. These subsystems
+            are groups of cells that work together to form tissues
+            and organs that are specialized for particular body
+            functions. (MS-LS1-3)
+            LS1.B: Growth and Development of Organisms
+            - Animals engage in characteristic behaviors that
+            increase the odds of reproduction. (MS-LS1-4)
+            - Plants reproduce in a variety of ways, sometimes
+            depending on animal behavior and specialized
+            features for reproduction. (MS-LS1-4)
+            - Genetic factors as well as local conditions affect the
+            growth of the adult plant. (MS-LS1-5)
+            LS1.D: Information Processing
+            - Each sense receptor responds to different inputs
+            (electromagnetic, mechanical, chemical), transmitting them as signals that travel along nerve cells
+            to the brain. The signals are then processed in the
+            brain, resulting in immediate behaviors or memories.(MS-LS1-8)
+            LS1.C: Organization for Matter and Energy Flow in Organisms
+            - Plants, algae (including phytoplankton), and many
+            microorganisms use the energy from light to make
+            sugars (food) from carbon dioxide from the atmosphere and water through the process of photosynthesis, which also releases oxygen. These sugars can
+            be used immediately or stored for growth or later
+            use. (MS-LS1-6)
+            ***Supplemental DCI PS1.A, PS1.B and grade 5
+            PS3.D
+            - Within individual organisms, food moves through
+            a series of chemical reactions in which it is broken
+            down and rearranged to form new molecules, to
+            support growth, or to release energy. (MS-LS1-7)
+            PS3.D: Energy in Chemical Processes and Everyday
+            Life
+            - The chemical reaction by which plants produce
+            complex food molecules (sugars) requires an energy
+            input (i.e., from sunlight) to occur. In this reaction,
+            carbon dioxide and water combine to form carbon-based organic molecules and release oxygen.
+            (secondary to MS-LS1-6)
+            - Cellular respiration in plants and animals involve
+            chemical reactions with oxygen that release stored
+            energy. In these processes, complex molecules
+            containing carbon react with oxygen to produce
+            carbon dioxide and other materials. (secondary to
+            MS-LS1-7)
+        ]
+    },
+    MS-LS2 Ecosystems: Interactions, Energy, and Dynamics: {
+        Core Ideas: [
+            LS2.A: Interdependent Relationships in Ecosystems
+            - Organisms, and populations of organisms, are
+            dependent on their environmental interactions both
+            with other living things and with nonliving factors.
+            (MS-LS2-1)
+            ***Supplemental DCI PS1.B
+            - In any ecosystem, organisms and populations with
+            similar requirements for food, water, oxygen, or other
+            resources may compete with each other for limited
+            resources, access to which consequently constrains
+            their growth and reproduction. (MS-LS2-1)
+            - Growth of organisms and population increases are
+            limited by access to resources. (MS-LS2-1)
+            - Similarly, predatory interactions may reduce the
+            number of organisms or eliminate whole populations
+            of organisms. Mutually beneficial interactions, in
+            contrast, may become so interdependent that each
+            organism requires the other for survival. Although
+            the species involved in these competitive, predatory, and mutually beneficial interactions vary
+            across ecosystems, the patterns of interactions of
+            organisms with their environments, both living and
+            nonliving, are shared. (MS-LS2-2)
+            LS2.B: Cycle of Matter and Energy Transfer in
+            Ecosystems
+            - Food webs are models that demonstrate how matter
+            and energy is transferred between producers,
+            consumers, and decomposers as the three groups
+            interact within an ecosystem. Transfers of matter into
+            and out of the physical environment occur at every
+            level. Decomposers recycle nutrients from dead
+            plant or animal matter back to the soil in terrestrial
+            environments or to the water in aquatic environments. The atoms that make up the organisms in an
+            ecosystem are cycled repeatedly between the living
+            and nonliving parts of the ecosystem. (MS-LS2-3)
+            ***Supplemental DCI PS1.B, ESS2.A
+            LS2.C: Ecosystem Dynamics, Functioning, and
+            Resilience
+            - Ecosystems are dynamic in nature; their characteristics can vary over time. Disruptions to any physical
+            or biological component of an ecosystem can lead
+            to shifts in all its populations. (MS-LS2-4)
+            - Biodiversity describes the variety of species found
+            in Earth’s terrestrial and oceanic ecosystems. The
+            completeness or integrity of an ecosystem’s biodiversity is often used as a measure of its health.
+            (MS-LS2-5)
+            ***Supplemental DCI PS1.B, ESS3.A, ESS3.C
+            LS4.D: Biodiversity and Humans
+            - Changes in biodiversity can influence humans’
+            resources, such as food, energy, and medicines, as
+            well as ecosystem services that humans rely on—for
+            example, water purification and recycling. (secondary to MS-LS2-5)
+            ETS1.B: Developing Possible Solutions
+            - There are systematic processes for evaluating
+            solutions with respect to how well they meet the
+            criteria and constraints of a problem. (secondary to
+            MS-LS2-5)
+        ]
+    },
+    MS-LS3 Heredity: Inheritance and Variation of Traits: {
+        Core Ideas: [
+            LS3.A: Inheritance of Traits
+            - Genes are located in the chromosomes of cells,
+            with each chromosome pair containing two variants
+            of each of many distinct genes. Each distinct gene
+            chiefly controls the production of specific proteins,
+            which in turn affects the traits of the individual.
+            Changes (mutations) to genes can result in changes to proteins, which can affect the structures and
+            functions of the organism and thereby change traits.
+            (MS-LS3-1)
+            LS3.B: Variation of Traits
+            - In addition to variations that arise from sexual reproduction, genetic information can be altered because
+            of mutations. Though rare, mutations may result in
+            changes to the structure and function of proteins.
+            Some changes are beneficial, others harmful, and
+            some neutral to the organism. (MS-LS3-1)
+            LS1.B: Growth and Development of Organisms
+            - Organisms reproduce, either sexually or asexually,
+            and transfer their genetic information to their offspring. (secondary to MS-LS3-2)
+            LS3.A: Inheritance of Traits
+            - Variations of inherited traits between parent and offspring arise from genetic differences that result from
+            the subset of chromosomes (and therefore genes)
+            inherited. (MS-LS3-2)
+            LS3.B: Variation of Traits
+            - In sexually reproducing organisms, each parent
+            contributes half of the genes acquired (at random)
+            by the offspring. Individuals have two of each chromosome and hence two alleles of each gene, one
+            acquired from each parent. These versions may be
+            identical or may differ from each other. (MS-LS3-2)
+        ]
+    },
+    MS-LS4 Biological Evolution: Unity and Diversity: {
+        Core Ideas: [
+            LS4.A: Evidence of Common Ancestry and Diversity
+            - The collection of fossils and their placement in
+            chronological order (e.g., through the location of
+            the sedimentary layers in which they are found or
+            through radioactive dating) is known as the fossil
+            record. It documents the existence, diversity, extinction, and change of many life forms throughout the
+            history of life on Earth. (MS-LS4-1)
+            ***Supplemental DCI ESS1.C, ESS2.B
+            - Anatomical similarities and differences between various organisms living today and between them and
+            organisms in the fossil record, enable the reconstruction of evolutionary history and the inference of
+            lines of evolutionary descent. (MS-LS4-2)
+            ***Supplemental DCI ESS1.C
+            - Comparison of the embryological development of
+            different species also reveals similarities that show
+            relationships not evident in the fully formed anatomy. (MS-LS4-3)
+            LS4.B: Natural Selection
+            - Natural selection leads to the predominance of
+            certain traits in a population, and the suppression of
+            others. (MS-LS4-4)
+            - In artificial selection, humans have the capacity to
+            influence certain characteristics of organisms by
+            selective breeding. One can choose desired parental
+            traits determined by genes, which are then passed
+            on to offspring. (MS-LS4-5)
+            LS4.C: Adaptation
+            - Adaptation by natural selection acting over generations is one important process by which species
+            change over time in response to changes in environmental conditions. Traits that support successful
+            survival and reproduction in the new environment
+            become more common; those that do not become
+            less common. Thus, the distribution of traits in a
+            population changes. (MS-LS4-6)
+        ]
+    }
+]
