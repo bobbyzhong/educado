@@ -1,0 +1,168 @@
+Grade 8 Preferred Integrated Model - Science (CA Dept of Education): [
+    MS-LS3 Heredity: Inheritance and Variation of Traits: {
+        Core Ideas: [
+            LS3.A: Inheritance of Traits
+            - Genes are located in the chromosomes of cells,
+            with each chromosome pair containing two variants
+            of each of many distinct genes. Each distinct gene
+            chiefly controls the production of specific proteins,
+            which in turn affects the traits of the individual.
+            Changes (mutations) to genes can result in changes to proteins, which can affect the structures and
+            functions of the organism and thereby change traits.
+            (MS-LS3-1)
+            LS3.B: Variation of Traits
+            - In addition to variations that arise from sexual reproduction, genetic information can be altered because
+            of mutations. Though rare, mutations may result in
+            changes to the structure and function of proteins.
+            Some changes are beneficial, others harmful, and
+            some neutral to the organism. (MS-LS3-1)
+        ]
+    },
+    MS-LS4 Biological Evolution: Unity and Diversity: {
+        Core Ideas: [
+            LS4.A: Evidence of Common Ancestry and Diversity
+            - The collection of fossils and their placement in
+            chronological order (e.g., through the location of
+            the sedimentary layers in which they are found or
+            through radioactive dating) is known as the fossil
+            record. It documents the existence, diversity, extinction, and change of many life forms throughout the
+            history of life on Earth. (MS-LS4-1)
+            - Anatomical similarities and differences between
+            various organisms living today and between them
+            and organisms in the fossil record enable the reconstruction of evolutionary history and the inference of
+            lines of evolutionary descent. (MS-LS4-2)
+            - Comparison of the embryological development of
+            different species also reveals similarities that show
+            relationships not evident in the fully formed anatomy. (MS-LS4-3)
+            LS4.B: Natural Selection
+            - Natural selection leads to the predominance of
+            certain traits in a population, and the suppression of
+            others. (MS-LS4-4)
+            - In artificial selection, humans have the capacity to
+            influence certain characteristics of organisms by
+            selective breeding. One can choose desired parental
+            traits determined by genes, which are then passed
+            on to offspring. (MS-LS4-5)
+            LS4.C: Adaptation
+            - Adaptation by natural selection acting over generations is one important process by which species
+            change over time in response to changes in environmental conditions. Traits that support successful
+            survival and reproduction in the new environment
+            become more common; those that do not become
+            less common. Thus, the distribution of traits in a
+            population changes. (MS-LS4-6)
+        ]
+    },
+    MS-ESS1 Earth’s Place in the Universe: {
+        Core Ideas: [
+            ESS1.A: The Universe and Its Stars
+            - Patterns of the apparent motion of the sun, the
+            moon, and stars in the sky can be observed,
+            described, predicted, and explained with models.
+            (MS-ESS1-1)
+            - Earth and its solar system are part of the Milky Way
+            galaxy, which is one of many galaxies in the universe.
+            (MS-ESS1-2)
+            ESS1.B: Earth and the Solar System
+            - The solar system consists of the sun and a collection of objects, including planets, their moons, and
+            asteroids that are held in orbit around the sun by
+            its gravitational pull on them. (MS-ESS1-2), (MSESS1-3)
+            - This model of the solar system can explain eclipses
+            of the sun and the moon. Earth’s spin axis is fixed
+            in direction over the short-term but tilted relative to
+            its orbit around the sun. The seasons are a result of
+            that tilt and are caused by the differential intensity
+            of sunlight on different areas of Earth across the
+            year. (MS-ESS1-1)
+            - The solar system appears to have formed from a
+            disk of dust and gas, drawn together by gravity. (MSESS1-2)
+            ESS1.C: The History of Planet Earth
+            - The geologic time scale interpreted from rock strata
+            provides a way to organize Earth’s history. Analyses
+            of rock strata and the fossil record provide only relative dates, not an absolute scale. (MS-ESS1-4)
+        ]
+    },
+    MS-ESS3 Earth and Human Activity: {
+        Core Ideas: [
+            ESS3.C: Human Impacts on Earth Systems
+            - Typically as human populations and per-capita
+            consumption of natural resources increase, so do
+            the negative impacts on Earth unless the activities
+            and technologies involved are engineered otherwise.
+            (MS-ESS3-4)
+        ]
+    },
+    MS-PS2 Motion and Stability: Forces and Interactions: {
+        Core Ideas: [
+            PS2.A: Forces and Motion
+            - For any pair of interacting objects, the force exerted
+            by the first object on the second object is equal in
+            strength to the force that the second object exerts
+            on the first, but in the opposite direction (Newton’s
+            Third Law). (MS-PS2-1)
+             The motion of an object is determined by the sum
+            of the forces acting on it; if the total force on the
+            object is not zero, its motion will change. The greater
+            the mass of the object, the greater the force needed
+            to achieve the same change in motion. For any given
+            object, a larger force causes a larger change in
+            motion. (MS-PS2-2)
+            - All positions of objects and the directions of forces
+            and motions must be described in an arbitrarily chosen reference frame and arbitrarily chosen units of
+            size. In order to share information with other people,
+            these choices must also be shared. (MS-PS2-2)
+            PS2.B: Types of Interactions
+            - Electric and magnetic (electromagnetic) forces can
+            be attractive or repulsive, and their sizes depend on
+            the magnitudes of the charges, currents, or magnetic strengths involved and on the distances between
+            the interacting objects. (MS-PS2-3)
+            - Gravitational forces are always attractive. There is a
+            gravitational force between any two masses, but it is
+            very small except when one or both of the objects
+            have large mass—e.g., Earth and the sun. (MSPS2-4)
+            - Forces that act at a distance (electric, magnetic,
+            and gravitational) can be explained by fields that
+            extend through space and can be mapped by their
+            effect on a test object (a charged object, or a ball,
+            respectively). (MS-PS2-5)
+        ]
+    },
+    MS-PS3 Energy: {
+        Core Ideas: [
+            PS3.A: Definitions of Energy
+            - Motion energy is properly called kinetic energy; it is
+            proportional to the mass of the moving object and
+            grows with the square of its speed. (MS-PS3-1)
+            - A system of objects may also contain stored (potential) energy, depending on their relative positions.
+            (MS-PS3-2)
+            PS3.C: Relationship Between Energy and Forces
+            - When two objects interact, each one exerts a force
+            on the other that can cause energy to be transferred
+            to or from the object. (MS-PS3-2)
+        ]
+    },
+    MS-PS4 Waves and Their Applications in Technologies for Information Transfer: {
+        Core Ideas: [
+            PS4.A: Wave Properties
+            - A simple wave has a repeating pattern with a
+            specific wavelength, frequency, and amplitude. (MSPS4-1)
+            - A sound wave needs a medium through which it is
+            transmitted. (MS-PS4-2)
+            PS4.B: Electromagnetic Radiation
+            - When light shines on an object, it is reflected,
+            absorbed, or transmitted through the object, depending on the object’s material and the frequency
+            (color) of the light. (MS-PS4-2)
+            - The path that light travels can be traced as straight
+            lines, except at surfaces between different transparent materials (e.g., air and water, air and glass)
+            where the light path bends. (MS-PS4-2)
+            - A wave model of light is useful for explaining brightness, color, and the frequency-dependent bending
+            of light at a surface between media. (MS-PS4-2)
+            - However, because light can travel through space, it
+            cannot be a matter wave, like sound or water waves.
+            (MS-PS4-2)
+            PS4.C: Information Technologies and Instrumentation
+            - Digitized signals (sent as wave pulses) are a more
+            reliable way to encode and transmit information.
+            (MS-PS4-3)
+        ]
+    }
+]

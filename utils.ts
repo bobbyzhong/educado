@@ -317,8 +317,8 @@ export const updatePinecone = async (
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
 
-                    // standardName:
-                    //     "Oklahoma Academic Standards for Science 6th Grade",
+                    standardName:
+                        "CA NGSS Discipline Specific Grade 8 - Science (CA Dept of Education)",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",
@@ -326,7 +326,7 @@ export const updatePinecone = async (
             };
             batch = [...batch, vector];
 
-            // When batch is full or it's the last item, upsert the vectors
+            // When batch is full or it's the last item, upsert the vectors.
             if (batch.length === batchSize || idx === chunks.length - 1) {
                 console.log("GOT HERE");
                 await index.upsert({

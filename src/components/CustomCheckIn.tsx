@@ -256,6 +256,24 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                             <SelectItem value="NGSS Middle School Science Standards">
                               NGSS Middle School Science Standards
                             </SelectItem>
+                            <SelectItem value="NGSS Preferred Integrated, Grade Six - Science (CA Dept of Education)">
+                              NGSS CA 6th Grade
+                            </SelectItem>
+                            <SelectItem value="NGSS Grade Seven - Science (CA Dept of Education)">
+                              NGSS CA 7th Grade
+                            </SelectItem>
+                            <SelectItem value="Grade 8 Preferred Integrated Model - Science (CA Dept of Education)">
+                              NGSS CA 8th Grade
+                            </SelectItem>
+                            <SelectItem value="NGSS, Grade 6 Earth & Space Science - Science">
+                              NGSS CA 6th Grade - Earth & Space Science
+                            </SelectItem>
+                            <SelectItem value="Discipline Specific Grade 7 Life Sciences - Science (CA Dept of Education)">
+                              NGSS CA 7th Grade - Life Science
+                            </SelectItem>
+                            <SelectItem value="CA NGSS Discipline Specific Grade 8 - Science (CA Dept of Education)">
+                              NGSS CA 8th Grade - Physical Science
+                            </SelectItem>
                           </SelectContent>
                         </Select>
                         <FormDescription>
