@@ -20,8 +20,10 @@ export const standardEmbedInputAndQueryLLM = async (
         getQuestionsSchema.parse(promptObj);
 
     const question = `You are a helpful AI that is able to generate ${amount} sets of mcq questions about this specific topic: "${topic}" from this academic standard: "${standard}". 
-        Make sure the questions on those topics are based on the standard's core ideas relating to that topic.
-        Base the questions on this context if available: "${context}". The length of the answer should be less than 15 words and give three additional options for each question labeled "option1", "option2", and "option3". 
+        Make sure the questions on those topics are based on the standard's core ideas relating to that topic. Don't use any outside
+         information besides the content you are given
+        Base the questions on this context if available: "${context}". The length of the answer should be less than 15 words and give
+         three additional options for each question labeled "option1", "option2", and "option3". 
     Store all the sets of question, answer, and options in a JSON object.
         You must format your output as a JSON value that adheres to a given "JSON Schema" instance. "JSON Schema" is a declarative language 
         that allows you to annotate and validate JSON documents. For example, the example  "JSON Schema" instance
