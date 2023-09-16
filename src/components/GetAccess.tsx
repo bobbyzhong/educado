@@ -103,7 +103,7 @@ const GetAccess = (props: Props) => {
                 <Card className="min-w-[25rem]">
                     <CardHeader>
                         <CardTitle className="font-bold text-2xl">
-                            Get Access to Pear!
+                            Get Access to Educado!
                         </CardTitle>
                     </CardHeader>
                     <CardContent>

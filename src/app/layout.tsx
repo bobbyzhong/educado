@@ -11,7 +11,7 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: any = {
-    title: "Teach with Pear",
+    title: "Teach with Educado",
     description: "Making it easy for teachers to check-in with their students",
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <link rel="icon" href="/icons/pearemoji.png" />
+            <link rel="icon" href="/avocado.png" />
             <body
                 className={cn(
                     inter.className,

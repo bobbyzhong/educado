@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
         // Create a product
         const product = await stripe.products.create({
-            name: "Pear Monthly Subscription",
+            name: "Educado Monthly Subscription",
         });
         // Create Subscription
         const subscription = await stripe.subscriptions.create({

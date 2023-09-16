@@ -133,8 +133,8 @@ export const QuizModal = ({
                         </h1>
                         <p className="text-zinc-500 text-sm">
                             You've used up your three free check-ins. It will
-                            cost $5 a month to continue using Pear. This is just
-                            to cover our costs of running Pear.
+                            cost $5 a month to continue using Educado. This is
+                            just to cover our costs of running Educado.
                         </p>
                         <p className="text-zinc-500 text-sm mt-3">
                             Please contact Bobby if you have any issues with

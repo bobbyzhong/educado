@@ -276,7 +276,7 @@ const TextbookCheckIn = (props: Props) => {
                         Really sorry there was an error with the check-in! Due
                         to the high amount of traffic we're receiving, you might
                         need to refresh your page or try again. If it still
-                        doesn't work, we're really sorry, the team at Pear is
+                        doesn't work, we're really sorry, the team at Educado is
                         working to fix any bugs.
                     </p>
                 </div>

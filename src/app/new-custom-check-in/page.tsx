@@ -9,7 +9,7 @@ import React from "react";
 type Props = {};
 
 export const metadata = {
-    title: "Custom Check In | Pear",
+    title: "Custom Check In | Educado",
 };
 
 const NewCustomCheckInPage = async (props: Props) => {

@@ -8,7 +8,7 @@ import React from "react";
 type Props = {};
 
 export const metadata = {
-    title: "Content Request | Pear",
+    title: "Content Request | Educado",
 };
 
 const ContentRequestPage = async (props: Props) => {

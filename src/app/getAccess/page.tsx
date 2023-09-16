@@ -7,7 +7,7 @@ import React from "react";
 type Props = {};
 
 export const metadata = {
-    title: "Check In | Pear",
+    title: "Check In | Educado",
 };
 
 const GetAccessPage = async (props: Props) => {

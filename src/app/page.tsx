@@ -108,10 +108,10 @@ export default async function Home() {
                 </div>
             </div>
 
-            {/* WHY PEAR */}
+            {/* WHY EDUCADO */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-[#725D5D]">
-                    WHY PEAR
+                    WHY EDUCADO
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
                     <WhyUsCard
@@ -122,12 +122,12 @@ export default async function Home() {
                     <WhyUsCard
                         icon="👩‍🏫"
                         title="️Easy To Use"
-                        description="Create a check-in in just a few steps. Pear empowers teachers with the power of AI in an easy to use way."
+                        description="Create a check-in in just a few steps. Educado empowers teachers with the power of AI in an easy to use way."
                     />
                     <WhyUsCard
                         icon="📑"
                         title="️Data Driven"
-                        description="Pear creates a custom report based on each check-in’s results to help you evaluate what to make of it."
+                        description="Educado creates a custom report based on each check-in’s results to help you evaluate what to make of it."
                     />
                     <WhyUsCard
                         icon="📚"
@@ -137,10 +137,10 @@ export default async function Home() {
                 </div>
             </div>
 
-            {/* HOW PEAR WORKS */}
+            {/* HOW Educado WORKS */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
                 <h1 className="text-4xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-6/12 mt-5 mb-[2%] text-[#725D5D]">
-                    HOW PEAR WORKS
+                    HOW EDUCADO WORKS
                 </h1>
                 <HowStep
                     step="1"

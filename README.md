@@ -1,1 +1,1 @@
-# teachpear.com
+# tryeducado.com
