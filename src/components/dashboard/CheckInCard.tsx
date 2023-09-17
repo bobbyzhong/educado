@@ -6,9 +6,9 @@ import { ClipboardSignature } from "lucide-react";
 import { QuizModal } from "./QuizModal";
 import Image from "next/image";
 
-type Props = { subscribed: boolean; userId: string };
+type Props = { clear: boolean; userId: string };
 
-const CheckInCard = ({ subscribed, userId }: Props) => {
+const CheckInCard = ({ clear, userId }: Props) => {
     const [showModal, setShowModal] = React.useState(false);
     const router = useRouter();
 
@@ -53,7 +53,7 @@ const CheckInCard = ({ subscribed, userId }: Props) => {
                 </div>
             </Card>
             <QuizModal
-                subscribed={subscribed}
+                clear={clear}
                 isVisible={showModal}
                 userId={userId}
                 onClose={() => {

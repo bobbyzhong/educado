@@ -12,12 +12,12 @@ import { Button } from "../ui/button";
 export const QuizModal = ({
     isVisible,
     onClose,
-    subscribed,
+    clear,
     userId,
 }: {
     isVisible: any;
     onClose: any;
-    subscribed: any;
+    clear: any;
     userId: any;
 }) => {
     if (!isVisible) return null;
@@ -52,7 +52,7 @@ export const QuizModal = ({
         }
     };
 
-    if (subscribed) {
+    if (clear) {
         return (
             <div
                 className="z-[60] fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm

@@ -46,7 +46,7 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  subscribed   Boolean   @default(true)
+  subscribed   Boolean   @default(false)
   subscriptionId String?
   checkIns         CheckIn[]
   accounts      Account[]

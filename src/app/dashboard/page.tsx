@@ -25,6 +25,14 @@ const Dashboard = async (props: Props) => {
         },
     });
 
+    const checkIns = await prisma.checkIn.findMany({
+        where: {
+            userId: session.user.id,
+        },
+    });
+
+    const clear = user?.subscribed || checkIns.length < 10;
+
     return (
         <main className="p-8 mx-auto max-w-7xl">
             <div className="flex items-center mb-5">
@@ -41,7 +49,8 @@ const Dashboard = async (props: Props) => {
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
                 <CheckInCard
-                    subscribed={user?.subscribed!}
+                    clear={clear}
+                    // subscribed={user?.subscribed!}
                     userId={session.user.id}
                 />
                 {/* <HistoryCard /> */}
