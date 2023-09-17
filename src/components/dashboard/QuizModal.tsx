@@ -131,12 +131,12 @@ export const QuizModal = ({
                         <h1 className="font-semibold text-lg tracking-tight mb-1">
                             Subscribe to make more check-ins!
                         </h1>
-                        <p className="text-zinc-500 text-sm">
-                            You've used up your three free check-ins. It will
-                            cost $5 a month to continue using Educado. This is
+                        <p className="text-zinc-600 text-base">
+                            You've used up your 10 free check-ins. It will cost
+                            $5 a month to continue using Educado. This is really
                             just to cover our costs of running Educado.
                         </p>
-                        <p className="text-zinc-500 text-sm mt-3">
+                        <p className="text-zinc-600 text-base mt-3">
                             Please contact Bobby if you have any issues with
                             paying that amount at the moment and we can work
                             something out!
