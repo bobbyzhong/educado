@@ -322,12 +322,15 @@ const CustomCheckIn = ({ uploadedContent }: Props) => {
                                                         </SelectItem>
                                                         <SelectItem value="NGSS Preferred Integrated, Grade Six - Science (CA Dept of Education)">
                                                             NGSS CA 6th Grade
+                                                            Preferred Integrated
                                                         </SelectItem>
                                                         <SelectItem value="NGSS Grade Seven - Science (CA Dept of Education)">
                                                             NGSS CA 7th Grade
+                                                            Preferred Integrated
                                                         </SelectItem>
                                                         <SelectItem value="Grade 8 Preferred Integrated Model - Science (CA Dept of Education)">
                                                             NGSS CA 8th Grade
+                                                            Preferred Integrated
                                                         </SelectItem>
                                                         <SelectItem value="NGSS, Grade 6 Earth & Space Science - Science">
                                                             NGSS CA 6th Grade -
