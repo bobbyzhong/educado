@@ -229,34 +229,6 @@ const TextbookCheckIn = (props: Props) => {
                                     </FormItem>
                                 )}
                             />
-                            <FormItem>
-                                <FormLabel>
-                                    Curriculum/Standards {"("}Coming Soon{")"}
-                                </FormLabel>
-                                <Select>
-                                    <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a curriculum or standard" />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        <SelectItem value="m@example.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                        <SelectItem value="m@google.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                        <SelectItem value="m@support.com">
-                                            Coming Soon!
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
-                                <FormDescription>
-                                    Standards from Cal Dept. of Ed are coming
-                                    soon!
-                                </FormDescription>
-                                <FormMessage />
-                            </FormItem>
 
                             <Button
                                 variant={"green"}
