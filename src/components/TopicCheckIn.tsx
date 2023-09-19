@@ -225,7 +225,7 @@ const TopicCheckIn = (props: Props) => {
                                                     NGSS CA 8th Grade Science
                                                     Preferred Integrated
                                                 </SelectItem>
-                                                <SelectItem value="NGSS, Grade 6 Earth & Space Science - Science">
+                                                {/* <SelectItem value="NGSS, Grade 6 Earth & Space Science - Science">
                                                     NGSS CA 6th Grade - Earth &
                                                     Space Science
                                                 </SelectItem>
@@ -236,7 +236,7 @@ const TopicCheckIn = (props: Props) => {
                                                 <SelectItem value="CA NGSS Discipline Specific Grade 8 - Science (CA Dept of Education)">
                                                     NGSS CA 8th Grade - Physical
                                                     Science
-                                                </SelectItem>
+                                                </SelectItem> */}
                                                 <SelectItem value="NGSS CA Grades 9-12 Earth and Space Science">
                                                     NGSS CA Grades 9-12 Earth
                                                     and Space Science
