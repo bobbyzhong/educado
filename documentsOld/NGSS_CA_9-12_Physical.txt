@@ -1,0 +1,203 @@
+NGSS CA Grades 9-12 Physical Science: [
+    HS-PS1 Matter and Its Interactions: {
+        Core Ideas: [
+            PS1.A: Structure and Properties of Matter
+            - Each atom has a charged substructure consisting of
+            a nucleus, which is made of protons and neutrons,
+            surrounded by electrons. (HS-PS1-1)
+            - The periodic table orders elements horizontally by the
+            number of protons in the atom’s nucleus and places
+            those with similar chemical properties in columns.
+            The repeating patterns of this table reflect patterns of
+            outer electron states. (HS-PS1-1), (HS-PS1-2)
+            - The structure and interactions of matter at the bulk
+            scale are determined by electrical forces within and
+            between atoms. (HS-PS1-3), (secondary to HSPS2-6)
+            - Stable forms of matter are those in which the electric
+            and magnetic field energy is minimized. A stable
+            molecule has less energy than the same set of atoms
+            separated; one must provide at least this energy in
+            order to take the molecule apart. (HS-PS1-4)
+            PS1.B: Chemical Reactions
+            - Chemical processes, their rates, and whether or
+            not energy is stored or released can be understood
+            in terms of the collisions of molecules and the
+            rearrangements of atoms into new molecules, with
+            consequent changes in the sum of all bond energies
+            in the set of molecules that are matched by changes
+            in kinetic energy. (HS-PS1-4), (HS-PS1-5)
+            - In many situations, a dynamic and condition-dependent balance between a reaction and the reverse
+            reaction determines the numbers of all types of
+            molecules present. (HS-PS1-6)
+            - The fact that atoms are conserved, together with
+            knowledge of the chemical properties of the elements involved, can be used to describe and predict
+            chemical reactions. (HS-PS1-2), (HS-PS1-7)
+            PS1.C: Nuclear Processes
+            - Nuclear processes, including fusion, fission, and radioactive decays of unstable nuclei, involve release
+            or absorption of energy. The total number of neutrons plus protons does not change in any nuclear
+            process. (HS-PS1-8)
+            PS2.B: Types of Interactions
+            - Attraction and repulsion between electric charges
+            at the atomic scale explain the structure, properties, and transformations of matter, as well as the
+            contact forces between material objects. (secondary
+            to HS-PS1-1),(secondary to HS-PS1-3)
+            ETS1.C: Optimizing the Design Solution
+            - Criteria may need to be broken down into simpler
+            ones that can be approached systematically, and
+            decisions about the priority of certain criteria over
+            others (trade-offs) may be needed. (secondary to
+            HS-PS1-6)
+        ]
+    }
+    HS-PS2 Motion and Stability: Forces and Interactions: {
+        Core Ideas: [
+            PS1.A: Structure and Properties of Matter
+            - The structure and interactions of matter at the bulk
+            scale are determined by electrical forces within and
+            between atoms. (secondary to HS-PS2-6)
+            PS2.A: Forces and Motion
+            - Newton’s second law accurately predicts changes in
+            the motion of macroscopic objects. (HS-PS2-1)
+            - Momentum is defined for a particular frame of reference; it is the mass times the velocity of the object.
+            In any system, total momentum is always conserved.
+            (HS-PS2-2)
+            - If a system interacts with objects outside itself, the
+            total momentum of the system can change; however,
+            any such change is balanced by changes in the momentum of objects outside the system. (HS-PS2-2),
+            (HS-PS2-3)
+            PS2.B: Types of Interactions
+            - Newton’s law of universal gravitation and Coulomb’s
+            law provide the mathematical models to describe
+            and predict the effects of gravitational and electrostatic forces between distant objects. (HS-PS2-4)
+            - Forces at a distance are explained by fields (gravitational, electric, and magnetic) permeating space
+            that can transfer energy through space. Magnets
+            or electric currents cause magnetic fields; electric
+            charges or changing magnetic fields cause electric
+            fields. (HS-PS2-4), (HS-PS2-5)
+            - Attraction and repulsion between electric charges at
+            the atomic scale explain the structure, properties,
+            and transformations of matter, as well as the contact forces between material objects. (HS-PS2-6),
+            (secondary to HS-PS1-1), (secondary to HS-PS1-3)
+            PS3.A: Definitions of Energy
+            - “Electrical energy” may mean energy stored in a
+            battery or energy transmitted by electric currents.
+            (secondary to HS-PS2-5)
+            ETS1.A: Defining and Delimiting Engineering Problems
+            - Criteria and constraints also include satisfying any
+            requirements set by society, such as taking issues
+            of risk mitigation into account, and they should
+            be quantified to the extent possible and stated in
+            such a way that one can tell if a given design meets
+            them. (secondary to HS-PS2-3)
+            ETS1.C: Optimizing the Design Solution
+            - Criteria may need to be broken down into simpler
+            ones that can be approached systematically, and
+            decisions about the priority of certain criteria over
+            others (trade-offs) may be needed. (secondary to
+            HS-PS2-3)
+        ]
+    }
+    HS-PS3 Energy: {
+        Core Ideas: [
+            PS3.A: Definitions of Energy
+            - Energy is a quantitative property of a system that
+            depends on the motion and interactions of matter
+            and radiation within that system. That there is a
+            single quantity called energy is due to the fact that
+            a system’s total energy is conserved, even as, within
+            the system, energy is continually transferred from
+            one object to another and between its various possible forms. (HS-PS3-1), (HS-PS3-2)
+            - At the macroscopic scale, energy manifests itself in
+            multiple ways, such as in motion, sound, light, and
+            thermal energy. (HS-PS3-2), (HS-PS3-3)
+            - These relationships are better understood at the
+            microscopic scale, at which all of the different
+            manifestations of energy can be modeled as a
+            combination of energy associated with the motion
+            of particles and energy associated with the configuration (relative position of the particles). In some
+            cases the relative position energy can be thought
+            of as stored in fields (which mediate interactions
+            between particles). This last concept includes radiation, a phenomenon in which energy stored in fields
+            moves across space. (HS-PS3-2)
+            PS3.B: Conservation of Energy and Energy Transfer
+            - Conservation of energy means that the total change
+            of energy in any system is always equal to the total
+            energy transferred into or out of the system. (HSPS3-1)
+            - Energy cannot be created or destroyed, but it can be
+            transported from one place to another and transferred between systems. (HS-PS3-1), (HS-PS3-4)
+            - Mathematical expressions, which quantify how the
+            stored energy in a system depends on its configuration (e.g., relative positions of charged particles,
+            compression of a spring) and how kinetic energy
+            depends on mass and speed, allow the concept of
+            conservation of energy to be used to predict and
+            describe system behavior. (HS-PS3-1)
+            - The availability of energy limits what can occur in
+            any system. (HS-PS3-1)
+            - Uncontrolled systems always evolve toward more
+            stable states—that is, toward more uniform energy
+            distribution (e.g., water flows downhill, objects hotter
+            than their surrounding environment cool down).
+            (HS-PS3-4)
+            PS3.C: Relationship Between Energy and Forces
+            - When two objects interacting through a field change
+            relative position, the energy stored in the field is
+            changed. (HS-PS3–5)
+            PS3.D: Energy in Chemical Processes
+            - Although energy cannot be destroyed, it can be converted to less useful forms—for example, to thermal
+            energy in the surrounding environment. (HS-PS3-3),
+            (HS-PS3-4)
+            ETS1.A: Defining and Delimiting Engineering Problems
+            - Criteria and constraints also include satisfying any
+            requirements set by society, such as taking issues
+            of risk mitigation into account, and they should
+            be quantified to the extent possible and stated in
+            such a way that one can tell if a given design meets
+            them. (secondary to HS-PS3-3)
+        ]
+    }
+    HS-PS4 Waves and Their Applications in Technologies for Information Transfer: {
+        Core Ideas: [
+            PS3.D: Energy in Chemical Processes
+            - Solar cells are human-made devices that likewise
+            capture the sun’s energy and produce electrical
+            energy. (secondary to HS-PS4-5)
+            PS4.A: Wave Properties
+            - The wavelength and frequency of a wave are related
+            to one another by the speed of travel of the wave,
+            which depends on the type of wave and the medium
+            through which it is passing. (HS-PS4-1)
+            - Information can be digitized (e.g., a picture stored
+            as the values of an array of pixels); in this form, it
+            can be stored reliably in computer memory and sent
+            over long distances as a series of wave pulses. (HSPS4-2), (HS-PS4-5)
+            - [From the 3–5 grade band endpoints] Waves can
+            add or cancel one another as they cross, depending on their relative phase (i.e., relative position of
+            peaks and troughs of the waves), but they emerge
+            unaffected by each other. (Boundary: The discussion at this grade level is qualitative only; it can be
+            based on the fact that two different sounds can
+            pass a location in different directions without getting
+            mixed up.) (HS-PS4-3)
+            PS4.B: Electromagnetic Radiation
+            - Electromagnetic radiation (e.g., radio, microwaves,
+            light) can be modeled as a wave of changing
+            electric and magnetic fields or as particles called
+            photons.The wave model is useful for explaining
+            many features of electromagnetic radiation, and the
+            particle model explains other features. (HS-PS4-3)
+            - When light or longer wavelength electromagnetic radiation is absorbed in matter, it is generally converted into thermal energy (heat). Shorter wavelength
+            electromagnetic radiation (ultraviolet, X-rays, gamma
+            rays) can ionize atoms and cause damage to living
+            cells. (HS-PS4-4)
+            - Photovoltaic materials emit electrons when they
+            absorb light of a high-enough frequency. (HS-PS4-5)
+            PS4.C: Information Technologies and Instrumentation
+            - Multiple technologies based on the understanding
+            of waves and their interactions with matter are part
+            of everyday experiences in the modern world (e.g.,
+            medical imaging, communications, scanners) and in
+            scientific research. They are essential tools for producing, transmitting, and capturing signals and for
+            storing and interpreting the information contained in
+            them. (HS-PS4-5)
+        ]
+    }
+]

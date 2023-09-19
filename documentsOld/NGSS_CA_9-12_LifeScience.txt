@@ -1,0 +1,254 @@
+NGSS CA Grades 9-12 Life Science: [
+    HS-LS1 From Molecules to Organisms: Structures and Processes: {
+        Core Ideas: [
+            LS1.A: Structure and Function
+            - Systems of specialized cells within organisms help
+            them perform the essential functions of life. (HSLS1-1)
+            - All cells contain genetic information in the form of
+            DNA molecules. Genes are regions in the DNA that
+            contain the instructions that code for the formation
+            of proteins, which carry out most of the work of
+            cells. (HS-LS1-1) (Note: This Disciplinary Core Idea
+            is also addressed by HS-LS3-1.)
+            - Multicellular organisms have a hierarchical structural
+            organization, in which any one system is made up
+            of numerous parts and is itself a component of the
+            next level. (HS-LS1-2)
+            - Feedback mechanisms maintain a living system’s
+            internal conditions within certain limits and mediate
+            behaviors, allowing it to remain alive and functional
+            even as external conditions change within some
+            range. Feedback mechanisms can encourage
+            (through positive feedback) or discourage (negative
+            feedback) what is going on inside the living system.
+            (HS-LS1-3)
+            LS1.B: Growth and Development of Organisms
+            - In multicellular organisms individual cells grow and
+            then divide via a process called mitosis, thereby allowing the organism to grow. The organism begins as
+            a single cell (fertilized egg) that divides successively
+            to produce many cells, with each parent cell passing
+            identical genetic material (two variants of each
+            chromosome pair) to both daughter cells. Cellular
+            division and differentiation produce and maintain a
+            complex organism, composed of systems of tissues
+            and organs that work together to meet the needs of
+            the whole organism. (HS-LS1-4)
+            LS1.C: Organization for Matter and Energy Flow in
+            Organisms
+            - The process of photosynthesis converts light energy
+            to stored chemical energy by converting carbon
+            dioxide plus water into sugars plus released oxygen.
+            (HS-LS1-5)
+            - The sugar molecules thus formed contain carbon,
+            hydrogen, and oxygen: their hydrocarbon backbones
+            are used to make amino acids and other carbon-based molecules that can be assembled into
+            larger molecules (such as proteins or DNA), used for
+            example to form new cells. (HS-LS1-6)
+            - As matter and energy flow through different organizational levels of living systems, chemical elements
+            are recombined in different ways to form different
+            products. (HS-LS1-6), (HS-LS1-7)
+            - As a result of these chemical reactions, energy is
+            transferred from one system of interacting molecules to another. Cellular respiration is a chemical
+            process in which the bonds of food molecules and
+            oxygen molecules are broken and new compounds
+            are formed that can transport energy to muscles.
+            Cellular respiration also releases the energy needed
+            to maintain body temperature despite ongoing
+            energy transfer to the surrounding environment.
+            (HS-LS1-7)
+
+        ]
+    }
+    HS-LS2 Ecosystems: Interactions, Energy, and Dynamics: {
+        Core Ideas: [
+            LS2.A: Interdependent Relationships in Ecosystems
+            - Ecosystems have carrying capacities, which are
+            limits to the numbers of organisms and populations
+            they can support. These limits result from such
+            factors as the availability of living and nonliving
+            resources and from such challenges such as predation, competition, and disease. Organisms would
+            have the capacity to produce populations of great
+            size were it not for the fact that environments and
+            resources are finite. This fundamental tension affects
+            the abundance (number of individuals) of species in
+            any given ecosystem. (HS-LS2-1), (HS-LS2-2)
+            LS2.B: Cycles of Matter and Energy Transfer in
+            Ecosystems
+            - Photosynthesis and cellular respiration (including
+            anaerobic processes) provide most of the energy for
+            life processes. (HS-LS2-3)
+            - Plants or algae form the lowest level of the food
+            web. At each link upward in a food web, only a small
+            fraction of the matter consumed at the lower level is
+            transferred upward, to produce growth and release
+            energy in cellular respiration at the higher level.
+            Given this inefficiency, there are generally fewer organisms at higher levels of a food web. Some matter
+            reacts to release energy for life functions, some
+            matter is stored in newly made structures, and much
+            is discarded. The chemical elements that make up
+            the molecules of organisms pass through
+            food webs and into and out of the atmosphere and
+            soil, and they are combined and recombined in
+            different ways. At each link in an ecosystem, matter
+            and energy are conserved. (HS-LS2-4)
+            - Photosynthesis and cellular respiration are important components of the carbon cycle, in which
+            carbon is exchanged among the biosphere, atmosphere, oceans, and geosphere through chemical,
+            physical, geological, and biological processes.
+            (HS-LS2-5)
+            LS2.C: Ecosystem Dynamics, Functioning, and
+            Resilience
+            - A complex set of interactions within an ecosystem
+            can keep its numbers and types of organisms
+            relatively constant over long periods of time under
+            stable conditions. If a modest biological or physical
+            disturbance to an ecosystem occurs, it may return to
+            its more or less original status (i.e., the ecosystem is
+            resilient), as opposed to becoming a very different
+            ecosystem. Extreme fluctuations in conditions or the
+            size of any population, however, can challenge the
+            functioning of ecosystems in terms of resources and
+            habitat availability. (HS-LS2-2), (HS-LS2-6)
+            - Moreover, anthropogenic changes (induced by
+            human activity) in the environment—including habitat destruction, pollution, introduction of invasive
+            species, overexploitation, and climate change—can
+            disrupt an ecosystem and threaten the survival of
+            some species. (HS-LS2-7)
+            LS2.D: Social Interactions and Group Behavior
+            - Group behavior has evolved because membership
+            can increase the chances of survival for individuals
+            and their genetic relatives. (HS-LS2-8)
+            LS4.D: Biodiversity and Humans
+            - Biodiversity is increased by the formation of new
+            species (speciation) and decreased by the loss of
+            species (extinction). (secondary to HS-LS2-7)
+            - Humans depend on the living world for the resources and other benefits provided by biodiversity. But
+            human activity is also having adverse impacts on
+            biodiversity through overpopulation, overexploitation, habitat destruction, pollution, introduction of
+            invasive species, and climate change. Thus sustaining biodiversity so that ecosystem functioning and
+            productivity are maintained is essential to supporting and enhancing life on Earth. Sustaining biodiversity also aids humanity by preserving landscapes
+            of recreational or inspirational value. (secondary to
+            HS-LS2-7) (Note: This Disciplinary Core Idea is also
+            addressed by HS-LS4-6.)
+            PS3.D: Energy in Chemical Processes
+            - The main way that solar energy is captured and
+            stored on Earth is through the complex chemical
+            process known as photosynthesis. (secondary to
+            HS-LS2-5)
+            ETS1.B: Developing Possible Solutions
+            - When evaluating solutions it is important to take
+            into account a range of constraints including cost,
+            safety, reliability and aesthetics and to consider social, cultural and environmental impacts. (secondary
+            to HS-LS2-7)
+        ]
+    }
+    HS-LS3 Heredity: Inheritance and Variation of Traits: {
+        Core Ideas: [
+            LS1.A: Structure and Function
+            - All cells contain genetic information in the form of
+            DNA molecules. Genes are regions in the DNA that
+            contain the instructions that code for the formation
+            of proteins. (secondary to HS-LS3-1) (Note: This
+            Disciplinary Core Idea is also addressed by HSLS1-1.)
+            LS3.A: Inheritance of Traits
+            - Each chromosome consists of a single very long
+            DNA molecule, and each gene on the chromosome
+            is a particular segment of that DNA. The instructions
+            for forming species’ characteristics are carried in
+            DNA. All cells in an organism have the same genetic
+            content, but the genes used (expressed) by the cell
+            may be regulated in different ways. Not all DNA
+            codes for a protein; some segments of DNA are
+            involved in regulatory or structural functions, and
+            some have no as-yet known function. (HS-LS3-1)
+            LS3.B: Variation of Traits
+            - In sexual reproduction, chromosomes can sometimes swap sections during the process of meiosis
+            (cell division), thereby creating new genetic combinations and thus more genetic variation. Although
+            DNA replication is tightly regulated and remarkably
+            accurate, errors do occur and result in mutations,
+            which are also a source of genetic variation. Environmental factors can also cause mutations in genes,
+            and viable mutations are inherited. (HS-LS3-2)
+            - Environmental factors also affect expression of
+            traits, and hence affect the probability of occurrences of traits in a population. Thus the variation
+            and distribution of traits observed depends on both
+            genetic and environmental factors. (HS-LS3-2), (HSLS3-3)
+        ]
+    }
+    HS-LS4 Biological Evolution: Unity and Diversity: {
+        Core Ideas: [
+            LS4.A: Evidence of Common Ancestry and Diversity
+            - Genetic information provides evidence of evolution.
+            DNA sequences vary among species, but there are
+            many overlaps; in fact, the ongoing branching that
+            produces multiple lines of descent can be inferred by
+            comparing the DNA sequences of different organisms.
+            Such information is also derivable from the similarities
+            and differences in amino acid sequences and from
+            anatomical and embryological evidence. (HS-LS4-1)
+            LS4.B: Natural Selection
+            - Natural selection occurs only if there is both
+            (1) variation in the genetic information between
+            organisms in a population and (2) variation in the
+            expression of that genetic information—that is, trait
+            variation—that leads to differences in performance
+            among individuals. (HS-LS4-2), (HS-LS4-3)
+            - The traits that positively affect survival are more
+            likely to be reproduced, and thus are more common
+            in the population. (HS-LS4-3)
+            LS4.C: Adaptation
+            - Evolution is a consequence of the interaction of four
+            factors: (1) the potential for a species to increase
+            in number, (2) the genetic variation of individuals in
+            a species due to mutation and sexual reproduction,
+            (3) competition for an environment’s limited supply
+            of the resources that individuals need in order to
+            survive and reproduce, and (4) the ensuing proliferation of those organisms that are better able to survive and reproduce in that environment. (HS-LS4-2)
+            Natural selection leads to adaptation, that is, to
+            a population dominated by organisms that are
+            anatomically, behaviorally, and physiologically
+            well suited to survive and reproduce in a specific
+            environment. That is, the differential survival and
+            reproduction of organisms in a population that have
+            an advantageous heritable trait leads to an increase
+            in the proportion of individuals in future generations that have the trait and to a decrease in the
+            proportion of individuals that do not. (HS-LS4-3),
+            (HS-LS4-4)
+            - Adaptation also means that the distribution of
+            traits in a population can change when conditions
+            change. (HS-LS4-3)
+            - Changes in the physical environment, whether
+            naturally occurring or human induced, have thus
+            contributed to the expansion of some species, the
+            emergence of new distinct species as populations
+            diverge under different conditions, and the decline–
+            and sometimes the extinction–of some species.
+            (HS-LS4-5), (HS-LS4-6)
+            - Species become extinct because they can no longer
+            survive and reproduce in their altered environment.
+            If members cannot adjust to change that is too fast
+            or drastic, the opportunity for the species’ evolution
+            is lost. (HS-LS4-5)
+            LS4.D: Biodiversity and Humans
+            - Humans depend on the living world for the resources and other benefits provided by biodiversity. But
+            human activity is also having adverse impacts on
+            biodiversity through overpopulation, overexploitation
+            habitat destruction, pollution, introduction of
+            invasive species, and climate change. Thus sustaining biodiversity so that ecosystem functioning and
+            productivity are maintained is essential to supporting and enhancing life on Earth. Sustaining biodiversity also aids humanity by preserving landscapes
+            of recreational or inspirational value. (HS-LS4-6)
+            (Note: This Disciplinary Core Idea is also addressed
+            by HS-LS2-7.)
+            ETS1.B: Developing Possible Solutions
+            - When evaluating solutions, it is important to take
+            into account a range of constraints, including cost,
+            safety, reliability, and aesthetics, and to consider
+            social, cultural, and environmental impacts. (secondary to HS-LS4-6)
+            - Both physical models and computers can be used
+            in various ways to aid in the engineering design process. Computers are useful for a variety of purposes,
+            such as running simulations to test different ways
+            of solving a problem or to see which one is most
+            efficient or economical; and in making a persuasive
+            presentation to a client about how a given design
+            will meet his or her needs. (secondary to HS-LS4-6)
+        ]
+    }
+]
