@@ -1,0 +1,180 @@
+NGSS CA Grades 9-12 Earth and Space Science: [
+    HS-ESS1 Earth’s Place in the Universe: {
+        Core Ideas: [
+            ESS1.A: The Universe and Its Stars
+            - The star called the sun is changing and will burn out
+            over a lifespan of approximately 10 billion years.
+            (HS-ESS1-1)
+            - The study of stars’ light spectra and brightness is
+            used to identify compositional elements of stars,
+            their movements, and their distances from Earth.
+            (HS-ESS1-2), (HS-ESS1-3)
+            - The Big Bang theory is supported by observations
+            of distant galaxies receding from our own, of the
+            measured composition of stars and non-stellar
+            gases, and of the maps of spectra of the primordial
+            radiation (cosmic microwave background) that still
+            fills the universe. (HS-ESS1-2)
+            - Other than the hydrogen and helium formed at the
+            time of the Big Bang, nuclear fusion within stars
+            produces all atomic nuclei lighter than and including iron, and the process releases electromagnetic
+            energy. Heavier elements are produced when certain
+            massive stars achieve a supernova stage and explode. (HS-ESS1-2), (HS-ESS1-3)
+            ESS1.B: Earth and the Solar System
+            - Kepler’s laws describe common features of the
+            motions of orbiting objects, including their elliptical
+            paths around the sun. Orbits may change due to the
+            gravitational effects from, or collisions with, other
+            objects in the solar system. (HS-ESS1-4)
+            ESS1.C: The History of Planet Earth
+            - Continental rocks, which can be older than 4 billion
+            years, are generally much older than the rocks of the
+            ocean floor, which are less than 200 million years
+            old. (HS-ESS1-5)
+            - Although active geologic processes, such as plate
+            tectonics and erosion, have destroyed or altered
+            most of the very early rock record on Earth, other
+            objects in the solar system, such as lunar rocks,
+            asteroids, and meteorites, have changed little over
+            billions of years. Studying these objects can provide
+            information about Earth’s formation and early history. (HS-ESS1-6)
+            ESS2.B: Plate Tectonics and Large-Scale System
+            Interactions
+            - Plate tectonics is the unifying theory that explains
+            the past and current movements of the rocks at
+            Earth’s surface and provides a framework for understanding its geologic history. (ESS2.B Grade 8 GBE),
+            (secondary to HS-ESS1-5)
+            PS1.C: Nuclear Processes
+            - Spontaneous radioactive decays follow a characteristic exponential decay law. Nuclear lifetimes allow
+            radiometric dating to be used to determine the ages
+            of rocks and other materials. (secondary to HSESS1-5), (secondary to HS-ESS1-6)
+            PS3.D: Energy in Chemical Processes and Everyday
+            Life
+            - Nuclear Fusion processes in the center of the sun
+            release the energy that ultimately reaches Earth as
+            radiation. (secondary to HS-ESS1-1)
+            PS4.B Electromagnetic Radiation
+            - Atoms of each element emit and absorb characteristic frequencies of light. These characteristics allow
+            identification of the presence of an element, even in
+            microscopic quantities. (secondary to HS-ESS1-2)
+        ]
+    },
+    HS-ESS2 Earth’s Systems: {
+        Core Ideas: [
+            ESS1.B: Earth and the Solar System
+            - Cyclical changes in the shape of Earth’s orbit around
+            the sun, together with changes in the tilt of the planet’s axis of rotation, both occurring over hundreds of
+            thousands of years, have altered the intensity and
+            distribution of sunlight falling on the earth. These
+            phenomena cause a cycle of ice ages and other
+            gradual climate changes. (secondary to HS-ESS2-4)
+            - Earth’s systems, being dynamic and interacting,
+            cause feedback effects that can increase or decrease the original changes. (HS-ESS2-1), (HSESS2-2)
+            - Evidence from deep probes and seismic waves, reconstructions of historical changes in Earth’s surface
+            and its magnetic field, and an understanding of
+            physical and chemical processes lead to a model of
+            Earth with a hot but solid inner core, a liquid outer
+            core, a solid mantle and crust. Motions of the mantle and its plates occur primarily through thermal
+            convection, which involves the cycling of matter due
+            to the outward flow of energy from Earth’s interior
+            and gravitational movement of denser materials
+            toward the interior. (HS-ESS2-3)
+            - The geological record shows that changes to global
+            and regional climate can be caused by interactions
+            among changes in the sun’s energy output or Earth’s
+            orbit, tectonic events, ocean circulation, volcanic
+            activity, glaciers, vegetation, and human activities.
+            These changes can occur on a variety of time scales
+            from sudden (e.g., volcanic ash clouds) to intermediate (ice ages) to very long-term tectonic cycles.
+            (HS-ESS2-4)
+            ESS2.B: Plate Tectonics and Large-Scale System
+            Interactions
+            - The radioactive decay of unstable isotopes continually generates new energy within Earth’s crust
+            and mantle, providing the primary source of the
+            heat that drives mantle convection. Plate tectonics
+            can be viewed as the surface expression of mantle
+            convection. (HS-ESS2-3)
+            - Plate tectonics is the unifying theory that explains
+            the past and current movements of the rocks at
+            Earth’s surface and provides a framework for understanding its geologic history. Plate movements are
+            responsible for most continental and ocean-floor
+            features and for the distribution of most rocks and
+            minerals within Earth’s crust. (ESS2.B Grade 8 GBE)
+            (HS-ESS2-1)
+            ESS2.C: The Roles of Water in Earth’s Surface
+            Processes
+            - The abundance of liquid water on Earth’s surface
+            and its unique combination of physical and chemical properties are central to the planet’s dynamics.These properties include water’s exceptional
+            capacity to absorb, store, and release large amounts
+            of energy, transmit sunlight, expand upon freezing,
+            dissolve and transport materials, and lower the viscosities and melting points of rocks. (HS-ESS2-5)
+            ESS2.D: Weather and Climate
+            - The foundation for Earth’s global climate systems is
+            the electromagnetic radiation from the sun, as well
+            as its reflection, absorption, storage, and redistribution among the atmosphere, ocean, and land
+            systems, and this energy’s re-radiation into space.
+            (HS-ESS2-2), (HS-ESS2-4)
+
+            -
+            - Changes in the atmosphere due to human activity
+            have increased carbon dioxide concentrations and
+            thus affect climate. (HS-ESS2-6), (HS-ESS2-4)
+            ESS2.E: Biogeology
+            - The many dynamic and delicate feedbacks between
+            the biosphere and other Earth systems cause a
+            continual co-evolution of Earth’s surface and the life
+            that exists on it. (HS-ESS2-7)
+            PS4.A: Wave Properties
+            - Geologists use seismic waves and their reflection at
+            interfaces between layers to probe structures deep
+            in the planet. (secondary to HS-ESS2-3)
+        ]
+    }
+    HS-ESS3 Earth and Human Activity: {
+        Core Ideas: [
+            ESS2.D: Weather and Climate
+            - Current models predict that, although future regional
+            climate changes will be complex and varied, average
+            global temperatures will continue to rise. The outcomes predicted by global climate models strongly
+            depend on the amounts of human-generated greenhouse gases added to the atmosphere each year and
+            by the ways in which these gases are absorbed by the
+            ocean and biosphere. (secondary to HS-ESS3-6)
+            ESS3.A: Natural Resources
+            - Resource availability has guided the development of
+            human society. (HS-ESS3-1)
+            - All forms of energy production and other resource
+            extraction have associated economic, social, environmental, and geopolitical costs and risks as well as
+            benefits. New technologies and social regulations can
+            change the balance of these factors. (HS-ESS3-2)
+            ESS3.B: Natural Hazards
+            - Natural hazards and other geologic events have
+            shaped the course of human history; [they] have
+            significantly altered the sizes of human populations
+            and have driven human migrations. (HS-ESS3-1)
+            ESS3.C: Human Impacts on Earth Systems
+            - The sustainability of human societies and the
+            biodiversity that supports them requires responsible
+            management of natural resources. (HS-ESS3-3)
+            - Scientists and engineers can make major contributions by developing technologies that produce less
+            pollution and waste and that preclude ecosystem
+            degradation. (HS-ESS3-4)
+            ESS3.D: Global Climate Change
+            - Though the magnitudes of human impacts are
+            greater than they have ever been, so too are human
+            abilities to model, predict, and manage current and
+            future impacts. (HS-ESS3-5)
+            - Through computer simulations and other studies,
+            important discoveries are still being made about
+            how the ocean, the atmosphere, and the biosphere
+            interact and are modified in response to human
+            activities. (HS-ESS3-6)
+            ETS1.B: Developing Possible Solutions
+            - When evaluating solutions, it is important to take
+            into account a range of constraints, including cost,
+            safety, reliability, and aesthetics, and to consider
+            social, cultural, and environmental impacts. (secondary to HS-ESS3-2), (secondary to HS-ESS3-4)
+        ]
+    }
+
+]
+

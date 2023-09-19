@@ -142,7 +142,7 @@ const TopicCheckIn = (props: Props) => {
                                         <FormDescription>
                                             This is for your reference only.
                                             Anything put in here will not be
-                                            used to create the check-in.
+                                            used to create the check-in
                                         </FormDescription>
                                         <FormMessage />
                                     </FormItem>
@@ -237,6 +237,18 @@ const TopicCheckIn = (props: Props) => {
                                                     NGSS CA 8th Grade - Physical
                                                     Science
                                                 </SelectItem>
+                                                <SelectItem value="NGSS CA Grades 9-12 Earth and Space Science">
+                                                    NGSS CA Grades 9-12 Earth
+                                                    and Space Science
+                                                </SelectItem>
+                                                <SelectItem value="NGSS CA Grades 9-12 Life Science">
+                                                    NGSS CA Grades 9-12 Life
+                                                    Science
+                                                </SelectItem>
+                                                <SelectItem value="NGSS CA Grades 9-12 Physical Science">
+                                                    NGSS CA Grades 9-12 Physical
+                                                    Science
+                                                </SelectItem>
                                             </SelectContent>
                                         </Select>
                                         <FormDescription>
@@ -247,35 +259,7 @@ const TopicCheckIn = (props: Props) => {
                                     </FormItem>
                                 )}
                             />
-                            <FormField
-                                control={form.control}
-                                name="context"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>
-                                            Context (Optional)
-                                        </FormLabel>
-                                        <FormControl>
-                                            <Textarea
-                                                placeholder="You can put any facts or notes here if you want"
-                                                {...field}
-                                                rows={3}
-                                            />
-                                            {/* <Input
-                                                placeholder="Enter a topic..."
-                                                {...field}
-                                            /> */}
-                                        </FormControl>
-                                        <FormDescription>
-                                            Put any context you want your
-                                            check-in to have. The content put
-                                            here will be the content that the
-                                            check-in is based on.
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
+
                             <FormField
                                 control={form.control}
                                 name="amount"
