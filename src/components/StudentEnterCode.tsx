@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle } from "lucide-react";
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
