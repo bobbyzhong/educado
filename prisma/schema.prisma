@@ -83,7 +83,7 @@ model CheckIn {
   timeEnded   DateTime?
   standard    String?
   reportCreated Boolean? @default(false)
-  mostMissed  String?
+  mostMissed  String? @db.Text
   zeroStudents String?
   average   Float?
   checkInType    CheckInType
