@@ -83,7 +83,7 @@ model CheckIn {
   timeEnded   DateTime?
   standard    String?
   reportCreated Boolean? @default(false)
-  mostMissed  String? @db.Text
+  mostMissed  String? 
   zeroStudents String?
   average   Float?
   checkInType    CheckInType
@@ -143,9 +143,3 @@ model Result {
 
   @@index([checkInId])
 }
-
-// {
-//   pairs: [
-//     {questionString, studentAnswer, correct}, {question, studentAnswer, incorrect},
-//   ]
-// }
