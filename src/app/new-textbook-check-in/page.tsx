@@ -1,5 +1,4 @@
 import TextbookCheckIn from "@/components/TextbookCheckIn";
-import TopicCheckIn from "@/components/TopicCheckIn";
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 import React from "react";
