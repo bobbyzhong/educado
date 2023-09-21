@@ -20,7 +20,7 @@ const StudentEnterCode = (props: Props) => {
     };
 
     return (
-        <div className="w-full flex items-center justify-center mt-5">
+        <div className="w-full flex items-center justify-center mt-7">
             <div className="flex flex-row gap-2 items-center justify-center">
                 <h1 className="text-[19px] text-zinc-800 font-[520] ">
                     <span className="text-green font-[650] tracking-wide">
