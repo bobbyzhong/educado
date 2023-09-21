@@ -225,12 +225,7 @@ const MCQ = ({ checkIn }: Props) => {
             <div className="flex flex-row justify-between">
                 <div className="flex flex-col justify-center mb-1 gap-2">
                     {/* Topic */}
-                    <p>
-                        <span className="bg-green px-2 py-1  rounded-lg text-white1 mr-2 ">
-                            Check-In Title:
-                        </span>
-                        <span className="  text-zinc-700">{checkIn.title}</span>
-                    </p>
+
                     <p>
                         <span className="bg-green px-2 py-1   rounded-lg text-white1 mr-2 ">
                             Topic:
