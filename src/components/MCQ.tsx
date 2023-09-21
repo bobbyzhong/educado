@@ -178,7 +178,7 @@ const MCQ = ({ checkIn }: Props) => {
                             Enter your name
                         </CardTitle>
                         <CardDescription>
-                            This check-in's title: {checkIn.title} <br />
+                            This check-in's topic: {checkIn.topic} <br />
                             Teacher Name: {checkIn.user.name}
                         </CardDescription>
                     </CardHeader>
@@ -223,24 +223,18 @@ const MCQ = ({ checkIn }: Props) => {
     return (
         <div className="absolute -translate-x-1/2 -translate-y-1/2 md:w-[80vw] max-w-4xl w-[90vw] top-1/2 left-1/2">
             <div className="flex flex-row justify-between">
-                <div className="flex flex-col justify-center mb-1 gap-2">
+                <div className="flex flex-col justify-center mb-1">
                     {/* Topic */}
                     <p>
                         <span className="bg-green px-2 py-1  rounded-lg text-white1 mr-2 ">
-                            Check-In Title:
-                        </span>
-                        <span className="  text-zinc-700">{checkIn.title}</span>
-                    </p>
-                    <p>
-                        <span className="bg-green px-2 py-1   rounded-lg text-white1 mr-2 ">
-                            Topic:
+                            Topic/Concepts
                         </span>
                         <span className="  text-zinc-700">{checkIn.topic}</span>
                     </p>
                 </div>
             </div>
 
-            <Card className="w-full mt-3">
+            <Card className="w-full mt-4">
                 <CardHeader className="flex flex-row items-center">
                     <CardTitle className="mr-5 text-center divide-y divide-zinc-600/50">
                         <div>{questionIndex + 1}</div>
