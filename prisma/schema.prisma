@@ -75,6 +75,7 @@ enum CheckInType {
 model CheckIn {
   id          String     @id @default(cuid())
   userId      String
+  code        String? @unique
   title      String? @default("Untitled")
   questions   Question[]
   timeStarted DateTime

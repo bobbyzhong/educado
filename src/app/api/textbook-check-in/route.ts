@@ -7,6 +7,18 @@ import { ZodError } from "zod";
 import { prisma } from "@/lib/db";
 import axios from "axios";
 
+function generateRandomCode() {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+
+    for (let i = 0; i < 5; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        code += characters[randomIndex];
+    }
+
+    return code;
+}
+
 export async function POST(req: Request, res: Response) {
     try {
         const session = await getAuthSession();
@@ -24,6 +36,20 @@ export async function POST(req: Request, res: Response) {
         const { amount, topic, type, textbook, chapters } =
             textbookCheckInSchema.parse(body);
 
+        const getCheckInCode: any = async () => {
+            const code = generateRandomCode();
+            const sameCodes = await prisma.checkIn.findMany({
+                where: {
+                    code: code,
+                },
+            });
+            if (sameCodes.length > 0) {
+                return getCheckInCode();
+            }
+            return code;
+        };
+        const code = await getCheckInCode();
+
         const checkIn = await prisma.checkIn.create({
             data: {
                 checkInType: type,
@@ -31,6 +57,7 @@ export async function POST(req: Request, res: Response) {
                 userId: session.user.id,
                 topic: "Chapters " + chapters,
                 contentSource: "textbook",
+                code: code,
             },
         });
 

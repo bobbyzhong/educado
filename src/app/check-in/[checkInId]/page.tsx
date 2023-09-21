@@ -11,7 +11,7 @@ type Props = {
     };
 };
 const CheckIn = async ({ params: { checkInId } }: Props) => {
-    const checkIn = await prisma.checkIn.findUnique({
+    let checkIn: any = await prisma.checkIn.findUnique({
         where: {
             id: checkInId,
         },
@@ -26,6 +26,24 @@ const CheckIn = async ({ params: { checkInId } }: Props) => {
             user: true,
         },
     });
+    if (!checkIn) {
+        const checkInList = await prisma.checkIn.findMany({
+            where: {
+                code: checkInId,
+            },
+            include: {
+                questions: {
+                    select: {
+                        id: true,
+                        question: true,
+                        options: true,
+                    },
+                },
+                user: true,
+            },
+        });
+        checkIn = checkInList[0];
+    }
 
     if (!checkIn || checkIn.checkInType !== "mcq") {
         return redirect("/new-check-in");

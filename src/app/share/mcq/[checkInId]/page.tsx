@@ -8,6 +8,7 @@ import React from "react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import CopyCard from "@/components/share/CopyCard";
 import QrCodeCard from "@/components/share/QrCodeCard";
+import CodeDisplay from "@/components/CodeDisplay";
 
 type Props = {
     params: {
@@ -37,12 +38,10 @@ const SharePage = async ({ params: { checkInId } }: Props) => {
             <div className="p-8 mx-auto max-w-5xl">
                 <div className="flex items-center justify-between space-y-2">
                     <div className="flex flex-col gap-1">
-                        <h2 className="mr-2 text-[28px] font-bold tracking-tight">
-                            Share Check-In
-                        </h2>
+                        <CodeDisplay code={checkIn.code!} />
                         <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
-                            Here, you’ll be able to share the check-in with your
-                            students!
+                            Here, you’ll have other options to share the
+                            check-in
                         </h1>
                     </div>
                     <div className="flex items-center space-x-2">
