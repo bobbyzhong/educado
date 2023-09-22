@@ -54,7 +54,7 @@
         "langchain": "^0.0.99",
         "lucide-react": "^0.263.1",
         "micro-cors": "^0.1.1",
-        "next": "13.4.12",
+        "next": "^13.5.2",
         "next-auth": "^4.22.3",
         "next-themes": "^0.2.1",
         "nodemailer": "^6.9.4",
