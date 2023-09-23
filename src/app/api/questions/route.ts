@@ -50,11 +50,12 @@ export const POST = async (req: Request, res: Response) => {
                      {"question": "What is the capital of Spain?", "answer": "Madrid", "option1": "Austin", "option2": "Barcelona", "option3": "Toronto"}]}.]}`;
 
         let questions: any;
+        let resObj: any;
 
         if (standard === "none") {
             let res = await model.call(template2);
             res.replace(/(\w)"(\w)/g, "$1'$2");
-            let resObj = JSON.parse(res);
+            resObj = JSON.parse(res);
 
             questions = resObj.questions;
         } else {
@@ -69,10 +70,43 @@ export const POST = async (req: Request, res: Response) => {
                 body
             );
             text.replace(/(\w)"(\w)/g, "$1'$2");
-            let resObj = JSON.parse(text);
+            resObj = JSON.parse(text);
 
             questions = resObj.questions;
         }
+        // console.log(resObj);
+        // Here is what resObj looks like
+        // {
+        //     questions: [
+        //         {
+        //             question:
+        //                 "What is the process by which plants use the energy from light to make sugars?",
+        //             answer: "photosynthesis",
+        //             option1: "cellular respiration",
+        //             option2: "transpiration",
+        //             option3: "osmosis",
+        //         },
+        //         {
+        //             question:
+        //                 "Which core idea states that plants produce complex food molecules (sugars) using an energy input?",
+        //             answer: "The chemical reaction by which plants produce complex food molecules (sugars) requires an energy input (i.e., from sunlight) to occur.",
+        //             option1:
+        //                 "A system of objects may also contain stored (potential) energy, depending on their relative positions.",
+        //             option2:
+        //                 "A solution needs to be tested, and then modified on the basis of the test results, in order to improve it.",
+        //             option3:
+        //                 "Humans depend on Earth’s land, ocean, atmosphere, and biosphere for many different resources.",
+        //         },
+        //         {
+        //             question:
+        //                 "What is the name for models that demonstrate how matter and energy is transferred between producers, consumers, and decomposers in an ecosystem?",
+        //             answer: "food webs",
+        //             option1: "crystals",
+        //             option2: "molecules",
+        //             option3: "atoms",
+        //         },
+        //     ];
+        // }
 
         return NextResponse.json(
             {
