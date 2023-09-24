@@ -74,7 +74,7 @@ export const POST = async (req: Request, res: Response) => {
 
             questions = resObj.questions;
         }
-        // console.log(resObj);
+        // console.log(resObj)
         // Here is what resObj looks like
         // {
         //     questions: [
