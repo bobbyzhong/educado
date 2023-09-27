@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { getAuthSession } from "@/lib/nextauth";
+
 import AllResultsTable from "@/components/AllResultsTable";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
