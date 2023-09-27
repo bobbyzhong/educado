@@ -20,6 +20,7 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
     }
 
     const mostMissed = checkIn.mostMissed?.split(",");
+    const notes = checkIn.notes?.split(",");
 
     return (
         <>
@@ -81,6 +82,31 @@ const ResultsPage = async ({ params: { checkInId } }: Props) => {
                                     <p className="  leading-6 w-[98%]">
                                         {checkIn.average}%
                                     </p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                        <div className="grid gap-4 mt-4 md:grid-cols-1">
+                            <Card className=" hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-4 px-7">
+                                <CardHeader className="flex flex-col gap-2 mb-2 p-0">
+                                    <CardTitle className="text-[19px] font-bold tracking-tight">
+                                        Notes
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent className="flex flex-col justify-between p-0">
+                                    {notes ? (
+                                        notes!.map((note, index) => {
+                                            return (
+                                                <p
+                                                    key={index}
+                                                    className="  leading-6 w-[98%]"
+                                                >
+                                                    -{note}
+                                                </p>
+                                            );
+                                        })
+                                    ) : (
+                                        <>No Notes</>
+                                    )}
                                 </CardContent>
                             </Card>
                         </div>

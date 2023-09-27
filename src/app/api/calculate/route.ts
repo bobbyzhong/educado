@@ -12,7 +12,7 @@ export async function POST(req: Request, res: Response) {
     try {
         const checkIn = await prisma.checkIn.findUnique({
             where: {
-                id: "clmrx4qja0001jw08ch6j9ult",
+                id: "clmz6eoar0001jq082m75ct67",
             },
             include: {
                 results: true,
@@ -24,7 +24,7 @@ export async function POST(req: Request, res: Response) {
             currResults.forEach((questionResult: any) => {
                 if (
                     questionResult.currentQuestion ===
-                    "What is the term for materials that allow some light to pass through but scatter it in different directions?"
+                    "What is the effect of a larger force on an object's motion?"
                 ) {
                     if (!questionResult.isCorrect) {
                         count++;

@@ -86,6 +86,7 @@ model CheckIn {
   mostMissed  String? @db.Text
   zeroStudents String?
   average   Float?
+  notes     String? @db.Text
   checkInType    CheckInType
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
   results    Result[]
