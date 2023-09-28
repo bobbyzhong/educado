@@ -22,13 +22,14 @@ export default async function Home() {
         <div className="flex flex-col font-outfit w-full">
             <div className="flex  flex-col justify-center items-center">
                 <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
-                    <h1 className="md:text-7xl text-5xl font-[600] md:font-[650] w-11/12 md:w-8/12 lg:w-6/12 mb-2 md:mb-4">
-                        Check-ins made quick and easy
+                    <h1 className="md:text-6xl text-3xl font-[650] md:font-[650] w-11/12 md:w-9/12 lg:w-7/12 ">
+                        Giving every student a one on one learning experience
                     </h1>
-                    <p className="text-[19px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-[#6F6060]">
-                        Effortlessly generate insightful check-ins in seconds.
-                        Pinpoint crucial topics for the next class and identify
-                        which students require additional attention.
+                    <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
+                        We help you create tutors for your classes that your
+                        students can ask for help from anytime, anywhere and
+                        give your students a safe and monitored way to use AI to
+                        enhance their learning
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
@@ -112,29 +113,31 @@ export default async function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
                     <WhyUsCard
                         icon="⚡"
-                        title="️Instant Results"
-                        description="Quickly identify which students are falling behind or which topics you might want to go over again next class."
+                        title="️Instant Help"
+                        description="With our tutors your student actually get the help they need instantly. Studying at 2am? No problem, our tutors are available."
                     />
                     <WhyUsCard
                         icon="👩‍🏫"
-                        title="️Easy To Use"
-                        description="Create a check-in in just a few steps. Educado empowers teachers with the power of AI in an easy to use way."
+                        title="️Reliable Information"
+                        description="Our tutors are trained on only on the information you want whether it's a teacher's lecture slides or a state standards. No need 
+                        to worry about unreliable sources"
                     />
                     <WhyUsCard
                         icon="📑"
-                        title="️Data Driven"
-                        description="Educado creates a custom report based on each check-in’s results to help you evaluate what to make of it."
+                        title="️Monitored AI"
+                        description="Yes, AI can be scary but that doesn't mean it can't be used for good! All the conversations your students have with the tutor 
+                        can be viewed by the teacher or school admin. "
                     />
                     <WhyUsCard
                         icon="📚"
-                        title="️Relevant Content"
-                        description="Upload your own content (slides, docs, textbooks) to create check-ins based on the content you use in your class."
+                        title="️Extra Hand"
+                        description={`Our tutors are here to take some of the load off the teacher's plate. Students can view them almost as "clones" of their teacher. `}
                     />
                 </div>
             </div>
 
             {/* HOW Educado WORKS */}
-            <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
+            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
                 <h1 className="text-4xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-6/12 mt-5 mb-[2%] text-[#725D5D]">
                     HOW EDUCADO WORKS
                 </h1>
@@ -168,17 +171,17 @@ export default async function Home() {
                     description="After each check-in you’ll receive a mini report detailing things like topics your students struggled on and which students you might want to check up on. "
                     image="/how_receive_report.png"
                 />
-            </div>
+            </div> */}
 
             {/* FOOTER */}
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
                 <div className="w-[100%] justify-center items-center flex bg-[#8bb83f]/[0.2] py-[2%] rounded-b-[20%] ">
-                    <h1 className=" text-center text-5xl md:text-7xl font-[600] md:font-[650] w-10/12 md:w-4/12 mb-5">
-                        Check-ins made quick and easy
+                    <h1 className=" text-center text-4xl md:text-6xl font-[600] md:font-[650] w-10/12 md:w-7/12 lg:w-5/12 mb-5">
+                        Give your students a better learning experience today!
                     </h1>
                 </div>
 
-                <div className="flex flex-row gap-3 lg:justify-start justify-center ">
+                <div className="flex flex-row gap-3 mb-5 lg:justify-start justify-center ">
                     <Link href={"/getAccess"}>
                         <Button variant={"green"} className="" size={"xl"}>
                             Get Started
@@ -196,7 +199,7 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="w-full flex-col flex items-center justify-center mt-20 mb-10">
+            {/* <div className="w-full flex-col flex items-center justify-center mt-20 mb-10">
                 <h1 className="text-4xl font-semibold mb-5">
                     See how it works
                 </h1>
@@ -205,7 +208,7 @@ export default async function Home() {
                     src="https://www.youtube.com/embed/UWvj2qVlvsM"
                     title="YouTube video player"
                 ></iframe>
-            </div>
+            </div> */}
         </div>
     );
 }

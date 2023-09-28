@@ -27,7 +27,7 @@ const WhyUsCard = ({ icon, title, description }: Props) => {
                     <CardDescription></CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-left text-2xl w-[90%]">
+                    <div className="text-left text-2xl w-[95%]">
                         {description}
                     </div>
                 </CardContent>
