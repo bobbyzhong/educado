@@ -5,19 +5,19 @@ import ChatSection from "@/components/tutor/ChatSection";
 
 type Props = {
     params: {
-        tutorId: string;
+        tutorID: string;
     };
 };
-const TutorPage = async ({ params: { tutorId } }: Props) => {
+const TutorPage = async ({ params: { tutorID } }: Props) => {
     let tutor: any = await prisma.tutor.findUnique({
         where: {
-            id: tutorId,
+            id: tutorID,
         },
     });
     if (!tutor) {
         const tutorList = await prisma.tutor.findMany({
             where: {
-                joinCode: tutorId,
+                joinCode: tutorID,
             },
         });
         tutor = tutorList[0];
