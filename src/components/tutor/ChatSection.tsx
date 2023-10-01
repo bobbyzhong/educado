@@ -129,7 +129,7 @@ export default function ChatSection({
     if (studentName === "") {
         return (
             <div className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <Card className="py-5 pb-0">
+                <Card className="py-5 pb-0 w-[20rem]">
                     <CardContent>
                         <Form {...form}>
                             <form
@@ -179,7 +179,8 @@ export default function ChatSection({
                 onScroll={(e) => {
                     handleScrollMode(e);
                 }}
-                className="flex h-[75.5vh] md:h-[79vh] xl:h-[80vh] border-green2 border-b items-center flex-col  w-full mb-5 overflow-y-scroll"
+                className="flex h-[75.5vh] md:h-[79vh] xl:h-[80vh] 
+                  items-center flex-col  w-full mb-5 overflow-y-scroll"
             >
                 <div className="max-w-[50rem] ">
                     {messages.length > 0 ? (
@@ -317,17 +318,22 @@ export default function ChatSection({
                         </div>
                     </div>
                 </form>
-                <div className="w-full flex my-5 text-[15px] font-outfit items-center justify-center">
-                    <h1 className=" text-center">
-                        Created by your teacher with some help from 🥑{" "}
-                        <Link
-                            href="/"
-                            target="_blank"
-                            className="text-green cursor-pointer"
-                        >
-                            Educado
-                        </Link>
-                    </h1>
+                <div className="w-full flex justify-center bg-white1">
+                    <div
+                        className="md:w-full w-9/12 flex my-5 text-[15px] font-outfit items-center justify-center 
+                md:px-0 "
+                    >
+                        <h1 className=" text-center">
+                            Created by your teacher with some help from 🥑{" "}
+                            <Link
+                                href="/"
+                                target="_blank"
+                                className="text-green cursor-pointer"
+                            >
+                                Educado
+                            </Link>
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
