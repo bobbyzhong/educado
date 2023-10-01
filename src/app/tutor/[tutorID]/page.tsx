@@ -1,10 +1,6 @@
 import { prisma } from "@/lib/db";
-import { getAuthSession } from "@/lib/nextauth";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
-
-import { Button } from "@/components/ui/button";
 import ChatSection from "@/components/tutor/ChatSection";
 
 type Props = {
