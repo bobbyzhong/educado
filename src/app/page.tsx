@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 
-import SignInButton from "@/components/SignInButton";
 import { getAuthSession } from "@/lib/nextauth";
-import { redirect } from "next/navigation";
+
 import SignInButtonLg from "@/components/SignInButtonLg";
 import WhyUsCard from "@/components/landing/WhyUsCard";
 import Link from "next/link";
 import Image from "next/image";
-import HowStep from "@/components/landing/HowStep";
 import StudentEnterCode from "@/components/StudentEnterCode";
 
 export default async function Home() {
