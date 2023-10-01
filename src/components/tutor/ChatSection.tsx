@@ -174,13 +174,13 @@ export default function ChatSection({
     // Tutor Chat Section
     // ----------------
     return (
-        <div className="w-full flex h-[calc(100dvh-2rem)] md:h-[calc(100vh-4rem)]  justify-center items-center flex-col ">
+        <div className="w-full flex justify-between items-center flex-col ">
             <div
                 onScroll={(e) => {
                     handleScrollMode(e);
                 }}
                 className="flex 
-                  items-center w-full h-full flex-1 flex-col overflow-y-scroll "
+                  items-center w-full  flex-1 flex-col overflow-y-scroll  "
             >
                 <div className="max-w-[50rem] ">
                     {messages.length > 0 ? (
@@ -265,10 +265,10 @@ export default function ChatSection({
                     <div className=" h-2 w-full " ref={chatContainerRef}></div>
                 </div>
             </div>
-
+            <div className="w-full min-h-[7rem] "></div>
             <div
-                className=" w-full 
-              bg-green3"
+                className=" w-full fixed bottom-0
+              bg-green3 "
             >
                 <form
                     onSubmit={onHandleSubmit}
