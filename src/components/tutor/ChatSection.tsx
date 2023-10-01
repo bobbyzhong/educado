@@ -174,7 +174,7 @@ export default function ChatSection({
     // Tutor Chat Section
     // ----------------
     return (
-        <div className="w-full flex h-[calc(100vh-4rem)]  justify-center items-center flex-col ">
+        <div className="w-full flex h-[calc(100dvh-2rem)] md:h-[calc(100vh-4rem)]  justify-center items-center flex-col ">
             <div
                 onScroll={(e) => {
                     handleScrollMode(e);
