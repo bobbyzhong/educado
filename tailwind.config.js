@@ -25,6 +25,7 @@ module.exports = {
                 green: "#7EBA1B",
                 green2: "#86D20A",
                 green3: "#7EBA1B15",
+                green4: "#7EBA1F",
                 gray1: "#EEEEEE",
                 gray2: "#DDDDDD",
                 border: "hsl(var(--border))",

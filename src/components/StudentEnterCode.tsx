@@ -28,8 +28,8 @@ const StudentEnterCode = ({ title, description, link, bgRed }: Props) => {
         <div
             className={
                 bgRed
-                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#CB4242]"
-                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#669519]"
+                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#e34848]"
+                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-green4"
             }
         >
             <div className="flex flex-col gap-3 items-center justify-center">
