@@ -151,7 +151,7 @@ model Tutor {
   joinCode String @unique
   userId String
   tutorDisplayName String
-  tutorName String @unique
+  tutorName String 
   tutorDescription String? 
   uploadedContent String?
   ownerName String?
