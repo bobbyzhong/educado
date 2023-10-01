@@ -13,7 +13,7 @@ const NavbarRoute = (props: Props) => {
         return <div></div>;
     } else {
         return (
-            <div className="flex flex-row items-center text-center text-sm md:text-lg justify-center space-x-3 md:space-x-6 font-outfit">
+            <div className="flex flex-row items-center text-center text-sm md:text-lg justify-center space-x-2 md:space-x-6 font-outfit">
                 <Link href={"/contact"}>
                     <p>Contact</p>
                 </Link>

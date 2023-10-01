@@ -20,7 +20,7 @@ export default async function Home() {
         <div className="flex flex-col font-outfit w-full">
             <div className="flex  flex-col justify-center items-center">
                 <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
-                    <h1 className="md:text-6xl text-3xl font-[650] md:font-[650] w-11/12 md:w-9/12 lg:w-7/12 ">
+                    <h1 className="md:text-6xl text-3xl font-[650] md:font-[650] tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
                         Giving every student a one on one learning experience
                     </h1>
                     <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
