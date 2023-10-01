@@ -174,12 +174,182 @@ export default function ChatSection({
     // Tutor Chat Section
     // ----------------
     return (
+        <div className="w-full flex h-[calc(100vh-4rem)]  justify-center items-center flex-col ">
+            <div
+                onScroll={(e) => {
+                    handleScrollMode(e);
+                }}
+                className="flex 
+                  items-center w-full h-full flex-1 flex-col overflow-y-scroll "
+            >
+                <div className="max-w-[50rem] ">
+                    {messages.length > 0 ? (
+                        messages.map((m) => (
+                            <div key={m.id} className="my-3">
+                                {m.role === "user" ? (
+                                    <div className="px-5 rounded-lg flex flex-row items-start py-5 gap-4">
+                                        <Image
+                                            src={"/userIcon.png"}
+                                            height={45}
+                                            width={45}
+                                            alt={"User: "}
+                                            className="object-contain"
+                                        />
+                                        <ReactMarkdown className={"prose"}>
+                                            {m.content}
+                                        </ReactMarkdown>
+                                    </div>
+                                ) : (
+                                    <div className="bg-green3 px-5 rounded-lg flex flex-row items-start py-5 gap-4">
+                                        <Image
+                                            src={"/educadoIcon.png"}
+                                            height={45}
+                                            width={45}
+                                            alt={"Steve: "}
+                                            className="object-contain "
+                                        />
+                                        <ReactMarkdown className={" prose "}>
+                                            {m.content}
+                                        </ReactMarkdown>
+                                    </div>
+                                )}
+                            </div>
+                        ))
+                    ) : (
+                        // ----------------
+                        // Tutor introduction when there are no messages
+                        // ----------------
+                        <div className="mt-0 md:mt-10 mx-3 font-outfit flex flex-col items-center justify-center">
+                            <Image
+                                src={"/tutor_image.png"}
+                                height={175}
+                                width={175}
+                                alt={""}
+                                className=""
+                            />
+
+                            <div className="flex w-full items-center justify-center flex-col">
+                                <h1 className="text-4xl font-semibold text-center">
+                                    Hey, I’m{" "}
+                                    <span className="text-green">
+                                        {tutorDisplayName}!
+                                    </span>
+                                </h1>
+                                <p className="text-lg text-center font-light mt-5 w-full">
+                                    I’m your tutor for {ownerName}’s class. You
+                                    can ask me for help with anything related to
+                                    her class. Whether you didn’t really
+                                    understand a certain topic or want to study
+                                    together before you next test, I’m here to
+                                    help!
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-8">
+                                {examples.map((example, i) => (
+                                    <button
+                                        key={i}
+                                        className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left
+                                         text-base text-gray-500 transition-all duration-75 hover:border-green hover:-translate-y-1
+                                          hover:text-green active:bg-gray-50"
+                                        onClick={() => {
+                                            setInput(example);
+                                            textAreaRef.current?.focus();
+                                        }}
+                                    >
+                                        {example}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    <div className=" h-2 w-full " ref={chatContainerRef}></div>
+                </div>
+            </div>
+
+            <div
+                className=" w-full 
+              bg-green3"
+            >
+                <form
+                    onSubmit={onHandleSubmit}
+                    className="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
+                >
+                    <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
+                        <div
+                            className="flex flex-row justify-center items-center pr-5 w-full py-3 flex-grow md:py-4 text-[18px] pl-2 md:pl-5 relative 
+                             bg-white bg-gradient-to-b dark:border-gray-900/50 rounded-md
+                          shadow-[1px_2px_5px_3px_rgba(0,0,0,0.10)] 
+                       "
+                        >
+                            <Textarea
+                                value={input}
+                                tabIndex={0}
+                                ref={textAreaRef}
+                                style={{
+                                    height: "24px",
+                                    maxHeight: "175px",
+                                    overflowY: "hidden",
+                                }}
+                                placeholder="Ask me anything ..."
+                                className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
+                                  focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2
+                                  md:pl-0"
+                                onChange={handleInputChange}
+                                onKeyDown={handleKeypress}
+                            />
+                            {isLoading ? (
+                                <Loader2
+                                    color="#86D20A"
+                                    className="animate-spin"
+                                    size={26}
+                                />
+                            ) : (
+                                <SendHorizonal
+                                    className="cursor-pointer"
+                                    onClick={onHandleSubmit}
+                                    color={
+                                        input.length === 0
+                                            ? "#D3D3D3"
+                                            : "#86D20A"
+                                    }
+                                    size={26}
+                                />
+                            )}
+                        </div>
+                    </div>
+                </form>
+                <div className="w-full flex justify-center ">
+                    <div
+                        className="md:w-full w-9/12 flex mb-5 text-[15px] font-outfit items-center justify-center 
+                md:px-0 "
+                    >
+                        <h1 className=" text-center">
+                            Created by your teacher with some help from 🥑{" "}
+                            <Link
+                                href="/"
+                                target="_blank"
+                                className="text-green cursor-pointer"
+                            >
+                                Educado
+                            </Link>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/**
+ * 
+ * 
+ * return (
         <div className="w-full flex justify-center items-center flex-col bg-white1">
             <div
                 onScroll={(e) => {
                     handleScrollMode(e);
                 }}
-                className="flex h-[85vh] md:h-[79vh] xl:h-[80vh] 
+                className="flex h-[78vh] md:h-[79vh] xl:h-[80vh] 
                   items-center flex-col  w-full mb-5 overflow-y-scroll"
             >
                 <div className="max-w-[50rem] ">
@@ -338,4 +508,4 @@ export default function ChatSection({
             </div>
         </div>
     );
-}
+ */
