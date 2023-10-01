@@ -179,7 +179,7 @@ export default function ChatSection({
                 onScroll={(e) => {
                     handleScrollMode(e);
                 }}
-                className="flex h-[75.5vh] md:h-[79vh] xl:h-[80vh] 
+                className="flex h-[85vh] md:h-[79vh] xl:h-[80vh] 
                   items-center flex-col  w-full mb-5 overflow-y-scroll"
             >
                 <div className="max-w-[50rem] ">
