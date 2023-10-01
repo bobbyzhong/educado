@@ -67,6 +67,49 @@ export const contentRequestSchema = z.object({
         .min(4, { message: "Topic must be at least 4 characters long" }),
 });
 
+export const tutorContentRequestSchema = z.object({
+    content: z
+        .string()
+        .min(4, { message: "Topic must be at least 4 characters long" }),
+    teacherName: z
+        .string()
+        .min(1, { message: "Teacher name must be at least 1 character1 long" }),
+    tutorName: z
+        .string()
+        .min(1, { message: "Tutor name must be at least 1 characters long" }),
+});
+
+export const createTutorRequestSchema = z.object({
+    teacherName: z
+        .string()
+        .min(1, { message: "Teacher name must be at least 1 character1 long" }),
+    chosenName: z
+        .string()
+        .min(1, { message: "Tutor name must be at least 1 characters long" }),
+    description: z.string().min(5, {
+        message: "Tutor description must be at least 5 characters long",
+    }),
+    desiredContent: z.string().min(5, {
+        message: "Desired content must be at least 5 characters long",
+    }),
+});
+
+export const createTutorAPISchema = z.object({
+    teacherName: z
+        .string()
+        .min(1, { message: "Teacher name must be at least 1 character1 long" }),
+    chosenName: z
+        .string()
+        .min(1, { message: "Tutor name must be at least 1 characters long" }),
+    description: z.string().min(5, {
+        message: "Tutor description must be at least 5 characters long",
+    }),
+    userId: z.string(),
+    desiredContent: z.string().min(5, {
+        message: "Desired content must be at least 5 characters long",
+    }),
+});
+
 export const contentRequestSchemaAPI = z.object({
     name: z.string(),
     content: z

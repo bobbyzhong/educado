@@ -7,9 +7,11 @@ import { getAuthSession } from "@/lib/nextauth";
 import SignInButton from "./SignInButton";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import NavbarRoute from "./NavbarRoute";
 
 const Navbar = async () => {
     const session = await getAuthSession();
+
     return (
         <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300  py-3 ">
             <div className="flex items-center justify-between h-full gap-2 md:px-8 px-3 mx-auto max-w-7xl">
@@ -39,18 +41,7 @@ const Navbar = async () => {
                             </div>
                         </>
                     ) : (
-                        <div className="flex flex-row items-center text-center text-sm md:text-lg justify-center space-x-3 md:space-x-6 font-outfit">
-                            <Link href={"/contact"}>
-                                <p>Contact</p>
-                            </Link>
-                            <Link href={"/demo"}>
-                                <p>Book Demo</p>
-                            </Link>
-
-                            <SignInButton text={"Try It Out"} />
-
-                            {/* <SignInButton text={"Sign In"} /> */}
-                        </div>
+                        <NavbarRoute />
                     )}
                 </div>
             </div>

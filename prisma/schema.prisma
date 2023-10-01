@@ -51,6 +51,7 @@ model User {
   checkIns         CheckIn[]
   accounts      Account[]
   sessions      Session[]
+  tutors       Tutor[]
   uploadedContent String?
 }
 
@@ -143,4 +144,33 @@ model Result {
   checkIn CheckIn @relation(fields: [checkInId], references: [id])
 
   @@index([checkInId])
+}
+
+model Tutor {
+  id    String   @id @default(cuid())
+  joinCode String @unique
+  userId String
+  tutorDisplayName String
+  tutorName String @unique
+  tutorDescription String? 
+  uploadedContent String?
+  ownerName String?
+  questions  TutorQuestions[]
+
+  user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model TutorQuestions {
+  id   String   @id @default(cuid())
+  question String
+  studentName String
+  tutorId String
+  date String?
+  
+  
+  tutor        Tutor?       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+
+  @@index([tutorId])
 }

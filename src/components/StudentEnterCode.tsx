@@ -4,15 +4,20 @@ import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {};
-const StudentEnterCode = (props: Props) => {
+type Props = {
+    link: string;
+    title: string;
+    description: string;
+    bgRed: boolean;
+};
+const StudentEnterCode = ({ title, description, link, bgRed }: Props) => {
     const [code, setCode] = useState("");
     const router = useRouter();
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
         // You can perform any action with the inputText here, e.g., send it to an API, display it on the page, etc.
-        router.push(`/check-in/${code}`);
+        router.push(`/${link}/${code}`);
     };
 
     const handleChange = (e: any) => {
@@ -20,14 +25,22 @@ const StudentEnterCode = (props: Props) => {
     };
 
     return (
-        <div className="w-full flex items-center justify-center mt-7">
-            <div className="flex flex-row gap-2 items-center justify-center">
-                <h1 className="text-[19px] text-zinc-800 font-[520] ">
-                    <span className="text-green font-[650] tracking-wide">
-                        Student?{" "}
-                    </span>
-                    Enter code here
-                </h1>
+        <div
+            className={
+                bgRed
+                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#CB4242]"
+                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#669519]"
+            }
+        >
+            <div className="flex flex-col gap-3 items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
+                    <h1 className="text-[23px] text-white font-[900] ">
+                        {title}
+                    </h1>
+                    <h1 className="text-[19px] text-white font-[300] ">
+                        {description}
+                    </h1>
+                </div>
                 <form
                     className="flex flex-row items-center justify-center gap-1"
                     onSubmit={handleSubmit}
@@ -37,11 +50,11 @@ const StudentEnterCode = (props: Props) => {
                         placeholder="Enter Code"
                         value={code}
                         onChange={handleChange}
-                        className="px-2 py-1 border-green border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green focus:border-transparent"
+                        className="px-3 py-2 w-[60%] rounded-lg focus:outline-none"
                     />
                     <ArrowRightCircle
                         cursor={"pointer"}
-                        color="#7EBA1B"
+                        color="white"
                         size={33}
                         type="submit"
                         onClick={handleSubmit}

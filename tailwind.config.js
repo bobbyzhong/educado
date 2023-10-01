@@ -24,6 +24,7 @@ module.exports = {
                 white1: "#FDFDFD",
                 green: "#7EBA1B",
                 green2: "#86D20A",
+                green3: "#7EBA1B15",
                 gray1: "#EEEEEE",
                 gray2: "#DDDDDD",
                 border: "hsl(var(--border))",
@@ -78,8 +79,12 @@ module.exports = {
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                "animate-bounce-slow": "animate-bounce 3s infinite",
             },
         },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [
+        require("tailwindcss-animate"),
+        require("@tailwindcss/typography"),
+    ],
 };

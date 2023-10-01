@@ -56,7 +56,20 @@ export default async function Home() {
                     </Link>
                 </div>
             </div>
-            <StudentEnterCode />
+            <div className="flex flex-col md:flex-row gap-0 md:gap-8 justify-center items-center ">
+                <StudentEnterCode
+                    title="EDUCADO TUTOR"
+                    description="Ask for help"
+                    link="tutor"
+                    bgRed={false}
+                />
+                <StudentEnterCode
+                    title="CHECK-IN"
+                    description="Enter Code Here"
+                    link="check-in"
+                    bgRed={true}
+                />
+            </div>
 
             {/* LANDING IMAGES */}
             <div className="flex justify-between items-center mt-[5%]">
