@@ -8,8 +8,8 @@ const CodeDisplay = ({ code }: Props) => {
     const { toast } = useToast();
 
     return (
-        <h2 className="mr-2 text-[30px] flex flex-row justify-center items-center gap-3 font-semibold text-zinc-500 tracking-tight">
-            Check-In Code:{" "}
+        <h2 className="mr-2 text-xl flex flex-row items-end gap-2 text-zinc-500 tracking-tight">
+            Share Code:{" "}
             <div
                 className="flex flex-row items-center gap-2 cursor-pointer"
                 onClick={() => {
@@ -20,7 +20,7 @@ const CodeDisplay = ({ code }: Props) => {
                     navigator.clipboard.writeText(code);
                 }}
             >
-                <span className="font-bold text-[30px] text-zinc-950">
+                <span className="text-3xl font-bold tracking-tight text-green">
                     {code}
                 </span>
                 <ClipboardCopy size={28} />
