@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
 import React from "react";
 import ChatSection from "@/components/tutor/ChatSection";
+import { getAuthSession } from "@/lib/nextauth";
 
 type Props = {
     params: {
@@ -9,6 +10,11 @@ type Props = {
     };
 };
 const TutorPage = async ({ params: { tutorID } }: Props) => {
+    const session = await getAuthSession();
+    if (!session?.user) {
+        redirect("/");
+    }
+
     let tutor: any = await prisma.tutor.findUnique({
         where: {
             id: tutorID,
@@ -35,6 +41,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 tutorDisplayName={tutor.tutorDisplayName}
                 tempQuestions={tutor.tempQuestions}
                 tutorId={tutor.id}
+                userId={session.user.id}
             />
         </>
     );

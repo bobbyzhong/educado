@@ -8,6 +8,7 @@ import {
     detectEssayRequest,
     functions,
     getContext,
+    getDateInString,
     runFunction,
 } from "../../../../tutorUtils";
 import { PineconeClient } from "@pinecone-database/pinecone";
@@ -77,6 +78,25 @@ export async function POST(req: Request) {
                 stream: true,
                 messages: [...messages, ...newMessages],
             });
+        },
+        onCompletion: async (completion) => {
+            try {
+                await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        question: latestQuestion,
+                        studentName: body.studentName,
+                        tutorId: body.tutorId,
+                        userId: body.userId,
+                        answer: completion,
+                    }),
+                });
+            } catch (e) {
+                console.log("ERROR: ", e);
+            }
         },
     });
 
