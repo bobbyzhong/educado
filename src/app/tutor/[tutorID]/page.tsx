@@ -30,7 +30,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
     }
 
     if (!tutor) {
-        return redirect("/dashboard");
+        return redirect("/dashboard-teacher");
     }
 
     return (
@@ -42,6 +42,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 tempQuestions={tutor.tempQuestions}
                 tutorId={tutor.id}
                 userId={session.user.id}
+                studentName={session.user.name!}
             />
         </>
     );

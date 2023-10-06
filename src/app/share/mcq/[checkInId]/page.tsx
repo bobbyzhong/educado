@@ -46,7 +46,7 @@ const SharePage = async ({ params: { checkInId } }: Props) => {
                     </div>
                     <div className="flex items-center space-x-2">
                         <Link
-                            href="/dashboard"
+                            href="/dashboard-teacher"
                             className={buttonVariants({ variant: "green" })}
                         >
                             <LucideLayoutDashboard className="mr-2" />

@@ -56,7 +56,10 @@ const StatisticsPage = async ({ params: { checkInId } }: Props) => {
                         Summary
                     </h2>
                     <div className="flex items-center space-x-2">
-                        <Link href="/dashboard" className={buttonVariants()}>
+                        <Link
+                            href="/dashboard-teacher"
+                            className={buttonVariants()}
+                        >
                             <LucideLayoutDashboard className="mr-2" />
                             Back to Dashboard
                         </Link>

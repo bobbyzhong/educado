@@ -13,14 +13,14 @@ import { Result } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import Link from "next/link";
 
-type Props = { limit: number; userId: string };
+type Props = { limit: number; tutorId: string };
 
 // I want to change TutorQuestion instead of chats
-const ChatHistoryTable = async ({ limit, userId }: Props) => {
+const RecentQuestions = async ({ limit, tutorId }: Props) => {
     let chats = await prisma.tutorQuestions.findMany({
         take: limit,
         where: {
-            userId,
+            tutorId: tutorId,
         },
         orderBy: {
             date: "desc",
@@ -38,6 +38,7 @@ const ChatHistoryTable = async ({ limit, userId }: Props) => {
                         <TableRow>
                             <TableHead className="w-[10px]">No.</TableHead>
                             <TableHead>Date Created</TableHead>
+                            <TableHead>Student Name</TableHead>
                             <TableHead>Question</TableHead>
                             <TableHead className="">Answer</TableHead>
                         </TableRow>
@@ -54,6 +55,7 @@ const ChatHistoryTable = async ({ limit, userId }: Props) => {
                         <TableRow className="">
                             <TableHead className="w-[10px]">No.</TableHead>
                             <TableHead>Date Created</TableHead>
+                            <TableHead>Student Name</TableHead>
                             <TableHead>Question</TableHead>
                             <TableHead className="">Answer</TableHead>
                         </TableRow>
@@ -74,10 +76,13 @@ const ChatHistoryTable = async ({ limit, userId }: Props) => {
                                             {index + 1}
                                         </TableCell>
                                         <TableCell>{date}</TableCell>
+                                        <TableCell>
+                                            {chat.studentName}
+                                        </TableCell>
                                         <TableCell className="font-semibold">
                                             {chat.question}
                                         </TableCell>
-                                        <TableCell className="w-[50%] h-[50%]">
+                                        <TableCell className="w-[40%]">
                                             <div className="max-h-[5rem] overflow-y-scroll">
                                                 {chat.answer}
                                             </div>
@@ -92,4 +97,4 @@ const ChatHistoryTable = async ({ limit, userId }: Props) => {
         );
     }
 };
-export default ChatHistoryTable;
+export default RecentQuestions;

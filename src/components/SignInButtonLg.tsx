@@ -4,11 +4,11 @@ import { Button } from "./ui/button";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-type Props = { text: string; isSignedIn: any };
+type Props = { text: string; isSignedIn: any; link: string };
 
-const SignInButtonLg = ({ text, isSignedIn }: Props) => {
+const SignInButtonLg = ({ text, isSignedIn, link }: Props) => {
     const router = useRouter();
-
+    console.log(link);
     return (
         <Button
             variant={"green"}
@@ -16,11 +16,11 @@ const SignInButtonLg = ({ text, isSignedIn }: Props) => {
             size={"xl"}
             onClick={() => {
                 if (isSignedIn) {
-                    router.push("/dashboard");
+                    router.push(link);
                 } else {
-                    signIn("google", { callbackUrl: "/dashboard" }).catch(
-                        console.error
-                    );
+                    signIn("google", {
+                        callbackUrl: link,
+                    }).catch(console.error);
                 }
             }}
         >

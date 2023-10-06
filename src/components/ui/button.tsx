@@ -23,7 +23,7 @@ const buttonVariants = cva(
                 selected:
                     "bg-secondary text-secondary-foreground border-[1.5px] border-green shadow-sm hover:bg-secondary/80",
                 greenOutline:
-                    "border border-input border-green text-green hover:bg-green/90 shadow-sm hover:bg-accent hover:text-green/90",
+                    "border border-input border-green text-green hover:bg-green/90 shadow-sm hover:bg-green3 hover:text-green/90",
             },
             size: {
                 default: "h-9 px-5 py-2 font-semibold tracking-wider",
@@ -32,8 +32,8 @@ const buttonVariants = cva(
                 md: "h-9 px-3 py-2 font-semibold tracking-wider text-[13.5px] font-[575]",
                 sm: "h-8 rounded-md px-3 text-xs",
                 lg: "h-10 rounded-md px-8",
-                xl: "h-11 rounded-md px-9 font-semibold tracking-wide",
-                login: "md:h-11 h-8 rounded-md px-3 md:px-5 font-semibold text-[13.5px] tracking-tight ",
+                xl: "h-11 rounded-md font-semibold w-[150px] text-base",
+                login: "md:h-10 h-8 rounded-md px-1 md:px-5 font-semibold text-[14px] w-[75px] md:w-[100px] ",
                 icon: "h-9 w-9",
             },
         },

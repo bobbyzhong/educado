@@ -26,15 +26,17 @@ const TeacherCodeInput = ({ userId }: Props) => {
             const data = await res.json();
             console.log(data);
             if (data.message === "updated") {
-                router.push("/teacher-dashboard");
+                router.push("/dashboard-teacher");
             }
         }
     };
 
     return (
-        <div>
-            <Input
+        <div className="flex flex-row items-center justify-center">
+            <h1>Are you a teacher? Click here</h1>
+            <input
                 value={code}
+                className="shadown-none border-b"
                 onChange={(e) => setCode(e.target.value)}
                 placeholder="Teacher code"
             />

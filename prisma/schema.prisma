@@ -50,6 +50,7 @@ model User {
   subscribed   Boolean   @default(false)
   subscriptionId String?
   school    String?
+  recentCodes String?
   checkIns         CheckIn[]
   accounts      Account[]
   sessions      Session[]

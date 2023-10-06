@@ -43,15 +43,15 @@ const UserAccountNav = ({ user }: Props) => {
                         )}
                     </div>
                 </div>
-                <DropdownMenuItem asChild>
+                {/* <DropdownMenuItem asChild>
                     <Link href="/viewPlan">View Plan</Link>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                     <Link href="/contact">Contact Us</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                    <Link href="/dashboard">Dashboard</Link>
+                    <Link href="/dashboard-student">Dashboard</Link>
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator />
