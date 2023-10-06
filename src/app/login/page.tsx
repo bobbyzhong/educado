@@ -8,7 +8,7 @@ const LoginPage = async (props: Props) => {
 
     if (session?.user) {
         // User is signed in
-        return redirect("/dashboard");
+        return redirect("/dashboard-student");
     }
     return <LogIn />;
 };

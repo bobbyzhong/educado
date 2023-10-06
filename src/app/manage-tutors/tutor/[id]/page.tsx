@@ -12,6 +12,7 @@ import CodeDisplay from "@/components/CodeDisplay";
 import TutorCodeDisplay from "@/components/educadoTutor/TutorCodeDisplay";
 import ContentRequestCard from "@/components/dashboard/ContentRequestCard";
 import TutorContentCard from "@/components/tutor/TutorContentCard";
+import RecentQuestions from "@/components/tutor/RecentQuestions";
 
 type Props = {
     params: {
@@ -55,7 +56,7 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
 
                     <div className="flex items-start justify-start space-x-2">
                         <Link
-                            href="/dashboard"
+                            href="/dashboard-teacher"
                             className={buttonVariants({ variant: "green" })}
                         >
                             <LucideLayoutDashboard className="mr-2" />
@@ -114,11 +115,20 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                         <h2 className="mr-2 text-[26px] font-semibold tracking-tight ">
                             Student Data
                         </h2>
-                        <h1 className="text-zinc-500 text-[15px] w-10/12 dark:text-zinc-300 mb-5 ">
-                            Coming soon! Here you'll be able to see things like
-                            commonly asked questions, most active students, and
-                            more!
+                        <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
+                            Here are some of the recently asked questions for
+                            this tutor. View the full history{" "}
+                            <Link
+                                className="text-green underline "
+                                href={`/chatLogs/${tutor?.id}`}
+                                target="_blank"
+                            >
+                                here
+                            </Link>
                         </h1>
+                        <div className="">
+                            <RecentQuestions limit={10} tutorId={tutor!.id} />
+                        </div>
                     </div>
                 </div>
             </div>

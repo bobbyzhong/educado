@@ -27,7 +27,7 @@ const ReviewPage = async ({ params: { checkInId } }: Props) => {
     });
 
     if (!checkIn) {
-        return redirect("/dashboard");
+        return redirect("/dashboard-teacher");
     }
 
     return (

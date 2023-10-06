@@ -12,47 +12,48 @@ import CodeDisplay from "@/components/CodeDisplay";
 import TutorCodeDisplay from "@/components/educadoTutor/TutorCodeDisplay";
 
 type Props = {
-  params: {
-    tutorId: string;
-  };
+    params: {
+        tutorId: string;
+    };
 };
 const educadoTutor = async ({ params: { tutorId } }: Props) => {
-  const session = await getAuthSession();
+    const session = await getAuthSession();
 
-  if (!session?.user) {
-    return redirect("/");
-  }
+    if (!session?.user) {
+        return redirect("/");
+    }
 
-  const link = `${process.env.API_URL}tutor/${tutorId}`;
-  console.log(link);
+    const link = `${process.env.API_URL}tutor/${tutorId}`;
+    console.log(link);
 
-  return (
-    <>
-      <div className="p-8 mx-auto max-w-5xl">
-        <div className="flex items-center justify-between space-y-2">
-          <div className="flex flex-col gap-1">
-            <TutorCodeDisplay code={"123"} />
-            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
-              Here, you’ll have other options to share the check-in
-            </h1>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Link
-              href="/dashboard"
-              className={buttonVariants({ variant: "green" })}
-            >
-              <LucideLayoutDashboard className="mr-2" />
-              Back to Dashboard
-            </Link>
-          </div>
-        </div>
+    return (
+        <>
+            <div className="p-8 mx-auto max-w-5xl">
+                <div className="flex items-center justify-between space-y-2">
+                    <div className="flex flex-col gap-1">
+                        <TutorCodeDisplay code={"123"} />
+                        <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
+                            Here, you’ll have other options to share the
+                            check-in
+                        </h1>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <Link
+                            href="/dashboard-teacher"
+                            className={buttonVariants({ variant: "green" })}
+                        >
+                            <LucideLayoutDashboard className="mr-2" />
+                            Back to Dashboard
+                        </Link>
+                    </div>
+                </div>
 
-        <div className="grid gap-4 mt-4 md:grid-cols-3">
-          <CopyCard link={link} />
-          <QrCodeCard link={link} />
-        </div>
-      </div>
-    </>
-  );
+                <div className="grid gap-4 mt-4 md:grid-cols-3">
+                    <CopyCard link={link} />
+                    <QrCodeCard link={link} />
+                </div>
+            </div>
+        </>
+    );
 };
 export default educadoTutor;

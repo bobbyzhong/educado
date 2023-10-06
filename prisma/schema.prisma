@@ -45,15 +45,21 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  isTeacher    Boolean   @default(false)
   image         String?
   subscribed   Boolean   @default(false)
   subscriptionId String?
+  school    String?
+  recentCodes String?
   checkIns         CheckIn[]
   accounts      Account[]
   sessions      Session[]
   tutors       Tutor[]
+  questionAnswers TutorQuestions[]
   uploadedContent String?
 }
+
+
 
 model AccessRequest {
   id            String    @id @default(cuid())
@@ -164,13 +170,17 @@ model Tutor {
 
 model TutorQuestions {
   id   String   @id @default(cuid())
-  question String
+  question String @db.Text
+  answer String? @db.Text
   studentName String
   tutorId String
   date String?
+  userId String?
   
   
   tutor        Tutor?       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([tutorId])
+  @@index([userId])
 }

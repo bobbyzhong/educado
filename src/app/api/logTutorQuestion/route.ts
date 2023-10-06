@@ -17,7 +17,6 @@ export async function POST(req: Request, res: Response) {
         const seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
         const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-
         try {
             await prisma.tutorQuestions.create({
                 data: {
@@ -25,6 +24,8 @@ export async function POST(req: Request, res: Response) {
                     studentName: body.studentName,
                     tutorId: body.tutorId,
                     date: formattedDateTime,
+                    userId: body.userId,
+                    answer: body.answer,
                 },
             });
             console.log("LOGGED QUESTION");

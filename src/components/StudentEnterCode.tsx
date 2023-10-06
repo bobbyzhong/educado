@@ -1,23 +1,56 @@
 "use client";
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle, Loader2 } from "lucide-react";
 import React from "react";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { set } from "date-fns";
 
 type Props = {
     link: string;
     title: string;
     description: string;
     bgRed: boolean;
+    isSignedIn: any;
+    userId: string;
 };
-const StudentEnterCode = ({ title, description, link, bgRed }: Props) => {
+const StudentEnterCode = ({
+    title,
+    description,
+    link,
+    bgRed,
+    isSignedIn,
+    userId,
+}: Props) => {
     const [code, setCode] = useState("");
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
+        setIsLoading(true);
+        if (isSignedIn) {
+            if (link === "tutor") {
+                const res = await fetch("/api/updateRecentTutors", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        code: code,
+                    }),
+                });
+            }
+            router.push(`/${link}/${code}`);
+            setIsLoading(false);
+        } else {
+            signIn("google", { callbackUrl: `/${link}/${code}` }).catch(
+                console.error
+            );
+            setIsLoading(false);
+        }
         // You can perform any action with the inputText here, e.g., send it to an API, display it on the page, etc.
-        router.push(`/${link}/${code}`);
     };
 
     const handleChange = (e: any) => {
@@ -28,8 +61,8 @@ const StudentEnterCode = ({ title, description, link, bgRed }: Props) => {
         <div
             className={
                 bgRed
-                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#e14e4e]"
-                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-2xl bg-[#86ae46]"
+                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#e14e4e]"
+                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#86ae46]"
             }
         >
             <div className="flex flex-col gap-3 items-center justify-center">
@@ -52,13 +85,22 @@ const StudentEnterCode = ({ title, description, link, bgRed }: Props) => {
                         onChange={handleChange}
                         className="px-3 py-2 w-[60%] rounded-lg focus:outline-none"
                     />
-                    <ArrowRightCircle
-                        cursor={"pointer"}
-                        color="white"
-                        size={33}
-                        type="submit"
-                        onClick={handleSubmit}
-                    />
+
+                    {isLoading ? (
+                        <Loader2
+                            color="#FFF"
+                            className="animate-spin"
+                            size={26}
+                        />
+                    ) : (
+                        <ArrowRightCircle
+                            cursor={"pointer"}
+                            color="white"
+                            size={33}
+                            type="submit"
+                            onClick={handleSubmit}
+                        />
+                    )}
                 </form>
             </div>
         </div>

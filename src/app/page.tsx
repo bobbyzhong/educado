@@ -7,14 +7,24 @@ import WhyUsCard from "@/components/landing/WhyUsCard";
 import Link from "next/link";
 import Image from "next/image";
 import StudentEnterCode from "@/components/StudentEnterCode";
+import { prisma } from "@/lib/db";
+import HomePageJoinCode from "@/components/HomePageJoinCode";
 
 export default async function Home() {
     const session = await getAuthSession();
 
-    //   if (session?.user) {
-    //     // User is signed in
-    //     return redirect("/dashboard");
-    //   }
+    let isTeacher = false;
+    if (session?.user) {
+        // User is signed in
+        const user = await prisma.user.findUnique({
+            where: {
+                id: session.user.id,
+            },
+        });
+        if (user?.isTeacher) {
+            isTeacher = true;
+        }
+    }
 
     return (
         <div className="flex flex-col font-outfit w-full">
@@ -33,13 +43,19 @@ export default async function Home() {
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
                     {session?.user ? (
                         <SignInButtonLg
-                            text={"Go To Dashboard"}
+                            text={"Go Dashboard"}
                             isSignedIn={session?.user}
+                            link={
+                                isTeacher
+                                    ? "/dashboard-teacher"
+                                    : "/dashboard-student"
+                            }
                         />
                     ) : (
                         <SignInButtonLg
-                            text={"Try It Out"}
+                            text={"Sign In"}
                             isSignedIn={session?.user}
+                            link={"/dashboard-student"}
                         />
                     )}
 
@@ -60,13 +76,26 @@ export default async function Home() {
                     description="Ask for help"
                     link="tutor"
                     bgRed={false}
+                    isSignedIn={session?.user}
+                    userId={session?.user?.id || ""}
                 />
                 <StudentEnterCode
                     title="CHECK-IN"
                     description="Enter Code Here"
                     link="check-in"
                     bgRed={true}
+                    isSignedIn={session?.user}
+                    userId={session?.user?.id || ""}
                 />
+            </div>
+
+            <div className="w-full flex items-center justify-center mt-12 gap-1 font-medium">
+                <p>
+                    Are you a teacher who's district has access to Educado?
+                    Click{" "}
+                </p>
+                <HomePageJoinCode isSignedIn={session?.user} />{" "}
+                <p>to join as a teacher</p>
             </div>
 
             {/* LANDING IMAGES */}

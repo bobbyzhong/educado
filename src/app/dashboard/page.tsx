@@ -12,71 +12,34 @@ import Link from "next/link";
 type Props = {};
 
 export const metadata = {
-  title: "Dashboard | Pear",
+    title: "Dashboard | Pear",
 };
 
 const Dashboard = async (props: Props) => {
-  const session = await getAuthSession();
-  if (!session?.user) {
-    return redirect("/");
-  }
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session.user.id,
-    },
-  });
+    const session = await getAuthSession();
+    if (!session?.user) {
+        return redirect("/");
+    }
+    const user = await prisma.user.findUnique({
+        where: {
+            id: session.user.id,
+        },
+    });
 
-  const checkIns = await prisma.checkIn.findMany({
-    where: {
-      userId: session.user.id,
-    },
-  });
+    if (user?.isTeacher) {
+        redirect("/dashboard-teacher");
+    } else {
+        redirect("/dashboard-student");
+    }
 
-  const clear = user?.subscribed || checkIns.length < 10;
+    // const checkIns = await prisma.checkIn.findMany({
+    //     where: {
+    //         userId: session.user.id,
+    //     },
+    // });
 
-  return (
-    <main className="p-8 mx-auto max-w-7xl">
-      <div className="flex items-center mb-5">
-        <div className="flex flex-col gap-1">
-          <h2 className="mr-2 text-[28px] font-bold tracking-tight">
-            Your Dashboard
-          </h2>
-          <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-            Below you’ll be able to create a check-in as well as view past
-            check-ins
-          </h1>
-        </div>
-      </div>
+    // const clear = user?.subscribed || checkIns.length < 10;
 
-      <div className="grid gap-5 mt-4 md:grid-cols-3">
-        <EducadoTutorCard />
-
-        <CheckInCard
-          clear={clear}
-          // subscribed={user?.subscribed!}
-          userId={session.user.id}
-        />
-        {/* <HistoryCard /> */}
-        {/* <ContactCard /> */}
-        <ContentRequestCard />
-      </div>
-      <div className="flex items-center justify-between space-y-2">
-        <div className="flex flex-col gap-1">
-          <h2 className="mt-10 text-[28px] font-bold tracking-tight">
-            Past Check-Ins
-          </h2>
-          <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-            Below you’ll see the past 10 check-ins you've made. View the full
-            history{" "}
-            <Link className="text-green underline " href={"/history"}>
-              here
-            </Link>
-          </h1>
-        </div>
-      </div>
-
-      <HistoryTable limit={10} userId={session.user.id} />
-    </main>
-  );
+    return <main className="p-8 mx-auto max-w-7xl">hi</main>;
 };
 export default Dashboard;

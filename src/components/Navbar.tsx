@@ -8,9 +8,21 @@ import SignInButton from "./SignInButton";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import NavbarRoute from "./NavbarRoute";
+import { prisma } from "@/lib/db";
 
 const Navbar = async () => {
     const session = await getAuthSession();
+
+    const userId = session?.user?.id;
+
+    let user;
+    if (session?.user) {
+        user = await prisma.user.findUnique({
+            where: {
+                id: userId,
+            },
+        });
+    }
 
     return (
         <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300  py-3 ">
@@ -33,17 +45,31 @@ const Navbar = async () => {
                 <div className="flex items-center">
                     {session?.user ? (
                         <>
-                            <ThemeToggle className="mr-4" />
+                            <ThemeToggle home={true} className="mr-2" />
+                            <ThemeToggle home={false} className="mr-4" />
                             <UserAccountNav user={session.user} />
                             <div className="ml-3 border-l-2 pl-3">
                                 <h1 className="text-lg font-semibold ">
                                     {session.user.name}
                                 </h1>
-                                <p className="text-[13px] ">Teacher</p>
+                                {user!.isTeacher ? (
+                                    <p className="text-[13px] ">Teacher</p>
+                                ) : (
+                                    <p className="text-[13px] ">Student</p>
+                                )}
                             </div>
                         </>
                     ) : (
-                        <NavbarRoute />
+                        <div className="flex flex-row items-center text-center text-sm md:text-lg justify-center space-x-2 md:space-x-6 font-outfit">
+                            <Link href={"/contact"}>
+                                <p>Contact</p>
+                            </Link>
+                            <Link href={"/demo"}>
+                                <p>Book Demo</p>
+                            </Link>
+
+                            <SignInButton text={"Sign In"} />
+                        </div>
                     )}
                 </div>
             </div>
