@@ -7,6 +7,16 @@ export async function POST(req: Request, res: Response) {
     try {
         const body = await req.json();
 
+        if (body.answer.substring(2, 15) == "function_call") {
+            console.log("function call");
+            return NextResponse.json(
+                {
+                    data: "function call",
+                },
+                { status: 200 }
+            );
+        }
+
         const latestQuestion = body.question;
         const currentDate = new Date();
         const year = currentDate.getFullYear();
