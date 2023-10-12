@@ -1,0 +1,119 @@
+CA NGSS Science - Grade 5: [
+    5-LS1 From Molecules to Organisms: Structures and Processes: {
+        LS1.C: Organization for Matter and Energy Flow in
+Organisms
+- Plants acquire their material for growth chiefly from
+air and water. (5-LS1-1)
+Energy and Matter
+- Matter is transported into, out of, and within systems. (5-LS1-1)
+    },
+    5-LS2 Ecosystems: Interactions, Energy, and Dynamics: {
+        LS2.A: Interdependent Relationships in Ecosystems
+- The food of almost any kind of animal can be traced
+back to plants. Organisms are related in food webs
+in which some animals eat plants for food and
+other animals eat the animals that eat plants. Some
+organisms, such as fungi and bacteria, break down
+dead organisms (both plants or plants parts and
+animals) and therefore operate as “decomposers.”
+Decomposition eventually restores (recycles) some
+materials back to the soil. Organisms can survive
+only in environments in which their particular needs
+are met. A healthy ecosystem is one in which multiple species of different types are each able to meet
+their needs in a relatively stable web of life. Newly
+introduced species can damage the balance of an
+ecosystem. (5-LS2-1)
+LS2.B: Cycles of Matter and Energy Transfer in
+Ecosystems
+- Matter cycles between the air and soil and among
+plants, animals, and microbes as these organisms live
+and die. Organisms obtain gases, and water, from the
+environment, and release waste matter (gas, liquid, or
+solid) back into the environment. (5-LS2-1)
+    },
+    5-ESS1 Earth’s Place in the Universe: {
+        ESS1.A: The Universe and Its Stars
+- The sun is a star that appears larger and brighter
+than other stars because it is closer. Stars range
+greatly in their distance from Earth. (5-ESS1-1)
+ESS1.B: Earth and the Solar System
+- The orbits of Earth around the sun and of the moon
+around Earth, together with the rotation of Earth
+about an axis between its North and South poles,
+cause observable patterns. These include day and
+night; daily changes in the length and direction of
+shadows; and different positions of the sun, moon,
+and stars at different times of the day, month, and
+year. (5-ESS1-2)
+    },
+    5-ESS2 Earth’s Systems : {
+        ESS2.A: Earth Materials and Systems
+- Earth’s major systems are the geosphere (solid
+and molten rock, soil, and sediments), the hydrosphere (water and ice), the atmosphere (air), and
+the biosphere (living things, including humans).
+These systems interact in multiple ways to affect
+Earth’s surface materials and processes. The ocean
+supports a variety of ecosystems and organisms,
+shapes landforms, and influences climate. Winds
+and clouds in the atmosphere interact with the landforms to determine patterns of weather. (5-ESS2-1)
+ESS2.C: The Roles of Water in Earth’s Surface
+Processes
+- Nearly all of Earth’s available water is in the ocean.
+Most fresh water is in glaciers or underground; only
+a tiny fraction is in streams, lakes, wetlands, and the
+atmosphere. (5-ESS2-2)
+    },
+    5-ESS3 Earth and Human Activity: {
+        ESS3.C: Human Impacts on Earth Systems
+- Human activities in agriculture, industry, and everyday life have had major effects on the land, vegetation, streams, ocean, air, and even outer space.
+But individuals and communities are doing things
+to help protect Earth’s resources and environments.
+(5-ESS3-1)
+    },
+    5-PS1 Matter and Its Interactions: {
+        PS1.A: Structure and Properties of Matter
+- Matter of any type can be subdivided into particles
+that are too small to see, but even then the matter
+still exists and can be detected by other means.
+A model shows that gases are made from matter
+particles that are too small to see and are moving
+freely around in space can explain many observations, including the inflation and shape of a balloon
+and the effects of air on larger particles or objects.
+(5-PS1-1)
+- The amount (weight) of matter is conserved when it
+changes form, even in transitions in which it seems
+to vanish. (5-PS1-2)
+- Measurements of a variety of properties can be
+used to identify materials. (Boundary: At this grade
+level, mass and weight are not distinguished, and no
+attempt is made to define the unseen particles or
+explain the atomic-scale mechanism of evaporation
+and condensation.) (5-PS1-3)
+ PS1.B: Chemical Reactions
+- When two or more different substances are mixed,
+a new substance with different properties may be
+formed. (5-PS1-4)
+- No matter what reaction or change in properties
+occurs, the total weight of the substances does not
+change. (Boundary: Mass and weight are not distinguished at this grade level.) (5-PS1-2)
+    },
+    5-PS2 Motion and Stability: Forces and Interaction: {
+        PS2.B: Types of Interactions
+- The gravitational force of Earth acting on an object
+near Earth’s surface pulls that object toward the
+planet’s center. (5-PS2-1)
+    },
+    5-PS3 Energy: {
+        PS3.D: Energy in Chemical Processes and Everyday
+Life
+- The energy released [from] food was once energy
+from the sun that was captured by plants in the
+chemical process that forms plant matter (from air
+and water). (5-PS3-1)
+LS1.C: Organization for Matter and Energy Flow in
+Organisms
+- Food provides animals with the materials they need
+for body repair and growth and the energy they need
+to maintain body warmth and for motion. (secondary to 5-PS3-1)
+    }
+]

@@ -39,10 +39,11 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 tutorName={tutor.tutorName}
                 ownerName={tutor.ownerName}
                 tutorDisplayName={tutor.tutorDisplayName}
-                tempQuestions={tutor.tempQuestions}
                 tutorId={tutor.id}
                 userId={session.user.id}
                 studentName={session.user.name!}
+                placeholderQs={tutor.placeholderQs}
+                defaultPrompt={tutor.basePrompt}
             />
         </>
     );

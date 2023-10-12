@@ -318,9 +318,8 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
-                    tutorName: "myleah_rhynes",
-                    standardName:
-                        "Oklahoma Academic Standards for Science 6th Grade",
+                    tutorName: "tracy_tutor",
+                    standardName: "CA NGSS Science - Grade 5",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",

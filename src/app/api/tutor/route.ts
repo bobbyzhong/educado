@@ -13,8 +13,6 @@ import {
 } from "../../../../tutorUtils";
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
-import fs from "fs";
-import { prisma } from "@/lib/db";
 
 export const runtime = "edge";
 

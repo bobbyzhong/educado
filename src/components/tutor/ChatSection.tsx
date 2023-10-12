@@ -36,9 +36,10 @@ type Props = {
     tutorDisplayName: string;
     ownerName: string;
     tutorId: string;
-    tempQuestions: string;
+    placeholderQs: string;
     userId: string;
     studentName: string;
+    defaultPrompt: string;
 };
 
 export default function ChatSection({
@@ -46,9 +47,10 @@ export default function ChatSection({
     tutorDisplayName,
     ownerName,
     tutorId,
-    tempQuestions,
+    placeholderQs,
     userId,
     studentName,
+    defaultPrompt,
 }: Props) {
     const {
         messages,
@@ -65,10 +67,13 @@ export default function ChatSection({
             ownerName: ownerName,
             studentName: studentName,
             userId: userId,
+            defaultPrompt: defaultPrompt,
         },
     });
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     useAutosizeTextArea(textAreaRef.current, input);
+
+    const examples = placeholderQs.split(",");
 
     // The code below are designed to allow autoscroll for the streaming text response but also allow user to manually scroll up if they like without the page autoscrolling back down.
     const [autoscroll, setAutoscroll] = useState(true);
