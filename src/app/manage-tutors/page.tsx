@@ -60,7 +60,7 @@ const ManageTutor = async (props: Props) => {
                                 })}
                             </div>
                         ) : (
-                            <div>No tutors made yet </div>
+                            <div></div>
                         )}
                     </div>
                 </div>
