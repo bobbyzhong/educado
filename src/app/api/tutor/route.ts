@@ -44,10 +44,10 @@ export async function POST(req: Request) {
     if (context === null) {
         return new Response("No relevant matches found.", { status: 200 });
     }
-    const prompt = createPrompt(latestQuestion, context);
+    const prompt = createPrompt(latestQuestion, context, body.defaultPrompt);
 
     messages[messages.length - 1].content = prompt;
-    messages = messages.slice(-5);
+    messages = messages.slice(-4);
     // Request the OpenAI API for the response based on the prompt
 
     const response = await openai.chat.completions.create({

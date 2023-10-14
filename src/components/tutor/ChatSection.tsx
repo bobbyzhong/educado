@@ -22,7 +22,7 @@ import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
 import Link from "next/link";
-import { Loader2, Send, SendHorizonal } from "lucide-react";
+import { Loader2, MoveDown, Send, SendHorizonal } from "lucide-react";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -76,29 +76,49 @@ export default function ChatSection({
     const examples = placeholderQs.split(",");
 
     // The code below are designed to allow autoscroll for the streaming text response but also allow user to manually scroll up if they like without the page autoscrolling back down.
-    const [autoscroll, setAutoscroll] = useState(true);
-    const chatContainerRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (autoscroll && chatContainerRef.current) {
-            chatContainerRef.current?.scrollIntoView({
-                behavior: "instant",
-                block: "end",
-                inline: "start",
-            });
-        }
-    }, [autoscroll, messages, isLoading]);
+    // const [autoscroll, setAutoscroll] = useState(true);
+    // const [userScrolled, setUserScrolled] = useState(false);
 
-    const handleScrollMode = (e: React.UIEvent<HTMLElement>) => {
-        const { scrollHeight, clientHeight, scrollTop } = e.currentTarget;
-        const currentScrollPos = clientHeight + scrollTop;
-        if (currentScrollPos > scrollHeight - 5) {
-            if (autoscroll === true) return;
-            setAutoscroll(true);
-        } else {
-            if (autoscroll === false) return;
-            setAutoscroll(false);
-        }
-    };
+    // const chatContainerRef = useRef<HTMLDivElement>(null);
+    // useEffect(() => {
+    //     if (autoscroll && chatContainerRef.current) {
+    //         chatContainerRef.current?.scrollIntoView({
+    //             behavior: "instant",
+    //             block: "end",
+    //             inline: "start",
+    //         });
+    //     }
+    // }, [autoscroll, messages, isLoading]);
+    // useEffect(() => {
+    //     if (!userScrolled && chatContainerRef.current) {
+    //         chatContainerRef.current.scrollIntoView({
+    //             behavior: "instant",
+    //             block: "end",
+    //             inline: "start",
+    //         });
+    //     }
+    // }, [userScrolled, messages, isLoading]);
+
+    // const handleScrollMode = (e: React.UIEvent<HTMLElement>) => {
+    //     const { scrollHeight, clientHeight, scrollTop } = e.currentTarget;
+    //     const currentScrollPos = clientHeight + scrollTop;
+
+    //     if (currentScrollPos > scrollHeight - 50) {
+    //         if (!autoscroll) {
+    //             setAutoscroll(true);
+    //         }
+    //     } else {
+    //         if (autoscroll) {
+    //             setAutoscroll(false);
+    //         }
+    //     }
+
+    //     // Set userScrolled to true when the user manually scrolls
+    //     if (scrollTop + clientHeight < scrollHeight) {
+    //         setUserScrolled(true);
+    //     }
+    // };
+
     const handleKeypress = (e: any) => {
         // It's triggers by pressing the enter key
         if (e.keyCode == 13 && !e.shiftKey) {
@@ -117,11 +137,11 @@ export default function ChatSection({
     return (
         <div className="w-full flex justify-between items-center flex-col ">
             <div
-                onScroll={(e) => {
-                    handleScrollMode(e);
-                }}
+                // onScroll={(e) => {
+                //     handleScrollMode(e);
+                // }}
                 className="flex 
-                  items-center w-full  flex-1 flex-col overflow-y-scroll  "
+                  items-center w-full mb-5 flex-1 flex-col overflow-y-scroll  "
             >
                 <div className="max-w-[50rem] ">
                     {messages.length > 0 ? (
@@ -205,18 +225,30 @@ export default function ChatSection({
                     )}
                     <div
                         className=" h-[12px] w-full "
-                        ref={chatContainerRef}
+                        // ref={chatContainerRef}
                     ></div>
                 </div>
             </div>
             <div className="w-full min-h-[7rem] "></div>
+
             <div
                 className=" w-full fixed bottom-0
-              bg-green3 "
+              bg-green3  "
             >
+                {isLoading && messages.length > 2 && (
+                    <div className="w-full flex justify-center">
+                        <div className="absolute -translate-y-14 font-outfit text-white1 text-[15px]">
+                            <div className="flex flex-row gap-1 animate-pulse rounded-full bg-green px-3 py-[1px]">
+                                <h1>Scroll Down </h1>
+                                {/* <MoveDown size={18} /> */}
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 <form
                     onSubmit={onHandleSubmit}
-                    className="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
+                    className="stretch mx-2 flex flex-col gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
                 >
                     <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
                         <div

@@ -47,13 +47,12 @@ export const getContext = async (
     return concatenatedPageContent;
 };
 
-export const createPrompt = (latestQuestion: string, context: string) => {
-    const base = `You are a helpful tutor for a student in middle or high school. Be concise when you can and speak in a happy and fun tone.
-    Use only the context given to you below and previous messages to answer the question. Do not pull from
-    any outside information to answer this question. If the answer to the question isn't found in the context just say you dont know.
-     Here is the student's question: `;
-
-    const prompt = `${base} ${latestQuestion}. Here is the context: [${context}]`;
+export const createPrompt = (
+    latestQuestion: string,
+    context: string,
+    defaultPrompt: string
+) => {
+    const prompt = `${defaultPrompt} ${latestQuestion}. Here is the context: [${context}]`;
     return prompt;
 };
 

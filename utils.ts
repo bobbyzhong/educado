@@ -319,7 +319,7 @@ export const updatePinecone = async (
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
                     tutorName: "tracy_tutor",
-                    standardName: "CA NGSS Science - Grade 5",
+                    standardName: "ELA CCSS 5th Grade",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",
