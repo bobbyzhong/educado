@@ -319,7 +319,7 @@ export const updatePinecone = async (
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
                     tutorName: "tracy_tutor",
-                    standardName: "ELA CCSS 5th Grade",
+                    standardName: "The Phantom Tollbooth CH 1-14",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",
