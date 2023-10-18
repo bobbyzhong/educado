@@ -52,13 +52,23 @@ export const createPrompt = (
     context: string,
     defaultPrompt: string
 ) => {
-    const prompt = `${defaultPrompt} ${latestQuestion}. Here is the context: [${context}]`;
+    // `You are a helpful tutor for a student in middle or high school. Your name is Albert and you are a
+    // helpful tutor. Be concise when you can and speak in a happy and fun tone. Use the context given to you
+    //  below and previous messages to answer the student's question. `
+    const prompt = `${defaultPrompt} If the context doesn't contain any information that relates
+    to the question respond by saying you don't have knowledge on that specific 
+    area and recommend the student to ask their teacher to make a tutor about that topic if they want to learn about that.
+    Use only the information from the context below to answer the question. If the context isn't related to the question,
+    tell the student you don't have knowledge on that topic. 
+     Here is the student's question: ${latestQuestion}. Here is the context: [${context}]`;
     return prompt;
 };
 
 export function detectEmotionalIssues(complaint: string) {
     console.log("Detected emotional issues...");
     console.log("Complaint is: ", complaint);
+    return `Support the student and tell them you are sorry they are going through that. Advice them to seek Support
+    from a trusted adult or a counselor.`;
 }
 
 export function detectEssayRequest(essayTopic: string) {
@@ -72,26 +82,29 @@ export async function runFunction(name: string, args: any) {
     switch (name) {
         case "detectEssayRequest":
             return detectEssayRequest(args.essayTopic);
+        case "detectEmotionalIssues":
+            return detectEmotionalIssues(args.complaint);
     }
 }
 
 export const functions = [
-    // {
-    //     name: "detectEmotionalIssues",
-    //     description:
-    //         "Detects if the student is having emotional issues or is complaining about a problem",
-    //     parameters: {
-    //         type: "object",
-    //         properties: {
-    //             complaint: {
-    //                 type: "string",
-    //                 description:
-    //                     "The student's complaint or the problem they are having",
-    //             },
-    //         },
-    //         require: ["complaint"],
-    //     },
-    // },
+    {
+        name: "detectEmotionalIssues",
+        description: `Detects if the student is having emotional issues or
+        complaining about a problem in school and returns a specific response if they are
+         `,
+        parameters: {
+            type: "object",
+            properties: {
+                complaint: {
+                    type: "string",
+                    description:
+                        "The student's complaint or the problem they are having",
+                },
+            },
+            require: [],
+        },
+    },
     {
         name: "detectEssayRequest",
         description: `Detects if student as asking tutor to write an essay for them and returns a specific 

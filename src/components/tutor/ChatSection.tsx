@@ -75,50 +75,6 @@ export default function ChatSection({
 
     const examples = placeholderQs.split(",");
 
-    // The code below are designed to allow autoscroll for the streaming text response but also allow user to manually scroll up if they like without the page autoscrolling back down.
-    // const [autoscroll, setAutoscroll] = useState(true);
-    // const [userScrolled, setUserScrolled] = useState(false);
-
-    // const chatContainerRef = useRef<HTMLDivElement>(null);
-    // useEffect(() => {
-    //     if (autoscroll && chatContainerRef.current) {
-    //         chatContainerRef.current?.scrollIntoView({
-    //             behavior: "instant",
-    //             block: "end",
-    //             inline: "start",
-    //         });
-    //     }
-    // }, [autoscroll, messages, isLoading]);
-    // useEffect(() => {
-    //     if (!userScrolled && chatContainerRef.current) {
-    //         chatContainerRef.current.scrollIntoView({
-    //             behavior: "instant",
-    //             block: "end",
-    //             inline: "start",
-    //         });
-    //     }
-    // }, [userScrolled, messages, isLoading]);
-
-    // const handleScrollMode = (e: React.UIEvent<HTMLElement>) => {
-    //     const { scrollHeight, clientHeight, scrollTop } = e.currentTarget;
-    //     const currentScrollPos = clientHeight + scrollTop;
-
-    //     if (currentScrollPos > scrollHeight - 50) {
-    //         if (!autoscroll) {
-    //             setAutoscroll(true);
-    //         }
-    //     } else {
-    //         if (autoscroll) {
-    //             setAutoscroll(false);
-    //         }
-    //     }
-
-    //     // Set userScrolled to true when the user manually scrolls
-    //     if (scrollTop + clientHeight < scrollHeight) {
-    //         setUserScrolled(true);
-    //     }
-    // };
-
     const handleKeypress = (e: any) => {
         // It's triggers by pressing the enter key
         if (e.keyCode == 13 && !e.shiftKey) {
