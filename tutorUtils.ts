@@ -74,7 +74,7 @@ export function detectEmotionalIssues(complaint: string) {
 export function detectEssayRequest(essayTopic: string) {
     console.log("Detected essay request...");
     console.log("Essay topic is: ", essayTopic);
-    return `Tell the student you cannot write an essay for them but say 
+    return `Do not write the essay for the student. Tell the student you cannot write an essay for them but say 
     you are happy to help them brainstorm. Say nothing more than that`;
 }
 
