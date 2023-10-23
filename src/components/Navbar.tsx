@@ -30,10 +30,10 @@ const Navbar = async () => {
                 {/* Logo */}
                 <Link href={"/"} className="flex items-center flex-row ">
                     <Image
-                        className=" w-[1.25rem] md:w-[1.75rem] hover:-translate-y-[2px] mr-1 md:mr-2 transition-all"
+                        className=" w-[1.5rem] md:w-[2.25rem] hover:-translate-y-[2px] mr-1 md:mr-2 transition-all"
                         src={"/avocado.png"}
-                        height={800}
-                        width={800}
+                        height={700}
+                        width={700}
                         alt=""
                     />
                     <p className="font-outfit ml-1 md:text-3xl text-2xl transition-all hover:-translate-y-[2px] md:block dark:text-white1">
