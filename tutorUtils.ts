@@ -5,7 +5,8 @@ export const getContext = async (
     client: any,
     indexName: any,
     question: string,
-    tutorName: string
+    tutorName: string,
+    prevMessages: string
 ) => {
     // 1. Start query process
     console.log("Querying Pinecone vector store...");
@@ -14,6 +15,9 @@ export const getContext = async (
 
     console.log("QUESTION: ", question);
     console.log("TUTOR NAME: ", tutorName);
+    // console.log("PREV MESSAGES: ", prevMessages);
+
+    // const query = question + "\n Chat History: " + prevMessages;
     // 3. Create query embedding
     const queryEmbedding = await new OpenAIEmbeddings().embedQuery(question);
     // 4. Query Pinecone index and return top 10 matches
@@ -31,17 +35,34 @@ export const getContext = async (
             },
         },
     });
+
+    console.log("FIRST SCORE: ", queryResponse.matches[0].score);
+    let filteredRes = [];
+    for (let i = 0; i < queryResponse.matches.length; i++) {
+        if (queryResponse.matches[i].score >= 0.78) {
+            filteredRes.push(queryResponse.matches[i]);
+        }
+    }
+
+    if (filteredRes.length > 0) {
+        console.log("RESPONSE CONTENT: ", filteredRes[0].metadata.pageContent);
+        console.log("SIMILARITY SCORE: ", filteredRes[0].score);
+    }
+
     // 5. Log the number of matches
-    console.log(`Found ${queryResponse.matches.length} matches ...`);
-    if (queryResponse.matches.length === 0) {
+    console.log(`Found ${filteredRes.length} matches ...`);
+    if (
+        filteredRes.length === 0 ||
+        filteredRes[0].metadata.pageContent.length < 3
+    ) {
         // Handle the case of no relevant matches
         console.log("No relevant matches found.");
-        return null;
+        return "No context";
     }
 
     // WILL NEED TO HANDLE CASE OF NO MATCHES
 
-    const concatenatedPageContent = queryResponse.matches
+    const concatenatedPageContent = filteredRes
         .map((match: any) => match.metadata.pageContent)
         .join(" ");
     return concatenatedPageContent;
@@ -55,12 +76,8 @@ export const createPrompt = (
     // `You are a helpful tutor for a student in middle or high school. Your name is Albert and you are a
     // helpful tutor. Be concise when you can and speak in a happy and fun tone. Use the context given to you
     //  below and previous messages to answer the student's question. `
-    const prompt = `${defaultPrompt} If the context doesn't contain any information that relates
-    to the question respond by saying you don't have knowledge on that specific 
-    area and recommend the student to ask their teacher to make a tutor about that topic if they want to learn about that.
-    Use only the information from the context below to answer the question. If the context isn't related to the question,
-    tell the student you don't have knowledge on that topic. 
-     Here is the student's question: ${latestQuestion}. Here is the context: [${context}]`;
+
+    const prompt = `STUDENT'S QUESTION: ${latestQuestion}. Here is the optional context: [${context}]`;
     return prompt;
 };
 
@@ -107,7 +124,7 @@ export const functions = [
     },
     {
         name: "detectEssayRequest",
-        description: `Detects if student as asking tutor to write an essay for them and returns a specific 
+        description: `Detects if student is asking tutor to write an essay for them and returns a specific 
         response if they are.`,
         parameters: {
             type: "object",

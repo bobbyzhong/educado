@@ -26,6 +26,21 @@ export async function POST(req: Request) {
 
     let messages = body.messages;
 
+    const slicedMessages = messages.slice(-4);
+    const filteredConversation = slicedMessages.filter(
+        (item: any) => item.role !== "system"
+    );
+    const contentArray = filteredConversation.map((item: any) => item.content);
+    const conversationString = contentArray.join("\n\n");
+
+    messages.unshift({
+        role: "system",
+        content: `You are a helpful tutor for a student in middle or high school. Your name is Albert and 
+                you are a helpful tutor. Be concise when you can and speak in a happy and fun tone. Use the provided context and previous messages to answer the student's
+                question. If the student's question is related to the context use the context to answer it and do not pull from any outside information. If it isn't related,
+                answer like you would normally. `,
+    });
+
     const client = new PineconeClient();
     await client.init({
         apiKey: process.env.PINECONE_API_KEY || "",
@@ -38,7 +53,8 @@ export async function POST(req: Request) {
         client,
         indexName,
         latestQuestion,
-        body.tutorName
+        body.tutorName,
+        conversationString
     );
     // console.log("CONTEXT: ", context);
     if (context === null) {
@@ -47,8 +63,10 @@ export async function POST(req: Request) {
     const prompt = createPrompt(latestQuestion, context, body.defaultPrompt);
 
     messages[messages.length - 1].content = prompt;
-    messages = messages.slice(-4);
+    // messages = messages.slice(-4);
     // Request the OpenAI API for the response based on the prompt
+
+    console.log("MESSAGES ", messages);
 
     const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-0613",

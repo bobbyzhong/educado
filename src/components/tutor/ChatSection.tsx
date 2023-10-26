@@ -265,13 +265,20 @@ export default function ChatSection({
                         className="md:w-full w-9/12 flex mb-5 text-[15px] font-outfit items-center justify-center 
                 md:px-0 "
                     >
-                        <h1 className=" text-center">
-                            Created by your teacher with some help from 🥑{" "}
+                        <h1 className=" text-center flex flex-row items-center gap-2">
+                            Created by your teacher with some help from{" "}
                             <Link
                                 href="/"
                                 target="_blank"
-                                className="text-green cursor-pointer"
+                                className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px]"
                             >
+                                <Image
+                                    className=" w-[15px]  mr-1 md:mr-2 transition-all"
+                                    src={"/avocado.png"}
+                                    height={700}
+                                    width={700}
+                                    alt=""
+                                />
                                 Educado
                             </Link>
                         </h1>
