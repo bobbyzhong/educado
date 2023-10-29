@@ -51,7 +51,7 @@ export function TutorCard({ name, description, joinCode, status, id }: Props) {
         },
     ];
     return (
-        <Card className="w-[300px] shrink-0">
+        <Card className="w-[300px] max-h-[25rem] shrink-0">
             <CardHeader className="py-4">
                 <CardTitle className="text-[19px] font-bold tracking-tight text-green">
                     <span className="text-base text-zinc-400 font-semibold tracking-tight mr-[2px]">
@@ -88,7 +88,7 @@ export function TutorCard({ name, description, joinCode, status, id }: Props) {
                     target="_blank"
                 >
                     <Button variant={"green"} className="w-full">
-                        View, Share, or Edit {name}
+                        {name}'s Details
                     </Button>
                 </Link>
             </CardFooter>
