@@ -82,7 +82,7 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                                         <TableCell className="font-semibold">
                                             {chat.question}
                                         </TableCell>
-                                        <TableCell className="w-[40%]">
+                                        <TableCell className="w-[50%]">
                                             <div className="max-h-[5rem] overflow-y-scroll">
                                                 {chat.answer}
                                             </div>

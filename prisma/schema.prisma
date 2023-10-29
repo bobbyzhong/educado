@@ -51,6 +51,7 @@ model User {
   subscriptionId String?
   school    String?
   recentCodes String?
+  notifs String? @db.Text
   checkIns         CheckIn[]
   accounts      Account[]
   sessions      Session[]

@@ -189,7 +189,7 @@ export default function ChatSection({
 
             <div
                 className=" w-full fixed bottom-0
-              bg-green3  "
+              bg-green3 dark:bg-inherit dark:border-t-2 "
             >
                 {isLoading && messages.length > 2 && (
                     <div className="w-full flex justify-center">
@@ -224,7 +224,7 @@ export default function ChatSection({
                                 }}
                                 placeholder="Ask me anything ..."
                                 className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
-                                  focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2
+                                  focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2 dark:text-black
                                   md:pl-0"
                                 onChange={handleInputChange}
                                 onKeyDown={handleKeypress}

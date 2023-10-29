@@ -1,74 +1,62 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import {
-    BookUp,
     ClipboardSignature,
     Clock,
-    Loader2,
-    UserCircle,
+    ContactIcon,
+    HelpCircle,
 } from "lucide-react";
+import { QuizModal } from "./QuizModal";
 import Image from "next/image";
 
 type Props = {};
 
-const EducadoTutorCard = (props: Props) => {
+const ResourcesCard = (props: Props) => {
     const router = useRouter();
-
-    const [isLoading, setIsLoading] = useState(false);
-
     return (
         <>
             <Card
                 className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-6"
                 onClick={() => {
-                    setIsLoading(true);
-                    router.push("/manage-tutors");
+                    router.push("/resources");
                 }}
             >
                 <div>
                     <CardHeader className="flex flex-col gap-2 mb-3 p-0">
-                        <UserCircle
+                        <HelpCircle
                             className="rounded-md"
                             size={30}
                             strokeWidth={2}
                             color="#86D20A"
                         />
                         <CardTitle className="text-[19px] font-bold ">
-                            Educado Tutor
+                            Resources/Help Center
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col justify-between p-0">
                         <p className="text-[14.5px] text-muted-foreground leading-6 w-[98%]">
-                            Create and manage tutors for your students. See what
-                            questions they've been asking and add content for
-                            your tutor to use.
+                            Not sure how to use Educado? Go to our help center
+                            to watch some videos and see some guides on how to
+                            get started!
                         </p>
                     </CardContent>
                 </div>
                 <div className="w-full flex items-center mt-4">
                     <p className="text-[16px] text-green font-[550] mr-2">
-                        Manage Tutors
+                        Continue
                     </p>
-                    {isLoading ? (
-                        <Loader2
-                            color="#86D20A"
-                            className="animate-spin"
-                            size={22}
-                        />
-                    ) : (
-                        <Image
-                            src={"icons/greenarrow.svg"}
-                            height={20}
-                            width={20}
-                            alt={""}
-                        />
-                    )}
+                    <Image
+                        src={"icons/greenarrow.svg"}
+                        height={20}
+                        width={20}
+                        alt={""}
+                    />
                 </div>
             </Card>
         </>
     );
 };
 
-export default EducadoTutorCard;
+export default ResourcesCard;

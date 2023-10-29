@@ -24,7 +24,7 @@ export const getContext = async (
 
     let queryResponse = await index.query({
         queryRequest: {
-            topK: 3,
+            topK: 2,
             vector: queryEmbedding,
             includeMetadata: true,
             includeValues: true,
@@ -57,15 +57,44 @@ export const getContext = async (
     ) {
         // Handle the case of no relevant matches
         console.log("No relevant matches found.");
-        return "No context";
+        const newEmbedding = await new OpenAIEmbeddings().embedQuery(
+            prevMessages
+        );
+        let queryResponse = await index.query({
+            queryRequest: {
+                topK: 3,
+                vector: newEmbedding,
+                includeMetadata: true,
+                includeValues: true,
+                filter: {
+                    tutorName: {
+                        $eq: tutorName,
+                    },
+                },
+            },
+        });
+        let filteredRes = [];
+        for (let i = 0; i < queryResponse.matches.length; i++) {
+            if (queryResponse.matches[i].score >= 0.78) {
+                filteredRes.push(queryResponse.matches[i]);
+            }
+        }
+        if (
+            filteredRes.length === 0 ||
+            filteredRes[0].metadata.pageContent.length < 3
+        ) {
+            return "No Context";
+        }
+        const concatenatedPageContent = filteredRes
+            .map((match: any) => match.metadata.pageContent)
+            .join(" ");
+        return concatenatedPageContent;
+    } else {
+        const concatenatedPageContent = filteredRes
+            .map((match: any) => match.metadata.pageContent)
+            .join(" ");
+        return concatenatedPageContent;
     }
-
-    // WILL NEED TO HANDLE CASE OF NO MATCHES
-
-    const concatenatedPageContent = filteredRes
-        .map((match: any) => match.metadata.pageContent)
-        .join(" ");
-    return concatenatedPageContent;
 };
 
 export const createPrompt = (
@@ -77,7 +106,7 @@ export const createPrompt = (
     // helpful tutor. Be concise when you can and speak in a happy and fun tone. Use the context given to you
     //  below and previous messages to answer the student's question. `
 
-    const prompt = `STUDENT'S QUESTION: ${latestQuestion}. Here is the optional context: [${context}]`;
+    const prompt = `STUDENT'S QUESTION: ${latestQuestion}. Here is the context: [${context}]`;
     return prompt;
 };
 

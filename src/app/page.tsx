@@ -70,7 +70,7 @@ export default async function Home() {
                     </Link>
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-0 md:gap-8 justify-center items-center ">
+            <div className="flex flex-col md:flex-rowjustify-center items-center ">
                 <StudentEnterCode
                     title="EDUCADO TUTOR"
                     description="Ask for help"
@@ -79,17 +79,17 @@ export default async function Home() {
                     isSignedIn={session?.user}
                     userId={session?.user?.id || ""}
                 />
-                <StudentEnterCode
+                {/* <StudentEnterCode
                     title="CHECK-IN"
                     description="Enter Code Here"
                     link="check-in"
                     bgRed={true}
                     isSignedIn={session?.user}
                     userId={session?.user?.id || ""}
-                />
+                /> */}
             </div>
 
-            <div className="w-full flex items-center justify-center mt-12 gap-1 font-medium">
+            <div className="w-full flex items-center justify-center mt-12 gap-1 font-medium text-[17px]">
                 <p>
                     Are you a teacher who's district has access to Educado?
                     Click{" "}
