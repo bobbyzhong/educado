@@ -32,7 +32,7 @@ const ContactCard = (props: Props) => {
                     </CardHeader>
                     <CardContent className="flex flex-col justify-between p-0">
                         <p className="text-[14.5px] text-muted-foreground leading-6 w-[98%]">
-                            Feel free contact Bobby (the founder of Pear) for
+                            Feel free contact Bobby (the founder of Educado) for
                             any reason at any time. Whether you need help, have
                             a feature request, or have a complaint, don't
                             hesitate to reach out!

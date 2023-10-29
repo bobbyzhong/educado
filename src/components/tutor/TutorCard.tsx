@@ -51,36 +51,38 @@ export function TutorCard({ name, description, joinCode, status, id }: Props) {
         },
     ];
     return (
-        <Card className="w-[300px] shrink-0">
-            <CardHeader className="py-4">
-                <CardTitle className="text-[19px] font-bold tracking-tight text-green">
-                    <span className="text-base text-zinc-400 font-semibold tracking-tight mr-[2px]">
-                        Tutor Name:{" "}
-                    </span>
-                    {name}
-                </CardTitle>
-                {/* <CardDescription></CardDescription> */}
-            </CardHeader>
-            <CardContent className=" pb-3">
-                <div>
-                    {notifications.map((notification, index) => (
-                        <div
-                            key={index}
-                            className="mb-2 grid grid-cols-[22px_1fr] items-start pb-2 last:mb-0 last:pb-0"
-                        >
-                            <span className="flex h-2 w-2 translate-y-2 rounded-full bg-green2 " />
-                            <div className="space-y-1">
-                                <p className="text-sm font-medium ">
-                                    {notification.title}
-                                </p>
-                                <p className="text-sm text-muted-foreground">
-                                    {notification.description}
-                                </p>
+        <Card className="w-[300px] h-[20rem] shrink-0 flex justify-between flex-col">
+            <div>
+                <CardHeader className="py-4">
+                    <CardTitle className="text-[17px] font-bold tracking-tight text-green">
+                        <span className="text-[14px] text-zinc-400 font-semibold tracking-tight mr-[2px]">
+                            Tutor Name:{" "}
+                        </span>
+                        {name}
+                    </CardTitle>
+                    {/* <CardDescription></CardDescription> */}
+                </CardHeader>
+                <CardContent className=" pb-3">
+                    <div>
+                        {notifications.map((notification, index) => (
+                            <div
+                                key={index}
+                                className="mb-2 grid grid-cols-[22px_1fr] items-start pb-2 last:mb-0 last:pb-0"
+                            >
+                                <span className="flex h-2 w-2 translate-y-2 rounded-full bg-green2 " />
+                                <div className="space-y-1">
+                                    <p className="text-sm font-medium ">
+                                        {notification.title}
+                                    </p>
+                                    <p className="text-sm text-muted-foreground">
+                                        {notification.description}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </CardContent>
+                        ))}
+                    </div>
+                </CardContent>
+            </div>
             <CardFooter className="pt-3 pb-5  ">
                 <Link
                     className="w-full"
@@ -88,7 +90,7 @@ export function TutorCard({ name, description, joinCode, status, id }: Props) {
                     target="_blank"
                 >
                     <Button variant={"green"} className="w-full">
-                        View, Share, or Edit {name}
+                        {name}'s Details
                     </Button>
                 </Link>
             </CardFooter>

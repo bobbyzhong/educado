@@ -3,45 +3,67 @@ import Image from "next/image";
 
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
+import { Mail, Phone, AlarmCheck } from "lucide-react";
 import {
-    Card,
-    CardHeader,
-    CardTitle,
-    CardDescription,
-    CardContent,
-    CardFooter,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export default function Page() {
-    return (
-        <div className="font-outfit text-center absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 flex items-center flex-col">
-            {/* <div className="text-lg w-10/12 mb-5">
-                If you're interested in trying Pear, just send an email or text
-                me and I'll provide you a link to sign up! This is to ensure
-                that only teachers are using Pear. <br /> Thanks! <br /> Bobby,
-                founder of Pear
-            </div> */}
-            <Card className=" w-full rounded-sm">
-                <CardHeader className="h-[60px]">
-                    <CardTitle className="text-2xl">Email</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-xl">3bobbyzhong3@gmail.com</p>
-                </CardContent>
-                <CardHeader className=" py-0">
-                    <CardTitle className="text-2xl">Phone</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-xl">(714) 330-9387</p>
-                </CardContent>
-            </Card>
-            <div className="mt-5">
-                <Link className=" text-xl" href="/demo">
-                    Or{" "}
-                    <span className="text-green underline">book a demo!</span>
-                </Link>
-            </div>
+  return (
+    <div className="font-outfit text-center flex items-center justify-center gap-7 mt-20">
+      <div className="flex items-center flex-col">
+        <h1 className="text-4xl font-bold mb-7">Contact Us</h1>
+        <div className="w-full md:w-full rounded-2xl mb-7 shadow-lg p-7 flex items-center">
+          <Mail
+            className="rounded-md mr-4"
+            size={30}
+            strokeWidth={2}
+            color="#86D20A"
+          />
+          <h1 className="md:text-2xl text-md">3bobbyzhong3@gmail.com</h1>
+          {/* 3bobbyzhong3@gmail.com */}
         </div>
-    );
+
+        <div className="w-full md:w-full rounded-2xl mb-7 shadow-lg p-7 flex items-center ">
+          <Phone
+            className="rounded-md mr-4"
+            size={30}
+            strokeWidth={2}
+            color="#86D20A"
+          />
+          <h1 className="md:text-2xl text-md">(714) 330-9387</h1>
+        </div>
+
+        <div className="w-full md:w-full">
+          <Link className="flex items-center text-xl" href="/demo">
+            <div className="bg-[#72AA17] rounded-2xl mb-5 shadow-lg p-7 flex items-center w-full hover:bg-[#86C71C] transition-colors duration-300">
+              <AlarmCheck
+                className="rounded-md mr-4"
+                size={30}
+                strokeWidth={2}
+                color="#FFFFFF"
+              />
+              <h1 className="md:text-2xl text-lg text-[#FFFFFF]">
+                Book a Demo!
+              </h1>
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      <Image
+        src="/contactpage.png"
+        alt="Contact Image"
+        className="md:block hidden"
+        width={500}
+        height={500}
+      />
+    </div>
+  );
 }

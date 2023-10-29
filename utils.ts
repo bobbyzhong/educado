@@ -318,8 +318,8 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
-                    tutorName: "tracy_tutor",
-                    standardName: "The Phantom Tollbooth CH 1-14",
+                    tutorName: "ben_franklin",
+                    standardName: "Ben Franklin Wiki",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",
