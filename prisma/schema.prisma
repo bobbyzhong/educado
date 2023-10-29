@@ -50,7 +50,7 @@ model User {
   subscribed   Boolean   @default(false)
   subscriptionId String?
   school    String?
-  recentCodes String?
+  recentTutors String?
   notifs String? @db.Text
   checkIns         CheckIn[]
   accounts      Account[]
@@ -79,6 +79,7 @@ enum CheckInType {
   mcq
   open_ended
 }
+
 
 model CheckIn {
   id          String     @id @default(cuid())

@@ -40,15 +40,15 @@ const Dashboard = async (props: Props) => {
         },
     });
 
-    const recentCodes = user?.recentCodes;
-    let codesList: any = [];
+    const recentCodes = user?.recentTutors;
+    let tutorList: any = [];
     if (recentCodes === undefined || recentCodes === null) {
-        codesList = [];
+        tutorList = [];
     } else {
-        codesList = recentCodes?.split(",");
-        codesList = codesList.slice(1, codesList.length);
-        codesList = codesList.filter(
-            (value: any, index: any) => codesList.indexOf(value) === index
+        tutorList = recentCodes?.split(",");
+        tutorList = tutorList.slice(1, tutorList.length);
+        tutorList = tutorList.filter(
+            (value: any, index: any) => tutorList.indexOf(value) === index
         );
     }
 
@@ -82,32 +82,23 @@ const Dashboard = async (props: Props) => {
                     isSignedIn={session?.user}
                     userId={session?.user?.id}
                 />
-                <StudentEnterCode
-                    title="CHECK-IN"
-                    description="Enter Code Here"
-                    link="check-in"
-                    bgRed={true}
-                    isSignedIn={session?.user}
-                    userId={session?.user?.id}
-                />
             </div>
 
             <div className="flex items-center justify-between space-y-2">
                 <div className="flex flex-col gap-1">
                     <h2 className="mt-10 text-[28px] font-bold tracking-tight">
-                        Recent Codes
+                        Recent Tutors
                     </h2>
                     <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-                        Here are the recent codes you've entered. Click on one
-                        to copy it!
+                        Here are the tutors you've recently chatted with!
                     </h1>
                 </div>
             </div>
 
-            {codesList.length > 0 ? (
+            {tutorList.length > 0 ? (
                 <div className="flex flex-row gap-3 flex-wrap mt-5">
-                    {codesList.map((code: any, i: any) => {
-                        return <StudDashCopy code={code} key={i} />;
+                    {tutorList.map((tutorId: any, i: any) => {
+                        return <StudDashCopy tutorId={tutorId} key={i} />;
                     })}
                 </div>
             ) : (

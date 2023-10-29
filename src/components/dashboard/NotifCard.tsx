@@ -14,18 +14,6 @@ import { prisma } from "@/lib/db";
 
 type Props = { userId: string };
 
-const notifs = [
-    "Hello I aam the first notification",
-    "THis student asked this question recently",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-    "23 students asked questions about this topic questions ",
-];
-
 const NotifCard = async ({ userId }: Props) => {
     const user = await prisma.user.findUnique({
         where: {
