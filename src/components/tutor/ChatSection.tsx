@@ -68,6 +68,7 @@ export default function ChatSection({
             studentName: studentName,
             userId: userId,
             defaultPrompt: defaultPrompt,
+            tutorDisplayName: tutorDisplayName,
         },
     });
     const textAreaRef = useRef<HTMLTextAreaElement>(null);

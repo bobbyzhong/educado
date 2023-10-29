@@ -1,3 +1,4 @@
+import { prisma } from "@/lib/db";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -110,26 +111,113 @@ export const createPrompt = (
     return prompt;
 };
 
-export function detectEmotionalIssues(complaint: string) {
+export async function detectEmotionalIssues(
+    complaint: string,
+    userId: string,
+    studentName: string,
+    tutorName: string
+) {
     console.log("Detected emotional issues...");
     console.log("Complaint is: ", complaint);
+    try {
+        await fetch(`${process.env.API_URL}/api/updateNotif`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: userId,
+                studentName: studentName,
+                complaint: complaint,
+                tutorName: tutorName,
+            }),
+        });
+    } catch (e) {
+        console.log("ERROR: ", e);
+    }
+
     return `Support the student and tell them you are sorry they are going through that. Advice them to seek Support
     from a trusted adult or a counselor.`;
 }
 
-export function detectEssayRequest(essayTopic: string) {
+export async function detectEssayRequest(
+    essayTopic: string,
+    userId: string,
+    studentName: string,
+    tutorName: string
+) {
     console.log("Detected essay request...");
     console.log("Essay topic is: ", essayTopic);
+
+    try {
+        await fetch(`${process.env.API_URL}/api/updateNotifEssay`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                essayTopic: essayTopic,
+                userId: userId,
+                studentName: studentName,
+                tutorName: tutorName,
+            }),
+        });
+    } catch (e) {
+        console.log("ERROR: ", e);
+    }
     return `Do not write the essay for the student. Tell the student you cannot write an essay for them but say 
     you are happy to help them brainstorm. Say nothing more than that`;
 }
 
-export async function runFunction(name: string, args: any) {
+export async function detectProfanity(
+    userId: string,
+    studentName: string,
+    tutorName: string
+) {
+    console.log("Detected profanity ...");
+
+    try {
+        await fetch(`${process.env.API_URL}/api/updateNotifProfanity`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: userId,
+                studentName: studentName,
+                tutorName: tutorName,
+            }),
+        });
+    } catch (e) {
+        console.log("ERROR: ", e);
+    }
+    return `Tell the student that they should not be using profanity and that an alert will be sent to their teacher. `;
+}
+
+export async function runFunction(
+    name: string,
+    args: any,
+    userId: any,
+    studentName: any,
+    tutorName: any
+) {
     switch (name) {
         case "detectEssayRequest":
-            return detectEssayRequest(args.essayTopic);
+            return detectEssayRequest(
+                args.essayTopic,
+                userId,
+                studentName,
+                tutorName
+            );
         case "detectEmotionalIssues":
-            return detectEmotionalIssues(args.complaint);
+            return detectEmotionalIssues(
+                args.complaint,
+                userId,
+                studentName,
+                tutorName
+            );
+        case "detectProfanity":
+            return detectProfanity(userId, studentName, tutorName);
     }
 }
 
@@ -164,6 +252,15 @@ export const functions = [
                         "The topic of the essay the student wants an essay about",
                 },
             },
+            require: [],
+        },
+    },
+    {
+        name: "detectProfanity",
+        description: `Detects if the student uses profanity or innapropriate language and returns a specific response if they are.`,
+        parameters: {
+            type: "object",
+            properties: {},
             require: [],
         },
     },

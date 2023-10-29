@@ -93,7 +93,13 @@ export async function POST(req: Request) {
             console.log("ARGS: ", args);
             console.log("NAME: ", name);
 
-            const result = await runFunction(name, args);
+            const result = await runFunction(
+                name,
+                args,
+                body.userId,
+                body.studentName,
+                body.tutorDisplayName
+            );
             const newMessages = createFunctionCallMessages(result!);
             console.log("NEW MESSAGES: ", newMessages);
 
