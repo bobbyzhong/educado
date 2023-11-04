@@ -137,11 +137,11 @@ export default function ChatSection({
                         // ----------------
                         // Tutor introduction when there are no messages
                         // ----------------
-                        <div className="mt-0 md:mt-10 mx-3 font-outfit flex flex-col items-center justify-center">
+                        <div className="mt-5 md:mt-10 mx-3 font-outfit flex flex-col items-center justify-center">
                             <Image
                                 src={"/tutor_image.png"}
-                                height={175}
-                                width={175}
+                                height={150}
+                                width={150}
                                 alt={""}
                                 className=""
                             />
@@ -251,19 +251,19 @@ export default function ChatSection({
                         </div>
                     </div>
                 </form>
-                <div className="w-full grid grid-cols-3 justify-center ">
-                    <div className="w-full flex justify-start items-center pl-3 pb-3">
+                <div className=" hidden w-full md:grid md:grid-cols-7 justify-center ">
+                    <div className=" w-full flex justify-start items-center pl-3 pb-3">
                         <Link
                             href={"/pastConvos"}
                             target="_blank"
-                            className="text-center w-[139px] justify-end bg-green font-medium text-white1 rounded-md px-1 py-2 cursor-pointer text-[13.5px] "
+                            className="text-center w-[139px] hidden md:block justify-end bg-green font-medium text-white1 rounded-md px-1 py-2 cursor-pointer text-[13.5px] "
                         >
-                            <p>View Chat History</p>
+                            <p>Chat History</p>
                         </Link>
                     </div>
 
                     <div
-                        className="md:w-full w-9/12 flex mb-5 text-[15px] font-outfit items-center justify-center 
+                        className="w-full col-start-2 col-end-7 lg:col-start-3 lg:col-end-6  flex mb-5 text-[15px] font-outfit items-center justify-center 
                 md:px-0 "
                     >
                         <h1 className=" text-center flex flex-row items-center gap-2">

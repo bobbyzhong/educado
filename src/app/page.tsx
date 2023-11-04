@@ -30,7 +30,7 @@ export default async function Home() {
         <div className="flex flex-col font-outfit w-full">
             <div className="flex  flex-col justify-center items-center">
                 <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
-                    <h1 className="md:text-6xl text-3xl font-[650] md:font-[650] tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
+                    <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
                         Giving every student a one on one learning experience
                     </h1>
                     <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
@@ -89,13 +89,8 @@ export default async function Home() {
                 /> */}
             </div>
 
-            <div className="w-full flex items-center justify-center mt-12 gap-1 font-medium text-[17px]">
-                <p>
-                    Are you a teacher who's district has access to Educado?
-                    Click{" "}
-                </p>
+            <div className="w-full flex items-center justify-center mt-12 gap-1 px-3 text-center">
                 <HomePageJoinCode isSignedIn={session?.user} />{" "}
-                <p>to join as a teacher</p>
             </div>
 
             {/* LANDING IMAGES */}
