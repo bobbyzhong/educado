@@ -26,7 +26,10 @@ const HomePageJoinCode = ({ isSignedIn }: Props) => {
     };
 
     return (
-        <div className="font-medium text-[17px]" onClick={handleSubmit}>
+        <div
+            className="font-medium text-[17px] md:text-[19px]"
+            onClick={handleSubmit}
+        >
             Are you a teacher who's district has access to Educado? Click{" "}
             <span className="text-green underline cursor-pointer">here</span> to
             join as a teacher
