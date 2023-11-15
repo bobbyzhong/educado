@@ -14,8 +14,6 @@ import {
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 
-export const runtime = "edge";
-
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
 });
@@ -101,7 +99,7 @@ export async function POST(req: Request) {
             console.log("NEW MESSAGES: ", newMessages);
 
             return openai.chat.completions.create({
-                model: "gpt-3.5-turbo-0613",
+                model: "gpt-3.5-turbo-1106",
                 stream: true,
                 messages: [...messages, ...newMessages],
             });

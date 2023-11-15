@@ -92,6 +92,7 @@ export const createTutorRequestSchema = z.object({
     desiredContent: z.string().min(5, {
         message: "Desired content must be at least 5 characters long",
     }),
+    files: z.any(),
 });
 
 export const createTutorAPISchema = z.object({
@@ -108,6 +109,7 @@ export const createTutorAPISchema = z.object({
     desiredContent: z.string().min(5, {
         message: "Desired content must be at least 5 characters long",
     }),
+    files: z.any(),
 });
 
 export const contentRequestSchemaAPI = z.object({

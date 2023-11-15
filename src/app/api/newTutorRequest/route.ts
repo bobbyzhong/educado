@@ -11,6 +11,7 @@ import { ZodError } from "zod";
 import { prisma } from "@/lib/db";
 import axios from "axios";
 import { mailOptions, transporter } from "@/lib/nodemail";
+import { createReadStream } from "fs";
 
 export async function POST(req: Request, res: Response) {
     try {
@@ -27,8 +28,14 @@ export async function POST(req: Request, res: Response) {
         }
         // Google
         const body = await req.json();
-        const { teacherName, chosenName, description, userId, desiredContent } =
-            createTutorAPISchema.parse(body);
+        const {
+            teacherName,
+            chosenName,
+            description,
+            userId,
+            desiredContent,
+            files,
+        } = createTutorAPISchema.parse(body);
 
         try {
             await transporter.sendMail({
