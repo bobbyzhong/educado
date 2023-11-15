@@ -57,6 +57,7 @@ export const CreateTutorModal = ({
             chosenName,
             description,
             desiredContent,
+            files,
         }: Input) => {
             const response = await axios.post("/api/newTutorRequest", {
                 teacherName,
@@ -64,6 +65,7 @@ export const CreateTutorModal = ({
                 description,
                 userId,
                 desiredContent,
+                files,
             });
             console.log("RESPONSE DATA");
             console.log(response.data);
@@ -78,6 +80,7 @@ export const CreateTutorModal = ({
             chosenName: "",
             description: "",
             desiredContent: "",
+            files: [],
         },
     });
 
@@ -89,6 +92,7 @@ export const CreateTutorModal = ({
                 chosenName: input.chosenName,
                 description: input.description,
                 desiredContent: input.desiredContent,
+                files: input.files,
             },
             {
                 onSuccess: () => {
@@ -244,7 +248,7 @@ export const CreateTutorModal = ({
                                                 </FormLabel>
                                                 <FormControl>
                                                     <Textarea
-                                                        placeholder="NGSS 7th Grade Science Standards, *Link to Google Drive*, etc."
+                                                        placeholder="Links to lecture slides, links to online resources, Standards, etc."
                                                         {...field}
                                                         rows={3}
                                                     />
@@ -254,16 +258,52 @@ export const CreateTutorModal = ({
                                                     Anything that you want your
                                                     tutor to know or your
                                                     students might ask about.
-                                                    Things like textbook name,
-                                                    standards, lecture slides,
-                                                    syllabus, etc. The more you
-                                                    put the more your tutor will
-                                                    be able to answer!
+                                                    Things like state standards
+                                                    or google slides links. If
+                                                    you need to upload files or
+                                                    have specific requests,
+                                                    email them to{" "}
+                                                    <a
+                                                        className="text-green underline"
+                                                        href="mailto:3bobbyzhong3@gmail.com"
+                                                    >
+                                                        3bobbyzhong3@gmail.com
+                                                    </a>
                                                 </FormDescription>
                                                 <FormMessage />
                                             </FormItem>
                                         )}
                                     />
+                                    {/* <FormField
+                                        control={form.control}
+                                        name="files"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Content you want your tutor
+                                                    to know
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="file"
+                                                        className="file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 pt-[6px]"
+                                                        {...field}
+                                                        accept=".pdf,.docx,.txt,.pptx,.doc,.xlsx,.xls,image/*,.ppt"
+                                                        multiple={true}
+                                                    />
+                                                </FormControl>
+
+                                                <FormDescription>
+                                                    Anything that you want your
+                                                    tutor to know or your
+                                                    students might ask about.
+                                                    Things like state standards
+                                                    or google slides links
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    /> */}
 
                                     <Button
                                         variant={"green"}

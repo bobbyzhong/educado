@@ -1,28 +1,12 @@
 "use client";
 import React, { useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormControl,
-    FormDescription,
-    FormMessage,
-} from "@/components/ui/form";
 import ReactMarkdown from "react-markdown";
-import { Card, CardContent } from "@/components/ui/card";
 import { useChat } from "ai/react";
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { checkInResponseSchema } from "@/schemas/form/quiz";
 import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
 import Link from "next/link";
-import { Loader2, MoveDown, Send, SendHorizonal } from "lucide-react";
+import { Loader2, SendHorizonal } from "lucide-react";
 
 const examples = [
     "Give me a bullet list of facts about temperature",

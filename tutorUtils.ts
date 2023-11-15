@@ -21,6 +21,8 @@ export const getContext = async (
     // const query = question + "\n Chat History: " + prevMessages;
     // 3. Create query embedding
     const queryEmbedding = await new OpenAIEmbeddings().embedQuery(question);
+
+    console.log("HERE");
     // 4. Query Pinecone index and return top 10 matches
 
     let queryResponse = await index.query({
