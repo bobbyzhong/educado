@@ -121,8 +121,14 @@ const TeacherPortalCard = ({ userId }: Props) => {
                             placeholder="District code"
                         />
                         <CardDescription>
-                            If you're having issues with the code, feel free to
-                            contact us!
+                            Don't have/know the code? <br />
+                            Contact us at{" "}
+                            <a
+                                className="underline text-green"
+                                href="mailto:bobbby@tryeducado.com"
+                            >
+                                bobby@tryeducado.com
+                            </a>
                         </CardDescription>
                     </div>
 
