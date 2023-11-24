@@ -6,7 +6,9 @@ import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
 import Link from "next/link";
-import { Loader2, SendHorizonal } from "lucide-react";
+import { Loader2, Mic, SendHorizonal } from "lucide-react";
+import useSpeechRecognition from "../../../customHooks/SpeechHook";
+import { is } from "date-fns/locale";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -36,6 +38,7 @@ export default function ChatSection({
     studentName,
     defaultPrompt,
 }: Props) {
+    const [audioText, setAudioText] = React.useState("");
     const {
         messages,
         input,
@@ -71,6 +74,18 @@ export default function ChatSection({
     const onHandleSubmit = async (e: any) => {
         handleSubmit(e);
     };
+
+    const {
+        text,
+        isListening,
+        startListening,
+        stopListening,
+        hasRecognitionSupport,
+    } = useSpeechRecognition();
+
+    useEffect(() => {
+        setInput(text); // Set the input value to text
+    }, [text]);
 
     // ----------------
     // Tutor Chat Section
@@ -193,11 +208,33 @@ export default function ChatSection({
                 >
                     <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
                         <div
-                            className="flex flex-row justify-center items-center pr-5 w-full py-3 flex-grow md:py-4 text-[18px] pl-2 md:pl-5 relative 
+                            className="flex flex-row justify-center items-center pr-5 w-full py-3 flex-grow md:py-4 text-[18px] pl-2 md:pl-4 relative 
                              bg-white bg-gradient-to-b dark:border-gray-900/50 rounded-md
                           shadow-[1px_2px_5px_3px_rgba(0,0,0,0.10)] 
                        "
                         >
+                            {hasRecognitionSupport ? (
+                                <div>
+                                    {isListening ? (
+                                        <Mic
+                                            className="cursor-pointer mr-2"
+                                            color="#86D20A"
+                                            onClick={() => {
+                                                stopListening();
+                                            }}
+                                        />
+                                    ) : (
+                                        <Mic
+                                            className="cursor-pointer mr-2"
+                                            color="#D3D3D3"
+                                            onClick={() => {
+                                                startListening();
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            ) : null}
+
                             <Textarea
                                 value={input}
                                 tabIndex={0}
