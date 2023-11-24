@@ -33,7 +33,7 @@ export default async function Home() {
                     <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
                         Giving every student the 1:1 support and help they need
                     </h1>
-                    <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
+                    <p className="md:text-[21px] text-[16px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
                         We make it easy for teachers to create and manage{" "}
                         <b className="text-green">AI tutors</b> trained on the
                         content they want. Give every student the{" "}
@@ -215,7 +215,7 @@ export default async function Home() {
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
                 <div className="w-[100%] justify-center items-center flex bg-[#8bb83f]/[0.2] py-[2%] rounded-b-[20%] ">
                     <h1 className=" text-center text-4xl md:text-6xl font-[600] md:font-[650] w-10/12 md:w-7/12 lg:w-5/12 mb-5">
-                        Give your students a better learning experience today!
+                        Give your students personalized support today!
                     </h1>
                 </div>
 
@@ -237,13 +237,16 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="w-full flex items-center justify-center mt-10 py-3 bg-green3 px-10 ">
-                <h1 className="font-[550]">
+            <div className="w-full flex md:flex-row flex-col items-center justify-center mt-10 py-3 bg-green3 px-2 md:px-10 ">
+                <h1 className="font-[550] md:text-base text-sm ">
                     © 2023 Educado, Inc. All rights reserved
                 </h1>
-                <div className="mx-2">|</div>
+                <div className="mx-2 md:block hidden">|</div>
                 <div>
-                    <Link href={"/privacy"} className="text-blue-500">
+                    <Link
+                        href={"/privacy"}
+                        className="text-blue-500 md:text-base text-sm"
+                    >
                         Privacy Policy
                     </Link>
                 </div>
