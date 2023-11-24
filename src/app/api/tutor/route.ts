@@ -43,6 +43,7 @@ export async function POST(req: Request) {
         //    relates to a previous message or the context given. If it is not related to either,
         //     do not give the student an answer to their question. Don't use any
         //     information not in the context. Do not use any info not in the context`
+
         content: body.defaultPrompt,
     });
 
@@ -101,7 +102,7 @@ export async function POST(req: Request) {
             console.log("NEW MESSAGES: ", newMessages);
 
             return openai.chat.completions.create({
-                model: "gpt-3.5-turbo-0613",
+                model: "gpt-3.5-turbo-1106	",
                 stream: true,
                 messages: [...messages, ...newMessages],
             });

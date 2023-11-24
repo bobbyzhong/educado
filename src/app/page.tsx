@@ -31,14 +31,16 @@ export default async function Home() {
             <div className="flex  flex-col justify-center items-center">
                 <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
                     <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
-                        Giving every student a one on one learning experience
+                        Giving every student the 1:1 support and help they need
                     </h1>
                     <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        We make it super easy for educators to create their own
-                        AI tutors trained on the content they want. Give your
-                        students the help they need outside the classroom while
-                        letting them use AI to enhance their learning in a safe
-                        and monitored way.
+                        We make it easy for teachers to create and manage{" "}
+                        <b className="text-green">AI tutors</b> trained on the
+                        content they want. Give every student the{" "}
+                        <b className="text-green">personalized support</b> they
+                        need anytime, anywhere and integrate AI into student
+                        learning in a safe and{" "}
+                        <b className="text-green">monitored</b> way
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
@@ -235,8 +237,16 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="w-full flex items-center justify-center mt-10 py-3 bg-green3 font-[550]">
-                © 2023 Educado. All rights reserved.
+            <div className="w-full flex items-center justify-center mt-10 py-3 bg-green3 px-10 ">
+                <h1 className="font-[550]">
+                    © 2023 Educado, Inc. All rights reserved
+                </h1>
+                <div className="mx-2">|</div>
+                <div>
+                    <Link href={"/privacy"} className="text-blue-500">
+                        Privacy Policy
+                    </Link>
+                </div>
             </div>
 
             {/* <div className="w-full flex-col flex items-center justify-center mt-20 mb-10">

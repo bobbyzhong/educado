@@ -3,7 +3,7 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { OpenAI } from "langchain/llms/openai";
 import { loadQAStuffChain } from "langchain/chains";
 import { Document } from "langchain/document";
-import { timeout } from "./config";
+import { timeout } from "../config";
 import {
     customCheckInSchemaAPI,
     textbookCheckInSchema,
@@ -318,8 +318,8 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
-                    tutorName: "ben_franklin",
-                    standardName: "Ben Franklin Wiki",
+                    tutorName: "moreland_7th_grade_general",
+                    standardName: "",
                     // userName: "Bethany Allen",
                     // textbookName:
                     //     "The United States Through Industrialism 8th Grade Third Edition",

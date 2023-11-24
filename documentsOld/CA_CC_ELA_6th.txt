@@ -1,0 +1,33 @@
+CA Common Core ELA 6th grade: [
+    Reading Standards for Literature (RL):
+
+Cite textual evidence to support analysis of what the text says explicitly and make inferences.
+Determine a theme or central idea and analyze its development.
+Analyze how a particular sentence, chapter, scene, or stanza fits into the overall structure of a text.
+Determine the meaning of words and phrases as they are used in a text.
+Analyze how a text's structure contributes to its meaning.
+Reading Standards for Informational Text (RI):
+
+Cite textual evidence to support analysis of what the text says explicitly and make inferences.
+Determine the main idea of a text and analyze its development.
+Analyze the interactions between individuals, events, and ideas in a text.
+Determine the meaning of words and phrases as they are used in a text.
+Compare and contrast the overall structure of events, ideas, concepts, or information in two or more texts.
+Writing Standards (W):
+
+Write arguments to support claims with clear reasons and evidence.
+Write informative/explanatory texts to examine a topic and convey ideas and information.
+Write narratives to develop real or imagined experiences or events.
+Produce clear and coherent writing appropriate to the task, purpose, and audience.
+Conduct research projects to answer specific questions or solve problems.
+Speaking and Listening Standards (SL):
+
+Engage effectively in a range of collaborative discussions with diverse partners.
+Interpret information presented in diverse media and formats.
+Present information, findings, and supporting evidence clearly and concisely.
+Language Standards (L):
+
+Demonstrate command of the conventions of standard English grammar and usage when writing or speaking.
+Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling.
+Determine or clarify the meaning of unknown and multiple-meaning words and phrases.
+]

@@ -4,7 +4,7 @@ import { OpenAI } from "langchain/llms/openai";
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { ZodError } from "zod";
 import { textbookCheckInSchema } from "@/schemas/form/quiz";
-import { embedInputAndQueryLLM } from "../../../../utils";
+import { embedInputAndQueryLLM } from "../../../../documentsOld/utils";
 import { indexName } from "../../../../config";
 
 // POST /api/questions

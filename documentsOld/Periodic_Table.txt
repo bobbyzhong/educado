@@ -1,0 +1,78 @@
+Periodic Table: {
+    The periodic table, also known as the periodic table of the elements, arranges the chemical elements into rows ("periods") and columns ("groups"). It is an icon of chemistry and is widely used in physics and other sciences. It is a depiction of the periodic law, which says that when the elements are arranged in order of their atomic numbers an approximate recurrence of their properties is evident. The table is divided into four roughly rectangular areas called blocks. Elements in the same group tend to show similar chemical characteristics.
+Vertical, horizontal and diagonal trends characterize the periodic table. Metallic character increases going down a group and decreases from left to right across a period. Nonmetallic character increases going from the bottom left of the periodic table to the top right.
+The first periodic table to become generally accepted was that of the Russian chemist Dmitri Mendeleev in 1869; he formulated the periodic law as a dependence of chemical properties on atomic mass. As not all elements were then known, there were gaps in his periodic table, and Mendeleev successfully used the periodic law to predict some properties of some of the missing elements. The periodic law was recognized as a fundamental discovery in the late 19th century. It was explained early in the 20th century, with the discovery of atomic numbers and associated pioneering work in quantum mechanics both ideas serving to illuminate the internal structure of the atom. A recognisably modern form of the table was reached in 1945 with Glenn T. Seaborg's discovery that the actinides were in fact f-block rather than d-block elements. The periodic table and law are now a central and indispensable part of modern chemistry.
+The periodic table continues to evolve with the progress of science. In nature, only elements up to atomic number 94 exist;[a] to go further, it was necessary to synthesise new elements in the laboratory. Today, while all the first 118 elements are known, thereby completing the first seven rows of the table, chemical characterisation is still needed for the heaviest elements to confirm that their properties match their positions. It is not yet known how far the table will go beyond these seven rows and whether the patterns of the known part of the table will continue into this unknown region. Some scientific discussion also continues regarding whether some elements are correctly positioned in today's table. Many alternative representations of the periodic law exist, and there is some discussion as to whether there is an optimal form of the periodic table
++---+------------------+-------+-------------------+
+| # |  Element         | Symbol|  Atomic Weight   |
++---+------------------+-------+-------------------+
+| 1 |  Hydrogen        |   H   |   1.00794 u      |
+| 2 |  Helium          |   He  |   4.0026 u       |
+| 3 |  Lithium         |   Li  |   6.941 u        |
+| 4 |  Beryllium       |   Be  |   9.01218 u      |
+| 5 |  Boron           |   B   |   10.81 u        |
+| 6 |  Carbon          |   C   |   12.01 u        |
+| 7 |  Nitrogen        |   N   |   14.01 u        |
+| 8 |  Oxygen          |   O   |   16.00 u        |
+| 9 |  Fluorine        |   F   |   19.00 u        |
+| 10|  Neon            |   Ne  |   20.18 u        |
+| 11|  Sodium          |   Na  |   22.99 u        |
+| 12|  Magnesium       |   Mg  |   24.31 u        |
+| 13|  Aluminum        |   Al  |   26.98 u        |
+| 14|  Silicon         |   Si  |   28.09 u        |
+| 15|  Phosphorus      |   P   |   30.97 u        |
+| 16|  Sulfur          |   S   |   32.07 u        |
+| 17|  Chlorine        |   Cl  |   35.45 u        |
+| 18|  Argon           |   Ar  |   39.95 u        |
+| 19|  Potassium       |   K   |   39.10 u        |
+| 20|  Calcium         |   Ca  |   40.08 u        |
+| 21|  Scandium        |   Sc  |   44.96 u        |
+| 22|  Titanium        |   Ti  |   47.87 u        |
+| 23|  Vanadium        |   V   |   50.94 u        |
+| 24|  Chromium        |   Cr  |   51.99 u        |
+| 25|  Manganese       |   Mn  |   54.94 u        |
+| 26|  Iron            |   Fe  |   55.85 u        |
+| 27|  Cobalt          |   Co  |   58.93 u        |
+| 28|  Nickel          |   Ni  |   58.69 u        |
+| 29|  Copper          |   Cu  |   63.55 u        |
+| 30|  Zinc            |   Zn  |   65.38 u        |
+| 31|  Gallium         |   Ga  |   69.72 u        |
+| 32|  Germanium       |   Ge  |   72.63 u        |
+| 33|  Arsenic         |   As  |   74.92 u        |
+| 34|  Selenium        |   Se  |   78.97 u        |
+| 35|  Bromine         |   Br  |   79.90 u        |
+| 36|  Krypton         |   Kr  |   83.80 u        |
+| 37|  Rubidium        |   Rb  |   85.47 u        |
+| 38|  Strontium       |   Sr  |   87.62 u        |
+| 39|  Yttrium         |   Y   |   88.91 u        |
+| 40|  Zirconium       |   Zr  |   91.22 u        |
+| 41|  Niobium         |   Nb  |   92.91 u        |
+| 42|  Molybdenum      |   Mo  |   95.94 u        |
+| 43|  Technetium      |   Tc  |   98.00 u        |
+| 44|  Ruthenium       |   Ru  |   101.1 u        |
+| 45|  Rhodium         |   Rh  |   102.9 u        |
+| 46|  Palladium       |   Pd  |   106.4 u        |
+| 47|  Silver          |   Ag  |   107.9 u        |
+| 48|  Cadmium         |   Cd  |   112.4 u        |
+| 49|  Indium          |   In  |   114.8 u        |
+| 50|  Tin             |   Sn  |   118.7 u        |
+| 51|  Antimony        |   Sb  |   121.8 u        |
+| 52|  Tellurium       |   Te  |   127.6 u        |
+| 53|  Iodine          |   I   |   126.9 u        |
+| 54|  Xenon           |   Xe  |   131.3 u        |
+| 55|  Cesium          |   Cs  |   132.9 u        |
+| 56|  Barium          |   Ba  |   137.3 u        |
+| 57|  Lanthanum       |   La  |   138.9 u        |
+| 58|  Cerium          |   Ce  |   140.1 u        |
+| 59|  Praseodymium    |   Pr  |   140.9 u        |
+| 60|  Neodymium       |   Nd  |   144.2 u        |
+| 61|  Promethium      |   Pm  |   145.0 u        |
+| 62|  Samarium        |   Sm  |   150.4 u        |
+| 63|  Europium        |   Eu  |   152.0 u        |
+| 64|  Gadolinium      |   Gd  |   157.3 u        |
+| 65|  Terbium         |   Tb  |   158.9 u        |
+| 66|  Dysprosium      |   Dy  |   162.5 u        |
+| 67|  Holmium         |   Ho  |   164.9 u        |
+| 68|  Erb
+
+}

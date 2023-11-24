@@ -109,7 +109,7 @@ export const createPrompt = (
     // helpful tutor. Be concise when you can and speak in a happy and fun tone. Use the context given to you
     //  below and previous messages to answer the student's question. `
 
-    const prompt = `STUDENT'S QUESTION: ${latestQuestion}. Here is the context: [${context}]`;
+    const prompt = `STUDENT'S QUESTION: "${latestQuestion}". CONTEXT: [${context}]`;
     return prompt;
 };
 

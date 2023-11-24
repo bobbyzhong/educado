@@ -1,0 +1,106 @@
+CA Math Common Core Second to Fifth Grade Standards: [
+    2nd Grade: [
+        Operations and Algebraic Thinking:
+
+Represent and solve problems involving addition and subtraction within 100.
+Use place value understanding and properties of operations to add and subtract within 100.
+Work with equal groups of objects to gain foundations for multiplication.
+Use addition and subtraction within 100 to solve word problems involving lengths that are given in the same units, e.g., by using drawings (such as drawings of rulers) and equations with a symbol for the unknown number to represent the problem.
+Number and Operations in Base Ten:
+
+Understand place value.
+Use place value understanding and properties of operations to add and subtract.
+Measurement and Data:
+
+Measure and estimate lengths in standard units.
+Relate addition and subtraction to length.
+Work with time and money.
+Represent and interpret data.
+Geometry:
+
+Reason with shapes and their attributes.
+    ]
+    3rd Grade: [
+
+Operations and Algebraic Thinking:
+
+Represent and solve problems involving multiplication and division.
+Understand properties of multiplication and the relationship between multiplication and division.
+Multiply and divide within 100.
+Solve problems involving the four operations and identify and explain patterns in arithmetic.
+Number and Operations in Base Ten:
+
+Use place value understanding and properties of operations to perform multi-digit arithmetic.
+Fluently add and subtract within 1000.
+Multiply one-digit whole numbers by multiples of 10 in the range 10-90 (e.g., 9 × 80, 5 × 60) using strategies based on place value and properties of operations.
+Use place value understanding to round whole numbers to the nearest 10 or 100.
+Number and Operations—Fractions:
+
+Develop understanding of fractions as numbers.
+Understand a fraction as a number on the number line; represent fractions on a number line diagram.
+Explain equivalence of fractions in special cases and compare fractions by reasoning about their size.
+Measurement and Data:
+
+Solve problems involving measurement and estimation of intervals of time, liquid volumes, and masses of objects.
+Represent and interpret data.
+Geometric measurement: understand concepts of area and relate area to multiplication and to addition.
+Geometric measurement: recognize perimeter as an attribute of plane figures and distinguish between linear and area measures.
+Geometry:
+
+Reason with shapes and their attributes.
+    ],
+    4th grade: [
+        Operations and Algebraic Thinking:
+
+Use the four operations with whole numbers to solve problems.
+Gain familiarity with factors and multiples.
+Generate and analyze patterns.
+Number and Operations in Base Ten:
+
+Generalize place value understanding for multi-digit whole numbers.
+Use place value understanding and properties of operations to perform multi-digit arithmetic.
+Read and write multi-digit whole numbers using base-ten numerals, number names, and expanded form.
+Number and Operations—Fractions:
+
+Extend understanding of fraction equivalence and ordering.
+Build fractions from unit fractions.
+Understand decimal notation for fractions and compare decimal fractions.
+Solve problems involving multiplication and division of fractions.
+Measurement and Data:
+
+Solve problems involving measurement and conversion of measurements.
+Represent and interpret data.
+Geometric measurement: understand concepts of angle and measure angles.
+Geometry:
+
+Draw and identify lines and angles, and classify shapes by properties of their lines and angles.
+    ],
+    5th grade: [
+        Operations and Algebraic Thinking:
+
+Write and interpret numerical expressions.
+Analyze patterns and relationships.
+Understand the place value system and perform operations with multi-digit whole numbers and decimals to hundredths.
+Use equivalent fractions as a strategy to add and subtract fractions.
+Apply and extend previous understandings of multiplication and division to multiply and divide fractions.
+Number and Operations in Base Ten:
+
+Understand the place value system and perform operations with multi-digit whole numbers and decimals to hundredths.
+Use place value understanding to round decimals to any place.
+Add, subtract, multiply, and divide decimals to hundredths.
+Number and Operations—Fractions:
+
+Use equivalent fractions as a strategy to add and subtract fractions.
+Apply and extend previous understandings of multiplication and division to multiply and divide fractions.
+Measurement and Data:
+
+Convert like measurement units within a given measurement system.
+Represent and interpret data.
+Geometric measurement: understand concepts of volume and relate volume to multiplication and to addition.
+Graph points on the coordinate plane to solve real-world and mathematical problems.
+Geometry:
+
+Graph points on the coordinate plane to solve real-world and mathematical problems.
+Classify two-dimensional figures into categories based on their properties
+    ]
+]
