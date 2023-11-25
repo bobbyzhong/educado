@@ -9,6 +9,7 @@ import Image from "next/image";
 import StudentEnterCode from "@/components/StudentEnterCode";
 import { prisma } from "@/lib/db";
 import HomePageJoinCode from "@/components/HomePageJoinCode";
+import { ExternalLink } from "lucide-react";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -212,14 +213,14 @@ export default async function Home() {
             </div> */}
 
             {/* FOOTER */}
-            <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
-                <div className="w-[100%] justify-center items-center flex bg-[#8bb83f]/[0.2] py-[2%] rounded-b-[20%] ">
-                    <h1 className=" text-center text-4xl md:text-6xl font-[600] md:font-[650] w-10/12 md:w-7/12 lg:w-5/12 mb-5">
+            <div className="flex flex-col justify-center items-center mt-[7%] gap-10 bg-[#8bb83f]/[0.2]  rounded-t-[20%]">
+                <div className="w-[100%] justify-center items-center flex  pt-[3%] ">
+                    <h1 className=" text-center text-4xl md:text-6xl font-[600] md:font-[650] w-10/12 md:w-7/12 mt-10">
                         Give your students personalized support today!
                     </h1>
                 </div>
 
-                <div className="flex flex-row gap-3 mb-5 lg:justify-start justify-center ">
+                <div className="flex flex-row gap-3 mb-14 lg:justify-start justify-center ">
                     <Link href={"/getAccess"}>
                         <Button variant={"green"} className="" size={"xl"}>
                             Get Started
@@ -237,18 +238,84 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="w-full flex md:flex-row flex-col items-center justify-center mt-10 py-3 bg-green3 px-2 md:px-10 ">
-                <h1 className="font-[550] md:text-base text-sm ">
-                    © 2023 Educado, Inc. All rights reserved
-                </h1>
-                <div className="mx-2 md:block hidden">|</div>
-                <div>
-                    <Link
-                        href={"/privacy"}
-                        className="text-blue-500 md:text-base text-sm"
-                    >
-                        Privacy Policy
-                    </Link>
+            <div>
+                <div className="flex flex-row flex-wrap px-10 md:px-32 gap-12 mt-10 md:mt-16">
+                    <div>
+                        <h1 className="text-lg mb-5">Resources</h1>
+                        <Link
+                            href={"/resources"}
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Resources Page
+                        </Link>
+                        <Link
+                            href={"https://youtu.be/n7wH43FNPFM?feature=shared"}
+                            target="_blank"
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Teacher Set Up <ExternalLink size={18} />
+                        </Link>
+                        <div className="flex flex-row gap-2 items-center">
+                            Contact Us
+                        </div>
+                    </div>
+                    <div>
+                        <h1 className="text-lg mb-5">Community</h1>
+                        <Link
+                            href={"https://twitter.com/tryeducado"}
+                            target="_blank"
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Twitter <ExternalLink size={18} />
+                        </Link>
+                        <Link
+                            href={
+                                "https://www.facebook.com/profile.php?id=61553594636447"
+                            }
+                            target="_blank"
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Facebook <ExternalLink size={18} />
+                        </Link>
+                        <Link
+                            href={
+                                "https://www.linkedin.com/company/tryeducado/"
+                            }
+                            target="_blank"
+                            className="flex flex-row gap-2 items-center"
+                        >
+                            LinkedIn <ExternalLink size={18} />
+                        </Link>
+                    </div>
+                    <div>
+                        <h1 className="text-lg mb-5">Get In Touch</h1>
+                        <Link
+                            href={"/contact"}
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Contact Us
+                        </Link>
+                        <Link
+                            href={"/demo"}
+                            className="flex flex-row gap-2 items-center mb-1"
+                        >
+                            Book a Demo
+                        </Link>
+                    </div>
+                </div>
+                <div className="w-full flex md:flex-row flex-col items-center justify-center mt-10 pb-16 pt-16  px-2 md:px-10 ">
+                    <h1 className="font-[550] md:text-base text-sm ">
+                        © 2023 Educado, Inc. All rights reserved
+                    </h1>
+                    <div className="mx-2 md:block hidden">|</div>
+                    <div>
+                        <Link
+                            href={"/privacy"}
+                            className="text-blue-500 md:text-base text-sm"
+                        >
+                            Privacy Policy
+                        </Link>
+                    </div>
                 </div>
             </div>
 

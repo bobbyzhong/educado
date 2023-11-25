@@ -122,13 +122,22 @@ const TeacherPortalCard = ({ userId }: Props) => {
                         />
                         <CardDescription>
                             Don't have/know the code? <br />
-                            Contact us at{" "}
+                            Contact{" "}
                             <a
                                 className="underline text-green"
                                 href="mailto:bobbby@tryeducado.com"
                             >
                                 bobby@tryeducado.com
                             </a>
+                            <br />
+                            Or get access by going{" "}
+                            <a
+                                className="underline text-green"
+                                href="https://forms.gle/5uthS28zvXVB6Rxq6"
+                            >
+                                here
+                            </a>
+                            !
                         </CardDescription>
                     </div>
 
