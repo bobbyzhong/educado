@@ -135,7 +135,9 @@ const DashboardTeacher = async (props: Props) => {
                                 })}
                             </div>
                         ) : (
-                            <div>No tutors made yet </div>
+                            <div className="font-outfit">
+                                No tutors made yet{" "}
+                            </div>
                         )}
                     </div>
                 </div>
