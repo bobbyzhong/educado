@@ -108,6 +108,26 @@ export default function Home() {
                                     <li>- Kept securely.</li>
                                 </ul>
                             </div>
+                            <div className="mt-3">
+                                We will not make material changes to our
+                                education privacy policies without providing
+                                prominent notice to users and/or account
+                                holders. This notice will be given in a manner
+                                that ensures you are aware of any modifications
+                                and allows you choices before data is used in
+                                any manner inconsistent with the terms initially
+                                provided to you. We are committed to maintaining
+                                transparency and ensuring that you have the
+                                ability to make informed decisions regarding
+                                your data. we are committed to safeguarding the
+                                privacy and security of the personal information
+                                of our students ("Student PII"). This Privacy
+                                Policy outlines our commitment to protecting
+                                Student PII and provides information about how
+                                we handle the transfer of Student PII to a
+                                successor entity in the event of a merger or
+                                acquisition.
+                            </div>
                         </div>
                     </div>
 
@@ -238,10 +258,16 @@ export default function Home() {
                                 email address. We require those data elements
                                 for you to enter into the Terms of Service
                                 agreement with us, and we process those elements
-                                on the basis of performing that contract.
+                                on the basis of performing that contract. In the
+                                case of our merger or acquisition by another
+                                company, we will allow a successor entity to
+                                maintain the student PII provided the successor
+                                entity is subject to these same commitments for
+                                the previously collected Student PII.
                             </div>
                         </div>
                     </div>
+
                     <div>
                         <h1 className="text-3xl font-medium mt-10">
                             Compliance with Privacy Laws:
