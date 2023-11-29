@@ -263,7 +263,20 @@ export default function Home() {
                                 company, we will allow a successor entity to
                                 maintain the student PII provided the successor
                                 entity is subject to these same commitments for
-                                the previously collected Student PII.
+                                the previously collected Student PII. We will
+                                not make material changes to School Service
+                                Provider education privacy policies without
+                                first providing prominent notice to the users
+                                and/or account holder(s) (i.e., the
+                                institution/agency, or the parent/student when
+                                the information is collected directly from the
+                                student with student/parent consent) and
+                                allowing them choices before data is used in any
+                                manner inconsistent with terms they were
+                                initially provided; and not make material
+                                changes to other policies or practices governing
+                                the use of Student PII that are inconsistent
+                                with contractual requirements.
                             </div>
                         </div>
                     </div>
