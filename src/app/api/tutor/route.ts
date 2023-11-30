@@ -102,7 +102,7 @@ export async function POST(req: Request) {
             console.log("NEW MESSAGES: ", newMessages);
 
             return openai.chat.completions.create({
-                model: "gpt-3.5-turbo-1106	",
+                model: "gpt-3.5-turbo-1106",
                 stream: true,
                 messages: [...messages, ...newMessages],
             });

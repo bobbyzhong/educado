@@ -167,7 +167,7 @@ export async function detectEssayRequest(
     } catch (e) {
         console.log("ERROR: ", e);
     }
-    return `Do not write the essay for the student. Tell the student you cannot write an essay for them but say 
+    return `Do not write the essay for the student. Only tell the student you cannot write an essay for them but 
     you are happy to help them brainstorm. Say nothing more than that`;
 }
 
