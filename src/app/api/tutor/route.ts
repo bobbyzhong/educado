@@ -94,7 +94,7 @@ export async function POST(req: Request) {
             const result = await runFunction(
                 name,
                 args,
-                body.userId,
+                body.teacherId,
                 body.studentName,
                 body.tutorDisplayName
             );

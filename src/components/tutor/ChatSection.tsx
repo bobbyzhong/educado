@@ -22,6 +22,7 @@ type Props = {
     tutorDisplayName: string;
     ownerName: string;
     tutorId: string;
+    teacherId: string;
     placeholderQs: string;
     userId: string;
     studentName: string;
@@ -33,6 +34,7 @@ export default function ChatSection({
     tutorDisplayName,
     ownerName,
     tutorId,
+    teacherId,
     placeholderQs,
     userId,
     studentName,
@@ -54,6 +56,7 @@ export default function ChatSection({
             ownerName: ownerName,
             studentName: studentName,
             userId: userId,
+            teacherId: teacherId,
             defaultPrompt: defaultPrompt,
             tutorDisplayName: tutorDisplayName,
         },

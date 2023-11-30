@@ -46,6 +46,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                     ownerName={tutor.ownerName}
                     tutorDisplayName={tutor.tutorDisplayName}
                     tutorId={tutor.id}
+                    teacherId={tutor.userId}
                     userId={session.user.id}
                     studentName={session.user.name!}
                     placeholderQs={tutor.placeholderQs}
