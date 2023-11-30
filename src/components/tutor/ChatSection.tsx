@@ -153,10 +153,10 @@ export default function ChatSection({
                                     </span>
                                 </h1>
                                 <p className="text-lg text-center font-light mt-5 w-full">
-                                    I’m your tutor for {ownerName}’s class.
-                                    Whether you didn’t really understand a
-                                    certain topic or want to study together
-                                    before your next test, I’m here to help!
+                                    I’m a tutor for {ownerName}’s class. Whether
+                                    you didn’t really understand a certain topic
+                                    or want to study together before your next
+                                    test, I’m here to help!
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-8">
