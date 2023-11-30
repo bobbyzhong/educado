@@ -4,7 +4,7 @@ import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 import { getQuestionsSchema } from "@/schemas/questions";
 import { ZodError } from "zod";
-import { standardEmbedInputAndQueryLLM } from "../../../../documentsOld/utils";
+import { standardEmbedInputAndQueryLLM } from "../../../../utils";
 
 // POST /api/questions
 

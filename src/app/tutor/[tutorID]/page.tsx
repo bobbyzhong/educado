@@ -3,6 +3,9 @@ import { redirect } from "next/navigation";
 import React from "react";
 import ChatSection from "@/components/tutor/ChatSection";
 import { getAuthSession } from "@/lib/nextauth";
+import { signIn } from "next-auth/react";
+import SignInButton from "@/components/SignInButton";
+import SignInButtonStudent from "@/components/SignInButtonStudent";
 
 type Props = {
     params: {
@@ -12,7 +15,9 @@ type Props = {
 const TutorPage = async ({ params: { tutorID } }: Props) => {
     const session = await getAuthSession();
     if (!session?.user) {
-        redirect("/");
+        signIn("google", { callbackUrl: `/tutor/${tutorID}` }).catch(
+            console.error
+        );
     }
 
     let tutor: any = await prisma.tutor.findUnique({
@@ -35,16 +40,27 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
 
     return (
         <>
-            <ChatSection
-                tutorName={tutor.tutorName}
-                ownerName={tutor.ownerName}
-                tutorDisplayName={tutor.tutorDisplayName}
-                tutorId={tutor.id}
-                userId={session.user.id}
-                studentName={session.user.name!}
-                placeholderQs={tutor.placeholderQs}
-                defaultPrompt={tutor.basePrompt}
-            />
+            {session?.user.id ? (
+                <ChatSection
+                    tutorName={tutor.tutorName}
+                    ownerName={tutor.ownerName}
+                    tutorDisplayName={tutor.tutorDisplayName}
+                    tutorId={tutor.id}
+                    userId={session.user.id}
+                    studentName={session.user.name!}
+                    placeholderQs={tutor.placeholderQs}
+                    defaultPrompt={tutor.basePrompt}
+                />
+            ) : (
+                <div className="w-full mt-10 flex flex-col items-center justify-center ">
+                    {" "}
+                    <div className="font-outfit mb-2">
+                        Sign in with Google to start chatting with{" "}
+                        {tutor.tutorDisplayName}!
+                    </div>
+                    <SignInButtonStudent text={"Sign In"} tutorId={tutor.id} />
+                </div>
+            )}
         </>
     );
 };
