@@ -32,7 +32,6 @@ export default function Page() {
                     <h1 className="md:text-2xl text-md">
                         bobby@tryeducado.com
                     </h1>
-                    {/* 3bobbyzhong3@gmail.com */}
                 </a>
 
                 <a

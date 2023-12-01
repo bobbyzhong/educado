@@ -265,9 +265,9 @@ export const CreateTutorModal = ({
                                                     email them to{" "}
                                                     <a
                                                         className="text-green underline"
-                                                        href="mailto:3bobbyzhong3@gmail.com"
+                                                        href="mailto:bobby@tryeducado.com"
                                                     >
-                                                        3bobbyzhong3@gmail.com
+                                                        bobby@tryeducado.com
                                                     </a>
                                                 </FormDescription>
                                                 <FormMessage />

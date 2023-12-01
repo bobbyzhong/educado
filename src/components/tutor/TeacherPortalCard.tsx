@@ -138,7 +138,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                             placeholder="District code"
                         />
                         <CardDescription>
-                            Don't have/know the code? <br />
+                            Don't have or know the code? <br />
                             Contact{" "}
                             <a
                                 className="underline text-green"
