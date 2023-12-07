@@ -54,9 +54,9 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                     <TableHeader>
                         <TableRow className="">
                             <TableHead className="w-[10px]">No.</TableHead>
-                            <TableHead>Date Created</TableHead>
-                            <TableHead>Student Name</TableHead>
-                            <TableHead>Question</TableHead>
+                            <TableHead className="w-[20px]">Date Created</TableHead>
+                            <TableHead className="">Student Name</TableHead>
+                            <TableHead className="w-[50%]">Question</TableHead>
                             <TableHead className="">Answer</TableHead>
                         </TableRow>
                     </TableHeader>
@@ -79,11 +79,13 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                                         <TableCell>
                                             {chat.studentName}
                                         </TableCell>
-                                        <TableCell className="font-semibold">
-                                            {chat.question}
+                                        <TableCell className="font-semibold max-w-[1rem]">
+                                            <div className=" overflow-x-scroll">
+                                                {chat.question}
+                                            </div>
                                         </TableCell>
                                         <TableCell className="w-[50%]">
-                                            <div className="max-h-[5rem] overflow-y-scroll">
+                                            <div className="max-h-[6rem] overflow-y-scroll">
                                                 {chat.answer}
                                             </div>
                                         </TableCell>
