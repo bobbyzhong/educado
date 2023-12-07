@@ -1,0 +1,205 @@
+CA Algebra 2 Standards : [
+    Building on their work with linear, quadratic, and exponential functions, students extend their repertoire of functions to include
+logarithmic, polynomial, rational, and radical functions in the Algebra II course. This course includes standards from the
+conceptual categories of Number and Quantity, Algebra, Functions, Geometry, and Statistics and Probability. Some standards
+are repeated in multiple higher mathematics courses; therefore instructional notes, which appear in brackets, indicate what is
+appropriate for study in this particular course. Standards that were limited in Algebra I no longer have those restrictions in
+Algebra II. Students work closely with the expressions that define the functions, competently manipulate algebraic expressions,
+and continue to expand and hone their abilities to model situations and to solve equations, including solving quadratic
+equations over the set of complex numbers and solving exponential equations using the properties of logarithms.
+For the Algebra II course, instructional time should focus on four critical areas: (1) relate arithmetic of rational expressions
+to arithmetic of rational numbers; (2) expand understandings of functions and graphing to include trigonometric functions;
+(3) synthesize and generalize functions and extend understanding of exponential functions to logarithmic functions; and
+(4) relate data display and summary statistics to probability and explore a variety of data collection methods.
+(1) A central theme of this Algebra II course is that the arithmetic of rational expressions is governed by the same rules as
+the arithmetic of rational numbers. Students explore the structural similarities between the system of polynomials and the
+system of integers. They draw on analogies between polynomial arithmetic and base-ten computation, focusing on properties of operations, particularly the distributive property. Connections are made between multiplication of polynomials with
+multiplication of multi-digit integers, and division of polynomials with long division of integers. Students identify zeros of
+polynomials, including complex zeros of quadratic polynomials, and make connections between zeros of polynomials and
+solutions of polynomial equations. The Fundamental Theorem of Algebra is examined.
+(2) Building on their previous work with functions and on their work with trigonometric ratios and circles in the Geometry
+course, students now use the coordinate plane to extend trigonometry to model periodic phenomena.
+(3) Students synthesize and generalize what they have learned about a variety of function families. They extend their work with
+exponential functions to include solving exponential equations with logarithms. They explore the effects of transformations
+on graphs of diverse functions, including functions arising in an application, in order to abstract the general principle that
+transformations on a graph always have the same effect regardless of the type of the underlying function. They identify
+appropriate types of functions to model a situation, they adjust parameters to improve the model, and they compare
+models by analyzing appropriateness of fit and making judgments about the domain over which a model is a good fit. The
+description of modeling as “the process of choosing and using mathematics and statistics to analyze empirical situations,
+to understand them better, and to make decisions” is at the heart of this Algebra II course. The narrative discussion and
+diagram of the modeling cycle should be considered when knowledge of functions, statistics, and geometry is applied in a
+modeling context.
+(4) Students see how the visual displays and summary statistics they learned in earlier grades relate to different types of data
+and to probability distributions. They identify different ways of collecting data—including sample surveys, experiments, and
+simulations—and consider how randomness and careful design affect the conclusions that can be drawn.
+The Standards for Mathematical Practice complement the content standards so that students increasingly engage with the
+subject matter as they grow in mathematical maturity and expertise throughout the elementary, middle, and high school years.1
+Number and Quantity
+The Complex Number System N-CN
+Perform arithmetic operations with complex numbers.
+1. Know there is a complex number i such that i
+2 = −1, and every complex number has the form a + bi with a and b real.
+2. Use the relation i
+2
+ = −1 and the commutative, associative, and distributive properties to add, subtract, and multiply
+complex numbers.
+Use complex numbers in polynomial identities and equations. [Polynomials with real coefficients]
+7. Solve quadratic equations with real coefficients that have complex solutions.
+8. (+) Extend polynomial identities to the complex numbers. For example, rewrite x2
+ + 4 as (x + 2i)(x – 2i).
+9. (+) Know the Fundamental Theorem of Algebra; show that it is true for quadratic polynomials.
+Algebra
+Seeing Structure in Expressions A-SSE
+Interpret the structure of expressions. [Polynomial and rational]
+1. Interpret expressions that represent a quantity in terms of its context. -
+a. Interpret parts of an expression, such as terms, factors, and coefficients. -
+b. Interpret complicated expressions by viewing one or more of their parts as a single entity. For example, interpret
+P(1 + r)n
+ as the product of P and a factor not depending on P. -
+2. Use the structure of an expression to identify ways to rewrite it.
+Write expressions in equivalent forms to solve problems.
+4. Derive the formula for the sum of a finite geometric series (when the common ratio is not 1), and use the formula to solve
+problems. For example, calculate mortgage payments. -
+Arithmetic with Polynomials and Rational Expressions A-APR
+Perform arithmetic operations on polynomials. [Beyond quadratic]
+1. Understand that polynomials form a system analogous to the integers, namely, they are closed under the operations of
+addition, subtraction, and multiplication; add, subtract, and multiply polynomials.
+Understand the relationship between zeros and factors of polynomials.
+2. Know and apply the Remainder Theorem: For a polynomial p(x) and a number a, the remainder on division by x – a is p(a),
+so p(a) = 0 if and only if (x – a) is a factor of p(x).
+3. Identify zeros of polynomials when suitable factorizations are available, and use the zeros to construct a rough graph of
+the function defined by the polynomial. 1
+Use polynomial identities to solve problems.
+4. Prove polynomial identities and use them to describe numerical relationships. For example, the polynomial identity
+(x2
+ + y2
+)
+2
+= (x2
+ – y2
+)
+2
+ + (2xy)2
+ can be used to generate Pythagorean triples.
+5. (+) Know and apply the Binomial Theorem for the expansion of (x + y)n
+ in powers of x and y for a positive integer n, where
+x and y are any numbers, with coefficients determined for example by Pascal’s Triangle.12
+Rewrite rational expressions. [Linear and quadratic denominators]
+6. Rewrite simple rational expressions in different forms; write a(x)/b(x) in the form q(x) + r(x)/b(x), where a(x), b(x), q(x),
+and r(x) are polynomials with the degree of r(x) less than the degree of b(x), using inspection, long division, or, for the more
+complicated examples, a computer algebra system.
+7. (+) Understand that rational expressions form a system analogous to the rational numbers, closed under addition, subtraction, multiplication, and division by a nonzero rational expression; add, subtract, multiply, and divide rational expressions.
+Creating Equations A-CED
+Create equations that describe numbers or relationships. [Equations using all available types of expressions, including simple
+root functions]
+1. Create equations and inequalities in one variable including ones with absolute value and use them to solve problems.
+Include equations arising from linear and quadratic functions, and simple rational and exponential functions. CA -
+2. Create equations in two or more variables to represent relationships between quantities; graph equations on coordinate
+axes with labels and scales. -
+3. Represent constraints by equations or inequalities, and by systems of equations and/or inequalities, and interpret solutions
+as viable or non-viable options in a modeling context. -
+4. Rearrange formulas to highlight a quantity of interest, using the same reasoning as in solving equations. -
+Reasoning with Equations and Inequalities A-REI
+Understand solving equations as a process of reasoning and explain the reasoning. [Simple radical and rational]
+2. Solve simple rational and radical equations in one variable, and give examples showing how extraneous solutions may arise.
+Solve equations and inequalities in one variable.
+3.1 Solve one-variable equations and inequalities involving absolute value, graphing the solutions and interpreting them in
+context. CA
+Represent and solve equations and inequalities graphically. [Combine polynomial, rational, radical, absolute value, and
+exponential functions.]
+11. Explain why the x-coordinates of the points where the graphs of the equations y = f(x) and y = g(x) intersect are the solutions
+of the equation f(x) = g(x); find the solutions approximately, e.g., using technology to graph the functions, make tables of
+values, or find successive approximations. Include cases where f(x) and/or g(x) are linear, polynomial, rational, absolute
+value, exponential, and logarithmic functions
+Functions
+Interpreting Functions F-IF
+Interpret functions that arise in applications in terms of the context. [Emphasize selection of appropriate models.]
+4. For a function that models a relationship between two quantities, interpret key features of graphs and tables in terms of
+the quantities, and sketch graphs showing key features given a verbal description of the relationship. Key features include:
+intercepts; intervals where the function is increasing, decreasing, positive, or negative; relative maximums and minimums;
+symmetries; end behavior; and periodicity. -
+5. Relate the domain of a function to its graph and, where applicable, to the quantitative relationship it describes. -
+6. Calculate and interpret the average rate of change of a function (presented symbolically or as a table) over a specified
+interval. Estimate the rate of change from a graph. -
+Analyze functions using different representations. [Focus on using key features to guide selection of appropriate type of model
+function.]
+7. Graph functions expressed symbolically and show key features of the graph, by hand in simple cases and using technology
+for more complicated cases. -
+b. Graph square root, cube root, and piecewise-defined functions, including step functions and absolute value functions. -
+c. Graph polynomial functions, identifying zeros when suitable factorizations are available, and showing end behavior. -
+e. Graph exponential and logarithmic functions, showing intercepts and end behavior, and trigonometric functions, showing
+period, midline, and amplitude. -
+8. Write a function defined by an expression in different but equivalent forms to reveal and explain different properties of the
+function.
+9. Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or
+by verbal descriptions).
+Building Functions F-BF
+Build a function that models a relationship between two quantities. [Include all types of functions studied.]
+1. Write a function that describes a relationship between two quantities.-
+b. Combine standard function types using arithmetic operations. For example, build a function that models the temperature
+of a cooling body by adding a constant function to a decaying exponential, and relate these functions to the model. -
+Build new functions from existing functions. [Include simple radical, rational, and exponential functions; emphasize common
+effect of each transformation across function types.]
+3. Identify the effect on the graph of replacing f(x) by f(x) + k, kf(x), f(kx), and f(x + k) for specific values of k (both positive
+and negative); find the value of k given the graphs. Experiment with cases and illustrate an explanation of the effects on the
+graph using technology. Include recognizing even and odd functions from their graphs and algebraic expressions for them.
+4. Find inverse functions.
+a. Solve an equation of the form f(x) = c for a simple function f that has an inverse and write an expression for the inverse.
+For example, f(x) =2x3
+ or f(x) = (x + 1)/(x − 1) for x ≠ 1.
+ Linear, Quadratic, and Exponential Models F-LE
+Construct and compare linear, quadratic, and exponential models and solve problems.
+4. For exponential models, express as a logarithm the solution to abct = d where a, c, and d are numbers and the base b is 2,
+10, or e; evaluate the logarithm using technology. - [Logarithms as solutions for exponentials]
+4.1 Prove simple laws of logarithms. CA -
+4.2 Use the definition of logarithms to translate between logarithms in any base. CA -
+4.3 Understand and use the properties of logarithms to simplify logarithmic numeric expressions and to identify their
+approximate values. CA -
+Trigonometric Functions F-TF
+Extend the domain of trigonometric functions using the unit circle.
+1. Understand radian measure of an angle as the length of the arc on the unit circle subtended by the angle.
+2. Explain how the unit circle in the coordinate plane enables the extension of trigonometric functions to all real numbers,
+interpreted as radian measures of angles traversed counterclockwise around the unit circle.
+2.1 Graph all 6 basic trigonometric functions. CA
+Model periodic phenomena with trigonometric functions.
+5. Choose trigonometric functions to model periodic phenomena with specified amplitude, frequency, and midline. -
+Prove and apply trigonometric identities.
+8. Prove the Pythagorean identity sin2
+(θ ) + cos2
+(θ ) = 1 and use it to find sin(θ ), cos(θ ), or tan(θ ) given sin(θ ), cos(θ ),
+or tan(θ ) and the quadrant of the angle.
+Geometry
+Expressing Geometric Properties with Equations G-GPE
+Translate between the geometric description and the equation for a conic section.
+3.1 Given a quadratic equation of the form ax2
+ + by2
+ + cx + dy + e = 0, use the method for completing the square to put the
+equation into standard form; identify whether the graph of the equation is a circle, ellipse, parabola, or hyperbola and
+graph the equation. [In Algebra II, this standard addresses only circles and parabolas.] CA
+Statistics and Probability
+Interpreting Categorical and Quantitative Data S-ID
+Summarize, represent, and interpret data on a single count or measurement variable.
+4. Use the mean and standard deviation of a data set to fit it to a normal distribution and to estimate population percentages.
+Recognize that there are data sets for which such a procedure is not appropriate. Use calculators, spreadsheets, and tables
+to estimate areas under the normal curve. -
+Making Inferences and Justifying Conclusions S-IC
+Understand and evaluate random processes underlying statistical experiments.
+1. Understand statistics as a process for making inferences about population parameters based on a random sample from
+that population. -
+2. Decide if a specified model is consistent with results from a given data-generating process, e.g., using simulation. For
+example, a model says a spinning coin falls heads up with probability 0.5. Would a result of 5 tails in a row cause you to
+question the model? -
+Make inferences and justify conclusions from sample surveys, experiments, and observational studies.
+3. Recognize the purposes of and differences among sample surveys, experiments, and observational studies; explain how
+randomization relates to each. -
+4. Use data from a sample survey to estimate a population mean or proportion; develop a margin of error through the use of
+simulation models for random sampling. -
+5. Use data from a randomized experiment to compare two treatments; use simulations to decide if differences between
+parameters are significant. -
+6. Evaluate reports based on data. -
+Using Probability to Make Decisions S-MD
+Use probability to evaluate outcomes of decisions. [Include more complex situations.]
+6. (+) Use probabilities to make fair decisions (e.g., drawing by lots, using a random number generator). -
+7. (+) Analyze decisions and strategies using probability concepts (e.g., product testing, medical testing, pulling a hockey
+goalie at the end of a game). -
+]
