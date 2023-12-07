@@ -30,7 +30,7 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
     if (chats.length === 0) {
         return (
             <div>
-                <Table className="mt-4">
+                <Table className="mt-4 w-full">
                     <TableCaption className="">
                         No questions asked yet.{" "}
                     </TableCaption>
@@ -49,12 +49,14 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
     } else {
         return (
             <div>
-                <Table className="mt-4">
+                <Table className="mt-4 w-full">
                     <TableCaption>End of list.</TableCaption>
                     <TableHeader>
                         <TableRow className="">
                             <TableHead className="w-[10px]">No.</TableHead>
-                            <TableHead className="w-[20px]">Date Created</TableHead>
+                            <TableHead className="w-[20px]">
+                                Date Created
+                            </TableHead>
                             <TableHead className="">Student Name</TableHead>
                             <TableHead className="w-[50%]">Question</TableHead>
                             <TableHead className="">Answer</TableHead>

@@ -24,7 +24,7 @@ const ChatLogs = async ({ params: { tutorId } }: Props) => {
 
     return (
         <>
-            <div className="p-8 mx-auto max-w-7xl">
+            <div className="py-8 px-4 mx-auto max-w-full">
                 <div className="flex items-center justify-between space-y-2">
                     <div className="flex flex-col gap-1">
                         <h2 className="mr-2 text-[28px] font-medium tracking-tight">

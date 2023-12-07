@@ -128,14 +128,14 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                             Here are some of the recently asked questions for
                             this tutor. View the full history{" "}
                             <Link
-                                className="text-green underline "
+                                className="text-green underline  "
                                 href={`/chatLogs/${tutor?.id}`}
                                 target="_blank"
                             >
                                 here
                             </Link>
                         </h1>
-                        <div className="w-full">
+                        <div className="w-full ">
                             <RecentQuestions limit={10} tutorId={tutor!.id} />
                         </div>
                     </div>
