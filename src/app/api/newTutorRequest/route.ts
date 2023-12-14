@@ -26,7 +26,7 @@ export async function POST(req: Request, res: Response) {
                 }
             );
         }
-        // Google
+
         const body = await req.json();
         const {
             teacherName,
@@ -35,18 +35,23 @@ export async function POST(req: Request, res: Response) {
             userId,
             desiredContent,
             files,
+            presetRubric,
+            tutorType,
+            prompt,
         } = createTutorAPISchema.parse(body);
 
         try {
             await transporter.sendMail({
                 ...mailOptions,
                 subject: "Create Tutor Request",
-                text: `${teacherName} requested a tutor named ${chosenName}. This is the description: [${description}].
+                text: `${teacherName} requested a tutor named ${chosenName}. This is the description or main role: [${description}].
                 This is the userId: [${userId}].
                 This is the desired content: [${desiredContent}]`,
-                html: `<p>${teacherName} requested a tutor named ${chosenName}. This is the description: [${description}].
-                This is the userId: [${userId}].
-                This is the desired content: [${desiredContent}]</p>`,
+                html: `<p>${teacherName} requested a ${tutorType} tutor named ${chosenName}.  <br>This is the description: [${description}] <br>
+                This is the userId: [${userId}] <br>
+                This is the desired content or rubric: [${desiredContent}] <br>
+                This is the presetRubric: [${presetRubric}]</p> <br>
+                This is the prompt: [${prompt}]`,
             });
         } catch (error) {
             console.log(error);

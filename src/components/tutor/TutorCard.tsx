@@ -17,7 +17,7 @@ type Props = {
     name: string;
     description: string;
     joinCode: string;
-    status: string;
+    type: string;
     id: string;
 };
 
@@ -30,12 +30,12 @@ function truncateAfterTenWords(inputString: string) {
         return inputString; // Return the original string if it has 10 or fewer words
     } else {
         // Take the first 10 words, join them back into a string, and append '...'
-        const truncatedString = words.slice(0, 11).join(" ") + " ...";
+        const truncatedString = words.slice(0, 10).join(" ") + " ...";
         return truncatedString;
     }
 }
 
-export function TutorCard({ name, description, joinCode, status, id }: Props) {
+export function TutorCard({ name, description, joinCode, id, type }: Props) {
     const notifications = [
         {
             title: "Description",
@@ -46,8 +46,8 @@ export function TutorCard({ name, description, joinCode, status, id }: Props) {
             description: joinCode,
         },
         {
-            title: "Status",
-            description: status,
+            title: "Type",
+            description: type,
         },
     ];
     return (

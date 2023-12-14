@@ -8,14 +8,7 @@ import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
 import Link from "next/link";
 import { Loader2, Mic, SendHorizonal } from "lucide-react";
 import useSpeechRecognition from "../../../customHooks/SpeechHook";
-import { is } from "date-fns/locale";
-
-const examples = [
-    "Give me a bullet list of facts about temperature",
-    "Help me study for the test we have tomorrow",
-    "Quiz me on matter and its interactions",
-    "Can you explain the cycle of water on Earth?",
-];
+import OpenAI from "openai";
 
 type Props = {
     tutorName: string;
@@ -29,9 +22,10 @@ type Props = {
     defaultPrompt: string;
     tutorType: string;
     essayPrompt: string;
+    assistantId: string;
 };
 
-export default function ChatSection({
+export default function WritingChatSection({
     tutorName,
     tutorDisplayName,
     ownerName,
@@ -43,30 +37,15 @@ export default function ChatSection({
     defaultPrompt,
     tutorType,
     essayPrompt,
+    assistantId,
 }: Props) {
-    const [audioText, setAudioText] = React.useState("");
-    const {
-        messages,
-        input,
-        handleInputChange,
-        setInput,
-        handleSubmit,
-        isLoading,
-    } = useChat({
-        api: "/api/tutor",
-        body: {
-            tutorId: tutorId,
-            tutorName: tutorName,
-            ownerName: ownerName,
-            studentName: studentName,
-            userId: userId,
-            teacherId: teacherId,
-            defaultPrompt: defaultPrompt,
-            tutorDisplayName: tutorDisplayName,
-        },
-    });
-    const textAreaRef = useRef<HTMLTextAreaElement>(null);
-    useAutosizeTextArea(textAreaRef.current, input);
+    const [input, setInput] = React.useState("");
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [threadId, setThreadId] = React.useState<string | null>(null);
+
+    const [messages, setMessages] = React.useState<
+        { role: string; content: any }[]
+    >([]);
 
     const examples = placeholderQs.split(",");
 
@@ -78,9 +57,75 @@ export default function ChatSection({
         }
     };
 
-    const onHandleSubmit = async (e: any) => {
-        handleSubmit(e);
+    const handleInputChange = (e: any) => {
+        setInput(e.target.value);
     };
+
+    const onHandleSubmit = async (e: any) => {
+        let tempThreadId = "";
+        if (messages.length === 0) {
+            const response = await fetch("/api/createThread", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (response.ok) {
+                const { threadId } = await response.json();
+                tempThreadId = threadId;
+                setThreadId(threadId);
+            } else {
+                console.error("Thread creation failed");
+            }
+        }
+
+        setMessages((prevMessages) => [
+            ...prevMessages,
+            { role: "user", content: input },
+        ]);
+        setInput("");
+        setIsLoading(true);
+        try {
+            // Make your API call here, for example using the fetch function
+            const response = await fetch("/api/assistant-testing", {
+                method: "POST", // or 'GET', 'PUT', etc., depending on your API
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    tutorId: tutorId,
+                    tutorName: tutorName,
+                    ownerName: ownerName,
+                    studentName: studentName,
+                    userId: userId,
+                    teacherId: teacherId,
+                    defaultPrompt: defaultPrompt,
+                    tutorDisplayName: tutorDisplayName,
+                    studentQuestion: input,
+                    threadId: tempThreadId ? tempThreadId : threadId,
+                    assistantId: assistantId,
+                }),
+            });
+
+            if (response.ok) {
+                const { message } = await response.json();
+                console.log(message);
+
+                setMessages((prevMessages) => [
+                    ...prevMessages,
+                    { role: "assistant", content: message }, // Assuming "response" contains the AI's reply
+                ]);
+            } else {
+                console.error("API request failed");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    useAutosizeTextArea(textAreaRef.current, input);
 
     const {
         text,
@@ -93,6 +138,8 @@ export default function ChatSection({
     useEffect(() => {
         setInput(text); // Set the input value to text
     }, [text]);
+
+    const delay = (ms: any) => new Promise((res) => setTimeout(res, ms));
 
     // ----------------
     // Tutor Chat Section
@@ -108,7 +155,7 @@ export default function ChatSection({
             >
                 <div className="max-w-[50rem] ">
                     {messages.length > 0 ? (
-                        messages.map((m) => (
+                        messages.map((m: any) => (
                             <div key={m.id} className="my-3">
                                 {m.role === "user" ? (
                                     <div className="px-5 rounded-lg flex flex-row items-start py-5 gap-4">
@@ -132,6 +179,7 @@ export default function ChatSection({
                                             alt={"Steve: "}
                                             className="object-contain "
                                         />
+
                                         <ReactMarkdown className={" prose "}>
                                             {m.content}
                                         </ReactMarkdown>
@@ -159,44 +207,56 @@ export default function ChatSection({
                                         {tutorDisplayName}!
                                     </span>
                                 </h1>
-                                {tutorType === "Writing" ? (
-                                    <div>
-                                        <p className="text-lg text-center font-light mt-5 w-full">
-                                            Hey, I'm here to help you with
-                                            writing your essay! I'd be more than
-                                            happy to help you brainstorm,
-                                            revise, and help you improve your
-                                            essay. Here is the prompt of the
-                                            essay I can help with:
-                                        </p>
-                                        <p className="text-center mt-2 font-semibold tracking-wide">
-                                            {essayPrompt}
-                                        </p>
-                                    </div>
-                                ) : (
-                                    <p className="text-lg text-center font-light mt-5 w-full">
-                                        I’m a tutor for {ownerName}’s class.
-                                        Whether you didn’t really understand a
-                                        certain topic or want to study together
-                                        before your next test, I’m here to help!{" "}
-                                    </p>
-                                )}
+
+                                <p className="text-lg text-center font-light mt-5 w-full">
+                                    Hey, I'm here to help you with writing your
+                                    essay! I'd be more than happy to help you
+                                    brainstorm, revise, and help you improve
+                                    your essay. Here is the prompt of the essay
+                                    I can help with:
+                                </p>
+                                <p className="text-center mt-2 font-semibold tracking-wide">
+                                    {essayPrompt}
+                                </p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-8">
                                 {examples.map((example, i) => (
                                     <button
                                         key={i}
-                                        className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left
-                                         text-base text-gray-500 transition-all duration-75 hover:border-green hover:-translate-y-1
-                                          hover:text-green active:bg-gray-50"
                                         onClick={() => {
                                             setInput(example);
                                             textAreaRef.current?.focus();
                                         }}
+                                        className="rounded-md border border-gray-200 bg-white px-5 py-3 text-left
+                                         text-base text-gray-500 transition-all duration-75 hover:border-green hover:-translate-y-1
+                                          hover:text-green active:bg-gray-50"
                                     >
                                         {example}
                                     </button>
                                 ))}
+                            </div>
+                        </div>
+                    )}
+                    {isLoading && (
+                        <div className="px-5 rounded-lg flex flex-row items-start py-5 gap-4">
+                            <Image
+                                src={"/educadoIcon.png"}
+                                height={45}
+                                width={45}
+                                alt={"Steve: "}
+                                className="object-contain "
+                            />
+
+                            <div className="flex flex-row items-center justify-center ">
+                                <div className="animate-pulse text-5xl text-green ">
+                                    .
+                                </div>
+                                <div className="animate-pulse text-5xl text-green ">
+                                    .
+                                </div>
+                                <div className="animate-pulse text-5xl text-green ">
+                                    .
+                                </div>
                             </div>
                         </div>
                     )}
@@ -308,23 +368,29 @@ export default function ChatSection({
                         className="w-full col-start-2 col-end-7 lg:col-start-3 lg:col-end-6  flex mb-5 text-[15px] font-outfit items-center justify-center 
                 md:px-0 "
                     >
-                        <h1 className=" text-center flex flex-row items-center gap-2">
-                            Created by your teacher with some help from{" "}
-                            <Link
-                                href="/"
-                                target="_blank"
-                                className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px]"
-                            >
-                                <Image
-                                    className=" w-[15px]  mr-1 md:mr-2 transition-all"
-                                    src={"/avocado.png"}
-                                    height={700}
-                                    width={700}
-                                    alt=""
-                                />
-                                Educado
-                            </Link>
-                        </h1>
+                        {messages.length > 0 ? (
+                            <div className="font-medium text-[16px] text-center">
+                                <b>Prompt</b>: {essayPrompt}
+                            </div>
+                        ) : (
+                            <h1 className=" text-center flex flex-row items-center gap-2">
+                                Created by your teacher with some help from{" "}
+                                <Link
+                                    href="/"
+                                    target="_blank"
+                                    className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px]"
+                                >
+                                    <Image
+                                        className=" w-[15px]  mr-1 md:mr-2 transition-all"
+                                        src={"/avocado.png"}
+                                        height={700}
+                                        width={700}
+                                        alt=""
+                                    />
+                                    Educado
+                                </Link>
+                            </h1>
+                        )}
                     </div>
                     <div></div>
                 </div>

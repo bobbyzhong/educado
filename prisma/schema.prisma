@@ -161,10 +161,13 @@ model Tutor {
   tutorDisplayName String
   tutorName String 
   tutorDescription String? 
+  tutorType String?
   placeholderQs String? @db.Text
   basePrompt String? @db.Text
   uploadedContent String?
   ownerName String?
+  essayPrompt String?
+  assistantId String?
   questions  TutorQuestions[]
 
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
