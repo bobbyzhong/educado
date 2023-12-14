@@ -12,8 +12,6 @@ import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
 });
@@ -22,32 +20,32 @@ export async function POST(req: Request) {
     // Extract the `messages` from the body of the request
     let body = await req.json();
 
-    const assistant = await openai.beta.assistants.create({
-        name: "Warren Buffet",
-        instructions:
-            "You are Warren Buffet and you are tutoring a 6th grade student in financial responsibility.",
+    const assistant = await openai.beta.assistants.retrieve(body.assistantId);
 
-        model: "gpt-3.5-turbo-1106",
+    const message = await openai.beta.threads.messages.create(body.threadId, {
+        role: "user",
+        content: body.studentQuestion,
     });
 
-    console.log("Assistant created! ");
-
-    const thread = await openai.beta.threads.create({
-        messages: body.messages,
-    });
-
-    const run = await openai.beta.threads.runs.create(thread.id, {
+    const run = await openai.beta.threads.runs.create(body.threadId, {
         assistant_id: assistant.id,
     });
 
-    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+    let runStatus = await openai.beta.threads.runs.retrieve(
+        body.threadId,
+        run.id
+    );
 
     while (runStatus.status !== "completed") {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        console.log("Here");
+        runStatus = await openai.beta.threads.runs.retrieve(
+            body.threadId,
+            run.id
+        );
     }
 
-    const messages = await openai.beta.threads.messages.list(thread.id);
+    const messages = await openai.beta.threads.messages.list(body.threadId);
 
     const lastMessageForRun: any = messages.data
         .filter(
@@ -60,7 +58,7 @@ export async function POST(req: Request) {
         console.log(lastMessageForRun.content[0].text);
     }
 
-    const stream = OpenAIStream(lastMessageForRun, {});
-
-    return new StreamingTextResponse(stream);
+    return NextResponse.json({
+        message: lastMessageForRun.content[0].text.value,
+    });
 }

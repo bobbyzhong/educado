@@ -6,6 +6,7 @@ import { getAuthSession } from "@/lib/nextauth";
 import { signIn } from "next-auth/react";
 import SignInButton from "@/components/SignInButton";
 import SignInButtonStudent from "@/components/SignInButtonStudent";
+import WritingChatSection from "@/components/tutor/WritingChatSection";
 
 type Props = {
     params: {
@@ -38,31 +39,52 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
         return redirect("/dashboard-teacher");
     }
 
-    return (
-        <>
-            {session?.user.id ? (
-                <ChatSection
-                    tutorName={tutor.tutorName}
-                    ownerName={tutor.ownerName}
-                    tutorDisplayName={tutor.tutorDisplayName}
-                    tutorId={tutor.id}
-                    teacherId={tutor.userId}
-                    userId={session.user.id}
-                    studentName={session.user.name!}
-                    placeholderQs={tutor.placeholderQs}
-                    defaultPrompt={tutor.basePrompt}
-                />
-            ) : (
-                <div className="w-full mt-10 flex flex-col items-center justify-center ">
-                    {" "}
-                    <div className="font-outfit mb-2">
-                        Sign in with Google to start chatting with{" "}
-                        {tutor.tutorDisplayName}!
-                    </div>
-                    <SignInButtonStudent text={"Sign In"} tutorId={tutor.id} />
+    const tutorType = tutor.tutorType;
+
+    if (!session?.user.id) {
+        return (
+            <div className="w-full mt-10 flex flex-col items-center justify-center ">
+                {" "}
+                <div className="font-outfit mb-2">
+                    Sign in with Google to start chatting with{" "}
+                    {tutor.tutorDisplayName}!
                 </div>
-            )}
-        </>
-    );
+                <SignInButtonStudent text={"Sign In"} tutorId={tutor.id} />
+            </div>
+        );
+    } else if (tutor.tutorType === "General") {
+        return (
+            <ChatSection
+                tutorName={tutor.tutorName}
+                ownerName={tutor.ownerName}
+                tutorDisplayName={tutor.tutorDisplayName}
+                tutorId={tutor.id}
+                teacherId={tutor.userId}
+                userId={session.user.id}
+                studentName={session.user.name!}
+                placeholderQs={tutor.placeholderQs}
+                defaultPrompt={tutor.basePrompt}
+                tutorType={tutor.tutorType}
+                essayPrompt={tutor.essayPrompt}
+            />
+        );
+    } else if (tutor.tutorType === "Writing") {
+        return (
+            <WritingChatSection
+                tutorName={tutor.tutorName}
+                ownerName={tutor.ownerName}
+                tutorDisplayName={tutor.tutorDisplayName}
+                tutorId={tutor.id}
+                teacherId={tutor.userId}
+                userId={session.user.id}
+                studentName={session.user.name!}
+                placeholderQs={tutor.placeholderQs}
+                defaultPrompt={tutor.basePrompt}
+                tutorType={tutor.tutorType}
+                essayPrompt={tutor.essayPrompt}
+                assistantId={tutor.assistantId}
+            />
+        );
+    }
 };
 export default TutorPage;
