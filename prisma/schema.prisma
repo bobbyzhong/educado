@@ -50,7 +50,7 @@ model User {
   subscribed   Boolean   @default(false)
   subscriptionId String?
   school    String?
-  recentTutors String?
+  recentTutors String? @db.Text
   notifs String? @db.Text
   checkIns         CheckIn[]
   accounts      Account[]

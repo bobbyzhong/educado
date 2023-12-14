@@ -30,6 +30,7 @@ export async function POST(req: Request, res: Response) {
                 id: userId,
             },
         });
+
         let recentTutors = user?.recentTutors;
 
         let recentTutorsList: any = [];
@@ -55,7 +56,7 @@ export async function POST(req: Request, res: Response) {
         } else {
             recentTutors = tutorId + recentTutors;
         }
-        console.log(recentTutors);
+
         await prisma.user.update({
             where: {
                 id: userId,
@@ -64,6 +65,7 @@ export async function POST(req: Request, res: Response) {
                 recentTutors: recentTutors,
             },
         });
+        console.log("HERE");
 
         return NextResponse.json(
             {

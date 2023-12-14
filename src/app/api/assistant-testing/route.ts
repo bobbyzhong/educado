@@ -56,6 +56,24 @@ export async function POST(req: Request) {
 
     if (lastMessageForRun) {
         console.log(lastMessageForRun.content[0].text);
+        try {
+            console.log("ABT THE CALL");
+            await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: body.studentQuestion,
+                    studentName: body.studentName,
+                    tutorId: body.tutorId,
+                    userId: body.userId,
+                    answer: lastMessageForRun.content[0].text.value,
+                }),
+            });
+        } catch (e) {
+            console.log("ERROR: ", e);
+        }
     }
 
     return NextResponse.json({

@@ -96,7 +96,7 @@ const Dashboard = async (props: Props) => {
             </div>
 
             {tutorList.length > 0 ? (
-                <div className="flex flex-row gap-3 flex-wrap mt-5">
+                <div className="relative flex items-center  overflow-x-auto  gap-5 mt-5">
                     {tutorList.map((tutorId: any, i: any) => {
                         return <StudDashCopy tutorId={tutorId} key={i} />;
                     })}

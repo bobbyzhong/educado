@@ -128,7 +128,7 @@ const DashboardTeacher = async (props: Props) => {
                                                     tutor.tutorDescription!
                                                 }
                                                 joinCode={tutor.joinCode!}
-                                                status={"Active"}
+                                                type={tutor.tutorType!}
                                             />
                                         </div>
                                     );

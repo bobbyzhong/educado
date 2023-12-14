@@ -28,7 +28,7 @@ function truncateAfterTenWords(inputString: string) {
 }
 
 type Props = { tutorId: string; key: string };
-const StudDashCopy = async ({ tutorId, key }: Props) => {
+const StudDashCopy = async ({ tutorId }: Props) => {
     const tutor = await prisma.tutor.findUnique({
         where: {
             id: tutorId!,
@@ -53,8 +53,8 @@ const StudDashCopy = async ({ tutorId, key }: Props) => {
     return (
         <Card className="w-[300px] shrink-0">
             <CardHeader className="py-4">
-                <CardTitle className="text-[19px] font-bold tracking-tight text-green">
-                    <span className="text-base text-zinc-400 font-semibold tracking-tight mr-[2px]">
+                <CardTitle className="text-[18px] font-bold tracking-tight text-green">
+                    <span className="text-sm text-zinc-400 font-semibold tracking-tight mr-[2px]">
                         Tutor Name:{" "}
                     </span>
                     {tutor?.tutorDisplayName}
