@@ -59,6 +59,9 @@ const UserAccountNav = ({ user }: Props) => {
                 <DropdownMenuItem
                     onSelect={(event) => {
                         event.preventDefault();
+                        localStorage.removeItem("AUTH_SESSION");
+                        localStorage.removeItem("tutorObjList");
+
                         signOut().catch(console.error);
                     }}
                     className="text-red-600 cursor-pointer"

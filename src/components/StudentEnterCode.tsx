@@ -12,7 +12,11 @@ type Props = {
     description: string;
     bgRed: boolean;
     isSignedIn: any;
-    userId: string;
+    userId?: string;
+    recentCodes?: string;
+    email?: string;
+    tutorObjList?: any;
+    studentName?: string;
 };
 const StudentEnterCode = ({
     title,
@@ -21,10 +25,29 @@ const StudentEnterCode = ({
     bgRed,
     isSignedIn,
     userId,
+    recentCodes,
+    email,
+    tutorObjList,
+    studentName,
 }: Props) => {
     const [code, setCode] = useState("");
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
+
+    React.useEffect(() => {
+        if (typeof window !== "undefined" && window.localStorage) {
+            localStorage.setItem(
+                "AUTH_SESSION",
+                JSON.stringify({
+                    id: userId,
+                    email: email,
+                    codes: recentCodes,
+                    studentName: studentName,
+                })
+            );
+            localStorage.setItem("tutorObjList", JSON.stringify(tutorObjList));
+        }
+    }, []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();

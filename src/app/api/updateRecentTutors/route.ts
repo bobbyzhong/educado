@@ -47,9 +47,28 @@ export async function POST(req: Request, res: Response) {
         if (recentTutors === undefined || recentTutors === null) {
             recentTutors = tutorId;
         } else if (recentTutorsList.includes(tutors[0].id.toString())) {
+            console.log("HERE");
+            const index = recentTutorsList.indexOf(tutors[0].id.toString());
+            console.log("INDEX", index);
+
+            // Remove the tutor from its current position
+            recentTutorsList.splice(index, 1);
+
+            // Add the tutor to the front of the array
+            recentTutorsList.unshift(tutorId);
+            console.log("RECENT TUTORS LIST", recentTutorsList.toString());
+
+            await prisma.user.update({
+                where: {
+                    id: userId,
+                },
+                data: {
+                    recentTutors: recentTutorsList.toString(),
+                },
+            });
             return NextResponse.json(
                 {
-                    message: "don't need to update",
+                    message: "moved to front",
                 },
                 { status: 200 }
             );

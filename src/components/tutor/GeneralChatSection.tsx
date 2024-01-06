@@ -21,11 +21,11 @@ type Props = {
     studentName: string;
     defaultPrompt: string;
     tutorType: string;
-    essayPrompt: string;
+
     assistantId: string;
 };
 
-export default function WritingChatSection({
+export default function GeneralChatSection({
     tutorName,
     tutorDisplayName,
     ownerName,
@@ -36,7 +36,7 @@ export default function WritingChatSection({
     studentName,
     defaultPrompt,
     tutorType,
-    essayPrompt,
+
     assistantId,
 }: Props) {
     const [input, setInput] = React.useState("");
@@ -210,14 +210,7 @@ export default function WritingChatSection({
                                 </h1>
 
                                 <p className="text-lg text-center font-light mt-5 w-full">
-                                    Hey, I'm here to help you with writing your
-                                    essay! I'd be more than happy to help you
-                                    brainstorm, revise, and help you improve
-                                    your essay. Here is the prompt of the essay
-                                    I can help with:
-                                </p>
-                                <p className="text-center mt-2 font-semibold tracking-wide">
-                                    {essayPrompt}
+                                    Ask me anything you want, I'm here to help!
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-8">
@@ -369,29 +362,23 @@ export default function WritingChatSection({
                         className="w-full col-start-2 col-end-7 lg:col-start-3 lg:col-end-6  flex mb-5 text-[15px] font-outfit items-center justify-center 
                 md:px-0 "
                     >
-                        {messages.length > 0 ? (
-                            <div className="font-medium text-[16px] text-center">
-                                <b>Prompt</b>: {essayPrompt}
-                            </div>
-                        ) : (
-                            <h1 className=" text-center flex flex-row items-center gap-2">
-                                Created by your teacher with some help from{" "}
-                                <Link
-                                    href="/"
-                                    target="_blank"
-                                    className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px]"
-                                >
-                                    <Image
-                                        className=" w-[15px]  mr-1 md:mr-2 transition-all"
-                                        src={"/avocado.png"}
-                                        height={700}
-                                        width={700}
-                                        alt=""
-                                    />
-                                    Educado
-                                </Link>
-                            </h1>
-                        )}
+                        <h1 className=" text-center flex flex-row items-center gap-2">
+                            Created by your teacher with some help from{" "}
+                            <Link
+                                href="/"
+                                target="_blank"
+                                className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px]"
+                            >
+                                <Image
+                                    className=" w-[15px]  mr-1 md:mr-2 transition-all"
+                                    src={"/avocado.png"}
+                                    height={700}
+                                    width={700}
+                                    alt=""
+                                />
+                                Educado
+                            </Link>
+                        </h1>
                     </div>
                     <div></div>
                 </div>

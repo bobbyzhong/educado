@@ -1,15 +1,6 @@
 // app/api/chat/route.ts
 
 import OpenAI from "openai";
-import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
-import {
-    createPrompt,
-    functions,
-    getContext,
-    runFunction,
-} from "../../../../tutorUtils";
-import { PineconeClient } from "@pinecone-database/pinecone";
-import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
 
 const openai = new OpenAI({

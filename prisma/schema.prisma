@@ -30,6 +30,12 @@ model Account {
   @@index([userId])
 }
 
+model ContactMessage {
+  id                String  @id @default(cuid())
+  name      String?
+  text      String
+}
+
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique

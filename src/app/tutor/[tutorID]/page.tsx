@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import SignInButton from "@/components/SignInButton";
 import SignInButtonStudent from "@/components/SignInButtonStudent";
 import WritingChatSection from "@/components/tutor/WritingChatSection";
+import GeneralChatSection from "@/components/tutor/GeneralChatSection";
 
 type Props = {
     params: {
@@ -54,7 +55,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
         );
     } else if (tutor.tutorType === "General") {
         return (
-            <ChatSection
+            <GeneralChatSection
                 tutorName={tutor.tutorName}
                 ownerName={tutor.ownerName}
                 tutorDisplayName={tutor.tutorDisplayName}
@@ -65,7 +66,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 placeholderQs={tutor.placeholderQs}
                 defaultPrompt={tutor.basePrompt}
                 tutorType={tutor.tutorType}
-                essayPrompt={tutor.essayPrompt}
+                assistantId={tutor.assistantId}
             />
         );
     } else if (tutor.tutorType === "Writing") {

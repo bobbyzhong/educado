@@ -1,15 +1,8 @@
-import HistoryCard from "@/components/dashboard/HistoryCard";
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
-import CheckInCard from "@/components/dashboard/CheckInCard";
-import ContactCard from "@/components/dashboard/ContactCard";
-import ContentRequestCard from "@/components/dashboard/ContentRequestCard";
-import EducadoTutorCard from "@/components/dashboard/EducadoTutorCard";
 import StudentEnterCode from "@/components/StudentEnterCode";
 import ChatHistoryTable from "@/components/ChatHistoryTable";
-
 import { prisma } from "@/lib/db";
-import HistoryTable from "@/components/HistoryTable";
 import Link from "next/link";
 import StudDashCopy from "@/components/tutor/StudDashCopyCode";
 
@@ -51,6 +44,26 @@ const Dashboard = async (props: Props) => {
             (value: any, index: any) => tutorList.indexOf(value) === index
         );
     }
+    let tutorObjList: any = [];
+
+    for (let i = 0; i < tutorList.length; i++) {
+        const tutor = await prisma.tutor.findUnique({
+            where: {
+                id: tutorList[i],
+            },
+        });
+
+        if (tutor) {
+            const tutorObject = {
+                id: tutor.id,
+                name: tutor.tutorDisplayName,
+                type: tutor.tutorType,
+                teacherName: tutor.ownerName,
+            };
+
+            tutorObjList.push(tutorObject);
+        }
+    }
 
     const clear = user?.subscribed || checkIns.length < 10;
 
@@ -81,6 +94,10 @@ const Dashboard = async (props: Props) => {
                     bgRed={false}
                     isSignedIn={session?.user}
                     userId={session?.user?.id}
+                    recentCodes={user?.recentTutors!}
+                    email={user?.email!}
+                    tutorObjList={tutorObjList}
+                    studentName={session?.user?.name!}
                 />
             </div>
 
