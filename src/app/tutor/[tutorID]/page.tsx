@@ -55,7 +55,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
         );
     } else if (tutor.tutorType === "General") {
         return (
-            <GeneralChatSection
+            <ChatSection
                 tutorName={tutor.tutorName}
                 ownerName={tutor.ownerName}
                 tutorDisplayName={tutor.tutorDisplayName}
@@ -66,9 +66,25 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 placeholderQs={tutor.placeholderQs}
                 defaultPrompt={tutor.basePrompt}
                 tutorType={tutor.tutorType}
-                assistantId={tutor.assistantId}
+                essayPrompt={tutor.essayPrompt}
             />
         );
+
+        // return (
+        //     <GeneralChatSection
+        //         tutorName={tutor.tutorName}
+        //         ownerName={tutor.ownerName}
+        //         tutorDisplayName={tutor.tutorDisplayName}
+        //         tutorId={tutor.id}
+        //         teacherId={tutor.userId}
+        //         userId={session.user.id}
+        //         studentName={session.user.name!}
+        //         placeholderQs={tutor.placeholderQs}
+        //         defaultPrompt={tutor.basePrompt}
+        //         tutorType={tutor.tutorType}
+        //         assistantId={tutor.assistantId}
+        //     />
+        // );
     } else if (tutor.tutorType === "Writing") {
         return (
             <WritingChatSection
