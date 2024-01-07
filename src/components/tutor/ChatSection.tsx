@@ -57,7 +57,6 @@ export default function ChatSection({
         body: {
             tutorId: tutorId,
             tutorName: tutorName,
-            ownerName: ownerName,
             studentName: studentName,
             userId: userId,
             teacherId: teacherId,
