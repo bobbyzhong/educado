@@ -108,14 +108,14 @@ export default async function Home() {
             <div className="flex justify-between items-center mt-[5%]">
                 <Image
                     className="w-[49%] lg:block hidden max-h-[70vh] object-cover"
-                    src={"/landingpage.png"}
+                    src={"/landing/landingpage.png"}
                     height={800}
                     width={800}
                     alt=""
                 />
                 <Image
                     className="w-[49%] lg:block hidden max-h-[70vh] object-cover"
-                    src={"/landingpage2.png"}
+                    src={"/landing/landingpage2.png"}
                     height={800}
                     width={800}
                     alt=""
@@ -162,9 +162,9 @@ export default async function Home() {
                 </div>
             </div>
 
-            <div className="flex justify-center text-center items-center mt-[7%] flex-col">
+            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
-                    INTEGRATED STANDARDS
+                    INTEGRATED WITH YOUR STANDARDS
                 </h1>
                 <div className="height-[20%] justify-center items-center flex md:flex-row flex-col gap-10">
                     <Image
@@ -189,44 +189,52 @@ export default async function Home() {
                         alt=""
                     />
                 </div>
-            </div>
+            </div> */}
 
             {/* HOW Educado WORKS */}
-            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
-                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
+            <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
                     HOW IT WORKS
+                </h1>
+                <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[1rem] text-zinc-600">
+                    This process is mainly for districts. If you're a teacher
+                    all you need to do is{" "}
+                    <a href="/contact" className="text-green">
+                        reach out
+                    </a>{" "}
+                    for an access code and you'll be all good to go!
                 </h1>
                 <HowStep
                     step="1"
-                    title="Check-in Type"
-                    description="Select the type of check-in you want to make. Currently, you can make a check-in based on plain content, textbook, or classroom material. More to come soon!"
-                    image="/how_checkin_type.png"
+                    title="Set Up"
+                    description="We know that every district is unique so we’ll work closely with you to see the best way we can help. Once we have everything worked out, we’ll give a private access code for your teachers to sign up with. "
+                    image="/landing/how_1.png"
                 />
                 <HowStep
                     step="2"
-                    title="Review"
-                    description="Review the generated check-in and make changes as needed. You can edit, delete, or add your own question if you want!"
-                    image="/how_review.png"
+                    title="Deploy"
+                    description="If you want, you can add our chrome extension to your Chromebooks so your students can work with their tutor wherever they go in just one click! They can also access it through our website"
+                    image="/landing/how_2.png"
                 />
                 <HowStep
                     step="3"
-                    title="Share"
-                    description="Next you’ll be able to share the check-in with your students. Have your students scan the QR code or share it via link"
-                    image="/how_share.png"
+                    title="Create"
+                    description="Teachers can easily create different types of tutors such as our “Famous Figure Tutor” tutor or “Writing Tutor”. The content that tutors are trained on can also be updated whenever!"
+                    image="/landing/how_3.png"
                 />
                 <HowStep
                     step="4"
-                    title="Evaluate"
-                    description="After each student takes it, you’ll be able to view their results. You’ll have access to all the check-ins you’ve made in the past as well."
+                    title="Monitor"
+                    description="Teachers can view all conversations students have with tutors and are also alerted when any unusual activity such as self harm talk or cheating concerns comes up."
                     image="/how_evaluate.png"
                 />
                 <HowStep
                     step="5"
-                    title="Receive Report"
-                    description="After each check-in you’ll receive a mini report detailing things like topics your students struggled on and which students you might want to check up on. "
-                    image="/how_receive_report.png"
+                    title="Support"
+                    description="Our team will provide you with all the support you need to make sure you and your teachers make the most out of Educado. We’ll also be there to help you with any issues that come up!"
+                    image="/landing/how_5.png"
                 />
-            </div> */}
+            </div>
 
             {/* FOOTER */}
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10 bg-[#8bb83f]/[0.2]  rounded-t-[20%]">
