@@ -10,6 +10,7 @@ import StudentEnterCode from "@/components/StudentEnterCode";
 import { prisma } from "@/lib/db";
 import HomePageJoinCode from "@/components/HomePageJoinCode";
 import { ExternalLink } from "lucide-react";
+import HowStep from "@/components/landing/HowStep";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -30,18 +31,24 @@ export default async function Home() {
     return (
         <div className="flex flex-col font-outfit w-full">
             <div className="flex  flex-col justify-center items-center">
-                <div className="TEXT-SECTION font-outfit flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
-                    <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
-                        Giving every student the 1:1 support and help they need
+                <div className="TEXT-SECTION flex flex-col text-center items-center mt-[12%] md:mt-[4%]">
+                    <h1 className="md:text-[14.5px] text-[13.5px] text-green font-semibold  mb-3">
+                        AI FOR K12
                     </h1>
-                    <p className="md:text-[21px] text-[16px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        We make it easy for teachers to create and manage{" "}
-                        <b className="text-green">AI tutors</b> trained on the
-                        content they want. Give every student the{" "}
-                        <b className="text-green">personalized support</b> they
-                        need anytime, anywhere and integrate AI into student
-                        learning in a safe and{" "}
-                        <b className="text-green">monitored</b> way
+
+                    {/* <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
+                        Supercharging student support and learning with AI
+                    </h1> */}
+                    <h1 className="md:text-[2.8rem] leading-[43px] md:leading-[53px] tracking-[0.02rem] text-3xl font-semibold w-11/12 md:w-8/12 lg:w-6/12 ">
+                        Personalize student support and learning at scale with
+                        Educado
+                    </h1>
+                    <p className="md:text-[21px] text-[16px] leading-snug md:my-5 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
+                        We empower K12 educators to create{" "}
+                        <b className="text-green">AI tutors</b> trained on their
+                        own content and standards that can support students in{" "}
+                        <b className="text-green">every step</b> of their
+                        learning journey
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
@@ -117,7 +124,7 @@ export default async function Home() {
 
             {/* WHY EDUCADO */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-[#725D5D]">
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
                     WHY EDUCADO
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
@@ -128,18 +135,27 @@ export default async function Home() {
                         to worry about unreliable sources."
                     />
                     <WhyUsCard
+                        icon="🤖"
+                        title="Monitored AI"
+                        description="Integrate AI into learning in a safe and monitored way with Educado. All the conversations your students have with the tutor can be viewed by the teacher and any unusual activity is flagged."
+                    />
+                    <WhyUsCard
+                        icon="⚡️"
+                        title="Realtime Support"
+                        description={`Students can chat with their tutors anytime, anywhere through our Chrome Extension or website. (Our Chrome Extension's super cool!)`}
+                    />
+                    <WhyUsCard
                         icon="📈"
                         title="️Data-Driven Insights"
                         description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
                     />
                     <WhyUsCard
-                        icon="📑"
-                        title="️Monitored AI"
-                        description="Yes, AI can be scary but that doesn't mean it can't be used for good! All the conversations your students have with the tutor 
-                        can be viewed by the teacher or school admin. "
+                        icon="🧑‍🏫"
+                        title="️Make Learning Fun"
+                        description="The possibilities with our tutors are limitless! Some of our early teachers have created historical figures like Benjamin Franklin that their students can interview "
                     />
                     <WhyUsCard
-                        icon="📚"
+                        icon="✅"
                         title="Easy Set Up"
                         description={`It takes less than 5 minutes to create a tutor. All tutors also come trained on the standards or curriculum that your district follows!`}
                     />
@@ -147,7 +163,7 @@ export default async function Home() {
             </div>
 
             <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="md:text-5xl text-4xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-[#725D5D]">
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
                     INTEGRATED STANDARDS
                 </h1>
                 <div className="height-[20%] justify-center items-center flex md:flex-row flex-col gap-10">
@@ -177,8 +193,8 @@ export default async function Home() {
 
             {/* HOW Educado WORKS */}
             {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
-                <h1 className="text-4xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-6/12 mt-5 mb-[2%] text-[#725D5D]">
-                    HOW EDUCADO WORKS
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
+                    HOW IT WORKS
                 </h1>
                 <HowStep
                     step="1"

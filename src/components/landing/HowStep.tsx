@@ -13,8 +13,8 @@ type Props = {
 const HowStep = ({ step, title, description, image }: Props) => {
     return (
         <>
-            <div className="flex justify-between items-center mx-[10%] md:mx-[17%] mt-[5%]">
-                <div className="md:w-[47%] w-full flex-col md:justify-center flex">
+            <div className="flex md:flex-row flex-col justify-between items-center mx-[10%] md:mx-[15%] mt-[5%]">
+                <div className="md:w-[47%] w-full flex-col md:justify-center flex md:mb-0 mb-10">
                     <div className="flex items-center gap-5 ">
                         <h1 className="md:text-[11rem] text-[8rem] text-[#8bb83f]/[0.4] font-bold leading-[1.1]">
                             {step}
@@ -29,7 +29,7 @@ const HowStep = ({ step, title, description, image }: Props) => {
                 </div>
 
                 <Image
-                    className="w-[50%] lg:block hidden object-cover"
+                    className="md:w-[50%] w-[90%] object-cover"
                     src={image}
                     height={800}
                     width={800}
