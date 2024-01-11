@@ -225,8 +225,8 @@ export default async function Home() {
                 <HowStep
                     step="4"
                     title="Monitor"
-                    description="Teachers can view all conversations students have with tutors and are also alerted when any unusual activity such as self harm talk or cheating concerns comes up."
-                    image="/how_evaluate.png"
+                    description="Teachers can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up. They can also upload additional content for the tutor to be trained on whenever."
+                    image="/landing/how_4.png"
                 />
                 <HowStep
                     step="5"
