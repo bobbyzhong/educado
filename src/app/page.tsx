@@ -39,7 +39,7 @@ export default async function Home() {
                     {/* <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
                         Supercharging student support and learning with AI
                     </h1> */}
-                    <h1 className="md:text-[2.8rem] leading-[43px] md:leading-[53px] tracking-[0.02rem] text-3xl font-semibold w-11/12 md:w-8/12 lg:w-6/12 ">
+                    <h1 className=" text-3xl font-semibold w-11/12 md:w-8/12 lg:w-6/12 ">
                         Personalize student support and learning at scale with
                         Educado
                     </h1>
