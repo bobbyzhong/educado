@@ -53,7 +53,7 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                 <SignInButtonStudent text={"Sign In"} tutorId={tutor.id} />
             </div>
         );
-    } else if (tutor.tutorType === "General") {
+    } else if (tutor.tutorType === "General" || tutor.tutorType === "Figure") {
         return (
             <ChatSection
                 tutorName={tutor.tutorName}

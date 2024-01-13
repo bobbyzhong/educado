@@ -44,19 +44,28 @@ export async function POST(req: Request) {
         environment: process.env.PINECONE_ENVIRONMENT || "",
     });
 
-    const latestQuestion = messages[messages.length - 1].content;
+    let latestQuestion = messages[messages.length - 1].content;
+    let context = "";
 
-    const context = await getContext(
-        client,
-        indexName,
-        latestQuestion,
-        body.tutorName,
-        conversationString
-    );
-    // console.log("CONTEXT: ", context);
-    if (context === null) {
-        return new Response("No relevant matches found.", { status: 200 });
+    if (body.tutorType != null && body.tutorType === "Figure") {
+        const figLatestQuestion = body.tutorDisplayName + " " + latestQuestion;
+        context = await getContext(
+            client,
+            indexName,
+            figLatestQuestion,
+            body.tutorName,
+            conversationString
+        );
+    } else {
+        context = await getContext(
+            client,
+            indexName,
+            latestQuestion,
+            body.tutorName,
+            conversationString
+        );
     }
+
     const prompt = createPrompt(latestQuestion, context, body.defaultPrompt);
 
     messages[messages.length - 1].content = prompt;

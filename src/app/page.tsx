@@ -124,15 +124,18 @@ export default async function Home() {
 
             {/* WHY EDUCADO */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
-                    WHY EDUCADO
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
+                    OUR FEATURES
+                </h1>
+                <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[5rem] text-zinc-600">
+                    All our tutors are trained on the content and standards that
+                    you upload to ensure your students get reliable help
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
                     <WhyUsCard
                         icon="📚"
-                        title="Reliable Help"
-                        description="We let you create your own tutors, trained on the information you want whether it's a teacher's lecture slides or an online article. No need 
-                        to worry about unreliable sources."
+                        title="General Support Tutor"
+                        description="Provides realtime support to students and "
                     />
                     <WhyUsCard
                         icon="🤖"
@@ -148,16 +151,6 @@ export default async function Home() {
                         icon="📈"
                         title="️Data-Driven Insights"
                         description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
-                    />
-                    <WhyUsCard
-                        icon="🧑‍🏫"
-                        title="️Make Learning Fun"
-                        description="The possibilities with our tutors are limitless! Some of our early teachers have created historical figures like Benjamin Franklin that their students can interview "
-                    />
-                    <WhyUsCard
-                        icon="✅"
-                        title="Easy Set Up"
-                        description={`It takes less than 5 minutes to create a tutor. All tutors also come trained on the standards or curriculum that your district follows!`}
                     />
                 </div>
             </div>
@@ -234,6 +227,45 @@ export default async function Home() {
                     description="Our team will provide you with all the support you need to make sure you and your teachers make the most out of Educado. We’ll also be there to help you with any issues that come up!"
                     image="/landing/how_5.png"
                 />
+            </div>
+
+            <div className="flex justify-center text-center items-center mt-[7%] flex-col">
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
+                    WHY EDUCADO
+                </h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
+                    <WhyUsCard
+                        icon="📚"
+                        title="Reliable Help"
+                        description="We let you create your own tutors, trained on the information you want whether it's a teacher's lecture slides or an online article. No need 
+                        to worry about unreliable sources."
+                    />
+                    <WhyUsCard
+                        icon="🤖"
+                        title="Monitored AI"
+                        description="Integrate AI into learning in a safe and monitored way with Educado. All the conversations your students have with the tutor can be viewed by the teacher and any unusual activity is flagged."
+                    />
+                    <WhyUsCard
+                        icon="⚡️"
+                        title="Realtime Support"
+                        description={`Students can chat with their tutors anytime, anywhere through our Chrome Extension or website. (Our Chrome Extension's super cool!)`}
+                    />
+                    <WhyUsCard
+                        icon="📈"
+                        title="️Data-Driven Insights"
+                        description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
+                    />
+                    <WhyUsCard
+                        icon="🧑‍🏫"
+                        title="️Make Learning Fun"
+                        description="The possibilities with our tutors are limitless! Some of our early teachers have created historical figures like Benjamin Franklin that their students can interview "
+                    />
+                    <WhyUsCard
+                        icon="✅"
+                        title="Easy Set Up"
+                        description={`It takes less than 5 minutes to create a tutor. All tutors also come trained on the standards or curriculum that your district follows!`}
+                    />
+                </div>
             </div>
 
             {/* FOOTER */}
