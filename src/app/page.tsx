@@ -123,7 +123,7 @@ export default async function Home() {
             </div>
 
             {/* WHY EDUCADO */}
-            <div className="flex justify-center text-center items-center mt-[7%] flex-col">
+            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
                     OUR FEATURES
                 </h1>
@@ -135,7 +135,7 @@ export default async function Home() {
                     <WhyUsCard
                         icon="📚"
                         title="General Support Tutor"
-                        description="Provides realtime support to students and "
+                        description="Provides realtime support to students and"
                     />
                     <WhyUsCard
                         icon="🤖"
@@ -153,7 +153,7 @@ export default async function Home() {
                         description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
                     />
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
