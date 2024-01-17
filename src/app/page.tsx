@@ -11,6 +11,7 @@ import { prisma } from "@/lib/db";
 import HomePageJoinCode from "@/components/HomePageJoinCode";
 import { ExternalLink } from "lucide-react";
 import HowStep from "@/components/landing/HowStep";
+import FeatureCard from "@/components/landing/FeatureCard";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -122,38 +123,47 @@ export default async function Home() {
                 />
             </div>
 
-            {/* WHY EDUCADO */}
-            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
+            {/* FEATURES */}
+            <div className="flex justify-center text-center items-center mt-[5%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
-                    OUR FEATURES
+                    FEATURES
                 </h1>
                 <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[5rem] text-zinc-600">
-                    All our tutors are trained on the content and standards that
-                    you upload to ensure your students get reliable help
+                    Here are some of the features we have!
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
-                    <WhyUsCard
+                <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] justify-center gap-5">
+                    <FeatureCard
                         icon="📚"
                         title="General Support Tutor"
-                        description="Provides realtime support to students and"
+                        description="Train a tutor based on any and as much content you want that can help your students anytime, anywhere!"
                     />
-                    <WhyUsCard
+                    <FeatureCard
                         icon="🤖"
-                        title="Monitored AI"
-                        description="Integrate AI into learning in a safe and monitored way with Educado. All the conversations your students have with the tutor can be viewed by the teacher and any unusual activity is flagged."
+                        title="Famous Figure"
+                        description="Create historical figures your students can talk to and learn from. Who better to teach the Bill of Rights than James Madison?"
                     />
-                    <WhyUsCard
+                    <FeatureCard
+                        icon="📝"
+                        title="Writing Tutor"
+                        description={`Upload a rubric for a writing assignment and have your students get instant feedback and help on their essays!`}
+                    />
+                    <FeatureCard
                         icon="⚡️"
-                        title="Realtime Support"
-                        description={`Students can chat with their tutors anytime, anywhere through our Chrome Extension or website. (Our Chrome Extension's super cool!)`}
+                        title="Chrome Extension"
+                        description="With our Chrome Extension, students can get help from their tutors in just one click. We'll be there for those late night study sessions!"
                     />
-                    <WhyUsCard
-                        icon="📈"
-                        title="️Data-Driven Insights"
-                        description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
+                    <FeatureCard
+                        icon="📊"
+                        title="Data-Driven Insights"
+                        description="Teachers can view the past conversations students have with tutors and get insights on what students are struggle with."
+                    />
+                    <FeatureCard
+                        icon="🧑‍🏫"
+                        title="Monitored Conversations"
+                        description="All conversations are monitored and teachers are notified in cases of unusual activity such as mental health or cheating concerns."
                     />
                 </div>
-            </div> */}
+            </div>
 
             {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
@@ -235,35 +245,24 @@ export default async function Home() {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
                     <WhyUsCard
-                        icon="📚"
-                        title="Reliable Help"
-                        description="We let you create your own tutors, trained on the information you want whether it's a teacher's lecture slides or an online article. No need 
-                        to worry about unreliable sources."
+                        icon="✅"
+                        title="Easy Set Up"
+                        description={`It takes less than 5 minutes to create a tutor. We make the set up process for districts and teachers as easy as possible so you can start using Educado right away!`}
                     />
                     <WhyUsCard
                         icon="🤖"
-                        title="Monitored AI"
-                        description="Integrate AI into learning in a safe and monitored way with Educado. All the conversations your students have with the tutor can be viewed by the teacher and any unusual activity is flagged."
+                        title="AI in Education"
+                        description="We help you integrate AI into learning in a safe and monitored way. We know AI can be scary but it doesn't have to be! We'll be there to help you every step of the way."
                     />
                     <WhyUsCard
-                        icon="⚡️"
-                        title="Realtime Support"
-                        description={`Students can chat with their tutors anytime, anywhere through our Chrome Extension or website. (Our Chrome Extension's super cool!)`}
+                        icon="⭐️"
+                        title="100/10 Support"
+                        description={`Our main goal is to provide a 100/10 experience for you. We're more than happy to help you or your teachers. Give us an email or phone call and we'll be there! `}
                     />
                     <WhyUsCard
-                        icon="📈"
-                        title="️Data-Driven Insights"
-                        description="We help you identify which topics your students are struggling on. Get real time insights on how your students are doing and make adjustments to your teaching accordingly."
-                    />
-                    <WhyUsCard
-                        icon="🧑‍🏫"
-                        title="️Make Learning Fun"
-                        description="The possibilities with our tutors are limitless! Some of our early teachers have created historical figures like Benjamin Franklin that their students can interview "
-                    />
-                    <WhyUsCard
-                        icon="✅"
-                        title="Easy Set Up"
-                        description={`It takes less than 5 minutes to create a tutor. All tutors also come trained on the standards or curriculum that your district follows!`}
+                        icon="🐣"
+                        title="Early Stages"
+                        description="We're still in our early stages so you can bet that we'll be improving every day. This means that the teachers and districts we work with will have a huge impact on how we grow!"
                     />
                 </div>
             </div>
