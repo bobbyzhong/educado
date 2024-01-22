@@ -190,7 +190,7 @@ export const CreateTutorModal = ({
                                         onClick={() => {
                                             setTutorType("general");
                                         }}
-                                        className="flex flex-row justify-between items-center hover:border-green
+                                        className="flex flex-row justify-between cursor-pointer items-center hover:border-green
              border-[1.5px] px-4 py-3 rounded-[4.55px] border-gray2"
                                     >
                                         <div className="flex flex-row items-center">
@@ -214,7 +214,7 @@ export const CreateTutorModal = ({
                                         onClick={() => {
                                             setTutorType("writing");
                                         }}
-                                        className="flex flex-row justify-between items-center hover:border-green
+                                        className="flex flex-row justify-between cursor-pointer items-center hover:border-green
              border-[1.5px] px-4 py-3 rounded-[4.55px] border-gray2"
                                     >
                                         <div className="flex flex-row items-center">
@@ -235,7 +235,7 @@ export const CreateTutorModal = ({
                                         </div>
                                         <ChevronRight size={20} />
                                     </div>
-                                    <div
+                                    {/* <div
                                         onClick={() => {
                                             setTutorType("figure");
                                         }}
@@ -259,7 +259,7 @@ export const CreateTutorModal = ({
                                             </div>
                                         </div>
                                         <ChevronRight size={20} />
-                                    </div>
+                                    </div> */}
                                 </div>
                             </CardContent>
                         </Card>

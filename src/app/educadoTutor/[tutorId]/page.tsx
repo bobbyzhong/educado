@@ -24,7 +24,6 @@ const educadoTutor = async ({ params: { tutorId } }: Props) => {
     }
 
     const link = `${process.env.API_URL}tutor/${tutorId}`;
-    console.log(link);
 
     return (
         <>

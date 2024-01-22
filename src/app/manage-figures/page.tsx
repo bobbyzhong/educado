@@ -1,8 +1,14 @@
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
+
 import { prisma } from "@/lib/db";
+
 import { TutorCard } from "@/components/tutor/TutorCard";
 import CreateTutorCard from "@/components/tutor/CreateTutorCard";
+import CreateFigureCard from "@/components/tutor/CreateFigureCard";
+import { Button } from "@/components/ui/button";
+import { Library } from "lucide-react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -28,9 +34,7 @@ const ManageTutor = async (props: Props) => {
     const tutors = await prisma.tutor.findMany({
         where: {
             userId: session.user.id,
-            NOT: {
-                tutorType: "Figure",
-            },
+            tutorType: "Figure",
         },
         orderBy: {
             dateCreated: "desc",
@@ -41,14 +45,22 @@ const ManageTutor = async (props: Props) => {
         <main className="p-8  md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
                 <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
-                    Your Tutors
+                    Famous Figures
                 </h2>
                 <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Below are the tutors you've made or have access to. Click on
-                    one to manage or share that specific tutor!
+                    Below are the AI historical figures you've created or have
+                    access to. Click on one to update or share it!
                 </h1>
-                <div className="mb-5">
-                    <CreateTutorCard userId={session.user.id} />
+                <div className="mb-5 flex flex-row gap-3">
+                    <CreateFigureCard userId={session.user.id} />
+                    <Link href={"/library"}>
+                        <Button
+                            className="hover:cursor-pointer flex flex-row text-sm items-center gap-1"
+                            variant={"greenOutline"}
+                        >
+                            <Library size={20} /> Explore Library
+                        </Button>
+                    </Link>
                 </div>
                 <div className="">
                     {tutors.length > 0 ? (
@@ -72,8 +84,8 @@ const ManageTutor = async (props: Props) => {
                     ) : (
                         <div className="w-full mt-6">
                             <h1 className="text-zinc-500 text-[15px] text-center dark:text-zinc-300 mb-2 ">
-                                No tutors here yet. Create one or explore our
-                                library to get your first one!
+                                No historical figures here yet. Create one or
+                                explore our library to get your first one!
                             </h1>
                         </div>
                     )}

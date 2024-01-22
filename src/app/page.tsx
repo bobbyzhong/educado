@@ -84,7 +84,7 @@ export default async function Home() {
             </div>
             <div className="flex flex-col md:flex-rowjustify-center items-center ">
                 <StudentEnterCode
-                    title="EDUCADO TUTOR"
+                    title="Join Session"
                     description="Ask for help"
                     link="tutor"
                     bgRed={false}
@@ -133,14 +133,19 @@ export default async function Home() {
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] justify-center gap-5">
                     <FeatureCard
-                        icon="📚"
-                        title="General Support Tutor"
-                        description="Train a tutor based on any and as much content you want that can help your students anytime, anywhere!"
-                    />
-                    <FeatureCard
                         icon="🤖"
                         title="Famous Figure"
                         description="Create historical figures your students can talk to and learn from. Who better to teach the Bill of Rights than James Madison?"
+                    />
+                    <FeatureCard
+                        icon="🏫"
+                        title="Educado Collection"
+                        description="We have a library of pre-built historical figures and tutors that you can use and modify so you can get started right away!"
+                    />
+                    <FeatureCard
+                        icon="📚"
+                        title="General Support Tutor"
+                        description="Train a tutor based on any and as much content you want that can help your students anytime, anywhere!"
                     />
                     <FeatureCard
                         icon="📝"
@@ -152,11 +157,7 @@ export default async function Home() {
                         title="Chrome Extension"
                         description="With our Chrome Extension, students can get help from their tutors in just one click. We'll be there for those late night study sessions!"
                     />
-                    <FeatureCard
-                        icon="📊"
-                        title="Data-Driven Insights"
-                        description="Teachers can view the past conversations students have with tutors and get insights on what students are struggle with."
-                    />
+
                     <FeatureCard
                         icon="🧑‍🏫"
                         title="Monitored Conversations"
@@ -222,13 +223,13 @@ export default async function Home() {
                 <HowStep
                     step="3"
                     title="Create"
-                    description="Teachers can easily create different types of tutors such as our “Famous Figure Tutor” tutor or “Writing Tutor”. The content that tutors are trained on can also be updated whenever!"
+                    description="Create historical figures and tutors that fit your need. Upload your own content and standards so your students can get help from a tutor that knows exactly what you want them to know!"
                     image="/landing/how_3.png"
                 />
                 <HowStep
                     step="4"
                     title="Monitor"
-                    description="Teachers can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up. They can also upload additional content for the tutor to be trained on whenever."
+                    description="Teachers can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up."
                     image="/landing/how_4.png"
                 />
                 <HowStep

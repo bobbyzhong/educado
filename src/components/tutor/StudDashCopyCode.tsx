@@ -53,9 +53,9 @@ const StudDashCopy = async ({ tutorId }: Props) => {
     return (
         <Card className="w-[300px] shrink-0">
             <CardHeader className="py-4">
-                <CardTitle className="text-[18px] font-bold tracking-tight text-green">
+                <CardTitle className="text-[17px] font-bold tracking-tight text-green">
                     <span className="text-sm text-zinc-400 font-semibold tracking-tight mr-[2px]">
-                        Tutor Name:{" "}
+                        Name:{" "}
                     </span>
                     {tutor?.tutorDisplayName}
                 </CardTitle>
@@ -88,7 +88,7 @@ const StudDashCopy = async ({ tutorId }: Props) => {
                     target="_blank"
                 >
                     <Button variant={"green"} className="w-full">
-                        Chat with {tutor?.tutorDisplayName}
+                        Join Chat
                     </Button>
                 </Link>
             </CardFooter>

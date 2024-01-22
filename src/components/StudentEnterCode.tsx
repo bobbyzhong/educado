@@ -84,8 +84,8 @@ const StudentEnterCode = ({
         <div
             className={
                 bgRed
-                    ? "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#e14e4e]"
-                    : "px-8 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#86ae46]"
+                    ? "px-5 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#e14e4e]"
+                    : "px-5 py-5 flex items-center justify-center mt-7 rounded-3xl shadow-xl bg-[#86ae46]"
             }
         >
             <div className="flex flex-col gap-3 items-center justify-center">
@@ -93,9 +93,9 @@ const StudentEnterCode = ({
                     <h1 className="text-[23px] text-white font-[900] ">
                         {title}
                     </h1>
-                    <h1 className="text-[19px] text-white font-[300] ">
+                    {/* <h1 className="text-[19px] text-white font-[300] ">
                         {description}
-                    </h1>
+                    </h1> */}
                 </div>
                 <form
                     className="flex flex-row items-center justify-center gap-1"

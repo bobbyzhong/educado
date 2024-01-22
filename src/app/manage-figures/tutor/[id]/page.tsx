@@ -4,7 +4,6 @@ import { getAuthSession } from "@/lib/nextauth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
-
 import CopyCard from "@/components/share/CopyCard";
 import QrCodeCard from "@/components/share/QrCodeCard";
 import CodeDisplay from "@/components/CodeDisplay";
