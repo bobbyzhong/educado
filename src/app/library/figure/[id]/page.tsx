@@ -1,16 +1,13 @@
 import { prisma } from "@/lib/db";
-import { Info } from "lucide-react";
+import { Copy, HeartHandshake, Info, UploadCloud } from "lucide-react";
 import { getAuthSession } from "@/lib/nextauth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
-
 import CopyCard from "@/components/share/CopyCard";
 import QrCodeCard from "@/components/share/QrCodeCard";
-import CodeDisplay from "@/components/CodeDisplay";
-
-import TutorContentCard from "@/components/tutor/TutorContentCard";
-import RecentQuestions from "@/components/tutor/RecentQuestions";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import CopyFigure from "@/components/library/CopyFigure";
 
 type Props = {
     params: {
@@ -34,7 +31,6 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
             id: session.user.id,
         },
     });
-
     if (!user?.isTeacher) {
         redirect("/dashboard-student");
     }
@@ -54,15 +50,11 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                     <div className="flex w-full justify-center mt-3 text-center">
                         <div className="flex flex-row items-center justify-center gap-3">
                             <h1 className=" text-[#C5C5C5] font-extrabold tracking-tight text-lg">
-                                TUTOR NAME{" "}
+                                FIGURE NAME{" "}
                                 <div className="text-3xl font-[600] tracking-tight text-green">
                                     {tutor?.tutorDisplayName}
                                 </div>
                             </h1>
-                            <div className="text-5xl text-[#C5C5C5] font-extralight">
-                                |
-                            </div>
-                            <CodeDisplay code={tutor?.joinCode!} />
                         </div>
                     </div>
                     <div className="w-full flex justify-center text-center">
@@ -74,24 +66,34 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                             </span>
                         </h1>
                     </div>
-                    <div className="grid gap-4 mt-5 md:grid-cols-3">
-                        <TutorContentCard
-                            teacherName={tutor!.ownerName!}
-                            tutorName={tutor!.tutorName}
-                        />
-                        <CopyCard link={link} />
-                        <QrCodeCard link={link} />
+                    <div className="w-full flex items-center justify-center">
+                        <div className="grid gap-4 mt-5 md:grid-cols-1 w-4/12">
+                            <CopyFigure
+                                tutor={tutor}
+                                userId={user.id}
+                                userName={session.user.name}
+                            />
+
+                            {/* <Card className="hover:cursor-pointer hover:-translate-y-[2px] transition-all hover:opacity-75 flex rounded-md shadow-sm p-3 ">
+                                <CardHeader className="flex flex-row items-center justify-between w-full space-y-0 mb-0">
+                                    <CardTitle className="text-[19px] font-bold tracking-tight">
+                                        Thank Creator (Coming Soon)
+                                    </CardTitle>
+                                    <HeartHandshake size={26} />
+                                </CardHeader>
+                            </Card> */}
+                        </div>
                     </div>
                     <div className="flex items-center justify-center text-center mb-5 mt-10">
                         <div className=" flex flex-col gap-1 w-full items-center ">
                             <h2 className="mr-2 text-[23px] font-bold tracking-tight ">
-                                Uploaded Content
+                                Content Trained On
                             </h2>
 
                             <h1 className="text-zinc-500 text-[15px] w-10/12 md:w-8/12 dark:text-zinc-300 mb-5 ">
-                                This is the content that your tutor is trained
-                                on. Your tutor will respond to your students'
-                                questions based on this content.
+                                This is the content that this figure is trained
+                                on. When you add this figure to your collection
+                                you can upload additional content
                             </h1>
 
                             {contentList.length > 0 ? (
@@ -116,7 +118,7 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center mb-5  pl-2">
+                {/* <div className="flex items-center mb-5  pl-2">
                     <div className=" flex flex-col items-center w-full gap-1">
                         <h2 className="mr-2 text-[23px] font-bold tracking-tight text-center ">
                             Student Data
@@ -136,7 +138,7 @@ const ViewEditTutor = async ({ params: { id } }: Props) => {
                             <RecentQuestions limit={10} tutorId={tutor!.id} />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

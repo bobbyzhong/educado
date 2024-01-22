@@ -17,7 +17,7 @@ type Props = {
     name: string;
     description: string;
     joinCode: string;
-    type: string;
+    owner: string;
     id: string;
 };
 
@@ -35,28 +35,25 @@ function truncateAfterTenWords(inputString: string) {
     }
 }
 
-export function TutorCard({ name, description, joinCode, id, type }: Props) {
+export function LibraryCard({ name, description, joinCode, id, owner }: Props) {
     const notifications = [
         {
             title: "Description",
             description: truncateAfterTenWords(description),
         },
+
         {
-            title: "Join Code",
-            description: joinCode ? joinCode : "Coming Soon!",
-        },
-        {
-            title: "Type",
-            description: type,
+            title: "Owner Name",
+            description: owner,
         },
     ];
     return (
-        <Card className="w-[300px] h-[20rem] shrink-0 flex justify-between flex-col">
+        <Card className="w-[300px] h-[18rem] shrink-0 flex justify-between flex-col">
             <div>
                 <CardHeader className="py-4">
                     <CardTitle className="text-[17px] font-bold tracking-tight text-green">
                         <span className="text-[14px] text-zinc-400 font-semibold tracking-tight mr-[2px]">
-                            Tutor Name:{" "}
+                            Name:{" "}
                         </span>
                         {name}
                     </CardTitle>
@@ -84,21 +81,17 @@ export function TutorCard({ name, description, joinCode, id, type }: Props) {
                 </CardContent>
             </div>
             <CardFooter className="pt-3 pb-5  ">
-                {description != "Coming Soon!" ? (
-                    <Link
-                        className="w-full"
-                        href={`/manage-tutors/tutor/${id}`}
-                        target="_blank"
-                    >
-                        <Button variant={"green"} className="w-full">
-                            {"View Details"}
-                        </Button>
-                    </Link>
-                ) : (
+                <Link
+                    className="w-full"
+                    href={`/library/figure/${id}`}
+                    target="_blank"
+                >
                     <Button variant={"green"} className="w-full">
-                        {"Under Construction"}
+                        {description != "Coming Soon!"
+                            ? `View Details`
+                            : "Under Construction"}
                     </Button>
-                )}
+                </Link>
             </CardFooter>
         </Card>
     );

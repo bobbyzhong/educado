@@ -19,14 +19,27 @@ export default async function Resources() {
                         Welcome to the resources page!
                     </h1>
                     <p className="md:text-[21px] text-[18px] leading-snug md:my-6 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        Here you'll find some resources that might help you with
-                        using Educado. We'll be updating this page regularly so
-                        come here when you need help!
+                        Our resources page is under construction. Feel free to
+                        reach out to us for help anything you need. We're more
+                        than happy to help and have a chat!
                     </p>
                 </div>
             </div>
 
-            <div className="w-full flex items-center justify-center ">
+            <div className="w-full  flex flex-row gap-3 mb-5  justify-center ">
+                <Link href={"/contact"}>
+                    <Button variant={"green"} className="" size={"xl"}>
+                        Contact Us
+                    </Button>
+                </Link>
+                <Link href={"/demo"}>
+                    <Button className="" size={"xl"} variant={"greenOutline"}>
+                        Book Demo
+                    </Button>
+                </Link>
+            </div>
+
+            {/* <div className="w-full flex items-center justify-center ">
                 <div className="w-11/12 md:w-8/12">
                     <Table className="mt-4 text-lg">
                         <TableCaption>End of list.</TableCaption>
@@ -58,34 +71,17 @@ export default async function Resources() {
                         </TableBody>
                     </Table>
                 </div>
-            </div>
+            </div> */}
 
             {/* FOOTER */}
-            <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
+            {/* <div className="flex flex-col justify-center items-center mt-[7%] gap-10">
                 <div className="w-[100%] justify-center items-center flex bg-[#8bb83f]/[0.2] py-[2%] rounded-b-[20%] ">
-                    <h1 className=" text-center text-3xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-7/12  mb-5">
+                    <h1 className=" text-center text-3xl md:text-5xl font-[600] md:font-[650] w-10/12 md:w-7/12   mb-5">
                         Couldn't find what you're looking for? Contact us for
                         help!
                     </h1>
                 </div>
-
-                <div className="flex flex-row gap-3 mb-5 lg:justify-start justify-center ">
-                    <Link href={"/getAccess"}>
-                        <Button variant={"green"} className="" size={"xl"}>
-                            Get Started
-                        </Button>
-                    </Link>
-                    <Link href={"/demo"}>
-                        <Button
-                            className=""
-                            size={"xl"}
-                            variant={"greenOutline"}
-                        >
-                            Book Demo
-                        </Button>
-                    </Link>
-                </div>
-            </div>
+            </div> */}
 
             {/* <div className="w-full flex-col flex items-center justify-center mt-20 mb-10">
                 <h1 className="text-4xl font-semibold mb-5">

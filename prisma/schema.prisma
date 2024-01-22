@@ -162,7 +162,7 @@ model Result {
 
 model Tutor {
   id    String   @id @default(cuid())
-  joinCode String @unique
+  joinCode String? @unique
   userId String
   tutorDisplayName String
   tutorName String 
@@ -170,10 +170,13 @@ model Tutor {
   tutorType String?
   placeholderQs String? @db.Text
   basePrompt String? @db.Text
+  dateCreated BigInt? 
+  visibility String?
   uploadedContent String?
   ownerName String?
   essayPrompt String?
   assistantId String?
+  
   questions  TutorQuestions[]
 
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)

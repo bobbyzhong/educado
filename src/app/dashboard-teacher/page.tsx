@@ -1,9 +1,7 @@
-import HistoryCard from "@/components/dashboard/HistoryCard";
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 import CheckInCard from "@/components/dashboard/CheckInCard";
 import ContactCard from "@/components/dashboard/ContactCard";
-import ContentRequestCard from "@/components/dashboard/ContentRequestCard";
 import EducadoTutorCard from "@/components/dashboard/EducadoTutorCard";
 import { prisma } from "@/lib/db";
 import HistoryTable from "@/components/HistoryTable";
@@ -12,6 +10,7 @@ import ChatHistoryTable from "@/components/ChatHistoryTable";
 import { TutorCard } from "@/components/tutor/TutorCard";
 import ResourcesCard from "@/components/dashboard/ResourcesCard";
 import NotifCard from "@/components/dashboard/NotifCard";
+import DashboardCard from "@/components/dashboard/DashboardCard";
 
 type Props = {};
 
@@ -55,25 +54,40 @@ const DashboardTeacher = async (props: Props) => {
                         Your Dashboard
                     </h2>
                     <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-                        Below you’ll be able to create a check-in as well as
-                        view past check-ins
+                        Below you’ll be able to create, explore, and manage your
+                        historical figures and tutors
                     </h1>
                 </div>
             </div>
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
-                <EducadoTutorCard />
-
-                {/* <CheckInCard
-                    clear={clear}
-                    // subscribed={user?.subscribed!}
-                    userId={session.user.id}
-                /> */}
-                {/* <HistoryCard /> */}
+                <DashboardCard
+                    icon={"figure"}
+                    title="Famous Figure"
+                    description="Create and manage historical figures for your students. Have students engage in free flowing or directed conversations with historical figures."
+                    pageLink="/manage-figures"
+                />
+                <DashboardCard
+                    icon={"library"}
+                    title="Explore Library"
+                    description="Explore our library of pre-made historical figures and use or modify them for your needs! Great for getting started instantly or inspiration!"
+                    pageLink="/library"
+                />
+                <DashboardCard
+                    icon={"contact"}
+                    title="Contact Us"
+                    description="Feel free to reach out to us at Educado for any questions, concerns, or feedback. We're here to help anytime you need!"
+                    pageLink="/contact"
+                />
+                <DashboardCard
+                    icon={"tutor"}
+                    title="Educado Tutor"
+                    description="Create and manage tutors for your students. See what
+                            questions they've been asking and add content for
+                            your tutor to use."
+                    pageLink="/manage-tutors"
+                />
                 <ResourcesCard />
-                <ContactCard />
-
-                {/* <ContentRequestCard /> */}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-5 max-h-[30rem] ">
@@ -83,15 +97,8 @@ const DashboardTeacher = async (props: Props) => {
                             <h2 className="mt-10 text-[28px] font-bold tracking-tight">
                                 Notifications
                             </h2>
-                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 w-10/12">
-                                Below you’ll see some of the tutors you've made
-                                or have access to. Make one by going{" "}
-                                <Link
-                                    className="text-green underline "
-                                    href={"/manage-tutors"}
-                                >
-                                    here
-                                </Link>
+                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
+                                Any notifications or updates will appear here
                             </h1>
                         </div>
                     </div>
@@ -103,15 +110,9 @@ const DashboardTeacher = async (props: Props) => {
                             <h2 className="mt-10 text-[28px] font-bold tracking-tight">
                                 Your Tutors
                             </h2>
-                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 w-10/12">
+                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
                                 Below you’ll see some of the tutors you've made
-                                or have access to. Make one by going{" "}
-                                <Link
-                                    className="text-green underline "
-                                    href={"/manage-tutors"}
-                                >
-                                    here
-                                </Link>
+                                or have access to
                             </h1>
                         </div>
                     </div>

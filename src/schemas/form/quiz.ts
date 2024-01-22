@@ -80,9 +80,7 @@ export const tutorContentRequestSchema = z.object({
 });
 
 export const createTutorRequestSchema = z.object({
-    teacherName: z
-        .string()
-        .min(1, { message: "Teacher name must be at least 1 character1 long" }),
+    teacherName: z.string(),
     chosenName: z
         .string()
         .min(1, { message: "Tutor name must be at least 1 characters long" }),
@@ -95,12 +93,11 @@ export const createTutorRequestSchema = z.object({
     files: z.any(),
     presetRubric: z.string().optional(),
     prompt: z.string().optional(),
+    visibility: z.boolean().optional(),
 });
 
 export const createTutorAPISchema = z.object({
-    teacherName: z
-        .string()
-        .min(1, { message: "Teacher name must be at least 1 character1 long" }),
+    teacherName: z.string(),
     chosenName: z
         .string()
         .min(1, { message: "Tutor name must be at least 1 characters long" }),
@@ -113,6 +110,7 @@ export const createTutorAPISchema = z.object({
     tutorType: z.string(),
     files: z.any(),
     prompt: z.string().optional(),
+    visibility: z.boolean().optional(),
 });
 
 export const contentRequestSchemaAPI = z.object({

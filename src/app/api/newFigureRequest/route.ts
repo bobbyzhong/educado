@@ -39,6 +39,7 @@ export async function POST(req: Request, res: Response) {
             presetRubric,
             tutorType,
             prompt,
+            visibility,
         } = createTutorAPISchema.parse(body);
 
         try {
@@ -46,11 +47,12 @@ export async function POST(req: Request, res: Response) {
                 data: {
                     tutorDisplayName: chosenName,
                     userId: userId,
-                    tutorName: "Coming Soon!",
+                    tutorName: "none",
                     tutorDescription: "Coming Soon!",
-                    tutorType: "General",
+                    tutorType: "Figure",
                     dateCreated: new Date().getTime(),
-                    visibility: "private",
+                    visibility: visibility ? "public" : "private",
+                    ownerName: session.user.name,
                 },
             });
         } catch (error) {
@@ -60,8 +62,8 @@ export async function POST(req: Request, res: Response) {
         try {
             await transporter.sendMail({
                 ...mailOptions,
-                subject: "Create Tutor Request",
-                text: `${session.user.name} requested a tutor named ${chosenName}. This is the description or main role: [${description}].
+                subject: "Create Historical Figure",
+                text: `${session.user.name} requested a figure named ${chosenName}. This is the description or main role: [${description}].
                 This is the userId: [${userId}].
                 This is the desired content: [${desiredContent}]`,
                 html: `<p>${teacherName} requested a ${tutorType} tutor named ${chosenName}.  <br>This is the description: [${description}] <br>
