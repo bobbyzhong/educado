@@ -1,6 +1,4 @@
 import React from "react";
-import { ClipboardCopy } from "lucide-react";
-
 import {
     Card,
     CardContent,
