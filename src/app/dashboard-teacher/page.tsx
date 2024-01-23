@@ -1,8 +1,5 @@
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
-import CheckInCard from "@/components/dashboard/CheckInCard";
-import ContactCard from "@/components/dashboard/ContactCard";
-import EducadoTutorCard from "@/components/dashboard/EducadoTutorCard";
 import { prisma } from "@/lib/db";
 import HistoryTable from "@/components/HistoryTable";
 import Link from "next/link";
