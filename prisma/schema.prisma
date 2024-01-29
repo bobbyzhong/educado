@@ -167,6 +167,9 @@ model Tutor {
   tutorDisplayName String
   tutorName String 
   tutorDescription String? 
+  district String?
+  grade String?
+  subject String?
   tutorType String?
   placeholderQs String? @db.Text
   basePrompt String? @db.Text

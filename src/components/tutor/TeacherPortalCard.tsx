@@ -98,6 +98,23 @@ const TeacherPortalCard = ({ userId }: Props) => {
             if (data.message === "updated") {
                 router.push("/dashboard-teacher");
             }
+        } else if (code === "RV921") {
+            const res = await fetch("/api/updateTeacherStatus", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    school: "Rincon Valley Unified School District",
+                }),
+            });
+            const data = await res.json();
+            console.log(data);
+            setLoading(false);
+            if (data.message === "updated") {
+                router.push("/dashboard-teacher");
+            }
         } else {
             setLoading(false);
             toast({

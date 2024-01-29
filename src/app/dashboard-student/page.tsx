@@ -9,7 +9,7 @@ import StudDashCopy from "@/components/tutor/StudDashCopyCode";
 type Props = {};
 
 export const metadata = {
-    title: "Dashboard | Pear",
+    title: "Dashboard | Educado",
 };
 
 const Dashboard = async (props: Props) => {
