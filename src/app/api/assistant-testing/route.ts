@@ -11,6 +11,7 @@ import {
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
+import { async } from "regenerator-runtime";
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
@@ -57,18 +58,24 @@ export async function POST(req: Request) {
     if (lastMessageForRun) {
         console.log(lastMessageForRun.content[0].text);
         try {
-            console.log("ABT THE CALL");
+            console.log("Attempting to log");
 
-            await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
-                method: "POST",
-                body: JSON.stringify({
-                    question: body.studentQuestion,
-                    studentName: body.studentName,
-                    tutorId: body.tutorId,
-                    userId: body.userId,
-                    answer: lastMessageForRun.content[0].text.value,
-                }),
-            });
+            const logQuestinon = async () => {
+                await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        question: body.studentQuestion,
+                        studentName: body.studentName,
+                        tutorId: body.tutorId,
+                        userId: body.userId,
+                        answer: lastMessageForRun.content[0].text.value,
+                    }),
+                });
+            };
+            logQuestinon();
         } catch (e) {
             console.log("ERROR: ", e);
         }
