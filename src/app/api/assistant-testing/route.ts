@@ -61,9 +61,6 @@ export async function POST(req: Request) {
 
             await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
                 body: JSON.stringify({
                     question: body.studentQuestion,
                     studentName: body.studentName,
