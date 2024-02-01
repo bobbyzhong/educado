@@ -60,22 +60,19 @@ export async function POST(req: Request) {
         try {
             console.log("Attempting to log");
 
-            const logQuestinon = async () => {
-                await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        question: body.studentQuestion,
-                        studentName: body.studentName,
-                        tutorId: body.tutorId,
-                        userId: body.userId,
-                        answer: lastMessageForRun.content[0].text.value,
-                    }),
-                });
-            };
-            logQuestinon();
+            await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: body.studentQuestion,
+                    studentName: body.studentName,
+                    tutorId: body.tutorId,
+                    userId: body.userId,
+                    answer: lastMessageForRun.content[0].text.value,
+                }),
+            });
         } catch (e) {
             console.log("ERROR: ", e);
         }
