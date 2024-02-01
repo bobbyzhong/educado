@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         console.log(lastMessageForRun.content[0].text);
         try {
             console.log("ABT THE CALL");
-            console.log("BODY", body);
+
             await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
                 method: "POST",
                 headers: {
