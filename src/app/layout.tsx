@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: any = {
     title: "Teach with Educado",
-    description: "Making it easy for teachers to check-in with their students",
+    description: "Giving every student realtime, personalized help!",
 };
 
 export default function RootLayout({
