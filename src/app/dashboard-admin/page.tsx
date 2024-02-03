@@ -24,8 +24,10 @@ const DashboardAdmin = async (props: Props) => {
         },
     });
 
-    if (!user?.isTeacher) {
+    if (!user?.isAdmin && !user?.isTeacher) {
         redirect("/dashboard-student");
+    } else if (user?.isTeacher && !user?.isAdmin) {
+        redirect("/dashboard-teacher");
     }
 
     // const checkIns = await prisma.checkIn.findMany({
@@ -33,11 +35,11 @@ const DashboardAdmin = async (props: Props) => {
     //         userId: session.user.id,
     //     },
     // });
-    const tutors = await prisma.tutor.findMany({
-        where: {
-            userId: session.user.id,
-        },
-    });
+    // const tutors = await prisma.tutor.findMany({
+    //     where: {
+    //         userId: session.user.id,
+    //     },
+    // });
 
     // const clear = user?.subscribed || checkIns.length < 10;
 

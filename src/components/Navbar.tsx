@@ -50,7 +50,9 @@ const Navbar = async () => {
                                 <h1 className="text-lg font-semibold ">
                                     {session.user.name}
                                 </h1>
-                                {user?.isTeacher ? (
+                                {user?.isAdmin ? (
+                                    <p className="text-[13px] ">Admin</p>
+                                ) : user?.isTeacher ? (
                                     <p className="text-[13px] ">Teacher</p>
                                 ) : (
                                     <p className="text-[13px] ">Student</p>

@@ -26,6 +26,10 @@ const DashboardTeacher = async (props: Props) => {
         },
     });
 
+    if (user?.isAdmin) {
+        redirect("/dashboard-admin");
+    }
+
     if (!user?.isTeacher) {
         redirect("/dashboard-student");
     }
