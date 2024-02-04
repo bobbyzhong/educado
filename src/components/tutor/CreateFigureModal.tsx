@@ -233,8 +233,9 @@ export const CreateFigureModal = ({
                                                             Allows other
                                                             teachers to create
                                                             copies of this
-                                                            figure to use for
-                                                            their students
+                                                            figure and any
+                                                            student to chat with
+                                                            it
                                                         </FormDescription>
                                                     </div>
                                                     <FormControl>

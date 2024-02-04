@@ -11,6 +11,10 @@ import CodeDisplay from "@/components/CodeDisplay";
 import TutorContentCard from "@/components/tutor/TutorContentCard";
 import RecentQuestions from "@/components/tutor/RecentQuestions";
 
+export const metadata = {
+    title: "Manage Figure | Educado",
+};
+
 type Props = {
     params: {
         id: string;

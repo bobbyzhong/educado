@@ -7,7 +7,7 @@ import CreateTutorCard from "@/components/tutor/CreateTutorCard";
 type Props = {};
 
 export const metadata = {
-    title: "Dashboard | Pear",
+    title: "Manage Tutors | Educado",
 };
 
 const ManageTutor = async (props: Props) => {
@@ -25,17 +25,34 @@ const ManageTutor = async (props: Props) => {
         redirect("/dashboard-student");
     }
 
-    const tutors = await prisma.tutor.findMany({
-        where: {
-            userId: session.user.id,
-            NOT: {
-                tutorType: "Figure",
+    let tutors: any = [];
+
+    if (user?.isAdmin) {
+        tutors = await prisma.tutor.findMany({
+            where: {
+                // userId: session.user.id,
+                district: user?.email?.split("@")[1],
+                NOT: {
+                    tutorType: "Figure",
+                },
             },
-        },
-        orderBy: {
-            dateCreated: "desc",
-        },
-    });
+            orderBy: {
+                dateCreated: "desc",
+            },
+        });
+    } else if (user?.isTeacher) {
+        tutors = await prisma.tutor.findMany({
+            where: {
+                userId: session.user.id,
+                NOT: {
+                    tutorType: "Figure",
+                },
+            },
+            orderBy: {
+                dateCreated: "desc",
+            },
+        });
+    }
 
     return (
         <main className="p-8  md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
@@ -53,7 +70,7 @@ const ManageTutor = async (props: Props) => {
                 <div className="">
                     {tutors.length > 0 ? (
                         <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-                            {tutors.map((tutor, i) => {
+                            {tutors.map((tutor: any, i: any) => {
                                 return (
                                     <div key={i}>
                                         <TutorCard

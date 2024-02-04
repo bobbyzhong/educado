@@ -34,6 +34,6 @@ const Figures = async (props: Props) => {
         },
     });
 
-    return <FigureList tutors={tutors} />;
+    return <FigureList tutors={tutors} district={district!} />;
 };
 export default Figures;

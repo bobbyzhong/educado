@@ -14,8 +14,8 @@ import {
 import { sub } from "date-fns";
 import FigureSearchlist from "./FigureSearchList";
 
-type Props = { tutors: any };
-const FigureList = ({ tutors }: Props) => {
+type Props = { tutors: any; district: string };
+const FigureList = ({ tutors, district }: Props) => {
     const [searchField, setSearchField] = useState("");
     const [gradeFilter, setGradeFilter] = useState("");
     const [subjectFilter, setSubjectFilter] = useState("");
@@ -171,7 +171,7 @@ const FigureList = ({ tutors }: Props) => {
                 </div> */}
 
                 <div className="">
-                    {tutors.length > 0 ? (
+                    {tutors.length > 0 && district !== "gmail.com" ? (
                         <div className=" flex flex-col w-full items-center justify-center gap-1 ">
                             <FigureSearchlist
                                 filterdFigures={filteredFigures}
@@ -180,8 +180,8 @@ const FigureList = ({ tutors }: Props) => {
                     ) : (
                         <div className="w-full mt-6">
                             <h1 className="text-zinc-500 text-[15px] text-center dark:text-zinc-300 mb-2 ">
-                                No historical figures here yet. Create one or
-                                explore our library to get your first one!
+                                You must be signed in with a student email to
+                                see these figures
                             </h1>
                         </div>
                     )}

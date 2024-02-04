@@ -13,7 +13,7 @@ import Link from "next/link";
 type Props = {};
 
 export const metadata = {
-    title: "Dashboard | Pear",
+    title: "Manage Figures | Educado",
 };
 
 const ManageTutor = async (props: Props) => {

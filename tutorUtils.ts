@@ -211,36 +211,36 @@ export async function runFunction(
                 studentName,
                 tutorName
             );
-        case "detectEmotionalIssues":
-            return detectEmotionalIssues(
-                args.complaint,
-                userId,
-                studentName,
-                tutorName
-            );
+        // case "detectEmotionalIssues":
+        //     return detectEmotionalIssues(
+        //         args.complaint,
+        //         userId,
+        //         studentName,
+        //         tutorName
+        //     );
         case "detectProfanity":
             return detectProfanity(userId, studentName, tutorName);
     }
 }
 
 export const functions = [
-    {
-        name: "detectEmotionalIssues",
-        description: `Detects if the student is having emotional issues or
-        complaining about a problem in school and returns a specific response if they are
-         `,
-        parameters: {
-            type: "object",
-            properties: {
-                complaint: {
-                    type: "string",
-                    description:
-                        "The student's complaint or the problem they are having",
-                },
-            },
-            require: [],
-        },
-    },
+    // {
+    //     name: "detectEmotionalIssues",
+    //     description: `Detects if the student is having emotional issues or
+    //     complaining about a problem in school and returns a specific response if they are
+    //      `,
+    //     parameters: {
+    //         type: "object",
+    //         properties: {
+    //             complaint: {
+    //                 type: "string",
+    //                 description:
+    //                     "The student's complaint or the problem they are having",
+    //             },
+    //         },
+    //         require: [],
+    //     },
+    // },
     {
         name: "detectEssayRequest",
         description: `Detects if student is asking tutor to write an essay for them and returns a specific 
@@ -259,7 +259,7 @@ export const functions = [
     },
     {
         name: "detectProfanity",
-        description: `Detects if the student uses profanity or innapropriate language and returns a specific response if they are.`,
+        description: `Detects if the student uses profanity returns a specific response if they are.`,
         parameters: {
             type: "object",
             properties: {},
