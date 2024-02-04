@@ -123,7 +123,7 @@ const Dashboard = async (props: Props) => {
                     icon={"figure"}
                     title="Historical + Famous Figures"
                     description="Explore different historical and famous figures to learn about their lives or just have a conversation with them!"
-                    pageLink="/manage-figures"
+                    pageLink="/figures"
                 />
                 <DashboardCard
                     icon={"contact"}

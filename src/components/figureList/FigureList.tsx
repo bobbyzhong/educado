@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { ChevronDown, Globe, Search } from "lucide-react";
 import { Textarea } from "../ui/textarea";
-import TutorSearchList from "./TutorSearchList";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -13,9 +12,10 @@ import {
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { sub } from "date-fns";
+import FigureSearchlist from "./FigureSearchList";
 
 type Props = { tutors: any };
-const TutorsList = ({ tutors }: Props) => {
+const FigureList = ({ tutors }: Props) => {
     const [searchField, setSearchField] = useState("");
     const [gradeFilter, setGradeFilter] = useState("");
     const [subjectFilter, setSubjectFilter] = useState("");
@@ -172,7 +172,9 @@ const TutorsList = ({ tutors }: Props) => {
                 <div className="">
                     {tutors.length > 0 ? (
                         <div className=" flex flex-col w-full items-center justify-center gap-1 ">
-                            <TutorSearchList filterdFigures={filteredFigures} />
+                            <FigureSearchlist
+                                filterdFigures={filteredFigures}
+                            />
                         </div>
                     ) : (
                         <div className="w-full mt-6">
@@ -187,4 +189,4 @@ const TutorsList = ({ tutors }: Props) => {
         </main>
     );
 };
-export default TutorsList;
+export default FigureList;

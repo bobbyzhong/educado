@@ -17,8 +17,7 @@ type Props = {
     name: string;
     description: string;
     joinCode: string;
-    grade: string;
-    subject: string;
+    owner: string;
     id: string;
 };
 
@@ -36,14 +35,7 @@ function truncateAfterTenWords(inputString: string) {
     }
 }
 
-export function TutorCard({
-    name,
-    description,
-    joinCode,
-    grade,
-    subject,
-    id,
-}: Props) {
+export function FigureCard({ name, description, joinCode, owner, id }: Props) {
     const notifications = [
         {
             title: "Description",
@@ -51,11 +43,11 @@ export function TutorCard({
         },
         {
             title: "Grade Level",
-            description: grade,
+            description: owner,
         },
         {
             title: "Subject",
-            description: subject,
+            description: owner,
         },
     ];
     return (
