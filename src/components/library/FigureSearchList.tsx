@@ -8,7 +8,7 @@ const FigureSearchList = ({ filterdFigures }: { filterdFigures: any }) => {
             {filterdFigures.map((tutor: any, i: any) => {
                 return (
                     <div key={i}>
-                        <FigureCard
+                        <LibraryCard
                             name={tutor.tutorDisplayName}
                             id={tutor.id}
                             description={tutor.tutorDescription!}

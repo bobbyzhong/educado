@@ -94,7 +94,7 @@ export function TutorCard({
                         className="w-full font-bold tracking-normal "
                     >
                         {description != "Coming Soon!"
-                            ? `JOIN CHAT`
+                            ? `Join Chat`
                             : "Under Construction"}
                     </Button>
                 </Link>
