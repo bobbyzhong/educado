@@ -11,6 +11,7 @@ import {
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
+import { async } from "regenerator-runtime";
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
@@ -57,7 +58,8 @@ export async function POST(req: Request) {
     if (lastMessageForRun) {
         console.log(lastMessageForRun.content[0].text);
         try {
-            console.log("ABT THE CALL");
+            console.log("Attempting to log");
+
             await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
                 method: "POST",
                 headers: {

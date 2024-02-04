@@ -6,6 +6,7 @@ import { ZodError } from "zod";
 export async function POST(req: Request, res: Response) {
     try {
         const body = await req.json();
+        console.log("HERE", body);
 
         if (body.answer.substring(2, 15) == "function_call") {
             console.log("function call");
