@@ -42,11 +42,7 @@ export function FigureCard({ name, description, joinCode, owner, id }: Props) {
             description: truncateAfterTenWords(description),
         },
         {
-            title: "Grade Level",
-            description: owner,
-        },
-        {
-            title: "Subject",
+            title: "Owner Name",
             description: owner,
         },
     ];
