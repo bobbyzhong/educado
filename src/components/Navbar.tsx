@@ -40,11 +40,22 @@ const Navbar = async () => {
                         <span className="md:text-3xl text-[18px]">Educado</span>
                     </p>
                 </Link>
-                <div className="flex items-center">
+                {session?.user && !user?.isTeacher && !user?.isAdmin ? (
+                    <div className="flex flex-row items-center justify-center">
+                        <ThemeToggle
+                            mode={"dashboard"}
+                            className="md:ml-8 mx-3"
+                        />
+                        <ThemeToggle mode={"tutor"} className="mx-3" />
+                        <ThemeToggle mode={"figure"} className="mx-3" />
+                    </div>
+                ) : (
+                    <></>
+                )}
+                <div className="flex items-center ">
                     {session?.user ? (
                         <>
-                            <ThemeToggle home={true} className="mr-2" />
-                            <ThemeToggle home={false} className="mr-4" />
+                            {/* <ThemeToggle home={false} className="mr-4" /> */}
                             <UserAccountNav user={session.user} />
                             <div className="md:block hidden ml-3 border-l-2 pl-3">
                                 <h1 className="text-lg font-semibold ">

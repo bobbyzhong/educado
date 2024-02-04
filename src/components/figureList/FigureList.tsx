@@ -39,11 +39,12 @@ const FigureList = ({ tutors }: Props) => {
         <main className="p-8  md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
                 <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
-                    Your Tutors
+                    Historical + Famous Figures
                 </h2>
                 <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Click on any one of them to join a tutoring session with
-                    them
+                    These are figures that you can chat with and learn from.
+                    These were made by other teachers as well as the team at
+                    Educado!
                 </h1>
                 <div className="mb-5 ">
                     <div
@@ -72,7 +73,7 @@ const FigureList = ({ tutors }: Props) => {
                     </div>
                 </div>
                 {/* FILTERING SECTION */}
-                <div className="mb-5 flex flex-row items-center justify-center gap-5">
+                {/* <div className="mb-5 flex flex-row items-center justify-center gap-5">
                     <div className="mr-2 cursor-pointer">
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -167,7 +168,7 @@ const FigureList = ({ tutors }: Props) => {
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>
-                </div>
+                </div> */}
 
                 <div className="">
                     {tutors.length > 0 ? (

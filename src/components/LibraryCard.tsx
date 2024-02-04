@@ -48,7 +48,7 @@ export function LibraryCard({ name, description, joinCode, id, owner }: Props) {
         },
     ];
     return (
-        <Card className="w-[300px] h-[18rem] shrink-0 flex justify-between flex-col">
+        <Card className="w-[300px] min-h-[20rem] shrink-0 flex justify-between flex-col">
             <div>
                 <CardHeader className="py-4">
                     <CardTitle className="text-[17px] font-bold tracking-tight text-green">

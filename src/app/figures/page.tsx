@@ -27,6 +27,7 @@ const Figures = async (props: Props) => {
         where: {
             tutorType: "Figure",
             // district: district,
+            visibility: "public",
         },
         orderBy: {
             dateCreated: "desc",

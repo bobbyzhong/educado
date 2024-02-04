@@ -82,7 +82,7 @@ export function FigureCard({ name, description, joinCode, owner, id }: Props) {
                         className="w-full font-bold tracking-normal "
                     >
                         {description != "Coming Soon!"
-                            ? `JOIN CHAT`
+                            ? `Start Chat`
                             : "Under Construction"}
                     </Button>
                 </Link>

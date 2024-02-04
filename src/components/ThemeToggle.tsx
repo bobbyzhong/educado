@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Home, Moon, Sun } from "lucide-react";
+import { BookKey, ContactIcon, Home, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -14,25 +14,56 @@ import {
 import { useRouter } from "next/navigation";
 
 type Props = {
-    home: boolean;
+    mode: string;
     className: string;
 };
-export function ThemeToggle({ className, home }: Props) {
+export function ThemeToggle({ className, mode }: Props) {
     const { setTheme } = useTheme();
     const router = useRouter();
 
-    if (home) {
+    if (mode == "dashboard") {
         return (
-            <div className={className}>
+            <div
+                className={`${className} flex flex-row items-center justify-center text-center`}
+            >
                 <Button
                     onClick={() => router.push("/dashboard-student")}
                     variant="outline"
                     size="icon"
                 >
-                    <Home className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Home className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">Go Dashboard</span>
+                    <Home size={23} />
                 </Button>
+                <div className="text-sm ml-2 md:block hidden">Dashboard</div>
+            </div>
+        );
+    } else if (mode == "tutor") {
+        return (
+            <div
+                className={`${className} flex flex-row items-center justify-center text-center`}
+            >
+                <Button
+                    onClick={() => router.push("/tutors")}
+                    variant="outline"
+                    size="icon"
+                >
+                    <BookKey size={23} />
+                </Button>
+                <div className="text-sm ml-2 md:block hidden">Tutors</div>
+            </div>
+        );
+    } else if (mode == "figure") {
+        return (
+            <div
+                className={`${className} flex flex-row items-center justify-center text-center`}
+            >
+                <Button
+                    onClick={() => router.push("/figures")}
+                    variant="outline"
+                    size="icon"
+                >
+                    <ContactIcon size={23} />
+                </Button>
+                <div className="text-sm ml-2 md:block hidden">Figures</div>
             </div>
         );
     } else {
