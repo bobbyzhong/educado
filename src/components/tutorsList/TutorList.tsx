@@ -13,6 +13,7 @@ import {
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { sub } from "date-fns";
+import Link from "next/link";
 
 type Props = { tutors: any; userId: string };
 const TutorsList = ({ tutors, userId }: Props) => {
@@ -178,10 +179,17 @@ const TutorsList = ({ tutors, userId }: Props) => {
                             />
                         </div>
                     ) : (
-                        <div className="w-full mt-6">
-                            <h1 className="text-zinc-500 text-[15px] text-center dark:text-zinc-300 mb-2 ">
-                                No historical figures here yet. Create one or
-                                explore our library to get your first one!
+                        <div className="w-full mt-6 flex items-center justify-center">
+                            <h1 className="text-zinc-500 text-[15px] text-center dark:text-zinc-300 mb-2 w-8/12">
+                                No tutors available. Tutors need to be made or
+                                added by your school district. Have them{" "}
+                                <Link
+                                    href={"/contact"}
+                                    className="text-green cursor-pointer"
+                                >
+                                    reach out
+                                </Link>{" "}
+                                to us to get started!
                             </h1>
                         </div>
                     )}
