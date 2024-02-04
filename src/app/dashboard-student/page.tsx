@@ -6,6 +6,8 @@ import { prisma } from "@/lib/db";
 import Link from "next/link";
 import StudDashCopy from "@/components/tutor/StudDashCopyCode";
 import DashboardCard from "@/components/dashboard/DashboardCard";
+import { TutorCard } from "@/components/tutorsList/TutorCard";
+import RecentTutorList from "@/components/dashboard/RecentTutorList";
 
 type Props = {};
 
@@ -57,9 +59,11 @@ const Dashboard = async (props: Props) => {
         if (tutor) {
             const tutorObject = {
                 id: tutor.id,
-                name: tutor.tutorDisplayName,
-                type: tutor.tutorType,
-                teacherName: tutor.ownerName,
+                tutorDisplayName: tutor.tutorDisplayName,
+                tutorDescription: tutor.tutorDescription,
+                joinCode: tutor.joinCode,
+                grade: tutor.grade,
+                subject: tutor.subject,
             };
 
             tutorObjList.push(tutorObject);
@@ -144,18 +148,10 @@ const Dashboard = async (props: Props) => {
                 </div>
             </div>
 
-            {tutorList.length > 0 ? (
-                <div className="relative flex items-center  overflow-x-auto  gap-5 mt-5">
-                    {tutorList.map((tutorId: any, i: any) => {
-                        return <StudDashCopy tutorId={tutorId} key={i} />;
-                    })}
-                </div>
-            ) : (
-                <h1 className="text-zinc-500 text-[15px] mt-5 w-10/12 dark:text-zinc-300 mb-5 ">
-                    No recent tutors yet! Start a chat with a tutor to see them
-                    here
-                </h1>
-            )}
+            <RecentTutorList
+                tutorList={tutorObjList}
+                userId={session.user.id}
+            />
 
             <div className="flex items-center justify-between space-y-2">
                 <div className="flex flex-col gap-1">

@@ -299,9 +299,11 @@ export default function ChatSection({
                                             </DropdownMenuCheckboxItem>
                                             <DropdownMenuCheckboxItem
                                                 onClick={() =>
-                                                    setLanguage("zh-HK")
+                                                    setLanguage("yue-Hant-HK")
                                                 }
-                                                disabled={language === "zh-HK"}
+                                                disabled={
+                                                    language === "yue-Hant-HK"
+                                                }
                                             >
                                                 Chinese (Cantonese)
                                             </DropdownMenuCheckboxItem>
@@ -403,6 +405,14 @@ export default function ChatSection({
                                                 disabled={language === "tr"}
                                             >
                                                 Turkish
+                                            </DropdownMenuCheckboxItem>
+                                            <DropdownMenuCheckboxItem
+                                                onClick={() =>
+                                                    setLanguage("vi-VN")
+                                                }
+                                                disabled={language === "vi-VN"}
+                                            >
+                                                Vietnamese
                                             </DropdownMenuCheckboxItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>

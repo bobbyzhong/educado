@@ -1,6 +1,12 @@
 import { TutorCard } from "./TutorCard";
 
-const TutorSearchList = ({ filterdFigures }: { filterdFigures: any }) => {
+const TutorSearchList = ({
+    filterdFigures,
+    userId,
+}: {
+    filterdFigures: any;
+    userId: string;
+}) => {
     return (
         <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
             {filterdFigures.map((tutor: any, i: any) => {
@@ -13,6 +19,7 @@ const TutorSearchList = ({ filterdFigures }: { filterdFigures: any }) => {
                             joinCode={tutor.joinCode!}
                             grade={tutor.grade}
                             subject={tutor.subject}
+                            userId={userId}
                         />
                     </div>
                 );

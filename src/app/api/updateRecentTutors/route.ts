@@ -7,22 +7,27 @@ export async function POST(req: Request, res: Response) {
     try {
         const { userId, code } = await req.json();
 
-        const tutors = await prisma.tutor.findMany({
-            where: {
-                joinCode: code,
-            },
-        });
-
-        if (tutors.length === 0 || tutors == null) {
-            return NextResponse.json(
-                {
-                    message: "No tutor found with that code",
+        let tutorId = "";
+        if (code.length > 6) {
+            tutorId = "," + code;
+        } else {
+            const tutors = await prisma.tutor.findMany({
+                where: {
+                    joinCode: code,
                 },
-                { status: 400 }
-            );
+            });
+
+            if (tutors.length === 0 || tutors == null) {
+                return NextResponse.json(
+                    {
+                        message: "No tutor found with that code",
+                    },
+                    { status: 400 }
+                );
+            }
+            tutorId = `,${tutors[0].id.toString()}`;
         }
 
-        const tutorId = `,${tutors[0].id.toString()}`;
         console.log(tutorId);
 
         const user = await prisma.user.findUnique({
@@ -46,18 +51,12 @@ export async function POST(req: Request, res: Response) {
 
         if (recentTutors === undefined || recentTutors === null) {
             recentTutors = tutorId;
-        } else if (recentTutorsList.includes(tutors[0].id.toString())) {
-            console.log("HERE");
-            const index = recentTutorsList.indexOf(tutors[0].id.toString());
-            console.log("INDEX", index);
-
+        } else if (recentTutorsList.includes(tutorId.slice(1))) {
+            const index = recentTutorsList.indexOf(tutorId);
             // Remove the tutor from its current position
             recentTutorsList.splice(index, 1);
-
             // Add the tutor to the front of the array
             recentTutorsList.unshift(tutorId);
-            console.log("RECENT TUTORS LIST", recentTutorsList.toString());
-
             await prisma.user.update({
                 where: {
                     id: userId,

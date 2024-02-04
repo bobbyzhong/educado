@@ -24,7 +24,7 @@ export function ThemeToggle({ className, mode }: Props) {
     if (mode == "dashboard") {
         return (
             <div
-                className={`${className} flex flex-row items-center justify-center text-center`}
+                className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
             >
                 <Button
                     onClick={() => router.push("/dashboard-student")}
@@ -39,7 +39,7 @@ export function ThemeToggle({ className, mode }: Props) {
     } else if (mode == "tutor") {
         return (
             <div
-                className={`${className} flex flex-row items-center justify-center text-center`}
+                className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
             >
                 <Button
                     onClick={() => router.push("/tutors")}
@@ -54,7 +54,7 @@ export function ThemeToggle({ className, mode }: Props) {
     } else if (mode == "figure") {
         return (
             <div
-                className={`${className} flex flex-row items-center justify-center text-center`}
+                className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
             >
                 <Button
                     onClick={() => router.push("/figures")}

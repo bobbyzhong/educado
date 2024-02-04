@@ -32,6 +32,6 @@ const Tutors = async (props: Props) => {
         },
     });
 
-    return <TutorsList tutors={tutors} />;
+    return <TutorsList tutors={tutors} userId={user?.id!} />;
 };
 export default Tutors;

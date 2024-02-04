@@ -1,6 +1,4 @@
-import { BellRing, Check } from "lucide-react";
-
-import { cn } from "@/lib/utils";
+"use client";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -10,7 +8,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 
 type Props = {
@@ -20,6 +17,7 @@ type Props = {
     grade: string;
     subject: string;
     id: string;
+    userId: string;
 };
 
 function truncateAfterTenWords(inputString: string) {
@@ -43,6 +41,7 @@ export function TutorCard({
     grade,
     subject,
     id,
+    userId,
 }: Props) {
     const notifications = [
         {
@@ -58,6 +57,20 @@ export function TutorCard({
             description: subject,
         },
     ];
+
+    const handleClickChat = async () => {
+        const res = await fetch("/api/updateRecentTutors", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                userId: userId,
+                code: id,
+            }),
+        });
+    };
+
     return (
         <Card className="w-[300px] min-h-[20rem] shrink-0 flex justify-between flex-col">
             <div>
@@ -92,6 +105,7 @@ export function TutorCard({
                     <Button
                         variant={"green"}
                         className="w-full font-bold tracking-normal "
+                        onClick={handleClickChat}
                     >
                         {description != "Coming Soon!"
                             ? `Join Chat`

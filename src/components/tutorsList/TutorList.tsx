@@ -14,8 +14,8 @@ import {
 } from "../ui/dropdown-menu";
 import { sub } from "date-fns";
 
-type Props = { tutors: any };
-const TutorsList = ({ tutors }: Props) => {
+type Props = { tutors: any; userId: string };
+const TutorsList = ({ tutors, userId }: Props) => {
     const [searchField, setSearchField] = useState("");
     const [gradeFilter, setGradeFilter] = useState("");
     const [subjectFilter, setSubjectFilter] = useState("");
@@ -172,7 +172,10 @@ const TutorsList = ({ tutors }: Props) => {
                 <div className="">
                     {tutors.length > 0 ? (
                         <div className=" flex flex-col w-full items-center justify-center gap-1 ">
-                            <TutorSearchList filterdFigures={filteredFigures} />
+                            <TutorSearchList
+                                userId={userId}
+                                filterdFigures={filteredFigures}
+                            />
                         </div>
                     ) : (
                         <div className="w-full mt-6">
