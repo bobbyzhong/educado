@@ -90,12 +90,9 @@ const StudentEnterCode = ({
         >
             <div className="flex flex-col gap-3 items-center justify-center">
                 <div className="flex flex-col items-center justify-center">
-                    <h1 className="text-[23px] text-white font-[900] ">
+                    <h1 className="text-xl text-white font-outfit font-semibold ">
                         {title}
                     </h1>
-                    {/* <h1 className="text-[19px] text-white font-[300] ">
-                        {description}
-                    </h1> */}
                 </div>
                 <form
                     className="flex flex-row items-center justify-center gap-1"
@@ -106,7 +103,7 @@ const StudentEnterCode = ({
                         placeholder="Enter Code"
                         value={code}
                         onChange={handleChange}
-                        className="px-3 py-2 w-[60%] rounded-lg focus:outline-none"
+                        className="px-3 py-2 w-[60%] rounded-lg focus:outline-none text-[15px]"
                     />
 
                     {isLoading ? (

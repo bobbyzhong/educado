@@ -1,8 +1,6 @@
-import { LibraryCard } from "../LibraryCard";
-import { FigureCard } from "../figureList/FigureCard";
-import { TutorCard } from "../tutor/TutorCard";
+import { FigureCard } from "./FigureCard";
 
-const FigureSearchList = ({ filterdFigures }: { filterdFigures: any }) => {
+const FigureSearchlist = ({ filterdFigures }: { filterdFigures: any }) => {
     return (
         <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
             {filterdFigures.map((tutor: any, i: any) => {
@@ -21,4 +19,4 @@ const FigureSearchList = ({ filterdFigures }: { filterdFigures: any }) => {
         </div>
     );
 };
-export default FigureSearchList;
+export default FigureSearchlist;

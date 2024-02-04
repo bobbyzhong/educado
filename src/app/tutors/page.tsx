@@ -1,20 +1,15 @@
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
-
 import { prisma } from "@/lib/db";
-
-import { TutorCard } from "@/components/tutor/TutorCard";
-import CreateTutorCard from "@/components/tutor/CreateTutorCard";
-import CreateFigureCard from "@/components/tutor/CreateFigureCard";
-import FiguresList from "@/components/library/FiguresList";
+import TutorsList from "@/components/tutorsList/TutorList";
 
 type Props = {};
 
 export const metadata = {
-    title: "Library | Educado",
+    title: "Tutors | Educado",
 };
 
-const Library = async (props: Props) => {
+const Tutors = async (props: Props) => {
     const session = await getAuthSession();
     if (!session?.user) {
         return redirect("/");
@@ -25,20 +20,18 @@ const Library = async (props: Props) => {
         },
     });
 
-    if (!user?.isTeacher) {
-        redirect("/dashboard-student");
-    }
+    const district = user?.email?.split("@")[1];
 
     const tutors = await prisma.tutor.findMany({
         where: {
-            tutorType: "Figure",
-            visibility: "public",
+            tutorType: "General",
+            district: district,
         },
         orderBy: {
             dateCreated: "desc",
         },
     });
 
-    return <FiguresList tutors={tutors} />;
+    return <TutorsList tutors={tutors} />;
 };
-export default Library;
+export default Tutors;

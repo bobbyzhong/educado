@@ -1,8 +1,6 @@
 import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
-import HistoryTable from "@/components/HistoryTable";
-import Link from "next/link";
 import ChatHistoryTable from "@/components/ChatHistoryTable";
 import { TutorCard } from "@/components/tutor/TutorCard";
 import ResourcesCard from "@/components/dashboard/ResourcesCard";
@@ -15,7 +13,7 @@ export const metadata = {
     title: "Dashboard | Educado",
 };
 
-const DashboardTeacher = async (props: Props) => {
+const DashboardAdmin = async (props: Props) => {
     const session = await getAuthSession();
     if (!session?.user) {
         return redirect("/");
@@ -26,12 +24,10 @@ const DashboardTeacher = async (props: Props) => {
         },
     });
 
-    if (user?.isAdmin) {
-        redirect("/dashboard-admin");
-    }
-
-    if (!user?.isTeacher) {
+    if (!user?.isAdmin && !user?.isTeacher) {
         redirect("/dashboard-student");
+    } else if (user?.isTeacher && !user?.isAdmin) {
+        redirect("/dashboard-teacher");
     }
 
     // const checkIns = await prisma.checkIn.findMany({
@@ -39,11 +35,11 @@ const DashboardTeacher = async (props: Props) => {
     //         userId: session.user.id,
     //     },
     // });
-    const tutors = await prisma.tutor.findMany({
-        where: {
-            userId: session.user.id,
-        },
-    });
+    // const tutors = await prisma.tutor.findMany({
+    //     where: {
+    //         userId: session.user.id,
+    //     },
+    // });
 
     // const clear = user?.subscribed || checkIns.length < 10;
 
@@ -56,30 +52,12 @@ const DashboardTeacher = async (props: Props) => {
                     </h2>
                     <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
                         Below you’ll be able to create, explore, and manage your
-                        historical figures and tutors
+                        district's tutors
                     </h1>
                 </div>
             </div>
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
-                <DashboardCard
-                    icon={"figure"}
-                    title="Famous Figure"
-                    description="Create and manage historical figures for your students. Have students engage in free flowing or directed conversations with historical figures."
-                    pageLink="/manage-figures"
-                />
-                <DashboardCard
-                    icon={"library"}
-                    title="Explore Library"
-                    description="Explore our library of pre-made historical figures and use or modify them for your needs! Great for getting started instantly or inspiration!"
-                    pageLink="/library"
-                />
-                <DashboardCard
-                    icon={"contact"}
-                    title="Contact Us"
-                    description="Feel free to reach out to us at Educado for any questions, concerns, or feedback. We're here to help anytime you need!"
-                    pageLink="/contact"
-                />
                 <DashboardCard
                     icon={"tutor"}
                     title="Educado Tutor"
@@ -88,7 +66,33 @@ const DashboardTeacher = async (props: Props) => {
                             your tutor to use."
                     pageLink="/manage-tutors"
                 />
-                <ResourcesCard />
+                <DashboardCard
+                    icon={"analytics"}
+                    title="Educado Analytics (Coming Soon)"
+                    description="View analytics for your tutors and make data driven decisions. Identify trends and patterns such as topics students are struggling with."
+                    pageLink="/district-analytics"
+                />
+
+                <DashboardCard
+                    icon={"contact"}
+                    title="Contact Us"
+                    description="Feel free to reach out to us at Educado for any questions, concerns, or feedback. We're here to help anytime you need!"
+                    pageLink="/contact"
+                />
+
+                <DashboardCard
+                    icon={"library"}
+                    title="Explore Library"
+                    description="Explore our library of pre-made historical figures and use or modify them for your needs! Great for getting started instantly or inspiration!"
+                    pageLink="/library"
+                />
+
+                <DashboardCard
+                    icon={"figure"}
+                    title="Famous Figure"
+                    description="Create and manage historical figures for your students. Have students engage in free flowing or directed conversations with historical figures."
+                    pageLink="/manage-figures"
+                />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-5 max-h-[30rem] ">
@@ -105,7 +109,7 @@ const DashboardTeacher = async (props: Props) => {
                     </div>
                     <NotifCard userId={session.user.id} />
                 </div>
-                <div className="md:pb-0 pb-10">
+                {/* <div className="md:pb-0 pb-10">
                     <div className="flex items-center justify-between space-y-2 mb-5">
                         <div className="flex flex-col gap-1">
                             <h2 className="mt-10 text-[28px] font-bold tracking-tight">
@@ -142,29 +146,9 @@ const DashboardTeacher = async (props: Props) => {
                             </div>
                         )}
                     </div>
-                </div>
+                </div> */}
             </div>
-
-            {/* <div className="flex items-center justify-between space-y-2">
-                <div className="flex flex-col gap-1">
-                    <h2 className="mt-10 text-[28px] font-bold tracking-tight">
-                        Past Check-Ins
-                    </h2>
-                    <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-                        Below you’ll see the past 5 check-ins you've made. View
-                        the full history{" "}
-                        <Link
-                            className="text-green underline "
-                            href={"/history"}
-                        >
-                            here
-                        </Link>
-                    </h1>
-                </div>
-            </div>
-
-            <HistoryTable limit={5} userId={session.user.id} /> */}
         </main>
     );
 };
-export default DashboardTeacher;
+export default DashboardAdmin;

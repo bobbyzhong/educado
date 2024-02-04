@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import {
+    BarChart3,
     BookKey,
     ContactIcon,
     Library,
@@ -57,6 +58,13 @@ const DashboardCard = ({ icon, title, description, pageLink }: Props) => {
                             />
                         ) : icon == "contact" ? (
                             <MessagesSquare
+                                className="rounded-md"
+                                size={30}
+                                strokeWidth={2}
+                                color="#86D20A"
+                            />
+                        ) : icon == "analytics" ? (
+                            <BarChart3
                                 className="rounded-md"
                                 size={30}
                                 strokeWidth={2}

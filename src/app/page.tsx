@@ -40,16 +40,16 @@ export default async function Home() {
                     {/* <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
                         Supercharging student support and learning with AI
                     </h1> */}
-                    <h1 className="md:text-[45px] md:leading-[53px] font-outfit text-3xl font-semibold w-11/12 md:w-8/12 lg:w-6/12 ">
+                    <h1 className="md:text-[45px] md:leading-[53px] font-outfit text-3xl font-semibold w-11/12 md:w-8/12 lg:w-7/12 ">
                         Personalize student support and learning at scale with
                         Educado
                     </h1>
                     <p className="md:text-[21px] text-[16px] leading-snug md:my-5 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        We empower K12 educators to create{" "}
-                        <b className="text-green">AI tutors</b> trained on their
-                        own content and standards that can support students in{" "}
-                        <b className="text-green">every step</b> of their
-                        learning journey
+                        <b className="text-green">AI tutors</b> trained on your
+                        district's curriculum and standards to give your
+                        students{" "}
+                        <b className="text-green">instant, personalized</b>{" "}
+                        support
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
@@ -123,45 +123,45 @@ export default async function Home() {
                 />
             </div>
 
-            {/* FEATURES */}
+            {/* WHY US */}
             <div className="flex justify-center text-center items-center mt-[5%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
-                    FEATURES
+                    Why Educado?
                 </h1>
                 <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[5rem] text-zinc-600">
-                    Here are some of the features we have!
+                    Here's why districts and schools love Educado
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] justify-center gap-5">
                     <FeatureCard
                         icon="🤖"
-                        title="Famous Figure"
-                        description="Create historical figures your students can talk to and learn from. Who better to teach the Bill of Rights than James Madison?"
+                        title="Reliable Help"
+                        description="All tutors are trained on the content you want such as your curriculum/standards, ensuring the help students get is reliable!"
                     />
                     <FeatureCard
-                        icon="🏫"
-                        title="Educado Collection"
-                        description="We have a library of pre-built historical figures and tutors that you can use and modify so you can get started right away!"
+                        icon="🧑‍🏫"
+                        title="Monitored Conversations"
+                        description="All conversations are monitored + logged so you can view them whenever you want. We'll also alert you if any unusual activity comes up!"
                     />
                     <FeatureCard
-                        icon="📚"
-                        title="General Support Tutor"
-                        description="Train a tutor based on any and as much content you want that can help your students anytime, anywhere!"
+                        icon="📊"
+                        title="Data Driven Insights"
+                        description="Get insights on things like topics students are struggling with and student performance so you can make data driven decisions!"
                     />
+
                     <FeatureCard
-                        icon="📝"
-                        title="Writing Tutor"
-                        description={`Upload a rubric for a writing assignment and have your students get instant feedback and help on their essays!`}
+                        icon="⭐️"
+                        title="10 Star Support"
+                        description={`One of our core values is to provide the best support and experience possible. We'll be there every step of the way to help you!`}
                     />
                     <FeatureCard
                         icon="⚡️"
                         title="Chrome Extension"
                         description="With our Chrome Extension, students can get help from their tutors in just one click. We'll be there for those late night study sessions!"
                     />
-
                     <FeatureCard
-                        icon="🧑‍🏫"
-                        title="Monitored Conversations"
-                        description="All conversations are monitored and teachers are notified in cases of unusual activity such as mental health or cheating concerns."
+                        icon="🏫"
+                        title="Educado Collection"
+                        description="We have a library of pre-built historical figures and tutors that you can use and modify so you can get started right away!"
                     />
                 </div>
             </div>
@@ -200,18 +200,14 @@ export default async function Home() {
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
                     HOW IT WORKS
                 </h1>
-                <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[1rem] text-zinc-600">
-                    This process is mainly for districts. If you're a teacher
-                    all you need to do is{" "}
-                    <a href="/contact" className="text-green">
-                        reach out
-                    </a>{" "}
-                    for an access code and you'll be all good to go!
+                <h1 className="md:text-lg text-base md:w-4/12 text-center w-10/12  mb-[1rem] text-zinc-600">
+                    This process is mainly for districts. If you're a student
+                    all you need to do is sign in!
                 </h1>
                 <HowStep
                     step="1"
                     title="Set Up"
-                    description="We know that every district is unique so we’ll work closely with you to see the best way we can help. Once we have everything worked out, we’ll give a private access code for your teachers to sign up with. "
+                    description="We know that every district is unique so we’ll work closely with you to see the best way we can help. Once we have everything worked out, we'll create all the tutors your students need."
                     image="/landing/how_1.png"
                 />
                 <HowStep
@@ -222,14 +218,14 @@ export default async function Home() {
                 />
                 <HowStep
                     step="3"
-                    title="Create"
-                    description="Create historical figures and tutors that fit your need. Upload your own content and standards so your students can get help from a tutor that knows exactly what you want them to know!"
+                    title="Share"
+                    description="Share Educado with your students by having them sign up. Once they sign up, they'll be able to see all the tutors for your district/school and start a tutoring session!"
                     image="/landing/how_3.png"
                 />
                 <HowStep
                     step="4"
                     title="Monitor"
-                    description="Teachers can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up."
+                    description="You can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up."
                     image="/landing/how_4.png"
                 />
                 <HowStep
@@ -240,7 +236,7 @@ export default async function Home() {
                 />
             </div>
 
-            <div className="flex justify-center text-center items-center mt-[7%] flex-col">
+            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
                     WHY EDUCADO
                 </h1>
@@ -266,7 +262,7 @@ export default async function Home() {
                         description="We're still in our early stages so you can bet that we'll be improving every day. This means that the teachers and districts we work with will have a huge impact on how we grow!"
                     />
                 </div>
-            </div>
+            </div> */}
 
             {/* FOOTER */}
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10 bg-[#8bb83f]/[0.2]  rounded-t-[20%]">

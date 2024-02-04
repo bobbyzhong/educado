@@ -5,11 +5,12 @@ import ChatHistoryTable from "@/components/ChatHistoryTable";
 import { prisma } from "@/lib/db";
 import Link from "next/link";
 import StudDashCopy from "@/components/tutor/StudDashCopyCode";
+import DashboardCard from "@/components/dashboard/DashboardCard";
 
 type Props = {};
 
 export const metadata = {
-    title: "Dashboard | Pear",
+    title: "Dashboard | Educado",
 };
 
 const Dashboard = async (props: Props) => {
@@ -39,14 +40,14 @@ const Dashboard = async (props: Props) => {
         tutorList = [];
     } else {
         tutorList = recentCodes?.split(",");
-        tutorList = tutorList.slice(1, tutorList.length);
+        tutorList = tutorList.slice(1, 8);
         tutorList = tutorList.filter(
             (value: any, index: any) => tutorList.indexOf(value) === index
         );
     }
     let tutorObjList: any = [];
 
-    for (let i = 0; i < tutorList.length; i++) {
+    for (let i = 0; i < tutorList.length && i < 8; i++) {
         const tutor = await prisma.tutor.findUnique({
             where: {
                 id: tutorList[i],
@@ -65,11 +66,9 @@ const Dashboard = async (props: Props) => {
         }
     }
 
-    const clear = user?.subscribed || checkIns.length < 10;
-
     return (
         <main className="p-8 mx-auto max-w-7xl">
-            <div className="flex items-center mb-5">
+            {/* <div className="flex items-center mb-5">
                 <div className="flex flex-row justify-between w-full">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
                         Your Dashboard
@@ -84,11 +83,11 @@ const Dashboard = async (props: Props) => {
                         </Link>
                     </h1>
                 </div>
-            </div>
+            </div> */}
 
             <div className="flex flex-col md:flex-row gap-0 md:gap-8 justify-center items-center ">
                 <StudentEnterCode
-                    title="EDUCADO TUTOR"
+                    title="Join Tutor Session"
                     description="Ask for help"
                     link="tutor"
                     bgRed={false}
@@ -98,6 +97,39 @@ const Dashboard = async (props: Props) => {
                     email={user?.email!}
                     tutorObjList={tutorObjList}
                     studentName={session?.user?.name!}
+                />
+            </div>
+
+            <div className="flex items-center mt-8">
+                <div className="flex flex-col gap-1">
+                    <h2 className="mr-2 text-[28px] font-bold tracking-tight">
+                        Your Dashboard
+                    </h2>
+                    <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
+                        Below you’ll be able to find different tutors and
+                        historical figures to work with!
+                    </h1>
+                </div>
+            </div>
+
+            <div className="grid gap-5 mt-4 md:grid-cols-3">
+                <DashboardCard
+                    icon={"tutor"}
+                    title="Personal Tutors"
+                    description="Find tutors for your grade level and topics to get instant help with learning and homework. Work with the tutors your school district made!"
+                    pageLink="/tutors"
+                />
+                <DashboardCard
+                    icon={"figure"}
+                    title="Historical + Famous Figures"
+                    description="Explore different historical and famous figures to learn about their lives or just have a conversation with them!"
+                    pageLink="/figures"
+                />
+                <DashboardCard
+                    icon={"contact"}
+                    title="Contact Us"
+                    description="Feel free to reach out to us at Educado for any questions, concerns, or feedback. We're here to help anytime you need!"
+                    pageLink="/contact"
                 />
             </div>
 
@@ -120,8 +152,8 @@ const Dashboard = async (props: Props) => {
                 </div>
             ) : (
                 <h1 className="text-zinc-500 text-[15px] mt-5 w-10/12 dark:text-zinc-300 mb-5 ">
-                    No codes saved yet! Ask your teacher for the codes for your
-                    class.
+                    No recent tutors yet! Start a chat with a tutor to see them
+                    here
                 </h1>
             )}
 
