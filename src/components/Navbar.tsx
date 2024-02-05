@@ -52,6 +52,18 @@ const Navbar = async () => {
                 ) : (
                     <></>
                 )}
+                {(session?.user && user?.isTeacher) || user?.isAdmin ? (
+                    <div className="flex flex-row items-center justify-center">
+                        <ThemeToggle
+                            mode={"dashboard"}
+                            className="md:ml-8 mx-3"
+                        />
+                        <ThemeToggle mode={"manageTutor"} className="mx-3" />
+                        <ThemeToggle mode={"manageFigure"} className="mx-3" />
+                    </div>
+                ) : (
+                    <></>
+                )}
                 <div className="flex items-center ">
                     {session?.user ? (
                         <>

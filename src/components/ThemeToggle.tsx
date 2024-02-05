@@ -51,6 +51,36 @@ export function ThemeToggle({ className, mode }: Props) {
                 <div className="text-sm ml-2 md:block hidden">Tutors</div>
             </div>
         );
+    } else if (mode == "manageTutor") {
+        return (
+            <div
+                className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
+            >
+                <Button
+                    onClick={() => router.push("/manage-tutors")}
+                    variant="outline"
+                    size="icon"
+                >
+                    <BookKey size={23} />
+                </Button>
+                <div className="text-sm ml-2 md:block hidden">Tutors</div>
+            </div>
+        );
+    } else if (mode == "manageFigure") {
+        return (
+            <div
+                className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
+            >
+                <Button
+                    onClick={() => router.push("/manage-figures")}
+                    variant="outline"
+                    size="icon"
+                >
+                    <ContactIcon size={23} />
+                </Button>
+                <div className="text-sm ml-2 md:block hidden">Figures</div>
+            </div>
+        );
     } else if (mode == "figure") {
         return (
             <div
