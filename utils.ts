@@ -318,7 +318,7 @@ export const updatePinecone = async (
                     pageContent: chunk.pageContent,
                     txtPath: txtPath,
                     // MAKE SURE IT IS SAME AS THE DROPDOWN OPTION
-                    tutorName: "ahn_chang_ho",
+                    tutorName: "rincon_valley_science_3rd",
                     standardName: "",
                     // userName: "Bethany Allen",
                     // textbookName:

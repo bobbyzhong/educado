@@ -53,14 +53,10 @@ export function TutorCard({ name, description, joinCode, id, type }: Props) {
     return (
         <Card className="w-[300px] min-h-[20rem] shrink-0 flex justify-between flex-col">
             <div>
-                <CardHeader className="py-4">
-                    <CardTitle className="text-[17px] font-bold tracking-tight text-green">
-                        <span className="text-[14px] text-zinc-400 font-semibold tracking-tight mr-[2px]">
-                            Tutor Name:{" "}
-                        </span>
-                        {name}
+                <CardHeader className="py-4 w-full flex items-center">
+                    <CardTitle className="text-[16px] font-bold tracking-tight text-center text-green">
+                        ~ {name} ~
                     </CardTitle>
-                    {/* <CardDescription></CardDescription> */}
                 </CardHeader>
                 <CardContent className=" pb-3">
                     <div>

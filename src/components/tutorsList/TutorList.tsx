@@ -99,16 +99,64 @@ const TutorsList = ({ tutors, userId }: Props) => {
                                     All Grades
                                 </DropdownMenuCheckboxItem>
                                 <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("3")}
+                                    disabled={gradeFilter === "3"}
+                                >
+                                    3rd Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("4")}
+                                    disabled={gradeFilter === "4"}
+                                >
+                                    4th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("5")}
+                                    disabled={gradeFilter === "5"}
+                                >
+                                    5th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
                                     onClick={() => setGradeFilter("6")}
                                     disabled={gradeFilter === "6"}
                                 >
                                     6th Grade
                                 </DropdownMenuCheckboxItem>
                                 <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("7")}
+                                    disabled={gradeFilter === "7"}
+                                >
+                                    7th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("8")}
+                                    disabled={gradeFilter === "8"}
+                                >
+                                    8th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("9")}
+                                    disabled={gradeFilter === "9"}
+                                >
+                                    9th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("10")}
+                                    disabled={gradeFilter === "10"}
+                                >
+                                    10th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
                                     onClick={() => setGradeFilter("11")}
                                     disabled={gradeFilter === "11"}
                                 >
                                     11th Grade
+                                </DropdownMenuCheckboxItem>
+                                <DropdownMenuCheckboxItem
+                                    onClick={() => setGradeFilter("12")}
+                                    disabled={gradeFilter === "12"}
+                                >
+                                    12th Grade
                                 </DropdownMenuCheckboxItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

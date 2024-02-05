@@ -61,8 +61,9 @@ const ManageTutor = async (props: Props) => {
                     Your Tutors
                 </h2>
                 <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Below are the tutors you've made or have access to. Click on
-                    one to manage or share that specific tutor!
+                    Below are the tutors you've made or have access to. If
+                    you're a district admin, all the tutors below are available
+                    to all students in your district.
                 </h1>
                 <div className="mb-5">
                     <CreateTutorCard userId={session.user.id} />
