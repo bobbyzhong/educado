@@ -51,7 +51,7 @@ export function TutorCard({ name, description, joinCode, id, type }: Props) {
         },
     ];
     return (
-        <Card className="w-[300px] h-[20rem] shrink-0 flex justify-between flex-col">
+        <Card className="w-[300px] min-h-[20rem] shrink-0 flex justify-between flex-col">
             <div>
                 <CardHeader className="py-4">
                     <CardTitle className="text-[17px] font-bold tracking-tight text-green">
