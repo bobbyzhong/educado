@@ -69,7 +69,7 @@ export async function POST(req: Request) {
         try {
             await prisma.tutorQuestions.create({
                 data: {
-                    question: latestQuestion,
+                    question: body.studentQuestion,
                     studentName: body.studentName,
                     tutorId: body.tutorId,
                     date: formattedDateTime,
