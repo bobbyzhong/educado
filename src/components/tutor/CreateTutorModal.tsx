@@ -24,15 +24,7 @@ import {
     FormDescription,
     FormMessage,
 } from "../ui/form";
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
+
 import { Input } from "../ui/input";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";

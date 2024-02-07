@@ -11,7 +11,7 @@ import {
 import { PineconeClient } from "@pinecone-database/pinecone";
 import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
-import { async } from "regenerator-runtime";
+import { prisma } from "@/lib/db";
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY!,
@@ -56,26 +56,32 @@ export async function POST(req: Request) {
         .pop();
 
     if (lastMessageForRun) {
-        console.log(lastMessageForRun.content[0].text);
-        try {
-            console.log("Attempting to log");
+        const latestQuestion = body.question;
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+        const day = String(currentDate.getDate()).padStart(2, "0");
+        const hours = String(currentDate.getHours()).padStart(2, "0");
+        const minutes = String(currentDate.getMinutes()).padStart(2, "0");
+        const seconds = String(currentDate.getSeconds()).padStart(2, "0");
 
-            await fetch(`${process.env.API_URL}/api/logTutorQuestion`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    question: body.studentQuestion,
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        try {
+            await prisma.tutorQuestions.create({
+                data: {
+                    question: latestQuestion,
                     studentName: body.studentName,
                     tutorId: body.tutorId,
+                    date: formattedDateTime,
                     userId: body.userId,
                     answer: lastMessageForRun.content[0].text.value,
-                }),
+                },
             });
+            console.log("LOGGED QUESTION");
         } catch (e) {
             console.log("ERROR: ", e);
         }
+        console.log(lastMessageForRun.content[0].text);
     }
 
     return NextResponse.json({
