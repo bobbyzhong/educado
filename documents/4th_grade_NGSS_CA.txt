@@ -1,0 +1,143 @@
+4th Grade NGSS Science Standards: [
+    -4-LS1 From Molecules to Organisms: Structures and Processes: [
+        -LS1.A: Structure and Function
+§ Plants and animals have both internal and external
+structures that serve various functions in growth,
+survival, behavior, and reproduction. (4-LS1-1)
+LS1.D: Information Processing
+§ Different sense receptors are specialized for
+particular kinds of information, which may be then
+processed by the animal’s brain. Animals are able to
+use their perceptions and memories to guide their
+actions. (4-LS1-2)
+    ]
+    -4-ESS1 Earth’s Place in the Universe: [
+        Disciplinary Core Ideas
+ESS1.C: The History of Planet Earth
+§ Local, regional, and global patterns of rock formations reveal changes over time due to earth forces,
+such as earthquakes. The presence and location of
+certain fossil types indicate the order in which rock
+layers were formed. (4-ESS1-1)
+Students who demonstrate understanding can:
+4-ESS1-1. Identify evidence from patterns in rock formations and fossils in rock formations and fossils in rock layers for changes in a landscape over time to support
+an explanation for changes in a landscape over time. [Clarification Statement: Examples of evidence from patterns could include rock layers with shell fossils above rock layers with plant fossils and no shells, indicating a change from land to water over time; and a canyon with different rock layers in the walls
+and a river in the bottom, indicating that over time a river cut through the rock.] [Assessment Boundary: Assessment does not include specific knowledge of
+the mechanism of rock formation or memorization of specific rock formations and layers. Assessment is limited to relative time.]
+The performance expectation(s) above were developed using the following elements from the NRC document A Framework for K–12 Science Educati
+    ]
+    4-ESS2 Earth’s Systems: [
+        ESS2.A: Earth Materials and Systems
+§ Rainfall helps to shape the land and affects the
+types of living things found in a region. Water, ice,
+wind, living organisms, and gravity break rocks, soils,
+and sediments into smaller particles and move
+them around. (4-ESS2-1)
+ESS2.B: Plate Tectonics and Large-Scale System
+Interactions
+§ The locations of mountain ranges, deep ocean
+trenches, ocean floor structures, earthquakes, and
+volcanoes occur in patterns. Most earthquakes and
+volcanoes occur in bands that are often along the
+boundaries between continents and oceans. Major
+mountain chains form inside continents or near their
+edges. Maps can help locate the different land and
+water features areas of Earth. (4-ESS2-2)
+ESS2.E: Biogeology
+§ Living things affect the physical characteristics of
+their regions. (4-ESS2-1)
+Make observations and/or measurements to provide evidence of the effects of weathering or the rate of erosion by water, ice, wind, or vegetation. [Clarification Statement: Examples of variables to test could include angle of slope in the downhill movement of water, amount of vegetation, speed of wind, relative rate of deposition, cycles of freezing and thawing of water, cycles of heating and cooling, and volume of water flow.] [Assessment Boundary: Assessment
+is limited to a single form of weathering or erosion.]
+4-ESS2-2. Analyze and interpret data from maps to describe patterns of Earth’s features. [Clarification Statement: Maps can include topographic maps of Earth’s land
+and ocean floor, as well as maps of the locations of mountains, continental boundaries, volcanoes, and earthquakes.]
+    ]
+    -4-ESS3 Earth and Human Activity: [
+        ESS3.A: Natural Resources
+§ Energy and fuels that humans use are derived from
+natural sources, and their use affects the environment in multiple ways. Some resources are renewable over time, and others are not. (4-ESS3-1)
+ESS3.B: Natural Hazards
+§ A variety of hazards result from natural processes
+(e.g., earthquakes, tsunamis, volcanic eruptions).
+Humans cannot eliminate the hazards but can take
+steps to reduce their impacts. (4-ESS3-2) (Note:
+This Disciplinary Core Idea can also be found in
+3.WC.)
+ETS1.B: Designing Solutions to Engineering Problems
+§ Testing a solution involves investigating how well it
+performs under a range of likely conditions. (secondary to 4-ESS3-2)
+Obtain and combine information to describe that energy and fuels are derived from natural resources and their uses affect the environment. [Clarification
+Statement: Examples of renewable energy resources could include wind energy, water behind dams, and sunlight; non-renewable energy resources are fossil
+fuels and fissile materials. Examples of environmental effects could include loss of habitat due to dams, loss of habitat due to surface mining, and air pollution from burning of fossil fuels.]
+4-ESS3-2. Generate and compare multiple solutions to reduce the impacts of natural Earth processes on humans.* [Clarification Statement: Examples of solutions
+could include designing an earthquake resistant building and improving monitoring of volcanic activity.] [Assessment Boundary: Assessment is limited to
+earthquakes, floods, tsunamis, and volcanic eruptions.]
+The performance expectation(s) above were developed using the following elements fro
+    ]
+    -4-PS3 Energy: [
+        PS3.A: Definitions of Energy
+§ The faster a given object is moving, the more energy
+it possesses. (4-PS3-1)
+§ Energy can be moved from place to place by moving
+objects or through sound, light, or electric currents.
+(4-PS3-2), (4-PS3-3)
+PS3.B: Conservation of Energy and Energy Transfer
+§ Energy is present whenever there are moving
+objects, sound, light, or heat. When objects collide,
+energy can be transferred from one object to another, thereby changing their motion. In such collisions,
+some energy is typically also transferred to the
+surrounding air; as a result, the air gets heated and
+sound is produced. (4-PS3-2), (4-PS3-3)
+§ Light also transfers energy from place to place. (4-
+PS3-2)
+§ Energy can also be transferred from place to
+place by electric currents, which can then be used
+locally to produce motion, sound, heat, or light. The
+currents may have been produced to begin with by
+transforming the energy of motion into electrical
+energy. (4-PS3-2), (4-PS3-4)
+PS3.C: Relationship Between Energy and Forces
+§ When objects collide, the contact forces transfer
+energy so as to change the objects’ motions. (4-
+PS3-3)
+PS3.D: Energy in Chemical Processes and Everyday
+Life
+§ The expression “produce energy” typically refers to
+the conversion of stored energy into a desired form
+for practical use. (4-PS3-4)
+ETS1.A: Defining Engineering Problems
+§ Possible solutions to a problem are limited by
+available materials and resources (constraints).
+The success of a designed solution is determined
+by considering the desired features of a solution
+(criteria). Different proposals for solutions can be
+compared on the basis of how well each one meets
+the specified criteria for success or how well each
+takes the constraints into account. (secondary to
+4-PS3-4)
+    ]
+    -4-PS4 Waves and Their Applications in Technologies for Information Transfer: [
+        PS4.A: Wave Properties
+§ Waves, which are regular patterns of motion, can
+be made in water by disturbing the surface. When
+waves move across the surface of deep water, the
+water goes up and down in place; there is no net
+motion in the direction of the wave except when
+the water meets the beach. (Note: This grade band
+endpoint was moved from K–2.) (4-PS4-1)
+§ Waves of the same type can differ in amplitude
+(height of the wave) and wavelength (spacing between wave peaks). (4-PS4-1)
+PS4.B: Electromagnetic Radiation
+§ An object can be seen when light reflected from its
+surface enters the eyes. (4-PS4-2)
+-PS4.C: Information Technologies and Instrumentation
+§ Digitized information can be transmitted over long
+distances without significant degradation. High-tech
+devices, such as computers or cell phones, can
+receive and decode information—convert it from
+digitized form to voice—and vice versa. (4-PS4-3)
+ETS1.C: Optimizing the Design Solution
+§ Different solutions need to be tested in order to
+determine which of them best solves the problem,
+given the criteria and the constraints. (secondary to
+4-PS4-3)
+    ]
+]

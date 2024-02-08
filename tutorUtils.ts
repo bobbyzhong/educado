@@ -38,12 +38,14 @@ export const getContext = async (
             },
         },
     });
-
-    console.log("FIRST SCORE: ", queryResponse.matches[0].score);
     let filteredRes = [];
-    for (let i = 0; i < queryResponse.matches.length; i++) {
-        if (queryResponse.matches[i].score >= 0.78) {
-            filteredRes.push(queryResponse.matches[i]);
+    if (queryResponse.matches.length > 0) {
+        console.log("FIRST SCORE: ", queryResponse.matches[0].score);
+
+        for (let i = 0; i < queryResponse.matches.length; i++) {
+            if (queryResponse.matches[i].score >= 0.78) {
+                filteredRes.push(queryResponse.matches[i]);
+            }
         }
     }
 

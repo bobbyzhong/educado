@@ -40,6 +40,7 @@ export async function POST(req: Request, res: Response) {
             tutorType,
             prompt,
         } = createTutorAPISchema.parse(body);
+        console.log("MAIL OPTIONS", mailOptions);
 
         try {
             const tutor = await prisma.tutor.create({
