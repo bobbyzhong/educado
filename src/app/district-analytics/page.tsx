@@ -24,7 +24,7 @@ const DistrictAnalytics = async (props: Props) => {
     if (!user?.isTeacher) {
         redirect("/dashboard-student");
     }
-    
+
     const district = await prisma.tutor.findMany({
         where: {
             district: "tryeducado.com",
@@ -49,14 +49,13 @@ const DistrictAnalytics = async (props: Props) => {
                     District Analytics
                 </h2>
                 <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Below are figures and data to analyze your district's performance.
-                    Take a look to see how your students are doing!
+                    Coming Soon!
                 </h1>
 
-                <AnalyticsDashboard 
+                {/* <AnalyticsDashboard 
                     district="tryeducado.com"
                     numberOfQuestions={numberOfQuestions}
-                />
+                /> */}
             </div>
         </main>
     );
