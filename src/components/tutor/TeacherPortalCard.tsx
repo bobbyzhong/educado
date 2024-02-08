@@ -39,6 +39,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "CCUSD",
+                    district: false,
                 }),
             });
             const data = await res.json();
@@ -56,6 +57,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "Moreland Pilot",
+                    district: false,
                 }),
             });
             const data = await res.json();
@@ -73,6 +75,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "Moreland School District",
+                    district: false,
                 }),
             });
             const data = await res.json();
@@ -90,6 +93,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "Anaheim Union HS District",
+                    district: false,
                 }),
             });
             const data = await res.json();
@@ -107,6 +111,25 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "Rincon Valley Unified School District",
+                    district: false,
+                }),
+            });
+            const data = await res.json();
+            console.log(data);
+            setLoading(false);
+            if (data.message === "updated") {
+                router.push("/dashboard-teacher");
+            }
+        } else if (code === "KCD92") {
+            const res = await fetch("/api/updateTeacherStatus", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    school: "Giselle Test",
+                    district: true,
                 }),
             });
             const data = await res.json();

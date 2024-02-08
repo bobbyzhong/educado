@@ -5,17 +5,41 @@ import { ZodError } from "zod";
 
 export async function POST(req: Request, res: Response) {
     try {
-        const { userId, school } = await req.json();
+        const { userId, school, district } = await req.json();
 
-        await prisma.user.update({
-            where: {
-                id: userId,
-            },
-            data: {
-                isTeacher: true,
-                school: school,
-            },
-        });
+        try {
+            if (district) {
+                await prisma.user.update({
+                    where: {
+                        id: userId,
+                    },
+                    data: {
+                        isTeacher: true,
+                        school: school,
+                        isAdmin: true,
+                    },
+                });
+            } else {
+                await prisma.user.update({
+                    where: {
+                        id: userId,
+                    },
+                    data: {
+                        isTeacher: true,
+                        school: school,
+                    },
+                });
+            }
+        } catch (e) {
+            return NextResponse.json(
+                {
+                    message: e,
+                },
+                {
+                    status: 400,
+                }
+            );
+        }
         console.log("Updated Teacher");
 
         return NextResponse.json(
