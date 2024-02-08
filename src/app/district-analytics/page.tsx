@@ -2,9 +2,7 @@ import { getAuthSession } from "@/lib/nextauth";
 import { redirect } from "next/navigation";
 
 import { prisma } from "@/lib/db";
-
-import { Library } from "lucide-react";
-import Link from "next/link";
+import AnalyticsDashboard from "@/components/analytics/AnalyticsDashboard";
 
 type Props = {};
 
@@ -26,19 +24,26 @@ const DistrictAnalytics = async (props: Props) => {
     if (!user?.isTeacher) {
         redirect("/dashboard-student");
     }
-
-    const tutors = await prisma.tutor.findMany({
+    
+    const district = await prisma.tutor.findMany({
         where: {
-            userId: session.user.id,
-            tutorType: "Figure",
+            district: "tryeducado.com",
         },
         orderBy: {
             dateCreated: "desc",
         },
     });
 
+    const numberOfQuestions = await prisma.tutorQuestions.count({
+        where: {
+            tutorId: {
+                in: district.map((tutor) => tutor.id),
+            },
+        },
+    });
+
     return (
-        <main className="p-8  md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
+        <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
                 <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
                     District Analytics
@@ -48,9 +53,10 @@ const DistrictAnalytics = async (props: Props) => {
                     Take a look to see how your students are doing!
                 </h1>
 
-                <div className="">
-                    
-                </div>
+                <AnalyticsDashboard 
+                    district="tryeducado.com"
+                    numberOfQuestions={numberOfQuestions}
+                />
             </div>
         </main>
     );
