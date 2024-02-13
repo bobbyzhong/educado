@@ -68,7 +68,7 @@ const DashboardAdmin = async (props: Props) => {
                 />
                 <DashboardCard
                     icon={"analytics"}
-                    title="Educado Analytics (Coming Soon)"
+                    title="Educado Analytics"
                     description="View analytics for your tutors and make data driven decisions. Identify trends and patterns such as topics students are struggling with."
                     pageLink="/district-analytics"
                 />
