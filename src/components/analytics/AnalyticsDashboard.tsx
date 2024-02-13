@@ -54,10 +54,6 @@ const AnalyticsDashboard = async ({ district }: Props) => {
                             limit={10}
                             tutorIds={districtTutorIds}
                         />
-                        <DistrictQuestions
-                            limit={10}
-                            tutorIds={districtTutorIds}
-                        />
                     </div>
                 </div>
             </div>
