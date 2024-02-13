@@ -1,0 +1,47 @@
+8th grade CA Common Core ELA: [
+    Conventions of Standard English:
+CCSS.ELA-LITERACY.L.8.1
+Demonstrate command of the conventions of standard English grammar and usage when writing or speaking.
+CCSS.ELA-LITERACY.L.8.1.A
+Explain the function of verbals (gerunds, participles, infinitives) in general and their function in particular sentences.
+CCSS.ELA-LITERACY.L.8.1.B
+Form and use verbs in the active and passive voice.
+CCSS.ELA-LITERACY.L.8.1.C
+Form and use verbs in the indicative, imperative, interrogative, conditional, and subjunctive mood.
+CCSS.ELA-LITERACY.L.8.1.D
+Recognize and correct inappropriate shifts in verb voice and mood.*
+CCSS.ELA-LITERACY.L.8.2
+Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.
+CCSS.ELA-LITERACY.L.8.2.A
+Use punctuation (comma, ellipsis, dash) to indicate a pause or break.
+CCSS.ELA-LITERACY.L.8.2.B
+Use an ellipsis to indicate an omission.
+CCSS.ELA-LITERACY.L.8.2.C
+Spell correctly.
+Knowledge of Language:
+CCSS.ELA-LITERACY.L.8.3
+Use knowledge of language and its conventions when writing, speaking, reading, or listening.
+CCSS.ELA-LITERACY.L.8.3.A
+Use verbs in the active and passive voice and in the conditional and subjunctive mood to achieve particular effects (e.g., emphasizing the actor or the action; expressing uncertainty or describing a state contrary to fact).
+Vocabulary Acquisition and Use:
+CCSS.ELA-LITERACY.L.8.4
+Determine or clarify the meaning of unknown and multiple-meaning words or phrases based on grade 8 reading and content, choosing flexibly from a range of strategies.
+CCSS.ELA-LITERACY.L.8.4.A
+Use context (e.g., the overall meaning of a sentence or paragraph; a word's position or function in a sentence) as a clue to the meaning of a word or phrase.
+CCSS.ELA-LITERACY.L.8.4.B
+Use common, grade-appropriate Greek or Latin affixes and roots as clues to the meaning of a word (e.g., precede, recede, secede).
+CCSS.ELA-LITERACY.L.8.4.C
+Consult general and specialized reference materials (e.g., dictionaries, glossaries, thesauruses), both print and digital, to find the pronunciation of a word or determine or clarify its precise meaning or its part of speech.
+CCSS.ELA-LITERACY.L.8.4.D
+Verify the preliminary determination of the meaning of a word or phrase (e.g., by checking the inferred meaning in context or in a dictionary).
+CCSS.ELA-LITERACY.L.8.5
+Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.
+CCSS.ELA-LITERACY.L.8.5.A
+Interpret figures of speech (e.g. verbal irony, puns) in context.
+CCSS.ELA-LITERACY.L.8.5.B
+Use the relationship between particular words to better understand each of the words.
+CCSS.ELA-LITERACY.L.8.5.C
+Distinguish among the connotations (associations) of words with similar denotations (definitions) (e.g., bullheaded, willful, firm, persistent, resolute).
+CCSS.ELA-LITERACY.L.8.6
+Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases; gather vocabulary knowledge when considering a word or phrase important to comprehension or expression.
+]
