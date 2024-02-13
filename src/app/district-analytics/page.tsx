@@ -27,6 +27,7 @@ const DistrictAnalytics = async (props: Props) => {
 
     const adminDistrict = user?.email?.split("@")[1];
     // const adminDistrict = "tryeducado.com";
+    // const adminDistrict = null;
 
     return (
         <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
