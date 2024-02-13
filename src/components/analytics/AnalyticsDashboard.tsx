@@ -17,7 +17,8 @@ const AnalyticsDashboard = async ( { district } : Props) => {
       },
   });
 
-  const numberOfQuestions = await prisma.tutorQuestions.count({
+  const districtTutorIds = districtTutors.map((tutor) => tutor.id);
+  const numberOfQuestions: number = await prisma.tutorQuestions.count({
       where: {
           tutorId: {
               in: districtTutors.map((tutor) => tutor.id),
@@ -36,16 +37,16 @@ const AnalyticsDashboard = async ( { district } : Props) => {
                   <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 text-center">
                       Here are some of the recently asked questions for
                       this tutor. View the full history{" "}
-                      {/* <Link
+                      <Link
                           className="text-green underline  "
-                          href={`/chatLogs/`}
+                          href={`/chatLogs/district/${districtTutorIds}`}
                           target="_blank"
                       >
                           here
-                      </Link> */}
+                      </Link>
                   </h1>
                   <div className="w-full">
-                      <DistrictQuestions limit={10} tutorIds={districtTutors.map((tutor) => tutor.id)} />
+                      <DistrictQuestions limit={10} tutorIds={districtTutorIds} />
                   </div>
               </div>
           </div>
