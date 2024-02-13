@@ -25,22 +25,9 @@ const DistrictAnalytics = async (props: Props) => {
         redirect("/dashboard-student");
     }
 
-    const district = await prisma.tutor.findMany({
-        where: {
-            district: "tryeducado.com",
-        },
-        orderBy: {
-            dateCreated: "desc",
-        },
-    });
-
-    const numberOfQuestions = await prisma.tutorQuestions.count({
-        where: {
-            tutorId: {
-                in: district.map((tutor) => tutor.id),
-            },
-        },
-    });
+    const adminDistrict = user?.email?.split("@")[1];
+    // const adminDistrict = "tryeducado.com";
+    // const adminDistrict = null;
 
     return (
         <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
@@ -48,14 +35,8 @@ const DistrictAnalytics = async (props: Props) => {
                 <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
                     District Analytics
                 </h2>
-                <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Coming Soon!
-                </h1>
 
-                {/* <AnalyticsDashboard 
-                    district="tryeducado.com"
-                    numberOfQuestions={numberOfQuestions}
-                /> */}
+                <AnalyticsDashboard district={adminDistrict} />
             </div>
         </main>
     );
