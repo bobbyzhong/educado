@@ -2,7 +2,7 @@
 import React from 'react';
 
 type Props = {
-    district: string,
+    district: string | undefined,
     numberOfQuestions: number,
 };
 

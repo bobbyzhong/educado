@@ -25,9 +25,12 @@ const DistrictAnalytics = async (props: Props) => {
         redirect("/dashboard-student");
     }
 
+    const adminDistrict = user?.email?.split("@")[1];
+    // const adminDistrict = "tryeducado.com"
+    
     const district = await prisma.tutor.findMany({
         where: {
-            district: "tryeducado.com",
+            district: adminDistrict,
         },
         orderBy: {
             dateCreated: "desc",
@@ -52,10 +55,10 @@ const DistrictAnalytics = async (props: Props) => {
                     Coming Soon!
                 </h1>
 
-                {/* <AnalyticsDashboard 
-                    district="tryeducado.com"
+                <AnalyticsDashboard 
+                    district={adminDistrict}
                     numberOfQuestions={numberOfQuestions}
-                /> */}
+                />
             </div>
         </main>
     );
