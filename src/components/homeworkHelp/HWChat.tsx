@@ -112,21 +112,21 @@ export default function HWChat({
         setSolveLoading(true);
 
         console.log("Problem: ", textResult);
-        // const res = await axios.post("/api/ocrTest", {
-        //     textResult,
-        // });
-        const res = `{
-            "steps": [
-                "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
-                "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
-                "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
-                "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
-                "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
-            ]
-        }`;
+        const res = await axios.post("/api/ocrTest", {
+            textResult,
+        });
+        // const res = `{
+        //     "steps": [
+        //         "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
+        //         "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
+        //         "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
+        //         "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
+        //         "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
+        //     ]
+        // }`;
         console.log("RES DATA: ", res);
-        const resObj = JSON.parse(res);
-        // const resObj = JSON.parse(res.data.data);
+        // const resObj = JSON.parse(res);
+        const resObj = JSON.parse(res.data.data);
         const steps = resObj.steps;
         setSteps(steps);
         setSolveLoading(false);
