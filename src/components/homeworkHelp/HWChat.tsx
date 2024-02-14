@@ -30,6 +30,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { set } from "date-fns";
 import { decode } from "punycode";
+import { ImageCropModal } from "../ImageCropModal";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -71,6 +72,8 @@ export default function HWChat({
     const [solveLoading, setSolveLoading] = useState(false);
     const [processingImg, setProcessingImg] = useState(false);
     const [secInput, setSecInput] = useState("");
+    const [cropModalOpen, setCropModalOpen] = useState(false);
+    const [croppedImage, setCroppedImage] = useState<any>(null);
 
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
@@ -104,21 +107,23 @@ export default function HWChat({
     useAutosizeTextArea(textAreaRef.current, input);
 
     const handleChangeImage = (e: any) => {
-        // console.log(e.target.files[0]);
-        setSelectedImage(URL.createObjectURL(e.target.files[0]));
+        if (e.target.files && e.target.files[0]) {
+            setCropModalOpen(true);
+            setSelectedImage(URL.createObjectURL(e.target.files[0]));
+        }
     };
 
     const convertImageToText = useCallback(async () => {
-        if (!selectedImage) return;
-        setTextResult("");
+        if (!croppedImage) return;
         setProcessingImg(true);
+        setTextResult("");
         const worker = await createWorker("eng");
-        const { data } = await worker.recognize(selectedImage);
+        const { data } = await worker.recognize(croppedImage);
         setTextResult(data.text);
         console.log(data.text);
         await worker.terminate();
         setProcessingImg(false);
-    }, [selectedImage]);
+    }, [croppedImage]);
 
     useEffect(() => {
         convertImageToText();
@@ -158,14 +163,13 @@ export default function HWChat({
         // It's triggers by pressing the enter key
 
         if (e.keyCode == 13 && !e.shiftKey) {
-            setSecInput("");
             handleSubmit(e);
             e.preventDefault();
         }
     };
 
     const onHandleSubmit = async (e: any) => {
-        setSecInput("");
+        console.log("INPUT: ", input);
         handleSubmit(e);
     };
 
@@ -271,10 +275,10 @@ export default function HWChat({
                             onChange={handleChangeImage}
                         />
                         <div className="mt-5 p-3 border rounded-md w-full flex items-center justify-center">
-                            {selectedImage && (
+                            {croppedImage && (
                                 <div>
                                     <Image
-                                        src={selectedImage}
+                                        src={croppedImage}
                                         height={500}
                                         width={500}
                                         alt=""
@@ -713,6 +717,13 @@ export default function HWChat({
                     </div>
                 )}
             </div>
+            <ImageCropModal
+                open={cropModalOpen}
+                setOpen={setCropModalOpen}
+                selectedImage={selectedImage}
+                setSelectedImage={setSelectedImage}
+                setCroppedImage={setCroppedImage}
+            />
         </div>
     );
 }

@@ -23,8 +23,12 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
     // Extract the `messages` from the body of the request
     let body = await req.json();
+    console.log("BODY", body);
 
     let messages = body.messages;
+
+    console.log("MESSAGES ", messages);
+    console.log("messages last item", messages[messages.length - 1]);
 
     messages.unshift({
         role: "system",
