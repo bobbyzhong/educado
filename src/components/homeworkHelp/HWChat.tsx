@@ -226,9 +226,14 @@ export default function HWChat({
                                 </span>
                             </h1>
                         </div>
-                        <p className="text-base text-center font-light mt-3 w-full">
+                        <p className="text-base text-center font-light mt-3 w-[70%]">
                             Upload a picture of a specific question you need
                             help with!
+                        </p>
+                        <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400">
+                            *Please note, this feature is still in beta and will
+                            be limited in functionality. The team at Educado is
+                            working hard to improve it!*
                         </p>
                         <Input
                             className="cursor-pointer mt-3"

@@ -6,9 +6,11 @@ import {
     BarChart3,
     BookKey,
     ContactIcon,
+    DivideSquare,
     Library,
     Loader2,
     MessagesSquare,
+    Pi,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -65,6 +67,13 @@ const DashboardCard = ({ icon, title, description, pageLink }: Props) => {
                             />
                         ) : icon == "analytics" ? (
                             <BarChart3
+                                className="rounded-md"
+                                size={30}
+                                strokeWidth={2}
+                                color="#86D20A"
+                            />
+                        ) : icon == "hw-math" ? (
+                            <DivideSquare
                                 className="rounded-md"
                                 size={30}
                                 strokeWidth={2}
