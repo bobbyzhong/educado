@@ -28,6 +28,8 @@ import { createWorker } from "tesseract.js";
 import { Input } from "../ui/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { set } from "date-fns";
+import { decode } from "punycode";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -68,8 +70,12 @@ export default function HWChat({
     const [steps, setSteps] = useState<any>([]);
     const [solveLoading, setSolveLoading] = useState(false);
     const [processingImg, setProcessingImg] = useState(false);
+    const [secInput, setSecInput] = useState("");
 
-    const router = useRouter();
+    const handleSecInputChange = (e: any) => {
+        setSecInput(e.target.value);
+        setInput(e.target.value);
+    };
 
     const {
         messages,
@@ -123,20 +129,20 @@ export default function HWChat({
         setSolveLoading(true);
 
         console.log("Problem: ", textResult);
-        const res = await axios.post("/api/ocrTest", {
-            textResult,
-        });
-        // const res = `{
-        //     "steps": [
-        //         "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
-        //         "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
-        //         "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
-        //         "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
-        //         "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
-        //     ]
-        // }`;
-        // const resObj = JSON.parse(res);
-        const resObj = JSON.parse(res.data.data);
+        // const res = await axios.post("/api/ocrTest", {
+        //     textResult,
+        // });
+        const res = `{
+            "steps": [
+                "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
+                "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
+                "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
+                "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
+                "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
+            ]
+        }`;
+        const resObj = JSON.parse(res);
+        // const resObj = JSON.parse(res.data.data);
         const steps = resObj.steps;
         setSteps(steps);
         setSolveLoading(false);
@@ -150,13 +156,15 @@ export default function HWChat({
 
     const handleKeypress = (e: any) => {
         // It's triggers by pressing the enter key
+
         if (e.keyCode == 13 && !e.shiftKey) {
-            onHandleSubmit(e);
+            handleSubmit(e);
             e.preventDefault();
         }
     };
 
     const onHandleSubmit = async (e: any) => {
+        console.log("INPUT: ", input);
         handleSubmit(e);
     };
 
@@ -292,7 +300,7 @@ export default function HWChat({
                             </div>
                         </div> */}
                         {messages.length > 0 &&
-                            messages.map((m) => (
+                            messages.map((m: any) => (
                                 <div key={m.id} className="my-3">
                                     {m.role === "user" ? (
                                         <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
@@ -545,7 +553,7 @@ export default function HWChat({
                                         className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
                                   focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2 dark:text-black
                                   md:pl-0"
-                                        onChange={handleInputChange}
+                                        onChange={handleSecInputChange}
                                         onKeyDown={handleKeypress}
                                     />
                                     {true ? (
