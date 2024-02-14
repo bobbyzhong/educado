@@ -1,0 +1,49 @@
+6th Grade CA Common Core ELA: [
+    Conventions of Standard English:
+CCSS.ELA-LITERACY.L.6.1
+Demonstrate command of the conventions of standard English grammar and usage when writing or speaking.
+CCSS.ELA-LITERACY.L.6.1.A
+Ensure that pronouns are in the proper case (subjective, objective, possessive).
+CCSS.ELA-LITERACY.L.6.1.B
+Use intensive pronouns (e.g., myself, ourselves).
+CCSS.ELA-LITERACY.L.6.1.C
+Recognize and correct inappropriate shifts in pronoun number and person.*
+CCSS.ELA-LITERACY.L.6.1.D
+Recognize and correct vague pronouns (i.e., ones with unclear or ambiguous antecedents).*
+CCSS.ELA-LITERACY.L.6.1.E
+Recognize variations from standard English in their own and others' writing and speaking, and identify and use strategies to improve expression in conventional language.*
+CCSS.ELA-LITERACY.L.6.2
+Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.
+CCSS.ELA-LITERACY.L.6.2.A
+Use punctuation (commas, parentheses, dashes) to set off nonrestrictive/parenthetical elements.*
+CCSS.ELA-LITERACY.L.6.2.B
+Spell correctly.
+Knowledge of Language:
+CCSS.ELA-LITERACY.L.6.3
+Use knowledge of language and its conventions when writing, speaking, reading, or listening.
+CCSS.ELA-LITERACY.L.6.3.A
+Vary sentence patterns for meaning, reader/listener interest, and style.*
+CCSS.ELA-LITERACY.L.6.3.B
+Maintain consistency in style and tone.*
+Vocabulary Acquisition and Use:
+CCSS.ELA-LITERACY.L.6.4
+Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 6 reading and content, choosing flexibly from a range of strategies.
+CCSS.ELA-LITERACY.L.6.4.A
+Use context (e.g., the overall meaning of a sentence or paragraph; a word's position or function in a sentence) as a clue to the meaning of a word or phrase.
+CCSS.ELA-LITERACY.L.6.4.B
+Use common, grade-appropriate Greek or Latin affixes and roots as clues to the meaning of a word (e.g., audience, auditory, audible).
+CCSS.ELA-LITERACY.L.6.4.C
+Consult reference materials (e.g., dictionaries, glossaries, thesauruses), both print and digital, to find the pronunciation of a word or determine or clarify its precise meaning or its part of speech.
+CCSS.ELA-LITERACY.L.6.4.D
+Verify the preliminary determination of the meaning of a word or phrase (e.g., by checking the inferred meaning in context or in a dictionary).
+CCSS.ELA-LITERACY.L.6.5
+Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.
+CCSS.ELA-LITERACY.L.6.5.A
+Interpret figures of speech (e.g., personification) in context.
+CCSS.ELA-LITERACY.L.6.5.B
+Use the relationship between particular words (e.g., cause/effect, part/whole, item/category) to better understand each of the words.
+CCSS.ELA-LITERACY.L.6.5.C
+Distinguish among the connotations (associations) of words with similar denotations (definitions) (e.g., stingy, scrimping, economical, unwasteful, thrifty).
+CCSS.ELA-LITERACY.L.6.6
+Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases; gather vocabulary knowledge when considering a word or phrase important to comprehension or expression.
+]

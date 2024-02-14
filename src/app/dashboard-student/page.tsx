@@ -118,6 +118,12 @@ const Dashboard = async (props: Props) => {
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
                 <DashboardCard
+                    icon={"hw-math"}
+                    title="Math HW Tutoring (beta)"
+                    description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
+                    pageLink="/hw-math/eeeee"
+                />
+                <DashboardCard
                     icon={"tutor"}
                     title="Personal Tutors"
                     description="Find tutors for your grade level and topics to get instant help with learning and homework. Work with the tutors your school district made!"

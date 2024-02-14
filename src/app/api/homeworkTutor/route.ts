@@ -26,47 +26,16 @@ export async function POST(req: Request) {
 
     let messages = body.messages;
 
-    const slicedMessages = messages.slice(-3);
-    const filteredConversation = slicedMessages.filter(
-        (item: any) => item.role !== "system"
-    );
-    const contentArray = filteredConversation.map((item: any) => item.content);
-    const conversationString = contentArray.join("\n\n");
-
     messages.unshift({
         role: "system",
-        content: body.defaultPrompt,
-    });
-
-    const client = new PineconeClient();
-    await client.init({
-        apiKey: process.env.PINECONE_API_KEY || "",
-        environment: process.env.PINECONE_ENVIRONMENT || "",
+        content: `You are a homework helper for a student. You will be given the question the student is trying to solve as well as steps on how to solve it. 
+        You are to help the student work out step by step how to solve it. For each step, ask the student how they think they should proceed. Only after 
+        they have given their answer should you provide the next step. Here is the question: [${body.homeworkQuestion}]. Here are the steps to the problem: [${body.steps}].`,
     });
 
     let latestQuestion = messages[messages.length - 1].content;
-    let context = "";
 
-    if (body.tutorType != null && body.tutorType === "Figure") {
-        const figLatestQuestion = body.tutorDisplayName + " " + latestQuestion;
-        context = await getContext(
-            client,
-            indexName,
-            figLatestQuestion,
-            body.tutorName,
-            conversationString
-        );
-    } else {
-        context = await getContext(
-            client,
-            indexName,
-            latestQuestion,
-            body.tutorName,
-            conversationString
-        );
-    }
-
-    const prompt = createPrompt(latestQuestion, context, body.defaultPrompt);
+    const prompt = "STUDENT's QUESTION: " + latestQuestion;
 
     messages[messages.length - 1].content = prompt;
     // messages = messages.slice(-4);

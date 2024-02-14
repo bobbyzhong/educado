@@ -1,0 +1,43 @@
+7th grade CA Common Core ELA: [
+    Conventions of Standard English:
+CCSS.ELA-LITERACY.L.7.1
+Demonstrate command of the conventions of standard English grammar and usage when writing or speaking.
+CCSS.ELA-LITERACY.L.7.1.A
+Explain the function of phrases and clauses in general and their function in specific sentences.
+CCSS.ELA-LITERACY.L.7.1.B
+Choose among simple, compound, complex, and compound-complex sentences to signal differing relationships among ideas.
+CCSS.ELA-LITERACY.L.7.1.C
+Place phrases and clauses within a sentence, recognizing and correcting misplaced and dangling modifiers.*
+CCSS.ELA-LITERACY.L.7.2
+Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.
+CCSS.ELA-LITERACY.L.7.2.A
+Use a comma to separate coordinate adjectives (e.g., It was a fascinating, enjoyable movie but not He wore an old[,] green shirt).
+CCSS.ELA-LITERACY.L.7.2.B
+Spell correctly.
+Knowledge of Language:
+CCSS.ELA-LITERACY.L.7.3
+Use knowledge of language and its conventions when writing, speaking, reading, or listening.
+CCSS.ELA-LITERACY.L.7.3.A
+Choose language that expresses ideas precisely and concisely, recognizing and eliminating wordiness and redundancy.*
+Vocabulary Acquisition and Use:
+CCSS.ELA-LITERACY.L.7.4
+Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 7 reading and content, choosing flexibly from a range of strategies.
+CCSS.ELA-LITERACY.L.7.4.A
+Use context (e.g., the overall meaning of a sentence or paragraph; a word's position or function in a sentence) as a clue to the meaning of a word or phrase.
+CCSS.ELA-LITERACY.L.7.4.B
+Use common, grade-appropriate Greek or Latin affixes and roots as clues to the meaning of a word (e.g., belligerent, bellicose, rebel).
+CCSS.ELA-LITERACY.L.7.4.C
+Consult general and specialized reference materials (e.g., dictionaries, glossaries, thesauruses), both print and digital, to find the pronunciation of a word or determine or clarify its precise meaning or its part of speech.
+CCSS.ELA-LITERACY.L.7.4.D
+Verify the preliminary determination of the meaning of a word or phrase (e.g., by checking the inferred meaning in context or in a dictionary).
+CCSS.ELA-LITERACY.L.7.5
+Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.
+CCSS.ELA-LITERACY.L.7.5.A
+Interpret figures of speech (e.g., literary, biblical, and mythological allusions) in context.
+CCSS.ELA-LITERACY.L.7.5.B
+Use the relationship between particular words (e.g., synonym/antonym, analogy) to better understand each of the words.
+CCSS.ELA-LITERACY.L.7.5.C
+Distinguish among the connotations (associations) of words with similar denotations (definitions) (e.g., refined, respectful, polite, diplomatic, condescending).
+CCSS.ELA-LITERACY.L.7.6
+Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases; gather vocabulary knowledge when considering a word or phrase important to comprehension or expression.
+]

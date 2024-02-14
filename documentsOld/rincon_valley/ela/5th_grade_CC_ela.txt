@@ -1,0 +1,53 @@
+5th Grade CA Common Core ELA: [
+    Conventions of Standard English:
+CCSS.ELA-LITERACY.L.5.1
+Demonstrate command of the conventions of standard English grammar and usage when writing or speaking.
+CCSS.ELA-LITERACY.L.5.1.A
+Explain the function of conjunctions, prepositions, and interjections in general and their function in particular sentences.
+CCSS.ELA-LITERACY.L.5.1.B
+Form and use the perfect (e.g., I had walked; I have walked; I will have walked) verb tenses.
+CCSS.ELA-LITERACY.L.5.1.C
+Use verb tense to convey various times, sequences, states, and conditions.
+CCSS.ELA-LITERACY.L.5.1.D
+Recognize and correct inappropriate shifts in verb tense.*
+CCSS.ELA-LITERACY.L.5.1.E
+Use correlative conjunctions (e.g., either/or, neither/nor).
+CCSS.ELA-LITERACY.L.5.2
+Demonstrate command of the conventions of standard English capitalization, punctuation, and spelling when writing.
+CCSS.ELA-LITERACY.L.5.2.A
+Use punctuation to separate items in a series.*
+CCSS.ELA-LITERACY.L.5.2.B
+Use a comma to separate an introductory element from the rest of the sentence.
+CCSS.ELA-LITERACY.L.5.2.C
+Use a comma to set off the words yes and no (e.g., Yes, thank you), to set off a tag question from the rest of the sentence (e.g., It's true, isn't it?), and to indicate direct address (e.g., Is that you, Steve?).
+CCSS.ELA-LITERACY.L.5.2.D
+Use underlining, quotation marks, or italics to indicate titles of works.
+CCSS.ELA-LITERACY.L.5.2.E
+Spell grade-appropriate words correctly, consulting references as needed.
+Knowledge of Language:
+CCSS.ELA-LITERACY.L.5.3
+Use knowledge of language and its conventions when writing, speaking, reading, or listening.
+CCSS.ELA-LITERACY.L.5.3.A
+Expand, combine, and reduce sentences for meaning, reader/listener interest, and style.
+CCSS.ELA-LITERACY.L.5.3.B
+Compare and contrast the varieties of English (e.g., dialects, registers) used in stories, dramas, or poems.
+Vocabulary Acquisition and Use:
+CCSS.ELA-LITERACY.L.5.4
+Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 5 reading and content, choosing flexibly from a range of strategies.
+CCSS.ELA-LITERACY.L.5.4.A
+Use context (e.g., cause/effect relationships and comparisons in text) as a clue to the meaning of a word or phrase.
+CCSS.ELA-LITERACY.L.5.4.B
+Use common, grade-appropriate Greek and Latin affixes and roots as clues to the meaning of a word (e.g., photograph, photosynthesis).
+CCSS.ELA-LITERACY.L.5.4.C
+Consult reference materials (e.g., dictionaries, glossaries, thesauruses), both print and digital, to find the pronunciation and determine or clarify the precise meaning of key words and phrases.
+CCSS.ELA-LITERACY.L.5.5
+Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.
+CCSS.ELA-LITERACY.L.5.5.A
+Interpret figurative language, including similes and metaphors, in context.
+CCSS.ELA-LITERACY.L.5.5.B
+Recognize and explain the meaning of common idioms, adages, and proverbs.
+CCSS.ELA-LITERACY.L.5.5.C
+Use the relationship between particular words (e.g., synonyms, antonyms, homographs) to better understand each of the words.
+CCSS.ELA-LITERACY.L.5.6
+Acquire and use accurately grade-appropriate general academic and domain-specific words and phrases, including those that signal contrast, addition, and other logical relationships (e.g., however, although, nevertheless, similarly, moreover, in addition).
+]
