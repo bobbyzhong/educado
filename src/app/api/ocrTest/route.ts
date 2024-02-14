@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             },
             { role: "user", content: body.textResult },
         ],
-        model: "gpt-3.5-turbo-0125",
+        model: "gpt-4-0125-preview",
         response_format: { type: "json_object" },
     });
     console.log("MESSAGE: ", completion.choices[0].message.content);
