@@ -6,7 +6,14 @@ import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
 import Link from "next/link";
-import { Globe, Loader2, Mic, Play, SendHorizonal } from "lucide-react";
+import {
+    Globe,
+    Loader2,
+    Mic,
+    Play,
+    RefreshCcw,
+    SendHorizonal,
+} from "lucide-react";
 import useSpeechRecognition from "../../../customHooks/SpeechHook";
 import { is } from "date-fns/locale";
 import {
@@ -20,6 +27,9 @@ import {
 import { createWorker } from "tesseract.js";
 import { Input } from "../ui/input";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { set } from "date-fns";
+import { decode } from "punycode";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -60,6 +70,12 @@ export default function HWChat({
     const [steps, setSteps] = useState<any>([]);
     const [solveLoading, setSolveLoading] = useState(false);
     const [processingImg, setProcessingImg] = useState(false);
+    const [secInput, setSecInput] = useState("");
+
+    const handleSecInputChange = (e: any) => {
+        setSecInput(e.target.value);
+        setInput(e.target.value);
+    };
 
     const {
         messages,
@@ -140,14 +156,26 @@ export default function HWChat({
 
     const handleKeypress = (e: any) => {
         // It's triggers by pressing the enter key
+
         if (e.keyCode == 13 && !e.shiftKey) {
-            onHandleSubmit(e);
+            setSecInput("");
+            handleSubmit(e);
             e.preventDefault();
         }
     };
 
     const onHandleSubmit = async (e: any) => {
+        setSecInput("");
         handleSubmit(e);
+    };
+
+    const resetProblem = () => {
+        setSteps([]);
+        setSelectedImage("");
+        setTextResult("");
+        messages.splice(0, messages.length);
+        setSecInput("");
+        setInput("");
     };
 
     const [isRecording, setIsRecording] = useState(false);
@@ -235,6 +263,7 @@ export default function HWChat({
                             be limited in functionality. The team at Educado is
                             working hard to improve it!*
                         </p>
+
                         <Input
                             className="cursor-pointer mt-3"
                             type="file"
@@ -274,7 +303,7 @@ export default function HWChat({
                             </div>
                         </div> */}
                         {messages.length > 0 &&
-                            messages.map((m) => (
+                            messages.map((m: any) => (
                                 <div key={m.id} className="my-3">
                                     {m.role === "user" ? (
                                         <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
@@ -515,7 +544,7 @@ export default function HWChat({
                                     </div>
 
                                     <Textarea
-                                        value={input}
+                                        value={secInput}
                                         tabIndex={0}
                                         ref={textAreaRef}
                                         style={{
@@ -527,7 +556,7 @@ export default function HWChat({
                                         className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
                                   focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2 dark:text-black
                                   md:pl-0"
-                                        onChange={handleInputChange}
+                                        onChange={handleSecInputChange}
                                         onKeyDown={handleKeypress}
                                     />
                                     {true ? (
@@ -657,6 +686,32 @@ export default function HWChat({
                         </div>
                     </div>
                 </form>
+                {messages.length > 0 && (
+                    <div className=" hidden w-full md:grid md:grid-cols-7 justify-center ">
+                        <div></div>
+
+                        <div
+                            className="w-full col-start-2 col-end-7 lg:col-start-3 lg:col-end-6  flex mb-5 text-[15px] font-outfit items-center justify-center 
+                md:px-0 "
+                        >
+                            {essayPrompt ? (
+                                <div className="font-medium text-[16px] text-center">
+                                    <b>Prompt</b>: {essayPrompt}
+                                </div>
+                            ) : (
+                                <h1 className=" text-center flex flex-row items-center gap-2">
+                                    Have another problem to work on?
+                                    <div
+                                        onClick={resetProblem}
+                                        className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px] -translate-x-1"
+                                    >
+                                        Click here!
+                                    </div>
+                                </h1>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

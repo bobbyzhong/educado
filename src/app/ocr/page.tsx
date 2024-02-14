@@ -53,7 +53,7 @@ const OCR = (props: Props) => {
       
       useEffect(() => {
         convertImageToText();
-      }, [selectedImage, convertImageToText]);
+      }, [croppedImage, convertImageToText]);
       
       const handleStartProblem = async () => {
         console.log("Problem: ", textResult);
@@ -78,8 +78,6 @@ const OCR = (props: Props) => {
             // setKnowns(knowns);
             // setUnknowns(unknowns);
           };
-          
-          console.log("what is selected image", selectedImage);
 
           return (
             <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
