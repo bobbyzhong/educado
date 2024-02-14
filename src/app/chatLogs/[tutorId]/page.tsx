@@ -33,7 +33,7 @@ const ChatLogs = async ({ params: { tutorId } }: Props) => {
                     </div>
                 </div>
 
-                <RecentQuestions limit={100} tutorId={tutorId} />
+                <RecentQuestions limit={500} tutorId={tutorId} />
             </div>
         </>
     );
