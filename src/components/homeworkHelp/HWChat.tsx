@@ -158,13 +158,14 @@ export default function HWChat({
         // It's triggers by pressing the enter key
 
         if (e.keyCode == 13 && !e.shiftKey) {
+            setSecInput("");
             handleSubmit(e);
             e.preventDefault();
         }
     };
 
     const onHandleSubmit = async (e: any) => {
-        console.log("INPUT: ", input);
+        setSecInput("");
         handleSubmit(e);
     };
 
@@ -173,6 +174,8 @@ export default function HWChat({
         setSelectedImage("");
         setTextResult("");
         messages.splice(0, messages.length);
+        setSecInput("");
+        setInput("");
     };
 
     const [isRecording, setIsRecording] = useState(false);
@@ -541,7 +544,7 @@ export default function HWChat({
                                     </div>
 
                                     <Textarea
-                                        value={input}
+                                        value={secInput}
                                         tabIndex={0}
                                         ref={textAreaRef}
                                         style={{
