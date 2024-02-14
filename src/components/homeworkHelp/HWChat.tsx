@@ -164,13 +164,16 @@ export default function HWChat({
 
         if (e.keyCode == 13 && !e.shiftKey) {
             handleSubmit(e);
+            setSecInput("");
+            setInput("");
             e.preventDefault();
         }
     };
 
     const onHandleSubmit = async (e: any) => {
-        console.log("INPUT: ", input);
         handleSubmit(e);
+        setSecInput("");
+        setInput("");
     };
 
     const resetProblem = () => {
