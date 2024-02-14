@@ -99,6 +99,7 @@ export default function HWChat({
         const worker = await createWorker("eng");
         const { data } = await worker.recognize(selectedImage);
         setTextResult(data.text);
+        console.log(data.text);
         await worker.terminate();
         setProcessingImg(false);
     }, [selectedImage]);
