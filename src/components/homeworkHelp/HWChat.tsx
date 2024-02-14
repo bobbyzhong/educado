@@ -125,7 +125,6 @@ export default function HWChat({
         //         "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
         //     ]
         // }`;
-        console.log("RES DATA: ", res);
         // const resObj = JSON.parse(res);
         const resObj = JSON.parse(res.data.data);
         const steps = resObj.steps;
