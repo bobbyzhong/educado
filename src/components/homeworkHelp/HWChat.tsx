@@ -30,6 +30,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { set } from "date-fns";
 import { decode } from "punycode";
+import { set } from "date-fns";
+import { decode } from "punycode";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -71,7 +73,12 @@ export default function HWChat({
     const [solveLoading, setSolveLoading] = useState(false);
     const [processingImg, setProcessingImg] = useState(false);
     const [secInput, setSecInput] = useState("");
+    const [secInput, setSecInput] = useState("");
 
+    const handleSecInputChange = (e: any) => {
+        setSecInput(e.target.value);
+        setInput(e.target.value);
+    };
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
         setInput(e.target.value);
@@ -157,6 +164,7 @@ export default function HWChat({
     const handleKeypress = (e: any) => {
         // It's triggers by pressing the enter key
 
+
         if (e.keyCode == 13 && !e.shiftKey) {
             handleSubmit(e);
             e.preventDefault();
@@ -173,6 +181,8 @@ export default function HWChat({
         setSelectedImage("");
         setTextResult("");
         messages.splice(0, messages.length);
+        setSecInput("");
+        setInput("");
     };
 
     const [isRecording, setIsRecording] = useState(false);
@@ -300,6 +310,7 @@ export default function HWChat({
                             </div>
                         </div> */}
                         {messages.length > 0 &&
+                            messages.map((m: any) => (
                             messages.map((m: any) => (
                                 <div key={m.id} className="my-3">
                                     {m.role === "user" ? (
@@ -541,7 +552,7 @@ export default function HWChat({
                                     </div>
 
                                     <Textarea
-                                        value={input}
+                                        value={secInput}
                                         tabIndex={0}
                                         ref={textAreaRef}
                                         style={{
@@ -553,6 +564,7 @@ export default function HWChat({
                                         className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
                                   focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2 dark:text-black
                                   md:pl-0"
+                                        onChange={handleSecInputChange}
                                         onChange={handleSecInputChange}
                                         onKeyDown={handleKeypress}
                                     />
