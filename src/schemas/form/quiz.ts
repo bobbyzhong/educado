@@ -96,6 +96,23 @@ export const createTutorRequestSchema = z.object({
     visibility: z.boolean().optional(),
 });
 
+export const createHelperSchema = z.object({
+    chosenName: z
+        .string()
+        .min(1, { message: "Tutor name must be at least 1 characters long" }),
+
+    subject: z.string().min(1, { message: "Must choose subject" }),
+});
+
+export const createHelperAPISchema = z.object({
+    chosenName: z
+        .string()
+        .min(1, { message: "Tutor name must be at least 1 characters long" }),
+
+    userId: z.string(),
+    subject: z.string().min(1, { message: "Must choose subject" }),
+});
+
 export const createTutorAPISchema = z.object({
     teacherName: z.string(),
     chosenName: z

@@ -58,7 +58,7 @@ const Navbar = async () => {
                             mode={"dashboard"}
                             className="md:ml-8 mx-3"
                         />
-                        <ThemeToggle mode={"manageTutor"} className="mx-3" />
+                        <ThemeToggle mode={"manageHelper"} className="mx-3" />
                         <ThemeToggle mode={"manageFigure"} className="mx-3" />
                     </div>
                 ) : (

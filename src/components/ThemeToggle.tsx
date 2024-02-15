@@ -51,19 +51,19 @@ export function ThemeToggle({ className, mode }: Props) {
                 <div className="text-sm ml-2 md:block hidden">Tutors</div>
             </div>
         );
-    } else if (mode == "manageTutor") {
+    } else if (mode == "manageHelper") {
         return (
             <div
                 className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
             >
                 <Button
-                    onClick={() => router.push("/manage-tutors")}
+                    onClick={() => router.push("/manage-helpers")}
                     variant="outline"
                     size="icon"
                 >
                     <BookKey size={23} />
                 </Button>
-                <div className="text-sm ml-2 md:block hidden">Tutors</div>
+                <div className="text-sm ml-2 md:block hidden">HW Helpers</div>
             </div>
         );
     } else if (mode == "manageFigure") {

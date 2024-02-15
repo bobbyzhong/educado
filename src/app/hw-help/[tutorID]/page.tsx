@@ -41,6 +41,10 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
         return redirect("/dashboard-teacher");
     }
 
+    if (!tutor.isHomework) {
+        return redirect(`/tutor/${tutor.id}`);
+    }
+
     const tutorType = tutor.tutorType;
 
     if (!session?.user.id) {

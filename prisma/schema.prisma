@@ -170,6 +170,7 @@ model Tutor {
   grade String?
   subject String?
   tutorType String?
+  isHomework Boolean? @default(false)
   placeholderQs String? @db.Text
   basePrompt String? @db.Text
   dateCreated BigInt? 

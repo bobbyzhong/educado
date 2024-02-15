@@ -65,7 +65,7 @@ const StudentEnterCode = ({
                     }),
                 });
             }
-            router.push(`/${link}/${code}`);
+            router.push(`/hw-help/${code}`);
             setIsLoading(false);
         } else {
             signIn("google", { callbackUrl: `/${link}/${code}` }).catch(

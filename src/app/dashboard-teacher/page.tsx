@@ -49,7 +49,31 @@ const DashboardTeacher = async (props: Props) => {
 
     return (
         <main className="p-8 mx-auto max-w-7xl">
-            <div className="flex items-center">
+            <div className="flex items-center mt-8">
+                <div className="flex flex-col gap-1">
+                    <h2 className="mr-2 text-[28px] font-bold tracking-tight">
+                        Homework Helpers{" "}
+                        <span className="text-green font-medium text-xl">
+                            beta
+                        </span>
+                    </h2>
+                    <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
+                        Create and manage homework helpers here! These tutors
+                        help students work through homework problems step by
+                        step!
+                    </h1>
+                </div>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-3 mt-4">
+                <DashboardCard
+                    icon={"hw-math"}
+                    title="Manage Helpers"
+                    description="Create and manage all your homework helpers here. See what questions students have been asking and share tutors with your students!"
+                    pageLink="/manage-helpers"
+                />
+            </div>
+            <div className="flex items-center mt-8">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
                         Your Dashboard
