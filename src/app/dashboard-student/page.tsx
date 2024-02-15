@@ -124,7 +124,7 @@ const Dashboard = async (props: Props) => {
                     icon={"hw-math"}
                     title="Math HW Help"
                     description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
-                    pageLink="/hw-math/eeeee"
+                    pageLink="/hw-help/eeeee"
                 />
             </div>
 
