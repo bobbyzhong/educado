@@ -138,7 +138,7 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
         id: "1",
         role: "system",
         content:
-            "Given a general quadratic equation of the form $$ax^{2} + bx + c = 0$$",
+            "Given a general 2**5 quadratic equation of the form $$ax^{2} + bx + c = 0$$",
     });
     messages.push({
         id: "2",
@@ -151,6 +151,14 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
         role: "system",
         content: "( h = 3a + 286 )",
     });
+
+    // HERE {
+    //   question: 'show me what an exponenet looks like',
+    //   studentName: 'Bobby Zhong',
+    //   tutorId: 'edf0e5d0-5fde-11ee-8c99-9232ac129345',
+    //   userId: 'cls73cqux000076kgkai2zfel',
+    //   answer: "It seems like you're asking to understand what an exponent looks like visually. An exponent is a small number written above and to the right of a base number, which indicates how many times the base number should be multiplied by itself. For example, in the expression \\( 2^3 \\), the base number is 2 and the exponent is 3, meaning 2 should be multiplied by itself 3 times. Would you like more examples or clarification on exponents?"
+    // }
 
     const handleStartProblem = async () => {
         if (!textResult) return;
@@ -343,18 +351,18 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                                                     alt={"Steve: "}
                                                     className="object-contain "
                                                 />
-                                                {/* <ReactMarkdown
+                                                <ReactMarkdown
                                                     className={" prose "}
                                                 >
                                                     {m.content}
-                                                </ReactMarkdown> */}
+                                                </ReactMarkdown>
                                                 {/* <KatexSpan
-                                                        className="prose"
-                                                        text={m.content}
-                                                    /> */}
-                                                <div className="markdown prose">
+                                                    className="prose"
+                                                    text={m.content}
+                                                /> */}
+                                                {/* <div className="markdown prose">
                                                     {m.content}
-                                                </div>
+                                                </div> */}
                                             </div>
                                         )}
                                     </div>
