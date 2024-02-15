@@ -107,7 +107,31 @@ const Dashboard = async (props: Props) => {
             <div className="flex items-center mt-8">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
-                        Your Dashboard
+                        Homework Help{" "}
+                        <span className="text-green font-medium text-xl">
+                            beta
+                        </span>
+                    </h2>
+                    <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
+                        Upload a picture of a problem and get step by step help
+                        on it! Still in early stages of development though
+                    </h1>
+                </div>
+            </div>
+
+            <div className="grid gap-5 mt-4 md:grid-cols-3">
+                <DashboardCard
+                    icon={"hw-math"}
+                    title="Math HW Help"
+                    description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
+                    pageLink="/hw-math/eeeee"
+                />
+            </div>
+
+            <div className="flex items-center mt-8">
+                <div className="flex flex-col gap-1">
+                    <h2 className="mr-2 text-[28px] font-bold tracking-tight">
+                        Tutors and Figures!
                     </h2>
                     <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
                         Below you’ll be able to find different tutors and
@@ -118,22 +142,16 @@ const Dashboard = async (props: Props) => {
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
                 <DashboardCard
-                    icon={"hw-math"}
-                    title="Math HW Tutoring (beta)"
-                    description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
-                    pageLink="/hw-math/eeeee"
-                />
-                <DashboardCard
-                    icon={"tutor"}
-                    title="Personal Tutors"
-                    description="Find tutors for your grade level and topics to get instant help with learning and homework. Work with the tutors your school district made!"
-                    pageLink="/tutors"
-                />
-                <DashboardCard
                     icon={"figure"}
                     title="Historical + Famous Figures"
                     description="Explore different historical and famous figures to learn about their lives or just have a conversation with them!"
                     pageLink="/figures"
+                />
+                <DashboardCard
+                    icon={"tutor"}
+                    title="Personal Tutors"
+                    description="Find tutors for your grade level and topics to get instant help. Work with the tutors your school district made!"
+                    pageLink="/tutors"
                 />
                 <DashboardCard
                     icon={"contact"}

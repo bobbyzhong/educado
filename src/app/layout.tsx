@@ -30,6 +30,7 @@ export default function RootLayout({
                 )}
             >
                 <GoogleAnalytics />
+
                 <Providers>
                     <Navbar />
                     {children}

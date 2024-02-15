@@ -31,6 +31,7 @@ import { useRouter } from "next/navigation";
 import { set } from "date-fns";
 import { decode } from "punycode";
 import { ImageCropModal } from "../ImageCropModal";
+import KatexSpan from "../KatexSpan";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -79,6 +80,10 @@ export default function HWChat({
         setSecInput(e.target.value);
         setInput(e.target.value);
     };
+    const quadraticEquationTest = `Given a general quadratic equation of the form
+$$ax^{2} + bx + c = 0$$
+with $x$ representing an unknown, with $a$, $b$ and $c$ representing constants, and with $a \\ne 0$, the quadratic formula is:
+$$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
 
     const {
         messages,
@@ -129,26 +134,44 @@ export default function HWChat({
         convertImageToText();
     }, [selectedImage, convertImageToText]);
 
+    messages.push({
+        id: "1",
+        role: "system",
+        content:
+            "Given a general quadratic equation of the form $$ax^{2} + bx + c = 0$$",
+    });
+    messages.push({
+        id: "2",
+        role: "user",
+        content: "( h = 3a + 286 )",
+    });
+
+    messages.push({
+        id: "3",
+        role: "system",
+        content: "( h = 3a + 286 )",
+    });
+
     const handleStartProblem = async () => {
         if (!textResult) return;
         setSolveLoading(true);
 
         console.log("Problem: ", textResult);
         try {
-            const res = await axios.post("/api/ocrTest", {
-                textResult,
-            });
-            // const res = `{
-            //     "steps": [
-            //         "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
-            //         "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
-            //         "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
-            //         "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
-            //         "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
-            //     ]
-            // }`;
-            // const resObj = JSON.parse(res);
-            const resObj = JSON.parse(res.data.data);
+            // const res = await axios.post("/api/ocrTest", {
+            //     textResult,
+            // });
+            const res = `{
+                "steps": [
+                    "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
+                    "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
+                    "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
+                    "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
+                    "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
+                ]
+            }`;
+            const resObj = JSON.parse(res);
+            // const resObj = JSON.parse(res.data.data);
             const steps = resObj.steps;
             setSteps(steps);
             setSolveLoading(false);
@@ -296,6 +319,48 @@ export default function HWChat({
                             )}
                         </div>
 
+                        <div className="font-sans">
+                            {messages.length > 0 &&
+                                messages.map((m: any) => (
+                                    <div key={m.id} className="my-3">
+                                        {m.role === "user" ? (
+                                            <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                                <Image
+                                                    src={"/userIcon.png"}
+                                                    height={45}
+                                                    width={45}
+                                                    alt={"User: "}
+                                                    className="object-contain"
+                                                />
+                                                <KatexSpan text={m.content} />
+                                            </div>
+                                        ) : (
+                                            <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
+                                                <Image
+                                                    src={"/educadoIcon.png"}
+                                                    height={45}
+                                                    width={45}
+                                                    alt={"Steve: "}
+                                                    className="object-contain "
+                                                />
+                                                {/* <ReactMarkdown
+                                                    className={" prose "}
+                                                >
+                                                    {m.content}
+                                                </ReactMarkdown> */}
+                                                {/* <KatexSpan
+                                                        className="prose"
+                                                        text={m.content}
+                                                    /> */}
+                                                <div className="markdown prose">
+                                                    {m.content}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                        </div>
+
                         {/* DELETE THIS */}
                         {/* <div className="flex flex-col">
                             <div className="mt-10 p-5 border-2 w-9/12">
@@ -315,40 +380,6 @@ export default function HWChat({
                                 </div>
                             </div>
                         </div> */}
-                        {messages.length > 0 &&
-                            messages.map((m: any) => (
-                                <div key={m.id} className="my-3">
-                                    {m.role === "user" ? (
-                                        <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
-                                            <Image
-                                                src={"/userIcon.png"}
-                                                height={45}
-                                                width={45}
-                                                alt={"User: "}
-                                                className="object-contain"
-                                            />
-                                            <ReactMarkdown className={"prose"}>
-                                                {m.content}
-                                            </ReactMarkdown>
-                                        </div>
-                                    ) : (
-                                        <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
-                                            <Image
-                                                src={"/educadoIcon.png"}
-                                                height={45}
-                                                width={45}
-                                                alt={"Steve: "}
-                                                className="object-contain "
-                                            />
-                                            <ReactMarkdown
-                                                className={" prose "}
-                                            >
-                                                {m.content}
-                                            </ReactMarkdown>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
                     </div>
 
                     <div className=" h-[12px] w-full "></div>
