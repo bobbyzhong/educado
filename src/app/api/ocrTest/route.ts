@@ -1,5 +1,6 @@
 // app/api/chat/route.ts
-
+export const maxDuration = 30; // 5 seconds
+export const dynamic = "force-dynamic";
 import OpenAI from "openai";
 import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
 import {
