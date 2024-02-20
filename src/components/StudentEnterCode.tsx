@@ -68,7 +68,7 @@ const StudentEnterCode = ({
             router.push(`/hw-help/${code}`);
             setIsLoading(false);
         } else {
-            signIn("google", { callbackUrl: `/${link}/${code}` }).catch(
+            signIn("google", { callbackUrl: `/hw-help/${code}` }).catch(
                 console.error
             );
             setIsLoading(false);
