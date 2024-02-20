@@ -120,38 +120,27 @@ export default function HWChat({
 
     const handleStartProblem = async () => {
         if (!croppedImage) return;
-        console.log("CROPPED IMAGE: ", croppedImage);
         setProcessingImg(true);
         setTextResult("");
-        // const base64 = await toBase64(croppedImage);
-        console.log("BASE64: ", base64);
 
-        const res = await fetch("https://api.mathpix.com/v3/text", {
+        const res = await fetch("/api/mathpix", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
-                app_id: process.env.NEXT_PUBLIC_MATHPIX_APP_ID!,
-                app_key: process.env.NEXT_PUBLIC_MATHPIX_APP_KEY!,
             },
             body: JSON.stringify({
-                src: base64,
-                formats: ["text", "data", "html"],
-                data_options: {
-                    include_asciimath: true,
-                    include_latex: true,
-                },
+                base64: base64,
             }),
         });
 
         const data: any = await res.json();
-        console.log("MATHPIX DATA:", data);
-        setTextResult(data.text);
+        const mathData = data.data;
+        console.log("MATHPIX DATA:", mathData);
+        setTextResult(mathData.text);
         setSolveLoading(true);
-
-        console.log("Problem: ", data.text);
         try {
             const res = await axios.post("/api/ocrTest", {
-                textResult: data.text,
+                textResult: mathData.text,
             });
             const resObj = JSON.parse(res.data.data);
             // const res = `{
@@ -166,7 +155,6 @@ export default function HWChat({
             // const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
-            console.log("STEPS", steps);
             setSteps(steps);
             setSolveLoading(false);
             messages.push({
@@ -693,12 +681,7 @@ export default function HWChat({
                                                             Start Problem
                                                         </div>
                                                         <Play
-                                                            color={
-                                                                textResult.length ==
-                                                                0
-                                                                    ? "#D3D3D3"
-                                                                    : "#86D20A"
-                                                            }
+                                                            color={"#86D20A"}
                                                             size={26}
                                                         />
                                                     </div>

@@ -90,7 +90,6 @@ export const ImageCropModal = ({
             const croppedBlob: any = await getCroppedImg(imgRef.current, crop);
 
             const base64 = await toBase64(croppedBlob);
-            console.log("BASE 64", base64);
             setBase64(base64);
             setCroppedImage(URL.createObjectURL(croppedBlob));
             setOpen(false);
