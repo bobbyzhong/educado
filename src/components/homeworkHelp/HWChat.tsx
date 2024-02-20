@@ -31,7 +31,8 @@ import { useRouter } from "next/navigation";
 import { set } from "date-fns";
 import { decode } from "punycode";
 import { ImageCropModal } from "../ImageCropModal";
-import KatexSpan from "../KatexSpan";
+import Latex from "react-latex-next";
+import "katex/dist/katex.min.css";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -75,15 +76,13 @@ export default function HWChat({
     const [secInput, setSecInput] = useState("");
     const [cropModalOpen, setCropModalOpen] = useState(false);
     const [croppedImage, setCroppedImage] = useState<any>(null);
+    const [imageFile, setImageFile] = useState<any>(null);
+    const [base64, setBase64] = useState();
 
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
         setInput(e.target.value);
     };
-    const quadraticEquationTest = `Given a general quadratic equation of the form
-$$ax^{2} + bx + c = 0$$
-with $x$ representing an unknown, with $a$, $b$ and $c$ representing constants, and with $a \\ne 0$, the quadratic formula is:
-$$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
 
     const {
         messages,
@@ -115,72 +114,59 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
         if (e.target.files && e.target.files[0]) {
             setCropModalOpen(true);
             setSelectedImage(URL.createObjectURL(e.target.files[0]));
+            setImageFile(e.target.files[0]);
         }
     };
 
-    const convertImageToText = useCallback(async () => {
+    const handleStartProblem = async () => {
         if (!croppedImage) return;
+        console.log("CROPPED IMAGE: ", croppedImage);
         setProcessingImg(true);
         setTextResult("");
-        const worker = await createWorker("eng");
-        const { data } = await worker.recognize(croppedImage);
+        // const base64 = await toBase64(croppedImage);
+        console.log("BASE64: ", base64);
+
+        const res = await fetch("https://api.mathpix.com/v3/text", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                app_id: process.env.NEXT_PUBLIC_MATHPIX_APP_ID!,
+                app_key: process.env.NEXT_PUBLIC_MATHPIX_APP_KEY!,
+            },
+            body: JSON.stringify({
+                src: base64,
+                formats: ["text", "data", "html"],
+                data_options: {
+                    include_asciimath: true,
+                    include_latex: true,
+                },
+            }),
+        });
+
+        const data: any = await res.json();
+        console.log("MATHPIX DATA:", data);
         setTextResult(data.text);
-        console.log(data.text);
-        await worker.terminate();
-        setProcessingImg(false);
-    }, [croppedImage]);
-
-    useEffect(() => {
-        convertImageToText();
-    }, [selectedImage, convertImageToText]);
-
-    messages.push({
-        id: "1",
-        role: "system",
-        content:
-            "Given a general 2**5 quadratic equation of the form $$ax^{2} + bx + c = 0$$",
-    });
-    messages.push({
-        id: "2",
-        role: "user",
-        content: "( h = 3a + 286 )",
-    });
-
-    messages.push({
-        id: "3",
-        role: "system",
-        content: "( h = 3a + 286 )",
-    });
-
-    // HERE {
-    //   question: 'show me what an exponenet looks like',
-    //   studentName: 'Bobby Zhong',
-    //   tutorId: 'edf0e5d0-5fde-11ee-8c99-9232ac129345',
-    //   userId: 'cls73cqux000076kgkai2zfel',
-    //   answer: "It seems like you're asking to understand what an exponent looks like visually. An exponent is a small number written above and to the right of a base number, which indicates how many times the base number should be multiplied by itself. For example, in the expression \\( 2^3 \\), the base number is 2 and the exponent is 3, meaning 2 should be multiplied by itself 3 times. Would you like more examples or clarification on exponents?"
-    // }
-
-    const handleStartProblem = async () => {
-        if (!textResult) return;
         setSolveLoading(true);
 
-        console.log("Problem: ", textResult);
+        console.log("Problem: ", data.text);
         try {
-            // const res = await axios.post("/api/ocrTest", {
-            //     textResult,
-            // });
-            const res = `{
-                "steps": [
-                    "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
-                    "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
-                    "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
-                    "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
-                    "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
-                ]
-            }`;
-            const resObj = JSON.parse(res);
-            // const resObj = JSON.parse(res.data.data);
+            const res = await axios.post("/api/ocrTest", {
+                textResult: data.text,
+            });
+            const resObj = JSON.parse(res.data.data);
+            // const res = `{
+            //     "steps": [
+            //         "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
+            //         "2. Understand the model: The model shows that height (h) is a linear function of age (a).",
+            //         "3. Recognize that the coefficient of 'a' in the equation represents the increase in height per year.",
+            //         "4. Isolate the coefficient: The coefficient of 'a' in the equation is 3.",
+            //         "5. Conclude that the estimated increase in height for a boy each year is 3 inches, as that is the coefficient of the age variable 'a' in the pediatrician's model."
+            //     ]
+            // }`;
+            // const resObj = JSON.parse(res);
+
             const steps = resObj.steps;
+            console.log("STEPS", steps);
             setSteps(steps);
             setSolveLoading(false);
             messages.push({
@@ -258,7 +244,7 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
     };
     useEffect(() => {
         setInput(transcript); // Set the input value to text
-    }, [transcript]);
+    }, [transcript, setInput]);
     useEffect(() => {
         setTranscript(input); // Set the input value to text
     }, [input]);
@@ -289,7 +275,7 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                   items-center w-full mb-5 flex-1 flex-col overflow-y-scroll  "
             >
                 <div className="max-w-[50rem] ">
-                    <div className="mt-12 md:mt-10 mx-3 font-outfit flex flex-col items-center justify-center ">
+                    <div className="mt-12 md:mt-10 mx-3 flex flex-col items-center justify-center ">
                         <div className="flex w-full items-center justify-center flex-col">
                             <h1 className="text-3xl font-semibold text-center">
                                 Hey, I’m{" "}
@@ -327,48 +313,6 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                             )}
                         </div>
 
-                        <div className="font-sans">
-                            {messages.length > 0 &&
-                                messages.map((m: any) => (
-                                    <div key={m.id} className="my-3">
-                                        {m.role === "user" ? (
-                                            <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
-                                                <Image
-                                                    src={"/userIcon.png"}
-                                                    height={45}
-                                                    width={45}
-                                                    alt={"User: "}
-                                                    className="object-contain"
-                                                />
-                                                <KatexSpan text={m.content} />
-                                            </div>
-                                        ) : (
-                                            <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
-                                                <Image
-                                                    src={"/educadoIcon.png"}
-                                                    height={45}
-                                                    width={45}
-                                                    alt={"Steve: "}
-                                                    className="object-contain "
-                                                />
-                                                <ReactMarkdown
-                                                    className={" prose "}
-                                                >
-                                                    {m.content}
-                                                </ReactMarkdown>
-                                                {/* <KatexSpan
-                                                    className="prose"
-                                                    text={m.content}
-                                                /> */}
-                                                {/* <div className="markdown prose">
-                                                    {m.content}
-                                                </div> */}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                        </div>
-
                         {/* DELETE THIS */}
                         {/* <div className="flex flex-col">
                             <div className="mt-10 p-5 border-2 w-9/12">
@@ -388,6 +332,34 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                                 </div>
                             </div>
                         </div> */}
+                        {messages.length > 0 &&
+                            messages.map((m: any) => (
+                                <div key={m.id} className="my-3">
+                                    {m.role === "user" ? (
+                                        <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                            <Image
+                                                src={"/userIcon.png"}
+                                                height={45}
+                                                width={45}
+                                                alt={"User: "}
+                                                className="object-contain"
+                                            />
+                                            <Latex>{m.content}</Latex>
+                                        </div>
+                                    ) : (
+                                        <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
+                                            <Image
+                                                src={"/educadoIcon.png"}
+                                                height={45}
+                                                width={45}
+                                                alt={"Steve: "}
+                                                className="object-contain "
+                                            />
+                                            <Latex>{m.content}</Latex>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                     </div>
 
                     <div className=" h-[12px] w-full "></div>
@@ -710,12 +682,13 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                                                 ) : (
                                                     <div className="flex flex-row items-center justify-center">
                                                         <div
-                                                            className={`py-3 mr-3 font-outfit ${
-                                                                textResult.length ==
-                                                                0
-                                                                    ? "text-[#c0c0c0]"
-                                                                    : "text-[#86D20A]"
-                                                            }`}
+                                                            // className={`py-3 mr-3 font-outfit ${
+                                                            //     textResult.length ==
+                                                            //     0
+                                                            //         ? "text-[#c0c0c0]"
+                                                            //         : "text-[#86D20A]"
+                                                            // }`}
+                                                            className={`py-3 mr-3 font-outfit text-[#86D20A]`}
                                                         >
                                                             Start Problem
                                                         </div>
@@ -771,6 +744,7 @@ $$x = \\frac{-b \\pm \\sqrt{b^{2} - 4ac}}{2a}$$`;
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
                 setCroppedImage={setCroppedImage}
+                setBase64={setBase64}
             />
         </div>
     );

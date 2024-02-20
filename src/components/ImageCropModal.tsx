@@ -20,6 +20,7 @@ import ReactCrop, {
     convertToPixelCrop,
 } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
+import { set } from "date-fns";
 
 type Props = {
     open: boolean;
@@ -27,6 +28,7 @@ type Props = {
     selectedImage: any;
     setSelectedImage: (image: any) => void;
     setCroppedImage: (image: any) => void;
+    setBase64: any;
 };
 export const ImageCropModal = ({
     open,
@@ -34,6 +36,7 @@ export const ImageCropModal = ({
     selectedImage,
     setSelectedImage,
     setCroppedImage,
+    setBase64,
 }: Props) => {
     const [crop, setCrop] = useState<Crop>({
         unit: "%",
@@ -72,9 +75,23 @@ export const ImageCropModal = ({
         });
     };
 
+    const toBase64 = (blob: Blob) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        return new Promise((resolve) => {
+            reader.onloadend = () => {
+                resolve(reader.result);
+            };
+        });
+    };
+
     const onSubmitCrop = async () => {
         if (crop?.width && crop?.height && imgRef.current) {
             const croppedBlob: any = await getCroppedImg(imgRef.current, crop);
+
+            const base64 = await toBase64(croppedBlob);
+            console.log("BASE 64", base64);
+            setBase64(base64);
             setCroppedImage(URL.createObjectURL(croppedBlob));
             setOpen(false);
         }
