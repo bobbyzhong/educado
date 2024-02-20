@@ -31,6 +31,8 @@ import { useRouter } from "next/navigation";
 import { set } from "date-fns";
 import { decode } from "punycode";
 import { ImageCropModal } from "../ImageCropModal";
+import Latex from "react-latex-next";
+import "katex/dist/katex.min.css";
 
 const examples = [
     "Give me a bullet list of facts about temperature",
@@ -74,6 +76,8 @@ export default function HWChat({
     const [secInput, setSecInput] = useState("");
     const [cropModalOpen, setCropModalOpen] = useState(false);
     const [croppedImage, setCroppedImage] = useState<any>(null);
+    const [imageFile, setImageFile] = useState<any>(null);
+    const [base64, setBase64] = useState();
 
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
@@ -110,34 +114,46 @@ export default function HWChat({
         if (e.target.files && e.target.files[0]) {
             setCropModalOpen(true);
             setSelectedImage(URL.createObjectURL(e.target.files[0]));
+            setImageFile(e.target.files[0]);
         }
     };
 
-    const convertImageToText = useCallback(async () => {
+    const handleStartProblem = async () => {
         if (!croppedImage) return;
+        console.log("CROPPED IMAGE: ", croppedImage);
         setProcessingImg(true);
         setTextResult("");
-        const worker = await createWorker("eng");
-        const { data } = await worker.recognize(croppedImage);
+        // const base64 = await toBase64(croppedImage);
+        console.log("BASE64: ", base64);
+
+        const res = await fetch("https://api.mathpix.com/v3/text", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                app_id: process.env.NEXT_PUBLIC_MATHPIX_APP_ID!,
+                app_key: process.env.NEXT_PUBLIC_MATHPIX_APP_KEY!,
+            },
+            body: JSON.stringify({
+                src: base64,
+                formats: ["text", "data", "html"],
+                data_options: {
+                    include_asciimath: true,
+                    include_latex: true,
+                },
+            }),
+        });
+
+        const data: any = await res.json();
+        console.log("MATHPIX DATA:", data);
         setTextResult(data.text);
-        console.log(data.text);
-        await worker.terminate();
-        setProcessingImg(false);
-    }, [croppedImage]);
-
-    useEffect(() => {
-        convertImageToText();
-    }, [selectedImage, convertImageToText]);
-
-    const handleStartProblem = async () => {
-        if (!textResult) return;
         setSolveLoading(true);
 
-        console.log("Problem: ", textResult);
+        console.log("Problem: ", data.text);
         try {
             const res = await axios.post("/api/ocrTest", {
-                textResult,
+                textResult: data.text,
             });
+            const resObj = JSON.parse(res.data.data);
             // const res = `{
             //     "steps": [
             //         "1. Identify the knowns and unknowns: Knowns are the model h = 3a + 286 for height estimation and the age range (2 to 5 years). The unknown is the estimated increase in height per year (coefficient of a).",
@@ -148,8 +164,9 @@ export default function HWChat({
             //     ]
             // }`;
             // const resObj = JSON.parse(res);
-            const resObj = JSON.parse(res.data.data);
+
             const steps = resObj.steps;
+            console.log("STEPS", steps);
             setSteps(steps);
             setSolveLoading(false);
             messages.push({
@@ -227,7 +244,7 @@ export default function HWChat({
     };
     useEffect(() => {
         setInput(transcript); // Set the input value to text
-    }, [transcript]);
+    }, [transcript, setInput]);
     useEffect(() => {
         setTranscript(input); // Set the input value to text
     }, [input]);
@@ -258,7 +275,7 @@ export default function HWChat({
                   items-center w-full mb-5 flex-1 flex-col overflow-y-scroll  "
             >
                 <div className="max-w-[50rem] ">
-                    <div className="mt-12 md:mt-10 mx-3 font-outfit flex flex-col items-center justify-center ">
+                    <div className="mt-12 md:mt-10 mx-3 flex flex-col items-center justify-center ">
                         <div className="flex w-full items-center justify-center flex-col">
                             <h1 className="text-3xl font-semibold text-center">
                                 Hey, I’m{" "}
@@ -327,9 +344,7 @@ export default function HWChat({
                                                 alt={"User: "}
                                                 className="object-contain"
                                             />
-                                            <ReactMarkdown className={"prose"}>
-                                                {m.content}
-                                            </ReactMarkdown>
+                                            <Latex>{m.content}</Latex>
                                         </div>
                                     ) : (
                                         <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
@@ -340,11 +355,7 @@ export default function HWChat({
                                                 alt={"Steve: "}
                                                 className="object-contain "
                                             />
-                                            <ReactMarkdown
-                                                className={" prose "}
-                                            >
-                                                {m.content}
-                                            </ReactMarkdown>
+                                            <Latex>{m.content}</Latex>
                                         </div>
                                     )}
                                 </div>
@@ -671,12 +682,13 @@ export default function HWChat({
                                                 ) : (
                                                     <div className="flex flex-row items-center justify-center">
                                                         <div
-                                                            className={`py-3 mr-3 font-outfit ${
-                                                                textResult.length ==
-                                                                0
-                                                                    ? "text-[#c0c0c0]"
-                                                                    : "text-[#86D20A]"
-                                                            }`}
+                                                            // className={`py-3 mr-3 font-outfit ${
+                                                            //     textResult.length ==
+                                                            //     0
+                                                            //         ? "text-[#c0c0c0]"
+                                                            //         : "text-[#86D20A]"
+                                                            // }`}
+                                                            className={`py-3 mr-3 font-outfit text-[#86D20A]`}
                                                         >
                                                             Start Problem
                                                         </div>
@@ -732,6 +744,7 @@ export default function HWChat({
                 selectedImage={selectedImage}
                 setSelectedImage={setSelectedImage}
                 setCroppedImage={setCroppedImage}
+                setBase64={setBase64}
             />
         </div>
     );

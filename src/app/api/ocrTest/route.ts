@@ -28,7 +28,7 @@ export async function POST(req: Request) {
         messages: [
             {
                 role: "system",
-                content: `Given a problem from a student, return a JSON object with one key named "steps" which contains a list of 
+                content: `Given a problem from a student, return a JSON object with one key named "steps" which contains a list of
                 steps to solving the problem. The steps should be in the form of a list of strings and should be numbered. The first step
                 should always be identifying the knowns and unknowns of the problem.`,
             },
