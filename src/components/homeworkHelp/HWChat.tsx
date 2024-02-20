@@ -670,18 +670,20 @@ export default function HWChat({
                                                 ) : (
                                                     <div className="flex flex-row items-center justify-center">
                                                         <div
-                                                            // className={`py-3 mr-3 font-outfit ${
-                                                            //     textResult.length ==
-                                                            //     0
-                                                            //         ? "text-[#c0c0c0]"
-                                                            //         : "text-[#86D20A]"
-                                                            // }`}
-                                                            className={`py-3 mr-3 font-outfit text-[#86D20A]`}
+                                                            className={`py-3 mr-3 font-outfit ${
+                                                                !base64
+                                                                    ? "text-[#c0c0c0]"
+                                                                    : "text-[#86D20A]"
+                                                            }`}
                                                         >
                                                             Start Problem
                                                         </div>
                                                         <Play
-                                                            color={"#86D20A"}
+                                                            color={
+                                                                base64
+                                                                    ? "#86D20A"
+                                                                    : "#c0c0c0"
+                                                            }
                                                             size={26}
                                                         />
                                                     </div>
