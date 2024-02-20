@@ -138,6 +138,7 @@ export default function HWChat({
         console.log("MATHPIX DATA:", mathData);
         setTextResult(mathData.text);
         setSolveLoading(true);
+        setProcessingImg(false);
         try {
             const res = await axios.post("/api/ocrTest", {
                 textResult: mathData.text,
