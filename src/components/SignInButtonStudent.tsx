@@ -4,9 +4,9 @@ import { Button } from "./ui/button";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-type Props = { text: string; tutorId: string };
+type Props = { callback: string; text: string; tutorId: string };
 
-const SignInButtonStudent = ({ text, tutorId }: Props) => {
+const SignInButtonStudent = ({ callback, text, tutorId }: Props) => {
     const router = useRouter();
 
     return (
@@ -14,7 +14,7 @@ const SignInButtonStudent = ({ text, tutorId }: Props) => {
             variant={"green"}
             size={"login"}
             onClick={() => {
-                signIn("google", { callbackUrl: `/tutor/${tutorId}` }).catch(
+                signIn("google", { callbackUrl: callback }).catch(
                     console.error
                 );
             }}
