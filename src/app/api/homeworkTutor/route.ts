@@ -50,8 +50,8 @@ export async function POST(req: Request) {
         model: "gpt-3.5-turbo-0125",
         stream: true,
         messages: messages,
-        functions,
-        function_call: "auto",
+        // functions,
+        // function_call: "auto",
     });
 
     // Convert the response into a friendly text-stream
