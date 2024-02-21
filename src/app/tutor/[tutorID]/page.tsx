@@ -40,6 +40,10 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
         return redirect("/dashboard-teacher");
     }
 
+    if (tutor.isHomework) {
+        return redirect(`/hw-help/${tutor.id}`);
+    }
+
     const tutorType = tutor.tutorType;
 
     if (!session?.user.id) {
@@ -50,7 +54,15 @@ const TutorPage = async ({ params: { tutorID } }: Props) => {
                     Sign in with Google to start chatting with{" "}
                     {tutor.tutorDisplayName}!
                 </div>
-                <SignInButtonStudent text={"Sign In"} tutorId={tutor.id} />
+                <SignInButtonStudent
+                    callback={
+                        !tutor.isHomework
+                            ? `/tutor/${tutor.id}`
+                            : `/hw-help/${tutor.id}`
+                    }
+                    text={"Sign In"}
+                    tutorId={tutor.id}
+                />
             </div>
         );
     } else if (tutor.tutorType === "General" || tutor.tutorType === "Figure") {
