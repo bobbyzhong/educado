@@ -77,7 +77,7 @@ export default function HWChat({
     const [cropModalOpen, setCropModalOpen] = useState(false);
     const [croppedImage, setCroppedImage] = useState<any>(null);
     const [imageFile, setImageFile] = useState<any>(null);
-    const [base64, setBase64] = useState();
+    const [base64, setBase64] = useState<any>();
     const [problemContext, setProblemContext] = useState("");
 
     const handleSecInputChange = (e: any) => {
@@ -213,6 +213,7 @@ export default function HWChat({
         messages.splice(0, messages.length);
         setSecInput("");
         setInput("");
+        setBase64("");
         setProblemContext("");
     };
 
