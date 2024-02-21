@@ -128,50 +128,50 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        const res = await fetch("/api/mathpix", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                base64: base64,
-            }),
-        });
+        // const res = await fetch("/api/mathpix", {
+        //     method: "POST",
+        //     headers: {
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         base64: base64,
+        //     }),
+        // });
 
-        const data: any = await res.json();
-        const mathData = data.data;
-        console.log("MATHPIX DATA:", mathData);
-        setTextResult(mathData.text);
+        // const data: any = await res.json();
+        // const mathData = data.data;
+        // console.log("MATHPIX DATA:", mathData);
+        // setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
         }
-        // setTextResult(
-        //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
-        // );
+        setTextResult(
+            "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
+        );
         setSolveLoading(true);
         setProcessingImg(false);
         try {
             {
                 /* PRODUCTION ONLY */
             }
-            const res = await axios.post("/api/ocrTest", {
-                textResult: mathData.text,
-                problemContext: problemContext,
-            });
-            const resObj = JSON.parse(res.data.data);
+            // const res = await axios.post("/api/ocrTest", {
+            //     textResult: mathData.text,
+            //     problemContext: problemContext,
+            // });
+            // const resObj = JSON.parse(res.data.data);
 
-            // const res = `{
-            //     "steps": [
-            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-            //     ]
-            // }`;
-            // const resObj = JSON.parse(res);
+            const res = `{
+                "steps": [
+                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                ]
+            }`;
+            const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -277,109 +277,150 @@ export default function HWChat({
                   items-center w-full mb-5 flex-1 flex-col overflow-y-scroll  "
                 >
                     <div className="max-w-[50rem] ">
-                        <div className="mt-12 md:mt-10 mx-3 flex flex-col items-center justify-center ">
-                            <div className="flex w-full items-center justify-center flex-col font-outfit">
-                                <h1 className="text-3xl font-semibold text-center">
-                                    Hey, I’m{" "}
-                                    <span className="text-green">
-                                        {tutorDisplayName}!
-                                    </span>
-                                </h1>
-                            </div>
-                            <p className="text-base text-center font-light mt-3 w-[70%] font-outfit ">
-                                Upload a picture of a specific question you need
-                                help with!
-                            </p>
-                            <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
-                                *Please note, this feature is still in beta and
-                                will be limited in functionality. The team at
-                                Educado is working hard to improve it!*
-                            </p>
-
-                            <Input
-                                className="cursor-pointer mt-3"
-                                type="file"
-                                accept="image/*"
-                                onChange={handleChangeImage}
-                            />
-                            <div className="mt-5 p-3 border rounded-md w-full flex items-center justify-center">
-                                {croppedImage && (
-                                    <div>
-                                        <Image
-                                            src={croppedImage}
-                                            height={500}
-                                            width={500}
-                                            alt=""
-                                        />
+                        <div className="mt-12 md:mt-10 mx-3 flex flex-col items-center justify-center">
+                            {messages.length === 0 ? (
+                                <div className="flex items-center justify-center flex-col">
+                                    <div className="flex w-full items-center justify-center flex-col font-outfit">
+                                        <h1 className="text-3xl font-semibold text-center">
+                                            Hey, I’m{" "}
+                                            <span className="text-green">
+                                                {tutorDisplayName}!
+                                            </span>
+                                        </h1>
                                     </div>
-                                )}
-                            </div>
+                                    <p className="text-base text-center font-light mt-3 w-[70%] font-outfit ">
+                                        Upload a picture of a specific question
+                                        you need help with!
+                                    </p>
+                                    <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
+                                        *Please note, this feature is still in
+                                        beta and will be limited in
+                                        functionality. The team at Educado is
+                                        working hard to improve it!*
+                                    </p>
 
-                            {croppedImage && (
-                                <div
-                                    className="mt-5 p-3  rounded-md w-full flex items-center justify-center flex-col font-outfit 
-                            "
-                                >
-                                    <h1 className="mb-3 text-zinc-500">
-                                        Enter any additional instructions here
-                                        if needed (optional)
-                                    </h1>
                                     <Input
-                                        onChange={(e) =>
-                                            setProblemContext(e.target.value)
-                                        }
-                                        placeholder="I need to factor this expression"
-                                    ></Input>
-                                </div>
-                            )}
-
-                            {/* DELETE THIS */}
-                            {/* <div className="flex flex-col">
-                            <div className="mt-10 p-5 border-2 w-9/12">
-                                <div>
-                                    STEPS:
-                                    {steps && (
-                                        <div>
-                                            {steps.map(
-                                                (step: any, index: number) => (
-                                                    <div key={index}>
-                                                        <p>{step}</p>
-                                                    </div>
-                                                )
-                                            )}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        </div> */}
-                            {messages.length > 0 &&
-                                messages.map((m: any) => (
-                                    <div key={m.id} className="my-3">
-                                        {m.role === "user" ? (
-                                            <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                        className="cursor-pointer mt-3"
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleChangeImage}
+                                    />
+                                    <div className="mt-5 p-3 border rounded-md w-full flex items-center justify-center">
+                                        {croppedImage && (
+                                            <div>
                                                 <Image
-                                                    src={"/userIcon.png"}
-                                                    height={45}
-                                                    width={45}
-                                                    alt={"User: "}
-                                                    className="object-contain"
+                                                    src={croppedImage}
+                                                    height={500}
+                                                    width={500}
+                                                    alt=""
                                                 />
-                                                <Latex>{m.content}</Latex>
-                                            </div>
-                                        ) : (
-                                            <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
-                                                <Image
-                                                    src={"/educadoIcon.png"}
-                                                    height={45}
-                                                    width={45}
-                                                    alt={"Steve: "}
-                                                    className="object-contain "
-                                                />
-                                                <Latex>{m.content}</Latex>
                                             </div>
                                         )}
                                     </div>
-                                ))}
+
+                                    {croppedImage && (
+                                        <div
+                                            className="mt-5 p-3  rounded-md w-full flex items-center justify-center flex-col font-outfit 
+                            "
+                                        >
+                                            <h1 className="mb-3 text-zinc-500">
+                                                Enter any additional
+                                                instructions here if needed
+                                                (optional)
+                                            </h1>
+                                            <Input
+                                                onChange={(e) =>
+                                                    setProblemContext(
+                                                        e.target.value
+                                                    )
+                                                }
+                                                placeholder="I need to factor this expression"
+                                            ></Input>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <div>
+                                    <div className="fixed top-[78px] bg-white left-1/2 -translate-x-1/2 md:min-w-full border-b-2">
+                                        <div className="grid grid-cols-3">
+                                            <div></div>
+                                            <div className="rounded-md w-full flex items-center justify-center flex-row h-[11rem]">
+                                                {croppedImage && (
+                                                    <div>
+                                                        <Image
+                                                            src={croppedImage}
+                                                            height={250}
+                                                            width={250}
+                                                            alt=""
+                                                            className="h-[11rem] w-full object-contain"
+                                                        />
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div className="flex flex-row items-center justify-end pr-10 ">
+                                                <div
+                                                    onClick={resetProblem}
+                                                    className="flex px-8 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
+                                shadow-[1px_2px_1px_3px_rgba(0,0,0,0.10)] hover:shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] 
+                                transition ease-in-out py-1"
+                                                >
+                                                    <div
+                                                        className={`py-3 mr-3 font-outfit text-[#505050]`}
+                                                    >
+                                                        Next Problem
+                                                    </div>
+                                                    <Play
+                                                        color={"#797979"}
+                                                        size={26}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="h-[90px] "></div>
+                                    <div className="mt-[4.5rem]">
+                                        {messages.length > 0 &&
+                                            messages.map((m: any) => (
+                                                <div
+                                                    key={m.id}
+                                                    className="my-3 "
+                                                >
+                                                    {m.role === "user" ? (
+                                                        <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                                            <Image
+                                                                src={
+                                                                    "/userIcon.png"
+                                                                }
+                                                                height={45}
+                                                                width={45}
+                                                                alt={"User: "}
+                                                                className="object-contain"
+                                                            />
+                                                            <Latex>
+                                                                {m.content}
+                                                            </Latex>
+                                                        </div>
+                                                    ) : (
+                                                        <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
+                                                            <Image
+                                                                src={
+                                                                    "/educadoIcon.png"
+                                                                }
+                                                                height={45}
+                                                                width={45}
+                                                                alt={"Steve: "}
+                                                                className="object-contain "
+                                                            />
+                                                            <Latex>
+                                                                {m.content}
+                                                            </Latex>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
                         <div className=" h-[12px] w-full "></div>
