@@ -23,6 +23,7 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
     // Extract the `messages` from the body of the request
     let body = await req.json();
+    console.log(body.problemContext);
 
     const completion = await openai.chat.completions.create({
         messages: [
@@ -32,7 +33,10 @@ export async function POST(req: Request) {
                 steps to solving the problem. The steps should be in the form of a list of strings and should be numbered. The first step
                 should always be identifying the knowns and unknowns of the problem.`,
             },
-            { role: "user", content: body.textResult },
+            {
+                role: "user",
+                content: `PROBLEM: [${body.textResult}]. ADDITIONAL INSTRUCTIONS: [${body.problemContext}]`,
+            },
         ],
         model: "gpt-4-0125-preview",
         response_format: { type: "json_object" },
