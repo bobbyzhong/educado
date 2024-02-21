@@ -13,6 +13,8 @@ import {
     Pi,
 } from "lucide-react";
 import Image from "next/image";
+import { ToastAction } from "@/components/ui/toast";
+import { useToast } from "@/components/ui/use-toast";
 
 type Props = {
     icon: any;
@@ -23,6 +25,7 @@ type Props = {
 
 const DashboardCard = ({ icon, title, description, pageLink }: Props) => {
     const router = useRouter();
+    const { toast } = useToast();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -31,8 +34,16 @@ const DashboardCard = ({ icon, title, description, pageLink }: Props) => {
             <Card
                 className="hover:cursor-pointer hover:opacity-75 flex flex-col justify-between rounded-md shadow-sm p-6"
                 onClick={() => {
-                    setIsLoading(true);
-                    router.push(`${pageLink}`);
+                    if (pageLink !== "none") {
+                        setIsLoading(true);
+                        router.push(`${pageLink}`);
+                    } else {
+                        toast({
+                            title: "Access Denied",
+                            description:
+                                "Please use your school email. If it still doesn't work, your district might not have access to Educado. Feel free to reach out if you have any questions!",
+                        });
+                    }
                 }}
             >
                 <div>

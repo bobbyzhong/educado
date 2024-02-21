@@ -70,25 +70,22 @@ const Dashboard = async (props: Props) => {
         }
     }
 
+    const mathTutor = await prisma.tutor.findMany({
+        where: {
+            subject: "Math",
+            studentDistrict: user?.email?.split("@")[1],
+            isHomework: true,
+        },
+    });
+    let mathPageLink = "";
+    if (mathTutor.length === 0) {
+        mathPageLink = "none";
+    } else {
+        mathPageLink = `/hw-help/${mathTutor[0].id}`;
+    }
+
     return (
         <main className="p-8 mx-auto max-w-7xl">
-            {/* <div className="flex items-center mb-5">
-                <div className="flex flex-row justify-between w-full">
-                    <h2 className="mr-2 text-[28px] font-bold tracking-tight">
-                        Your Dashboard
-                    </h2>
-                    <h1 className="flex flex-row items-center justify-center gap-1 text-[15px] font-outfit">
-                        Are you a teacher? Click{" "}
-                        <Link
-                            href="/teacher-portal"
-                            className="text-green underline"
-                        >
-                            here
-                        </Link>
-                    </h1>
-                </div>
-            </div> */}
-
             <div className="flex flex-col md:flex-row gap-0 md:gap-8 justify-center items-center ">
                 <StudentEnterCode
                     title="Join Tutor Session"
@@ -124,7 +121,7 @@ const Dashboard = async (props: Props) => {
                     icon={"hw-math"}
                     title="Math HW Help"
                     description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
-                    pageLink="/hw-help/eeeee"
+                    pageLink={mathPageLink}
                 />
             </div>
 

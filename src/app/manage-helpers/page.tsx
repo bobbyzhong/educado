@@ -63,12 +63,11 @@ const ManageHelpers = async (props: Props) => {
         <main className="p-8  md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
                 <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
-                    Your Homework Helpers
+                    Your District's Homework Helpers
                 </h2>
                 <h1 className="text-zinc-500 text-[15px] text-center w-12/12 md:w-5/12 dark:text-zinc-300 mb-2 ">
-                    Below are the homework helpers you've made or have access
-                    to. Click on one to view it's data as well as ways to share
-                    it!
+                    Below are the homework helpers that your district's students
+                    has access to. Click on one to see it's data!
                 </h1>
                 <div className="mb-5">
                     <CreateHelperCard userId={session.user.id} />

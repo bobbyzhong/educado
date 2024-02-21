@@ -45,7 +45,29 @@ const DashboardAdmin = async (props: Props) => {
 
     return (
         <main className="p-8 mx-auto max-w-7xl">
-            <div className="flex items-center">
+            <div className="flex items-center mt-5">
+                <div className="flex flex-col gap-1">
+                    <h2 className="mr-2 text-[28px] font-bold tracking-tight">
+                        Homework Helpers{" "}
+                        <span className="text-green font-medium text-xl">
+                            beta
+                        </span>
+                    </h2>
+                    <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
+                        Manage your district's homework helpers here. See what
+                        students have been asking their tutors!
+                    </h1>
+                </div>
+            </div>
+            <div className="grid gap-5 md:grid-cols-3 mt-4">
+                <DashboardCard
+                    icon={"hw-math"}
+                    title="Manage Helpers"
+                    description="Manage all your homework helpers here. See what questions students have been asking and share tutors with your students!"
+                    pageLink="/manage-helpers"
+                />
+            </div>
+            <div className="flex items-center mt-8">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
                         Your Dashboard
@@ -58,14 +80,14 @@ const DashboardAdmin = async (props: Props) => {
             </div>
 
             <div className="grid gap-5 mt-4 md:grid-cols-3">
-                <DashboardCard
+                {/* <DashboardCard
                     icon={"tutor"}
                     title="Educado Tutor"
                     description="Create and manage tutors for your students. See what
                             questions they've been asking and add content for
                             your tutor to use."
                     pageLink="/manage-tutors"
-                />
+                /> */}
                 <DashboardCard
                     icon={"analytics"}
                     title="Educado Analytics"

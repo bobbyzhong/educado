@@ -26,7 +26,7 @@ const RecentTutorList = ({ tutorList, userId }: Props) => {
                             return (
                                 <TutorCard
                                     name={tutor.tutorDisplayName}
-                                    id={tutor.id}
+                                    id={i}
                                     description={tutor.tutorDescription!}
                                     joinCode={tutor.joinCode!}
                                     grade={

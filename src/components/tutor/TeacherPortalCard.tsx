@@ -120,7 +120,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
             if (data.message === "updated") {
                 router.push("/dashboard-teacher");
             }
-        } else if (code === "KCD92") {
+        } else if (code === "RSC38") {
             const res = await fetch("/api/updateTeacherStatus", {
                 method: "POST",
                 headers: {
@@ -128,7 +128,7 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 },
                 body: JSON.stringify({
                     userId: userId,
-                    school: "Giselle Test",
+                    school: "River Springs Charter School",
                     district: true,
                 }),
             });

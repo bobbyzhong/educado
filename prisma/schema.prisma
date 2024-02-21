@@ -167,6 +167,7 @@ model Tutor {
   tutorName String 
   tutorDescription String? 
   district String?
+  studentDistrict String?
   grade String?
   subject String?
   tutorType String?
