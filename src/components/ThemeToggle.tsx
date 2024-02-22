@@ -33,16 +33,16 @@ export function ThemeToggle({ className, mode }: Props) {
                 >
                     <Home size={23} />
                 </Button>
-                <div className="text-sm ml-2 md:block hidden">Dashboard</div>
+                {/* <div className="text-sm ml-2 md:block hidden">Dashboard</div> */}
             </div>
         );
-    } else if (mode == "tutor") {
+    } else if (mode == "hw-help") {
         return (
             <div
                 className={`${className} flex flex-row items-center justify-center text-center cursor-pointer`}
             >
                 <Button
-                    onClick={() => router.push("/tutors")}
+                    onClick={() => router.push("/hw-help/")}
                     variant="outline"
                     size="icon"
                 >
