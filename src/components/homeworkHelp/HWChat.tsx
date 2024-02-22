@@ -19,6 +19,7 @@ import Latex from "react-latex-next";
 import "katex/dist/katex.min.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import axios from "axios";
 
 type Props = {
     tutorName: string;
@@ -107,50 +108,51 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        // // const res = await fetch("/api/mathpix", {
-        // //     method: "POST",
-        // //     headers: {
-        // //         "content-type": "application/json",
-        // //     },
-        // //     body: JSON.stringify({
-        // //         base64: base64,
-        // //     }),
-        // // });
+        const res = await fetch("/api/mathpix", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                base64: base64,
+            }),
+        });
 
-        // const data: any = await res.json();
-        // const mathData = data.data;
-        // console.log("MATHPIX DATA:", mathData);
-        // setTextResult(mathData.text);
+        const data: any = await res.json();
+        const mathData = data.data;
+        console.log("MATHPIX DATA:", mathData);
+        setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
         }
-        setTextResult(
-            "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
-        );
+        // setTextResult(
+        //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
+        // );
+
         setSolveLoading(true);
         setProcessingImg(false);
         try {
             {
                 /* PRODUCTION ONLY */
             }
-            // const res = await axios.post("/api/ocrTest", {
-            //     textResult: mathData.text,
-            //     problemContext: problemContext,
-            // });
-            // const resObj = JSON.parse(res.data.data);
+            const res = await axios.post("/api/ocrTest", {
+                textResult: mathData.text,
+                problemContext: problemContext,
+            });
+            const resObj = JSON.parse(res.data.data);
 
-            const res = `{
-                "steps": [
-                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-                ]
-            }`;
-            const resObj = JSON.parse(res);
+            // const res = `{
+            //     "steps": [
+            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+            //     ]
+            // }`;
+            // const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -326,19 +328,6 @@ export default function HWChat({
                                             <div></div>
                                             <PhotoProvider>
                                                 <div className="rounded-md w-full flex items-center justify-center flex-row h-[7.5rem]">
-                                                    {/* {croppedImage && (
-                                                        <div>
-                                                            <Image
-                                                                src={
-                                                                    croppedImage
-                                                                }
-                                                                height={250}
-                                                                width={250}
-                                                                alt=""
-                                                                className="h-[11rem] w-full object-contain"
-                                                            />
-                                                        </div>
-                                                    )} */}
                                                     <PhotoView
                                                         src={croppedImage}
                                                     >
