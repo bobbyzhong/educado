@@ -77,6 +77,7 @@
         "react-katex": "^3.0.1",
         "react-latex-next": "^2.2.0",
         "react-markdown": "^9.0.1",
+        "react-photo-view": "^1.2.4",
         "react-share": "^4.4.1",
         "react-speech-recognition": "^3.10.0",
         "resend": "^1.0.0",
