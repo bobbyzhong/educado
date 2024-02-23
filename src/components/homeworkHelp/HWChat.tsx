@@ -234,10 +234,11 @@ export default function HWChat({
     };
     useEffect(() => {
         setSecInput(transcript);
-    }, [transcript, setInput]);
+        setInput(transcript);
+    }, [transcript, setSecInput]);
     useEffect(() => {
-        setTranscript(input); // Set the input value to text
-    }, [input]);
+        setTranscript(secInput); // Set the input value to text
+    }, [input, secInput]);
 
     // messages.push({
     //     id: "1",
@@ -695,7 +696,7 @@ export default function HWChat({
                                             >
                                                 <SendHorizonal
                                                     color={
-                                                        input.length === 0
+                                                        secInput.length === 0
                                                             ? "#D3D3D3"
                                                             : "#86D20A"
                                                     }
