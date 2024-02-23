@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { contentRequestSchema } from "@/schemas/form/quiz";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 import { useToast } from "@/components/ui/use-toast";
