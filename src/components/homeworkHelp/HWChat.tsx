@@ -16,10 +16,14 @@ import {
 import { Input } from "../ui/input";
 import { ImageCropModal } from "../ImageCropModal";
 import Latex from "react-latex-next";
-import "katex/dist/katex.min.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from 'rehype-katex';
+import rehypeMathjax from 'rehype-mathjax';
+import remarkMath from 'remark-math';
+import 'katex/dist/katex.min.css';
 
 type Props = {
     tutorName: string;
@@ -246,6 +250,33 @@ export default function HWChat({
     //     content: "What do you think the first step to solving this problem is?",
     // });
 
+    // const testString = "No worries! Let's start by identifying the knowns and unknowns for this problem. \n" +
+    // 'Knowns: The expression \\( \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) \\) and the need to show it equals \\( x \\). \n' +
+    // 'Unknowns: The intermediate steps to prove this expression. \n' +
+    // '\n' +
+    // 'Now, what do you think we should do next?'
+
+    // const markdown = `Here is an equation: $\\sqrt{3x-1}+(1+x)^2$`;
+
+    // const higgsTest = 'I apologize for the mistake earlier. The Higgs equation is an important concept in physics, and I can definitely show it to you. The equation you are referring to is the Higgs potential, which takes the form: \n' +
+    // '\n' +
+    // '$$ V(\\phi) = \\frac{1}{2} \\mu^{2} \\phi^{2} - \\frac{1}{3} \\lambda \\phi^{3} + \\frac{1}{4}\\lambda^{2}\\phi^{4} $$\n' +
+    // '\n' +
+    // 'where $V(\\phi)$ represents the Higgs potential, $\\mu^2$ is a parameter, $\\lambda$ is the coupling constant, and $\\phi$ is the scalar field. This potential is central to the mechanism of spontaneous symmetry breaking in the Standard Model of particle physics. \n' +
+    // '\n' +
+    // "Now, let's refocus on the original math problem you're working on. What do you think we should do next to show that $ \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) = x $?"
+
+    // const bracketTest = 'A complex math expression in calculus could be something like:\n' +
+    // '\\[ \\int_{0}^{1} \\frac{x^3 - 2x^2 + 4x - 8}{2x^2 - 4x + 8} \\, dx \\]\n' +
+    // 'This involves integration of a rational function within the limits of integration. Would you like to go through any specific steps in solving this expression or have any questions about it?'
+    
+    const convertLatexDeliminators = (text: string) => {
+      // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
+      return text.replace(/\\\( /g, "$").replace(/\\\)/g, "$").replace(/\\\[/g, "$$").replace(/\\\]/g, "$$");
+    };
+
+    console.log(messages)
+    
     // ----------------
     // Tutor Chat Section
     // ----------------
@@ -275,6 +306,7 @@ export default function HWChat({
                                         Upload a picture of a specific question
                                         you need help with!
                                     </p>
+
                                     <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
                                         *Please note, this feature is still in
                                         beta and will be limited in
@@ -391,9 +423,9 @@ export default function HWChat({
                                                                 alt={"User: "}
                                                                 className="object-contain"
                                                             />
-                                                            <Latex>
-                                                                {m.content}
-                                                            </Latex>
+                                                            <ReactMarkdown className="flex flex-col leading-8" remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeMathjax]}>
+                                                                {convertLatexDeliminators(m.content)}
+                                                            </ReactMarkdown> 
                                                         </div>
                                                     ) : (
                                                         <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
@@ -406,9 +438,9 @@ export default function HWChat({
                                                                 alt={"Steve: "}
                                                                 className="object-contain "
                                                             />
-                                                            <Latex>
-                                                                {m.content}
-                                                            </Latex>
+                                                            <ReactMarkdown className="flex flex-col leading-8" remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeMathjax]}>
+                                                                {convertLatexDeliminators(m.content)}
+                                                            </ReactMarkdown>
                                                         </div>
                                                     )}
                                                 </div>
