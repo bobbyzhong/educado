@@ -1,21 +1,10 @@
 "use client";
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import ReactMarkdown from "react-markdown";
 import { useChat } from "ai/react";
 import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
-import Link from "next/link";
-import {
-    Globe,
-    Loader2,
-    Mic,
-    Play,
-    RefreshCcw,
-    SendHorizonal,
-} from "lucide-react";
-import useSpeechRecognition from "../../../customHooks/SpeechHook";
-import { is } from "date-fns/locale";
+import { Expand, Globe, Loader2, Mic, Play, SendHorizonal } from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -24,22 +13,13 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { createWorker } from "tesseract.js";
 import { Input } from "../ui/input";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { set } from "date-fns";
-import { decode } from "punycode";
 import { ImageCropModal } from "../ImageCropModal";
 import Latex from "react-latex-next";
 import "katex/dist/katex.min.css";
-
-const examples = [
-    "Give me a bullet list of facts about temperature",
-    "Help me study for the test we have tomorrow",
-    "Quiz me on matter and its interactions",
-    "Can you explain the cycle of water on Earth?",
-];
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+import axios from "axios";
 
 type Props = {
     tutorName: string;
@@ -149,6 +129,7 @@ export default function HWChat({
         // setTextResult(
         //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
         // );
+
         setSolveLoading(true);
         setProcessingImg(false);
         try {
@@ -342,22 +323,34 @@ export default function HWChat({
                                 </div>
                             ) : (
                                 <div>
-                                    <div className="fixed top-[74px] bg-white left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99]">
+                                    <div className="fixed top-[74px] bg-white left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
                                         <div className="grid grid-cols-3">
                                             <div></div>
-                                            <div className="rounded-md w-full flex items-center justify-center flex-row h-[11rem]">
-                                                {croppedImage && (
-                                                    <div>
-                                                        <Image
-                                                            src={croppedImage}
-                                                            height={250}
-                                                            width={250}
-                                                            alt=""
-                                                            className="h-[11rem] w-full object-contain"
-                                                        />
-                                                    </div>
-                                                )}
-                                            </div>
+                                            <PhotoProvider>
+                                                <div className="rounded-md w-full flex items-center justify-center flex-row h-[7.5rem]">
+                                                    <PhotoView
+                                                        src={croppedImage}
+                                                    >
+                                                        <div className="cursor-pointer">
+                                                            <Expand
+                                                                className="absolute "
+                                                                color={
+                                                                    "#151515"
+                                                                }
+                                                            />
+                                                            <Image
+                                                                src={
+                                                                    croppedImage
+                                                                }
+                                                                height={200}
+                                                                width={200}
+                                                                alt=""
+                                                                className="h-[7.5rem] w-full object-contain"
+                                                            />
+                                                        </div>
+                                                    </PhotoView>
+                                                </div>
+                                            </PhotoProvider>
                                             <div className="flex flex-row items-center justify-end pr-10 ">
                                                 <div
                                                     onClick={resetProblem}
@@ -379,7 +372,7 @@ export default function HWChat({
                                         </div>
                                     </div>
                                     <div className="h-[90px] "></div>
-                                    <div className="mt-[4.5rem]">
+                                    <div className="mt-[1.5rem]">
                                         {messages.length > 0 &&
                                             messages.map((m: any) => (
                                                 <div
@@ -445,7 +438,7 @@ export default function HWChat({
 
                     <form
                         onSubmit={onHandleSubmit}
-                        className="stretch mx-2 flex flex-col gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
+                        className="stretch mx-2 flex flex-col gap-3 last:mb-2 md:mx-4  lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
                     >
                         <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
                             <div className="flex flex-row">
@@ -781,32 +774,6 @@ export default function HWChat({
                             </div>
                         </div>
                     </form>
-                    {messages.length > 0 && (
-                        <div className=" hidden w-full md:grid md:grid-cols-7 justify-center ">
-                            <div></div>
-
-                            <div
-                                className="w-full col-start-2 col-end-7 lg:col-start-3 lg:col-end-6  flex mb-5 text-[15px] font-outfit items-center justify-center 
-                md:px-0 "
-                            >
-                                {essayPrompt ? (
-                                    <div className="font-medium text-[16px] text-center">
-                                        <b>Prompt</b>: {essayPrompt}
-                                    </div>
-                                ) : (
-                                    <h1 className=" text-center flex flex-row items-center gap-2">
-                                        Have another problem to work on?
-                                        <div
-                                            onClick={resetProblem}
-                                            className="text-green cursor-pointer flex flex-row items-center hover:-translate-y-[1px] -translate-x-1"
-                                        >
-                                            Click here!
-                                        </div>
-                                    </h1>
-                                )}
-                            </div>
-                        </div>
-                    )}
                 </div>
                 <ImageCropModal
                     open={cropModalOpen}
