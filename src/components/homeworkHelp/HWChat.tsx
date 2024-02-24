@@ -535,18 +535,6 @@ export default function HWChat({
                                                                     m.content
                                                                 )}
                                                             </ReactMarkdown>
-                                                            {/* <ReactMarkdown
-                                                                className="flex flex-col leading-8"
-                                                                remarkPlugins={[
-                                                                    remarkMath,
-                                                                ]}
-                                                                rehypePlugins={[
-                                                                    rehypeKatex,
-                                                                    rehypeMathjax,
-                                                                ]}
-                                                            >
-                                                                {demoText}
-                                                            </ReactMarkdown> */}
                                                         </div>
                                                     )}
                                                 </div>
