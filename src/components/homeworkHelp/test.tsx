@@ -112,27 +112,27 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        const res = await fetch("/api/mathpix", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                base64: base64,
-            }),
-        });
+        // const res = await fetch("/api/mathpix", {
+        //     method: "POST",
+        //     headers: {
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         base64: base64,
+        //     }),
+        // });
 
-        const data: any = await res.json();
-        const mathData = data.data;
-        console.log("MATHPIX DATA:", mathData);
-        setTextResult(mathData.text);
+        // const data: any = await res.json();
+        // const mathData = data.data;
+        // console.log("MATHPIX DATA:", mathData);
+        // setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
         }
-        // setTextResult(
-        //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
-        // );
+        setTextResult(
+            "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
+        );
 
         setSolveLoading(true);
         setProcessingImg(false);
@@ -140,23 +140,23 @@ export default function HWChat({
             {
                 /* PRODUCTION ONLY */
             }
-            const res = await axios.post("/api/ocrTest", {
-                textResult: mathData.text,
-                problemContext: problemContext,
-            });
-            const resObj = JSON.parse(res.data.data);
+            // const res = await axios.post("/api/ocrTest", {
+            //     textResult: mathData.text,
+            //     problemContext: problemContext,
+            // });
+            // const resObj = JSON.parse(res.data.data);
 
-            // const res = `{
-            //     "steps": [
-            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-            //     ]
-            // }`;
-            // const resObj = JSON.parse(res);
+            const res = `{
+                "steps": [
+                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                ]
+            }`;
+            const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -239,7 +239,36 @@ export default function HWChat({
     useEffect(() => {
         setSecInput(transcript);
         setInput(transcript);
-    }, [transcript]);
+    }, [transcript, setSecInput]);
+    useEffect(() => {
+        setTranscript(secInput); // Set the input value to text
+    }, [input, secInput]);
+
+    // messages.push({
+    //     id: "1",
+    //     role: "system",
+    //     content: "What do you think the first step to solving this problem is?",
+    // });
+
+    // const testString = "No worries! Let's start by identifying the knowns and unknowns for this problem. \n" +
+    // 'Knowns: The expression \\( \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) \\) and the need to show it equals \\( x \\). \n' +
+    // 'Unknowns: The intermediate steps to prove this expression. \n' +
+    // '\n' +
+    // 'Now, what do you think we should do next?'
+
+    // const markdown = `Here is an equation: $\\sqrt{3x-1}+(1+x)^2$`;
+
+    // const higgsTest = 'I apologize for the mistake earlier. The Higgs equation is an important concept in physics, and I can definitely show it to you. The equation you are referring to is the Higgs potential, which takes the form: \n' +
+    // '\n' +
+    // '$$ V(\\phi) = \\frac{1}{2} \\mu^{2} \\phi^{2} - \\frac{1}{3} \\lambda \\phi^{3} + \\frac{1}{4}\\lambda^{2}\\phi^{4} $$\n' +
+    // '\n' +
+    // 'where $V(\\phi)$ represents the Higgs potential, $\\mu^2$ is a parameter, $\\lambda$ is the coupling constant, and $\\phi$ is the scalar field. This potential is central to the mechanism of spontaneous symmetry breaking in the Standard Model of particle physics. \n' +
+    // '\n' +
+    // "Now, let's refocus on the original math problem you're working on. What do you think we should do next to show that $ \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) = x $?"
+
+    // const bracketTest = 'A complex math expression in calculus could be something like:\n' +
+    // '\\[ \\int_{0}^{1} \\frac{x^3 - 2x^2 + 4x - 8}{2x^2 - 4x + 8} \\, dx \\]\n' +
+    // 'This involves integration of a rational function within the limits of integration. Would you like to go through any specific steps in solving this expression or have any questions about it?'
 
     const convertLatexDeliminators = (text: string) => {
         // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
@@ -250,11 +279,75 @@ export default function HWChat({
             .replace(/\\\]/g, "$$");
     };
 
-    // messages.push({
-    //     id: "1",
-    //     role: "system",
-    //     content: "What do you think the first step to solving this problem is?",
-    // });
+    const demoText = convertLatexDeliminators(`Of course! Here
+                                                                are the steps we
+                                                                will follow to
+                                                                solve the
+                                                                problem:\n' +
+                                                                '\n' + '1.
+                                                                Identify the
+                                                                knowns and
+                                                                unknowns: Knowns
+                                                                are the complex
+                                                                numbers to be
+                                                                added: (7+3i)
+                                                                and (-8+9i). The
+                                                                unknown is the
+                                                                sum of these
+                                                                complex
+                                                                numbers.\n' +
+                                                                '2. Write down
+                                                                the formula for
+                                                                adding two
+                                                                complex numbers:
+                                                                If we have two
+                                                                complex numbers
+                                                                in the form
+                                                                (a+bi) and
+                                                                (c+di), their
+                                                                sum is (a+c) +
+                                                                (b+d)i.\n' + '3.
+                                                                Apply the
+                                                                formula to the
+                                                                given complex
+                                                                numbers: For
+                                                                (7+3i) and
+                                                                (-8+9i), a=7,
+                                                                b=3, c=-8, and
+                                                                d=9.\n' + '4.
+                                                                Calculate the
+                                                                real parts and
+                                                                the imaginary
+                                                                parts
+                                                                separately: Real
+                                                                part: 7 + (-8) =
+                                                                -1, Imaginary
+                                                                part: 3 + 9 =
+                                                                12.\n' + '5.
+                                                                Combine the
+                                                                results from
+                                                                step 4: The sum
+                                                                is (-1) +
+                                                                (12)i.\n' + '6.
+                                                                Simplify the
+                                                                answer (if
+                                                                necessary): In
+                                                                this case, the
+                                                                answer is
+                                                                already in its
+                                                                simplest form,
+                                                                so no further
+                                                                simplification
+                                                                is needed. The
+                                                                final answer is
+                                                                -1 + 12i.\n' +
+                                                                '\n' + 'What do
+                                                                you think should
+                                                                be the first
+                                                                step based on
+                                                                this list?'`);
+
+    // console.log(messages);
 
     // ----------------
     // Tutor Chat Section
@@ -285,6 +378,7 @@ export default function HWChat({
                                         Upload a picture of a specific question
                                         you need help with!
                                     </p>
+
                                     <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
                                         *Please note, this feature is still in
                                         beta and will be limited in
@@ -402,7 +496,7 @@ export default function HWChat({
                                                                 className="object-contain"
                                                             />
                                                             <ReactMarkdown
-                                                                className="flex flex-col leading-8 prose"
+                                                                className="flex flex-col leading-8"
                                                                 remarkPlugins={[
                                                                     remarkMath,
                                                                 ]}
@@ -428,7 +522,7 @@ export default function HWChat({
                                                                 className="object-contain "
                                                             />
                                                             <ReactMarkdown
-                                                                className="flex flex-col leading-8 prose"
+                                                                className="flex flex-col leading-8"
                                                                 remarkPlugins={[
                                                                     remarkMath,
                                                                 ]}
