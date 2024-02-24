@@ -20,6 +20,10 @@ import "katex/dist/katex.min.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
 
 type Props = {
     tutorName: string;
