@@ -20,10 +20,6 @@ import "katex/dist/katex.min.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import axios from "axios";
-import ReactMarkdown from "react-markdown";
-import rehypeKatex from "rehype-katex";
-import rehypeMathjax from "rehype-mathjax";
-import remarkMath from "remark-math";
 
 type Props = {
     tutorName: string;
@@ -239,10 +235,7 @@ export default function HWChat({
     useEffect(() => {
         setSecInput(transcript);
         setInput(transcript);
-    }, [transcript, setSecInput]);
-    useEffect(() => {
-        setTranscript(secInput); // Set the input value to text
-    }, [input, secInput]);
+    }, [transcript]);
 
     // messages.push({
     //     id: "1",
