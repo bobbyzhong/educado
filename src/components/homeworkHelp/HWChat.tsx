@@ -20,10 +20,10 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
-import rehypeKatex from 'rehype-katex';
-import rehypeMathjax from 'rehype-mathjax';
-import remarkMath from 'remark-math';
-import 'katex/dist/katex.min.css';
+import rehypeKatex from "rehype-katex";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
+import "katex/dist/katex.min.css";
 
 type Props = {
     tutorName: string;
@@ -112,27 +112,27 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        const res = await fetch("/api/mathpix", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                base64: base64,
-            }),
-        });
+        // const res = await fetch("/api/mathpix", {
+        //     method: "POST",
+        //     headers: {
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         base64: base64,
+        //     }),
+        // });
 
-        const data: any = await res.json();
-        const mathData = data.data;
-        console.log("MATHPIX DATA:", mathData);
-        setTextResult(mathData.text);
+        // const data: any = await res.json();
+        // const mathData = data.data;
+        // console.log("MATHPIX DATA:", mathData);
+        // setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
         }
-        // setTextResult(
-        //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
-        // );
+        setTextResult(
+            "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
+        );
 
         setSolveLoading(true);
         setProcessingImg(false);
@@ -140,23 +140,23 @@ export default function HWChat({
             {
                 /* PRODUCTION ONLY */
             }
-            const res = await axios.post("/api/ocrTest", {
-                textResult: mathData.text,
-                problemContext: problemContext,
-            });
-            const resObj = JSON.parse(res.data.data);
+            // const res = await axios.post("/api/ocrTest", {
+            //     textResult: mathData.text,
+            //     problemContext: problemContext,
+            // });
+            // const resObj = JSON.parse(res.data.data);
 
-            // const res = `{
-            //     "steps": [
-            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-            //     ]
-            // }`;
-            // const resObj = JSON.parse(res);
+            const res = `{
+                "steps": [
+                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                ]
+            }`;
+            const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -269,14 +269,86 @@ export default function HWChat({
     // const bracketTest = 'A complex math expression in calculus could be something like:\n' +
     // '\\[ \\int_{0}^{1} \\frac{x^3 - 2x^2 + 4x - 8}{2x^2 - 4x + 8} \\, dx \\]\n' +
     // 'This involves integration of a rational function within the limits of integration. Would you like to go through any specific steps in solving this expression or have any questions about it?'
-    
+
     const convertLatexDeliminators = (text: string) => {
-      // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
-      return text.replace(/\\\( /g, "$").replace(/\\\)/g, "$").replace(/\\\[/g, "$$").replace(/\\\]/g, "$$");
+        // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
+        return text
+            .replace(/\\\( /g, "$")
+            .replace(/\\\)/g, "$")
+            .replace(/\\\[/g, "$$")
+            .replace(/\\\]/g, "$$");
     };
 
-    console.log(messages)
-    
+    const demoText = convertLatexDeliminators(`Of course! Here
+                                                                are the steps we
+                                                                will follow to
+                                                                solve the
+                                                                problem:\n' +
+                                                                '\n' + '1.
+                                                                Identify the
+                                                                knowns and
+                                                                unknowns: Knowns
+                                                                are the complex
+                                                                numbers to be
+                                                                added: (7+3i)
+                                                                and (-8+9i). The
+                                                                unknown is the
+                                                                sum of these
+                                                                complex
+                                                                numbers.\n' +
+                                                                '2. Write down
+                                                                the formula for
+                                                                adding two
+                                                                complex numbers:
+                                                                If we have two
+                                                                complex numbers
+                                                                in the form
+                                                                (a+bi) and
+                                                                (c+di), their
+                                                                sum is (a+c) +
+                                                                (b+d)i.\n' + '3.
+                                                                Apply the
+                                                                formula to the
+                                                                given complex
+                                                                numbers: For
+                                                                (7+3i) and
+                                                                (-8+9i), a=7,
+                                                                b=3, c=-8, and
+                                                                d=9.\n' + '4.
+                                                                Calculate the
+                                                                real parts and
+                                                                the imaginary
+                                                                parts
+                                                                separately: Real
+                                                                part: 7 + (-8) =
+                                                                -1, Imaginary
+                                                                part: 3 + 9 =
+                                                                12.\n' + '5.
+                                                                Combine the
+                                                                results from
+                                                                step 4: The sum
+                                                                is (-1) +
+                                                                (12)i.\n' + '6.
+                                                                Simplify the
+                                                                answer (if
+                                                                necessary): In
+                                                                this case, the
+                                                                answer is
+                                                                already in its
+                                                                simplest form,
+                                                                so no further
+                                                                simplification
+                                                                is needed. The
+                                                                final answer is
+                                                                -1 + 12i.\n' +
+                                                                '\n' + 'What do
+                                                                you think should
+                                                                be the first
+                                                                step based on
+                                                                this list?'`);
+
+    // console.log(messages);
+
     // ----------------
     // Tutor Chat Section
     // ----------------
@@ -423,9 +495,20 @@ export default function HWChat({
                                                                 alt={"User: "}
                                                                 className="object-contain"
                                                             />
-                                                            <ReactMarkdown className="flex flex-col leading-8" remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeMathjax]}>
-                                                                {convertLatexDeliminators(m.content)}
-                                                            </ReactMarkdown> 
+                                                            <ReactMarkdown
+                                                                className="flex flex-col leading-8"
+                                                                remarkPlugins={[
+                                                                    remarkMath,
+                                                                ]}
+                                                                rehypePlugins={[
+                                                                    rehypeKatex,
+                                                                    rehypeMathjax,
+                                                                ]}
+                                                            >
+                                                                {convertLatexDeliminators(
+                                                                    m.content
+                                                                )}
+                                                            </ReactMarkdown>
                                                         </div>
                                                     ) : (
                                                         <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
@@ -438,9 +521,32 @@ export default function HWChat({
                                                                 alt={"Steve: "}
                                                                 className="object-contain "
                                                             />
-                                                            <ReactMarkdown className="flex flex-col leading-8" remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeMathjax]}>
-                                                                {convertLatexDeliminators(m.content)}
+                                                            <ReactMarkdown
+                                                                className="flex flex-col leading-8"
+                                                                remarkPlugins={[
+                                                                    remarkMath,
+                                                                ]}
+                                                                rehypePlugins={[
+                                                                    rehypeKatex,
+                                                                    rehypeMathjax,
+                                                                ]}
+                                                            >
+                                                                {convertLatexDeliminators(
+                                                                    m.content
+                                                                )}
                                                             </ReactMarkdown>
+                                                            {/* <ReactMarkdown
+                                                                className="flex flex-col leading-8"
+                                                                remarkPlugins={[
+                                                                    remarkMath,
+                                                                ]}
+                                                                rehypePlugins={[
+                                                                    rehypeKatex,
+                                                                    rehypeMathjax,
+                                                                ]}
+                                                            >
+                                                                {demoText}
+                                                            </ReactMarkdown> */}
                                                         </div>
                                                     )}
                                                 </div>
