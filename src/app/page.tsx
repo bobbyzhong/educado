@@ -12,6 +12,7 @@ import HomePageJoinCode from "@/components/HomePageJoinCode";
 import { ExternalLink } from "lucide-react";
 import HowStep from "@/components/landing/HowStep";
 import FeatureCard from "@/components/landing/FeatureCard";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default async function Home() {
     const session = await getAuthSession();
@@ -105,7 +106,7 @@ export default async function Home() {
             <div className="flex justify-between items-center mt-[5%]">
                 <Image
                     className="w-[49%] lg:block hidden max-h-[70vh] object-cover"
-                    src={"/landing/landingpage.png"}
+                    src={"/landing/landing1.png"}
                     height={800}
                     width={800}
                     alt=""
@@ -119,16 +120,57 @@ export default async function Home() {
                 />
             </div>
 
-            {/* WHY US */}
+            {/* Testimonials */}
             <div className="flex justify-center text-center items-center mt-[5%] flex-col">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
-                    Why Educado?
+                    Hear it from students
                 </h1>
                 <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[5rem] text-zinc-600">
-                    Here's why districts and schools love Educado
+                    These are real quotes from students we got feedback from!
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] justify-center gap-5">
-                    <FeatureCard
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "Using educado was awesome, because we broke down
+                            the question together and solved them"
+                        </div>
+                    </Card>
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "It was a good resource and helped me walk through
+                            and understand the problems."
+                        </div>
+                    </Card>
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "It was good using Educado because it is very
+                            informative and specific while explaining how to
+                            solve the question."
+                        </div>
+                    </Card>
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "I found it very helpful to use Educado cause it
+                            explained the questions i got wrong as well as how
+                            to do it correctly"
+                        </div>
+                    </Card>
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "It was cool to use him. I think it's awesome that
+                            instead of giving us the actual answer, he walks us
+                            through it. "
+                        </div>
+                    </Card>
+                    <Card className="bg-[#8BB83F]/[0.15] border-4 border-[#8BB83F] w-full rounded-[30px] py-7 px-5">
+                        <div className="text-left text-base md:text-[18px] w-[95%]">
+                            "Educado was helpful because it didn't give you the
+                            answer automatically which I find better because it
+                            helps you learn."
+                        </div>
+                    </Card>
+
+                    {/* <FeatureCard
                         icon="🤖"
                         title="Reliable Help"
                         description="All tutors are trained on the content you want such as your curriculum/standards, ensuring the help students get is reliable!"
@@ -158,107 +200,69 @@ export default async function Home() {
                         icon="🏫"
                         title="Educado Collection"
                         description="We have a library of pre-built historical figures and tutors that you can use and modify so you can get started right away!"
-                    />
+                    /> */}
                 </div>
             </div>
-
-            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
-                    INTEGRATED WITH YOUR STANDARDS
-                </h1>
-                <div className="height-[20%] justify-center items-center flex md:flex-row flex-col gap-10">
-                    <Image
-                        className="md:w-[20%] w-[50%]"
-                        src={"/ngss_sd.png"}
-                        height={100}
-                        width={250}
-                        alt=""
-                    />
-                    <Image
-                        className="md:w-[30%] w-[70%]"
-                        src={"/cali_sd.png"}
-                        height={50}
-                        width={200}
-                        alt=""
-                    />
-                    <Image
-                        className="md:w-[20%] w-[50%]"
-                        src={"/okla_sd.png"}
-                        height={100}
-                        width={250}
-                        alt=""
-                    />
-                </div>
-            </div> */}
 
             {/* HOW Educado WORKS */}
             <div className="flex justify-center text-center items-center mt-[7%] flex-col w-full">
                 <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
-                    HOW IT WORKS
+                    How it works
                 </h1>
                 <h1 className="md:text-lg text-base md:w-4/12 text-center w-10/12  mb-[1rem] text-zinc-600">
-                    This process is mainly for districts. If you're a student
-                    all you need to do is sign in!
+                    We make it super easy for you to use Educado!
                 </h1>
                 <HowStep
                     step="1"
                     title="Set Up"
-                    description="We know that every district is unique so we’ll work closely with you to see the best way we can help. Once we have everything worked out, we'll create all the tutors your students need."
+                    description="We know that every district is unique so we’ll work closely with you to see the best way we can help and make sure we align with your values and needs."
                     image="/landing/how_1.png"
                 />
                 <HowStep
                     step="2"
-                    title="Deploy"
-                    description="If you want, you can add our chrome extension to your Chromebooks so your students can work with their tutor wherever they go in just one click! They can also access it through our website"
+                    title="Share"
+                    description="Once your district is registered, all your students need to do is sign up with their school email and they'll have access to your district's homework helpers!"
                     image="/landing/how_2.png"
                 />
                 <HowStep
                     step="3"
-                    title="Share"
-                    description="Share Educado with your students by having them sign up. Once they sign up, they'll be able to see all the tutors for your district/school and start a tutoring session!"
-                    image="/landing/how_3.png"
-                />
-                <HowStep
-                    step="4"
                     title="Monitor"
-                    description="You can view all conversations students have with tutors and are alerted when any unusual activity such as self harm talk concerns comes up."
+                    description="All conversations are logged and can be monitored by select admins. We also provide data analytics on things like commonly asked questions and student performance."
                     image="/landing/how_4.png"
                 />
-                <HowStep
-                    step="5"
-                    title="Support"
-                    description="Our team will provide you with all the support you need to make sure you and your teachers make the most out of Educado. We’ll also be there to help you with any issues that come up!"
-                    image="/landing/how_5.png"
-                />
             </div>
-
-            {/* <div className="flex justify-center text-center items-center mt-[7%] flex-col">
-                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 md:w-6/12 mb-[7%] text-zinc-600">
-                    WHY EDUCADO
+            {/* WHY US */}
+            <div className="flex justify-center text-center items-center mt-[5%] flex-col">
+                <h1 className="md:text-4xl text-3xl font-[600] md:font-[650] w-10/12 mt-[5rem] md:w-6/12 mb-[1rem] text-zinc-600">
+                    Why Us
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-10">
-                    <WhyUsCard
-                        icon="✅"
-                        title="Easy Set Up"
-                        description={`It takes less than 5 minutes to create a tutor. We make the set up process for districts and teachers as easy as possible so you can start using Educado right away!`}
-                    />
-                    <WhyUsCard
+                <h1 className="md:text-lg text-base md:w-5/12 text-center w-10/12  mb-[5rem] text-zinc-600">
+                    Here's why your district/school needs Educado!
+                </h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 w-[90%] justify-center gap-5">
+                    <FeatureCard
                         icon="🤖"
-                        title="AI in Education"
-                        description="We help you integrate AI into learning in a safe and monitored way. We know AI can be scary but it doesn't have to be! We'll be there to help you every step of the way."
+                        title="Reliable Help"
+                        description="Our tutors help students work through, step by step, how to solve a specific problem as opposed to just giving them the answers. We value helping students actually learn!"
                     />
-                    <WhyUsCard
-                        icon="⭐️"
-                        title="100/10 Support"
-                        description={`Our main goal is to provide a 100/10 experience for you. We're more than happy to help you or your teachers. Give us an email or phone call and we'll be there! `}
+                    <FeatureCard
+                        icon="🧑‍🏫"
+                        title="Monitored Conversations"
+                        description="All conversations are monitored + logged so registered admins can view them whenever they want. We'll also alert you if any unusual activity comes up!"
                     />
-                    <WhyUsCard
-                        icon="🐣"
-                        title="Early Stages"
-                        description="We're still in our early stages so you can bet that we'll be improving every day. This means that the teachers and districts we work with will have a huge impact on how we grow!"
+                    <FeatureCard
+                        icon="📊"
+                        title="Data Driven Insights"
+                        description="Get insights on things like topics students are struggling with and student performance so you can make data driven decisions!"
+                    />
+
+                    <FeatureCard
+                        icon="🏫"
+                        title="Easy Set Up"
+                        description={`We make it super easy for districts and schools to use. Once you get set up, students can get instant, personalized homework help with just one click!`}
                     />
                 </div>
-            </div> */}
+            </div>
 
             {/* FOOTER */}
             <div className="flex flex-col justify-center items-center mt-[7%] gap-10 bg-[#8bb83f]/[0.2]  rounded-t-[20%]">
