@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { contentRequestSchema } from "@/schemas/form/quiz";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { Input } from "../ui/input";
 
 import { useToast } from "@/components/ui/use-toast";
@@ -129,6 +129,24 @@ const TeacherPortalCard = ({ userId }: Props) => {
                 body: JSON.stringify({
                     userId: userId,
                     school: "River Springs Charter School",
+                    district: true,
+                }),
+            });
+            const data = await res.json();
+            console.log(data);
+            setLoading(false);
+            if (data.message === "updated") {
+                router.push("/dashboard-teacher");
+            }
+        } else if (code === "VM927") {
+            const res = await fetch("/api/updateTeacherStatus", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userId: userId,
+                    school: "Vibrant Minds",
                     district: true,
                 }),
             });

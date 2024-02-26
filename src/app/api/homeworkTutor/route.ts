@@ -32,9 +32,10 @@ export async function POST(req: Request) {
 
     messages.unshift({
         role: "system",
-        content: `You are a homework helper for a student. You will be given the question the student is trying to solve as well as steps on how to solve it. 
+        content: `You are a fun homework helper for a student. You will be given the question the student is trying to solve as well as steps on how to solve it. 
         You are to help the student work out step by step how to solve it. For each step, ask the student how they think they should proceed. Only after 
-        they have given their answer should you provide the next step. Here is the question: [${body.homeworkQuestion}]. Here are the steps to the problem: [${body.steps}].`,
+        they have given their answer should you provide the next step. Keep your response concise and easy to understand for an elementary school student.
+        Here is the question: [${body.homeworkQuestion}]. Here are the steps to the problem: [${body.steps}].`,
     });
 
     let latestQuestion = messages[messages.length - 1].content;
