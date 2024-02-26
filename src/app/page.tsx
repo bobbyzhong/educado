@@ -36,10 +36,6 @@ export default async function Home() {
                     <h1 className="md:text-[14.5px] text-[13.5px] text-green font-semibold  mb-3">
                         AI FOR K12
                     </h1>
-
-                    {/* <h1 className="md:text-6xl text-3xl font-semibold tracking-tight w-11/12 md:w-9/12 lg:w-7/12 ">
-                        Supercharging student support and learning with AI
-                    </h1> */}
                     <h1 className="md:text-[45px] md:leading-[53px] font-outfit text-3xl font-semibold w-11/12 md:w-8/12 lg:w-7/12 ">
                         Giving every student instant & personalized homework
                         help
