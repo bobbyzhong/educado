@@ -33,7 +33,7 @@ export function ThemeToggle({ className, mode }: Props) {
                 >
                     <Home size={23} />
                 </Button>
-                {/* <div className="text-sm ml-2 md:block hidden">Dashboard</div> */}
+                <div className="text-sm ml-2 md:block hidden">Dashboard</div>
             </div>
         );
     } else if (mode == "hw-help") {

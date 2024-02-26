@@ -41,15 +41,15 @@ export default async function Home() {
                         Supercharging student support and learning with AI
                     </h1> */}
                     <h1 className="md:text-[45px] md:leading-[53px] font-outfit text-3xl font-semibold w-11/12 md:w-8/12 lg:w-7/12 ">
-                        Personalize student support and learning at scale with
-                        Educado
+                        Giving every student instant & personalized homework
+                        help
                     </h1>
                     <p className="md:text-[21px] text-[16px] leading-snug md:my-5 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        <b className="text-green">AI tutors</b> trained on your
-                        district's curriculum and standards to give your
-                        students{" "}
-                        <b className="text-green">instant, personalized</b>{" "}
-                        support
+                        Integrate{" "}
+                        <b className="text-green">AI into learning </b>
+                        in a <b className="text-green">safe</b> and
+                        <b className="text-green"> monitored</b> way with a
+                        tutoring platform your students will actually use
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">
