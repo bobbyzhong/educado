@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { getAuthSession } from "@/lib/nextauth";
 
 import SignInButtonLg from "@/components/SignInButtonLg";
-import WhyUsCard from "@/components/landing/WhyUsCard";
+
 import Link from "next/link";
 import Image from "next/image";
 import StudentEnterCode from "@/components/StudentEnterCode";
