@@ -2,17 +2,7 @@
 
 import OpenAI from "openai";
 import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
-import {
-    createPrompt,
-    detectEmotionalIssues,
-    detectEssayRequest,
-    functions,
-    getContext,
-    getDateInString,
-    runFunction,
-} from "../../../../tutorUtils";
-import { PineconeClient } from "@pinecone-database/pinecone";
-import { indexName } from "../../../../config";
+import { runFunction } from "../../../../tutorUtils";
 
 export const runtime = "edge";
 
@@ -34,7 +24,7 @@ export async function POST(req: Request) {
         role: "system",
         content: `You are a fun homework helper for a student. You will be given the question the student is trying to solve as well as steps on how to solve it. 
         You are to help the student work out step by step how to solve it. For each step, ask the student how they think they should proceed. Only after 
-        they have given their answer should you provide the next step. Keep your response concise and easy to understand for an elementary school student.
+        they have given their answer should you provide the next step. Keep your response concise and easy to understand for an elementary school student. Type math symbols in LaTex
         Here is the question: [${body.homeworkQuestion}]. Here are the steps to the problem: [${body.steps}].`,
     });
 

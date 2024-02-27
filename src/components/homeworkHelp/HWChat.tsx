@@ -281,15 +281,16 @@ export default function HWChat({
                                             </span>
                                         </h1>
                                     </div>
-                                    <p className="text-base text-center font-light mt-3 w-[70%] font-outfit ">
-                                        Upload a picture of a specific question
-                                        you need help with!
+                                    <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
+                                        I'm here to help you with your math
+                                        homework. Upload a picture of a specific
+                                        question you need help with!
                                     </p>
                                     <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
                                         *Please note, this feature is still in
-                                        beta and will be limited in
-                                        functionality. The team at Educado is
-                                        working hard to improve it!*
+                                        beta and is limited in functionality
+                                        with graphs and charts. The team at
+                                        Educado is working hard to improve it!*
                                     </p>
 
                                     <Input

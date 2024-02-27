@@ -18,7 +18,7 @@ type Props = {
 const HWHelper = async ({ params: { tutorID } }: Props) => {
     const session = await getAuthSession();
     if (!session?.user) {
-        signIn("google", { callbackUrl: `/tutor/${tutorID}` }).catch(
+        signIn("google", { callbackUrl: `/hw-help/${tutorID}` }).catch(
             console.error
         );
     }

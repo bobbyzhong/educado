@@ -12,9 +12,10 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import { Input } from "../ui/input";
-import { ImageCropModal } from "../ImageCropModal";
+} from "./ui/dropdown-menu";
+
+import { Input } from "./ui/input";
+import { ImageCropModal } from "./ImageCropModal";
 import Latex from "react-latex-next";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -24,6 +25,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
+import { set } from "date-fns";
 
 type Props = {
     tutorName: string;
@@ -39,7 +41,7 @@ type Props = {
     essayPrompt: string;
 };
 
-export default function HWChat({
+export default function HWDemo({
     tutorName,
     tutorDisplayName,
     ownerName,
@@ -63,6 +65,9 @@ export default function HWChat({
     const [imageFile, setImageFile] = useState<any>(null);
     const [base64, setBase64] = useState<any>();
     const [problemContext, setProblemContext] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+
+    const [problemLevel, setProblemLevel] = useState<any>("");
 
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
@@ -104,59 +109,65 @@ export default function HWChat({
     };
 
     const handleStartProblem = async () => {
-        if (!croppedImage) return;
+        console.log("Problem Level: ", problemLevel);
+        if (!problemLevel) return;
         setProcessingImg(true);
         setTextResult("");
 
-        {
-            /* PRODUCTION ONLY */
+        if (problemLevel === "elementary") {
+            setTextResult(
+                "Gracie buys 2 adult tickets and 2 child tickets for the amusement park.\n\nAdult tickets cost \\( \\$ 51 \\) each. Children's tickets cost half as much.\n\nWhat was the total cost of the tickets?"
+            );
+        } else if (problemLevel === "middle") {
+            setTextResult(
+                "11. Ms. Green tells you that a right triangle has a hypotenuse of 13 and a leg of 5. She asks you to find the other leg of the triangle. What is your answer?"
+            );
+        } else if (problemLevel === "high") {
+            setTextResult(
+                "If \\( \\frac{x-1}{3}=k \\) and \\( k=3 \\), what is the value of \\( x \\) ?"
+            );
         }
-
-        // const res = await fetch("/api/mathpix", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         base64: base64,
-        //     }),
-        // });
-
-        // const data: any = await res.json();
-        // const mathData = data.data;
-        // console.log("MATHPIX DATA:", mathData);
-        // setTextResult(mathData.text);
-
-        {
-            /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
-        }
-        setTextResult(
-            "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
-        );
 
         setSolveLoading(true);
         setProcessingImg(false);
         try {
-            {
-                /* PRODUCTION ONLY */
-            }
-            // const res = await axios.post("/api/ocrTest", {
-            //     textResult: mathData.text,
-            //     problemContext: problemContext,
-            // });
-            // const resObj = JSON.parse(res.data.data);
-
-            const res = `{
+            let res = "";
+            if (problemLevel === "elementary") {
+                res = `{
                 "steps": [
-                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-                ]
+    "1. Identify the knowns and unknowns: Knowns are the cost of adult tickets ($51 each), the number of adult tickets (2), the number of child tickets (2), and that child tickets cost half as much as adult tickets. The unknown is the total cost of the tickets.",
+    "2. Calculate the cost of one child ticket by dividing the cost of an adult ticket by 2: $51 / 2 = $25.50.",
+    "3. Calculate the total cost for the adult tickets by multiplying the cost of one adult ticket by the number of adult tickets: $51 * 2 = $102.",
+    "4. Calculate the total cost for the child tickets by multiplying the cost of one child ticket by the number of child tickets: $25.50 * 2 = $51.",
+    "5. Add the total costs for the adult and child tickets to find the total cost of the tickets: $102 + $51 = $153.",
+    "6. Therefore, the total cost of the tickets was $153."
+  ]
             }`;
-            const resObj = JSON.parse(res);
+            } else if (problemLevel === "middle") {
+                res = `{
+                "steps":  [
+    "1. Identify the knowns and unknowns. Knowns: Hypotenuse of the triangle is 13, one leg of the triangle is 5. Unknown: The length of the other leg of the triangle.",
+    "2. Recall the Pythagorean theorem, which states that in a right triangle, the square of the length of the hypotenuse (c) is equal to the sum of the squares of the lengths of the other two sides (a and b). This can be represented as a^2 + b^2 = c^2.",
+    "3. Substitute the known values into the Pythagorean theorem equation. Since the hypotenuse (c) is 13 and one leg (a) is 5, the equation becomes 5^2 + b^2 = 13^2.",
+    "4. Calculate the square of 5 and 13 to simplify the equation. This results in 25 + b^2 = 169.",
+    "5. Subtract 25 from both sides of the equation to solve for b^2. This results in b^2 = 169 - 25.",
+    "6. Calculate the difference to find the value of b^2. This leads to b^2 = 144.",
+    "7. Find the square root of both sides of the equation to solve for b. Taking the square root of 144 gives b = 12.",
+    "8. Conclude that the length of the other leg of the right triangle is 12."
+  ] 
+            }`;
+            } else {
+                res = `{
+                "steps": [
+    "1. Identify the knowns and unknowns. The knowns are the equation \\\\( \\frac{x-1}{3}=k \\\\) and \\\\( k=3 \\\\). The unknown is the value of \\\\( x \\\\).",
+    "2. Substitute the known value of \\\\( k \\\\) into the equation, which gives us \\\\( \\frac{x-1}{3}=3 \\\\).",
+    "3. Multiply both sides of the equation by 3 to isolate \\\\( x-1 \\\\), resulting in \\\\( x-1=9 \\\\).",
+    "4. Add 1 to both sides of the equation to solve for \\\\( x \\\\), leading us to \\\\( x=10 \\\\).",
+    "5. Conclude that the value of \\\\( x \\\\) is 10."
+  ]
+            }`;
+            }
+            const resObj = JSON.parse(JSON.stringify(JSON.parse(res)));
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -200,6 +211,8 @@ export default function HWChat({
         setInput("");
         setBase64("");
         setProblemContext("");
+        setImageUrl("");
+        setProblemLevel("");
     };
 
     const [isRecording, setIsRecording] = useState(false);
@@ -239,36 +252,7 @@ export default function HWChat({
     useEffect(() => {
         setSecInput(transcript);
         setInput(transcript);
-    }, [transcript, setSecInput]);
-    useEffect(() => {
-        setTranscript(secInput); // Set the input value to text
-    }, [input, secInput]);
-
-    // messages.push({
-    //     id: "1",
-    //     role: "system",
-    //     content: "What do you think the first step to solving this problem is?",
-    // });
-
-    // const testString = "No worries! Let's start by identifying the knowns and unknowns for this problem. \n" +
-    // 'Knowns: The expression \\( \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) \\) and the need to show it equals \\( x \\). \n' +
-    // 'Unknowns: The intermediate steps to prove this expression. \n' +
-    // '\n' +
-    // 'Now, what do you think we should do next?'
-
-    // const markdown = `Here is an equation: $\\sqrt{3x-1}+(1+x)^2$`;
-
-    // const higgsTest = 'I apologize for the mistake earlier. The Higgs equation is an important concept in physics, and I can definitely show it to you. The equation you are referring to is the Higgs potential, which takes the form: \n' +
-    // '\n' +
-    // '$$ V(\\phi) = \\frac{1}{2} \\mu^{2} \\phi^{2} - \\frac{1}{3} \\lambda \\phi^{3} + \\frac{1}{4}\\lambda^{2}\\phi^{4} $$\n' +
-    // '\n' +
-    // 'where $V(\\phi)$ represents the Higgs potential, $\\mu^2$ is a parameter, $\\lambda$ is the coupling constant, and $\\phi$ is the scalar field. This potential is central to the mechanism of spontaneous symmetry breaking in the Standard Model of particle physics. \n' +
-    // '\n' +
-    // "Now, let's refocus on the original math problem you're working on. What do you think we should do next to show that $ \\left(\\frac{d^{2}}{d x^{2}}+\\frac{d}{d y}\\right)\\left(x y+2 y-x^{2}\\right) = x $?"
-
-    // const bracketTest = 'A complex math expression in calculus could be something like:\n' +
-    // '\\[ \\int_{0}^{1} \\frac{x^3 - 2x^2 + 4x - 8}{2x^2 - 4x + 8} \\, dx \\]\n' +
-    // 'This involves integration of a rational function within the limits of integration. Would you like to go through any specific steps in solving this expression or have any questions about it?'
+    }, [transcript]);
 
     const convertLatexDeliminators = (text: string) => {
         // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
@@ -279,75 +263,11 @@ export default function HWChat({
             .replace(/\\\]/g, "$$");
     };
 
-    const demoText = convertLatexDeliminators(`Of course! Here
-                                                                are the steps we
-                                                                will follow to
-                                                                solve the
-                                                                problem:\n' +
-                                                                '\n' + '1.
-                                                                Identify the
-                                                                knowns and
-                                                                unknowns: Knowns
-                                                                are the complex
-                                                                numbers to be
-                                                                added: (7+3i)
-                                                                and (-8+9i). The
-                                                                unknown is the
-                                                                sum of these
-                                                                complex
-                                                                numbers.\n' +
-                                                                '2. Write down
-                                                                the formula for
-                                                                adding two
-                                                                complex numbers:
-                                                                If we have two
-                                                                complex numbers
-                                                                in the form
-                                                                (a+bi) and
-                                                                (c+di), their
-                                                                sum is (a+c) +
-                                                                (b+d)i.\n' + '3.
-                                                                Apply the
-                                                                formula to the
-                                                                given complex
-                                                                numbers: For
-                                                                (7+3i) and
-                                                                (-8+9i), a=7,
-                                                                b=3, c=-8, and
-                                                                d=9.\n' + '4.
-                                                                Calculate the
-                                                                real parts and
-                                                                the imaginary
-                                                                parts
-                                                                separately: Real
-                                                                part: 7 + (-8) =
-                                                                -1, Imaginary
-                                                                part: 3 + 9 =
-                                                                12.\n' + '5.
-                                                                Combine the
-                                                                results from
-                                                                step 4: The sum
-                                                                is (-1) +
-                                                                (12)i.\n' + '6.
-                                                                Simplify the
-                                                                answer (if
-                                                                necessary): In
-                                                                this case, the
-                                                                answer is
-                                                                already in its
-                                                                simplest form,
-                                                                so no further
-                                                                simplification
-                                                                is needed. The
-                                                                final answer is
-                                                                -1 + 12i.\n' +
-                                                                '\n' + 'What do
-                                                                you think should
-                                                                be the first
-                                                                step based on
-                                                                this list?'`);
-
-    // console.log(messages);
+    // messages.push({
+    //     id: "1",
+    //     role: "system",
+    //     content: "What do you think the first step to solving this problem is?",
+    // });
 
     // ----------------
     // Tutor Chat Section
@@ -374,38 +294,99 @@ export default function HWChat({
                                             </span>
                                         </h1>
                                     </div>
-                                    <p className="text-base text-center font-light mt-3 w-[70%] font-outfit ">
-                                        Upload a picture of a specific question
-                                        you need help with!
+                                    <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
+                                        I'm here to help you with your math
+                                        homework. Upload a picture of a specific
+                                        question you need help with!
                                     </p>
-
                                     <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
-                                        *Please note, this feature is still in
-                                        beta and will be limited in
-                                        functionality. The team at Educado is
-                                        working hard to improve it!*
+                                        *Please note, this is a demo version of
+                                        our math homework helper so the
+                                        functionality is slightly different from
+                                        what students will use*
                                     </p>
 
-                                    <Input
-                                        className="cursor-pointer mt-3"
-                                        type="file"
-                                        accept="image/*"
-                                        onChange={handleChangeImage}
-                                    />
+                                    <div className="grid grid-cols-3 gap-2 mt-6 font-outfit text-zinc-400  font-medium">
+                                        <div
+                                            className={`flex items-center justify-center p-10 border-2  rounded-lg 
+                                        cursor-pointer ${
+                                            problemLevel === "elementary"
+                                                ? "border-green text-green"
+                                                : "border-zinc-300"
+                                        } `}
+                                            onClick={() => {
+                                                setProblemLevel("elementary");
+                                                setImageUrl("/elem.png");
+                                            }}
+                                        >
+                                            Elementary School
+                                        </div>
+                                        <div
+                                            className={`flex items-center justify-center p-10 border-2 rounded-lg 
+                                        cursor-pointer ${
+                                            problemLevel === "middle"
+                                                ? " border-green text-green"
+                                                : "border-zinc-300"
+                                        }`}
+                                            onClick={() => {
+                                                setProblemLevel("middle");
+                                                setImageUrl("/mid.png");
+                                            }}
+                                        >
+                                            Middle School
+                                        </div>
+                                        <div
+                                            className={`flex items-center justify-center p-10 border-2 rounded-lg 
+                                        cursor-pointer ${
+                                            problemLevel === "high"
+                                                ? "border-green text-green"
+                                                : "border-zinc-300"
+                                        }`}
+                                            onClick={() => {
+                                                setProblemLevel("high");
+                                                setImageUrl("/high.png");
+                                            }}
+                                        >
+                                            High School
+                                        </div>
+                                    </div>
+
                                     <div className="mt-5 p-3 border rounded-md w-full flex items-center justify-center">
-                                        {croppedImage && (
+                                        {problemLevel === "high" ? (
                                             <div>
                                                 <Image
-                                                    src={croppedImage}
+                                                    src={"/high.png"}
                                                     height={500}
                                                     width={500}
                                                     alt=""
                                                 />
                                             </div>
+                                        ) : problemLevel === "elementary" ? (
+                                            <div>
+                                                {" "}
+                                                <Image
+                                                    src={"/elem.png"}
+                                                    height={500}
+                                                    width={500}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        ) : problemLevel === "middle" ? (
+                                            <div>
+                                                {" "}
+                                                <Image
+                                                    src={"/mid.png"}
+                                                    height={500}
+                                                    width={500}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div></div>
                                         )}
                                     </div>
 
-                                    {croppedImage && (
+                                    {problemLevel && (
                                         <div
                                             className="mt-5 p-3  rounded-md w-full flex items-center justify-center flex-col font-outfit 
                             "
@@ -416,7 +397,7 @@ export default function HWChat({
                                                 (optional)
                                             </h1>
                                             <Input
-                                                onChange={(e) =>
+                                                onChange={(e: any) =>
                                                     setProblemContext(
                                                         e.target.value
                                                     )
@@ -433,9 +414,7 @@ export default function HWChat({
                                             <div></div>
                                             <PhotoProvider>
                                                 <div className="rounded-md w-full flex items-center justify-center flex-row h-[7.5rem]">
-                                                    <PhotoView
-                                                        src={croppedImage}
-                                                    >
+                                                    <PhotoView src={imageUrl}>
                                                         <div className="cursor-pointer">
                                                             <Expand
                                                                 className="absolute "
@@ -444,9 +423,7 @@ export default function HWChat({
                                                                 }
                                                             />
                                                             <Image
-                                                                src={
-                                                                    croppedImage
-                                                                }
+                                                                src={imageUrl}
                                                                 height={200}
                                                                 width={200}
                                                                 alt=""
@@ -496,7 +473,7 @@ export default function HWChat({
                                                                 className="object-contain"
                                                             />
                                                             <ReactMarkdown
-                                                                className="flex flex-col leading-8"
+                                                                className="flex flex-col leading-8 prose"
                                                                 remarkPlugins={[
                                                                     remarkMath,
                                                                 ]}
@@ -522,7 +499,7 @@ export default function HWChat({
                                                                 className="object-contain "
                                                             />
                                                             <ReactMarkdown
-                                                                className="flex flex-col leading-8"
+                                                                className="flex flex-col leading-8 prose"
                                                                 remarkPlugins={[
                                                                     remarkMath,
                                                                 ]}
@@ -876,7 +853,7 @@ export default function HWChat({
                                                         <div className="flex flex-row items-center justify-center">
                                                             <div
                                                                 className={`py-3 mr-3 font-outfit ${
-                                                                    !base64
+                                                                    !problemLevel
                                                                         ? "text-[#c0c0c0]"
                                                                         : "text-[#86D20A]"
                                                                 }`}
@@ -885,7 +862,7 @@ export default function HWChat({
                                                             </div>
                                                             <Play
                                                                 color={
-                                                                    base64
+                                                                    problemLevel
                                                                         ? "#86D20A"
                                                                         : "#c0c0c0"
                                                                 }
