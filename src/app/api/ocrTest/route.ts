@@ -25,13 +25,14 @@ export async function POST(req: Request) {
     let body = await req.json();
     console.log(body.problemContext);
 
-    const completion = await openai.chat.completions.create({
+    let completion;
+
+    completion = await openai.chat.completions.create({
         messages: [
             {
                 role: "system",
                 content: `Given a problem from a student, return a JSON object with one key named "steps" which contains a list of
-                steps to solving the problem. The steps should be in the form of a list of strings and should be numbered. The first step
-                should always be identifying the knowns and unknowns of the problem. Type out math symbols and equations in LaTex`,
+                steps to solving the problem. The steps should be in the form of a list of strings and should be numbered. Type out math symbols and equations in LaTex`,
             },
             {
                 role: "user",

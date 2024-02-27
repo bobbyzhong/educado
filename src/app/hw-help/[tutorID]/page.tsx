@@ -76,10 +76,9 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
                 teacherId={tutor.userId}
                 userId={session.user.id}
                 studentName={session.user.name!}
-                placeholderQs={tutor.placeholderQs}
                 defaultPrompt={tutor.basePrompt}
                 tutorType={tutor.tutorType}
-                essayPrompt={tutor.essayPrompt}
+                tutorGrade={tutor.grade}
             />
         );
 

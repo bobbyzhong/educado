@@ -31,12 +31,12 @@ type Props = {
     ownerName: string;
     tutorId: string;
     teacherId: string;
-    placeholderQs: string;
     userId: string;
     studentName: string;
     defaultPrompt: string;
     tutorType: string;
-    essayPrompt: string;
+
+    tutorGrade: string;
 };
 
 export default function HWChat({
@@ -45,12 +45,11 @@ export default function HWChat({
     ownerName,
     tutorId,
     teacherId,
-    placeholderQs,
     userId,
     studentName,
     defaultPrompt,
     tutorType,
-    essayPrompt,
+    tutorGrade,
 }: Props) {
     const [selectedImage, setSelectedImage] = useState<any>(null);
     const [textResult, setTextResult] = useState<any>("");
@@ -89,6 +88,7 @@ export default function HWChat({
             tutorType: tutorType,
             homeworkQuestion: textResult,
             steps: steps,
+            tutorGrade: tutorGrade,
         },
     });
 
@@ -243,11 +243,20 @@ export default function HWChat({
 
     const convertLatexDeliminators = (text: string) => {
         // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
-        return text
-            .replace(/\\\( /g, "$")
-            .replace(/\\\)/g, "$")
-            .replace(/\\\[/g, "$$")
-            .replace(/\\\]/g, "$$");
+        return text.replace(/(\\\[)|(\\\()|(\\\])|(\\\))/g, (match) => {
+            switch (match) {
+                case "\\[":
+                    return "$$";
+                case "\\(":
+                    return "$";
+                case "\\]":
+                    return "$$";
+                case "\\)":
+                    return "$";
+                default:
+                    return match; // should not be reached, but added for robustness
+            }
+        });
     };
 
     // messages.push({
@@ -442,6 +451,9 @@ export default function HWChat({
                                                                     m.content
                                                                 )}
                                                             </ReactMarkdown>
+                                                            {/* <Latex>
+                                                                {m.content}
+                                                            </Latex> */}
                                                         </div>
                                                     )}
                                                 </div>
