@@ -305,6 +305,9 @@ export default function HWDemo({
                                         functionality is slightly different from
                                         what students will use*
                                     </p>
+                                    <p className="text-base text-center font-light mt-5 w-[60%] font-outfit ">
+                                        Choose problem level!
+                                    </p>
 
                                     <div className="grid grid-cols-3 gap-2 mt-6 font-outfit text-zinc-400  font-medium">
                                         <div
