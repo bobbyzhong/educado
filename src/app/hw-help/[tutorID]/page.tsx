@@ -56,11 +56,7 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
                     {tutor.tutorDisplayName}!
                 </div>
                 <SignInButtonStudent
-                    callback={
-                        !tutor.isHomework
-                            ? `/tutor/${tutor.id}`
-                            : `/hw-help/${tutor.id}`
-                    }
+                    callback={"/hw-demo"}
                     text={"Sign In"}
                     tutorId={tutor.id}
                 />
