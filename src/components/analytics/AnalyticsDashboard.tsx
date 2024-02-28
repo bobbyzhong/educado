@@ -28,14 +28,16 @@ const AnalyticsDashboard = () => {
   };
 
   const getAllQuestions = async () => {
-    setIsLoading(true);
     const res = await fetch('/api/adminDashboard/find-all-questions',
       {
         method: 'GET',
       });
     const data = await res.json();
     setTutorQuestions(data.questions);
-    setIsLoading(false);
+    
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -48,6 +50,7 @@ const AnalyticsDashboard = () => {
   , [limitQuestions]);
 
   const handleShowAllQuestions = () => {
+    setIsLoading(true);
     setLimitQuestions(false);
   }
 
@@ -96,12 +99,12 @@ const AnalyticsDashboard = () => {
                       <div>
                         <Table className="mt-4 w-full">
                             <TableCaption>
-                              {limitQuestions ? (
-                                <Button variant={"green"} onClick={handleShowAllQuestions}>
+                              {!limitQuestions && !isLoading ? (
+                                <a>End of list.</a>
+                              ) : (
+                                <Button variant={"green"} onClick={handleShowAllQuestions} className={`${ isLoading && "animate-pulse" }`}>
                                   View All
                                 </Button>
-                              ) : (
-                                <a>End of list.</a>
                               )}
                             </TableCaption>
                             <TableHeader>
