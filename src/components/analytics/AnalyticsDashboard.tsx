@@ -12,12 +12,25 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "../ui/button";
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const AnalyticsDashboard = () => {
   const [tutorQuestions, setTutorQuestions] = useState<TutorQuestions[]>([]);
   const [limitQuestions, setLimitQuestions] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [numberOfQuestions, setNumberOfQuestions] = useState<number>(0);
 
+  const getQuestionCount = async () => {
+    const res = await fetch('/api/adminDashboard/find-question-count',
+      {
+        method: 'GET',
+      });
+    const data = await res.json();
+    setNumberOfQuestions(data.count);
+  }
+  
   const getRecentQuestions = async () => {
     const res = await fetch('/api/adminDashboard/find-recent-questions',
       {
@@ -49,6 +62,10 @@ const AnalyticsDashboard = () => {
   }
   , [limitQuestions]);
 
+  useEffect(() => {
+    getQuestionCount();
+  }, []);
+
   const handleShowAllQuestions = () => {
     setIsLoading(true);
     setLimitQuestions(false);
@@ -63,7 +80,7 @@ const AnalyticsDashboard = () => {
                   </h2>
                   <a className="font-bold">
                       Total Number of Questions Asked By Students:{" "}
-                      {/* {numberOfQuestions} */}
+                      {numberOfQuestions}
                   </a>
                   <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 text-center">
                       Here are some of the recently asked questions for this
@@ -144,7 +161,9 @@ const AnalyticsDashboard = () => {
                                           </TableCell>
                                           <TableCell className="w-[50%]">
                                               <div className="max-h-[6rem] overflow-y-scroll">
-                                                  {question.answer}
+                                                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                                                    {question.answer}
+                                                  </ReactMarkdown>
                                               </div>
                                           </TableCell>
                                       </TableRow>

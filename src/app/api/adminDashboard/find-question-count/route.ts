@@ -2,11 +2,11 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { authenticateAdmin } from "@/lib/accountHelpers";
+import { Nuosu_SIL } from "next/font/google";
 
 export async function GET(req: Request, res: Response) {
     try {
       const admin = await authenticateAdmin();
-      console.log(admin);
 
       if(!admin) {
         return NextResponse.json(
@@ -22,7 +22,9 @@ export async function GET(req: Request, res: Response) {
 
       const districtTutors = await prisma.tutor.findMany({
         where: {
-            district: adminDistrict,
+            district: 
+              adminDistrict,  
+              // "tryeducado.com",
         },
         orderBy: {
             dateCreated: "desc",
@@ -30,7 +32,7 @@ export async function GET(req: Request, res: Response) {
       });
 
       const districtTutorIds = districtTutors.map((tutor) => tutor.id);
-      const questions = await prisma.tutorQuestions.count({
+      const count = await prisma.tutorQuestions.count({
         where: {
             tutorId: {
               in: districtTutorIds
@@ -39,7 +41,7 @@ export async function GET(req: Request, res: Response) {
       });
 
       return NextResponse.json(
-        { questions },
+        { count },
         { status: 200 }
       );
     } catch (error) {

@@ -6,7 +6,6 @@ import { authenticateAdmin } from "@/lib/accountHelpers";
 export async function GET(req: Request, res: Response) {
     try {
       const admin = await authenticateAdmin();
-      console.log(admin);
 
       if(!admin) {
         return NextResponse.json(
@@ -23,8 +22,8 @@ export async function GET(req: Request, res: Response) {
       const districtTutors = await prisma.tutor.findMany({
         where: {
             district: 
-              // adminDistrict,  
-              "tryeducado.com",
+              adminDistrict,  
+              // "tryeducado.com",
         },
         orderBy: {
             dateCreated: "desc",
