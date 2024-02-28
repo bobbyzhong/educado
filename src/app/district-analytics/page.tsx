@@ -25,10 +25,6 @@ const DistrictAnalytics = async (props: Props) => {
         redirect("/dashboard-student");
     }
 
-    const adminDistrict = user?.email?.split("@")[1];
-    // const adminDistrict = "tryeducado.com";
-    // const adminDistrict = null;
-
     return (
         <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
@@ -36,7 +32,7 @@ const DistrictAnalytics = async (props: Props) => {
                     District Analytics
                 </h2>
 
-                <AnalyticsDashboard district={adminDistrict} />
+                <AnalyticsDashboard />
             </div>
         </main>
     );

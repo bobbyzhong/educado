@@ -10,23 +10,14 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { prisma } from "@/lib/db";
+import { Question } from "@prisma/client";
 
-type Props = { limit: number; tutorIds: string[] };
+type Props = {
+    questions: Question[];
+};
 
-const DistrictQuestions = async ({ limit, tutorIds }: Props) => {
-    let chats = await prisma.tutorQuestions.findMany({
-        take: limit,
-        where: {
-            tutorId: {
-              in: tutorIds
-            }
-        },
-        orderBy: {
-            date: "desc",
-        },
-    });
-
-    if (chats.length === 0) {
+const DistrictQuestions = async ({ questions }: Props) => {
+    if (questions.length === 0) {
         return (
             <div>
                 <Table className="mt-4 w-full">
@@ -63,7 +54,7 @@ const DistrictQuestions = async ({ limit, tutorIds }: Props) => {
                     </TableHeader>
                     <TableBody>
                         <>
-                            {chats.map((chat: any, index: any) => {
+                            {questions.map((chat: any, index: any) => {
                                 const date = new Date(
                                     chat.date
                                 ).toLocaleDateString();
