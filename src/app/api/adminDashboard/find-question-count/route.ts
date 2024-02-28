@@ -42,15 +42,13 @@ export async function GET(req: Request, res: Response) {
 
         return NextResponse.json({ count }, { status: 200 });
     } catch (error) {
-        if (error instanceof ZodError) {
-            return NextResponse.json(
-                {
-                    message: error.issues,
-                },
-                {
-                    status: 400,
-                }
-            );
-        }
+        return NextResponse.json(
+            {
+                message: error,
+            },
+            {
+                status: 400,
+            }
+        );
     }
 }
