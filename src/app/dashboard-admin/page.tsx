@@ -45,7 +45,7 @@ const DashboardAdmin = async (props: Props) => {
 
     return (
         <main className="p-8 mx-auto max-w-7xl">
-            <div className="flex items-center mt-5">
+            {/* <div className="flex items-center mt-5">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
                         Homework Helpers{" "}
@@ -66,15 +66,15 @@ const DashboardAdmin = async (props: Props) => {
                     description="Manage all your homework helpers here. See what questions students have been asking and share tutors with your students!"
                     pageLink="/manage-helpers"
                 />
-            </div>
+            </div> */}
             <div className="flex items-center mt-8">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
                         Your Dashboard
                     </h2>
                     <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300">
-                        Below you’ll be able to create, explore, and manage your
-                        district's tutors
+                        Below you’ll be able to manage your district's resources
+                        and data
                     </h1>
                 </div>
             </div>
@@ -93,6 +93,12 @@ const DashboardAdmin = async (props: Props) => {
                     title="Educado Analytics"
                     description="View analytics for your tutors and make data driven decisions. Identify trends and patterns such as topics students are struggling with."
                     pageLink="/district-analytics"
+                />
+                <DashboardCard
+                    icon={"hw-math"}
+                    title="Manage Helpers"
+                    description="Manage all your homework helpers here. See what questions students have been asking and share tutors with your students!"
+                    pageLink="/manage-helpers"
                 />
 
                 <DashboardCard

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { set } from "date-fns";
+import { Button } from "./ui/button";
 
 type Props = {
     isSignedIn: any;
@@ -26,14 +27,14 @@ const HomePageJoinCode = ({ isSignedIn }: Props) => {
     };
 
     return (
-        <div
-            className="font-medium text-[17px] md:text-[19px]"
+        <Button
+            className=""
+            size={"xl"}
+            variant={"greenOutline"}
             onClick={handleSubmit}
         >
-            Are you a district official or teacher? Click{" "}
-            <span className="text-green underline cursor-pointer">here</span> to
-            sign in as an admin
-        </div>
+            Admin Sign Up
+        </Button>
     );
 };
 export default HomePageJoinCode;

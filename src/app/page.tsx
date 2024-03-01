@@ -67,21 +67,12 @@ export default async function Home() {
                             link={"/dashboard-student"}
                         />
                     )}
-
-                    <Link href={"/demo"}>
-                        <Button
-                            className=""
-                            size={"xl"}
-                            variant={"greenOutline"}
-                        >
-                            Book Demo
-                        </Button>
-                    </Link>
+                    <HomePageJoinCode isSignedIn={session?.user} />{" "}
                 </div>
             </div>
-            <div className="flex flex-col md:flex-rowjustify-center items-center ">
+            <div className="flex flex-col md:flex-rowjustify-center items-center mt-5">
                 <StudentEnterCode
-                    title="Join Session"
+                    title="Join Tutor Session"
                     description="Ask for help"
                     link="tutor"
                     bgRed={false}
@@ -96,10 +87,6 @@ export default async function Home() {
                     isSignedIn={session?.user}
                     userId={session?.user?.id || ""}
                 /> */}
-            </div>
-
-            <div className="w-full flex items-center justify-center mt-12 gap-1 px-3 text-center">
-                <HomePageJoinCode isSignedIn={session?.user} />{" "}
             </div>
 
             {/* LANDING IMAGES */}
