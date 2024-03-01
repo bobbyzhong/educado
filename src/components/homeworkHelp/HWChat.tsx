@@ -28,6 +28,7 @@ import "katex/dist/katex.min.css";
 type Props = {
     tutorName: string;
     tutorDisplayName: string;
+    tutorDescription: string;
     ownerName: string;
     tutorId: string;
     teacherId: string;
@@ -42,6 +43,7 @@ type Props = {
 export default function HWChat({
     tutorName,
     tutorDisplayName,
+    tutorDescription,
     ownerName,
     tutorId,
     teacherId,
@@ -291,9 +293,8 @@ export default function HWChat({
                                         </h1>
                                     </div>
                                     <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
-                                        I'm here to help you with your math
-                                        homework. Upload a picture of a specific
-                                        question you need help with!
+                                        {tutorDescription} Upload a picture of a
+                                        specific question you need help with!
                                     </p>
                                     <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
                                         *Please note, this feature is still in

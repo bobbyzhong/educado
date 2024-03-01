@@ -72,6 +72,7 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
                 tutorName={tutor.tutorName}
                 ownerName={tutor.ownerName}
                 tutorDisplayName={tutor.tutorDisplayName}
+                tutorDescription={tutor.tutorDescription}
                 tutorId={tutor.id}
                 teacherId={tutor.userId}
                 userId={session.user.id}
