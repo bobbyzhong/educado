@@ -12,6 +12,7 @@ import {
 import { Result } from "@prisma/client";
 import { prisma } from "@/lib/db";
 import Link from "next/link";
+import { ArrowUpRightSquare } from "lucide-react";
 
 type Props = { limit: number; tutorId: string };
 
@@ -58,8 +59,9 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                                 Date Created
                             </TableHead>
                             <TableHead className="">Student Name</TableHead>
-                            <TableHead className="w-[50%]">Question</TableHead>
+                            <TableHead className="w-[40%]">Question</TableHead>
                             <TableHead className="">Answer</TableHead>
+                            <TableHead className="w-[8%]">View Chat</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -79,7 +81,13 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                                         </TableCell>
                                         <TableCell>{date}</TableCell>
                                         <TableCell>
-                                            {chat.studentName}
+                                            <Link
+                                                href={`/convoLog/${chat.userId}`}
+                                                target="_blank"
+                                                className="text-green underline cursor-pointer"
+                                            >
+                                                {chat.studentName}
+                                            </Link>
                                         </TableCell>
                                         <TableCell className="font-semibold max-w-[1rem]">
                                             <div className=" overflow-x-scroll">
@@ -90,6 +98,18 @@ const RecentQuestions = async ({ limit, tutorId }: Props) => {
                                             <div className="max-h-[6rem] overflow-y-scroll">
                                                 {chat.answer}
                                             </div>
+                                        </TableCell>
+                                        <TableCell className="flex items-center justify-center">
+                                            <Link
+                                                href={`/convoLog/${chat.userId}`}
+                                                target="_blank"
+                                                className="cursor-pointer"
+                                            >
+                                                <ArrowUpRightSquare
+                                                    size={26}
+                                                    color={"#7EBA1B"}
+                                                />
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 );

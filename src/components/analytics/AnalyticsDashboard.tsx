@@ -60,10 +60,6 @@ const AnalyticsDashboard = () => {
         }
     }, [limitQuestions]);
 
-    useEffect(() => {
-        getQuestionCount();
-    }, []);
-
     const handleShowAllQuestions = () => {
         setIsLoading(true);
         setLimitQuestions(false);
@@ -73,25 +69,14 @@ const AnalyticsDashboard = () => {
         <div className="w-full">
             <div className="flex items-center mb-5 pl-2 mt-10">
                 <div className=" flex flex-col items-center w-full gap-1">
-                    <h2 className="mr-2 text-[23px] font-bold tracking-tight text-center ">
+                    <h2 className="text-xl font-semibold tracking-tight text-center ">
                         Recent Questions
                     </h2>
-                    <a className="font-bold">
-                        Total Number of Questions Asked By Students:{" "}
-                        {numberOfQuestions}
-                    </a>
-                    {/* <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 text-center">
-                        Here are some of the recently asked questions for this
-                        tutor. View the full history{" "}
-                        <Link
-                            className="text-green underline  "
-                            href={`/questionLogs/district`}
-                            //   href={`/questionLogs/district/${districtTutorIds}`}
-                            target="_blank"
-                        >
-                            here
-                        </Link>
-                    </h1> */}
+                    <p className="text-center text-sm text-zinc-500 w-[30%] mb-5">
+                        Click on a student name or the View Chat section to see
+                        the full conversation between a student and a tutor!
+                    </p>
+
                     <div className="w-full">
                         {tutorQuestions.length === 0 ? (
                             <div>

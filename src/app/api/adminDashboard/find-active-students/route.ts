@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
-import { ZodError } from "zod";
 import { authenticateAdmin } from "@/lib/accountHelpers";
 
 export async function GET(req: Request, res: Response) {
@@ -20,10 +19,16 @@ export async function GET(req: Request, res: Response) {
 
         const adminDistrict = admin?.email?.split("@")[1];
 
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        const oneWeekAgoStr =
+            oneWeekAgo.toISOString().split("T")[0] +
+            " " +
+            oneWeekAgo.toTimeString().split(" ")[0];
+
         const districtTutors = await prisma.tutor.findMany({
             where: {
                 district: adminDistrict,
-                // "tryeducado.com",
             },
             orderBy: {
                 dateCreated: "desc",
@@ -31,19 +36,28 @@ export async function GET(req: Request, res: Response) {
         });
 
         const districtTutorIds = districtTutors.map((tutor) => tutor.id);
-        const questions = await prisma.tutorQuestions.findMany({
-            take: 1000,
+        const recentQuestions = await prisma.tutorQuestions.findMany({
             where: {
                 tutorId: {
                     in: districtTutorIds,
                 },
+                date: {
+                    gte: oneWeekAgoStr,
+                },
             },
-            orderBy: {
-                date: "desc",
+            select: {
+                userId: true, // only select studentId
             },
         });
 
-        return NextResponse.json({ questions }, { status: 200 });
+        const uniqueStudentIds = new Set(recentQuestions.map((q) => q.userId));
+        const activeStudentCount = uniqueStudentIds.size;
+        const questionsThisWeek = recentQuestions.length;
+
+        return NextResponse.json(
+            { activeStudentCount, questionsThisWeek },
+            { status: 200 }
+        );
     } catch (error) {
         return NextResponse.json(
             {
