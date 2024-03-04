@@ -15,6 +15,8 @@ import { Button } from "../ui/button";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import { ArrowUpRightSquare } from "lucide-react";
+import Link from "next/link";
 
 const AnalyticsDashboard = () => {
     const [tutorQuestions, setTutorQuestions] = useState<TutorQuestions[]>([]);
@@ -69,10 +71,10 @@ const AnalyticsDashboard = () => {
 
     return (
         <div className="w-full">
-            <div className="flex items-center mb-5 pl-2">
+            <div className="flex items-center mb-5 pl-2 mt-10">
                 <div className=" flex flex-col items-center w-full gap-1">
                     <h2 className="mr-2 text-[23px] font-bold tracking-tight text-center ">
-                        Student Data
+                        Recent Questions
                     </h2>
                     <a className="font-bold">
                         Total Number of Questions Asked By Students:{" "}
@@ -108,6 +110,7 @@ const AnalyticsDashboard = () => {
                                             <TableHead className="">
                                                 Answer
                                             </TableHead>
+                                            <TableHead>Open Convo</TableHead>
                                         </TableRow>
                                     </TableHeader>
                                 </Table>
@@ -141,11 +144,14 @@ const AnalyticsDashboard = () => {
                                             <TableHead className="">
                                                 Student Name
                                             </TableHead>
-                                            <TableHead className="w-[50%]">
+                                            <TableHead className="w-[40%]">
                                                 Question
                                             </TableHead>
                                             <TableHead className="">
                                                 Answer
+                                            </TableHead>
+                                            <TableHead className="w-[8%]">
+                                                View Chat
                                             </TableHead>
                                         </TableRow>
                                     </TableHeader>
@@ -173,9 +179,15 @@ const AnalyticsDashboard = () => {
                                                                     {date}
                                                                 </TableCell>
                                                                 <TableCell>
-                                                                    {
-                                                                        question.studentName
-                                                                    }
+                                                                    <Link
+                                                                        href={`/convoLog/${question.userId}`}
+                                                                        target="_blank"
+                                                                        className="text-green underline cursor-pointer"
+                                                                    >
+                                                                        {
+                                                                            question.studentName
+                                                                        }
+                                                                    </Link>
                                                                 </TableCell>
                                                                 <TableCell className="font-semibold max-w-[1rem]">
                                                                     <div className=" overflow-x-scroll">
@@ -199,6 +211,22 @@ const AnalyticsDashboard = () => {
                                                                             }
                                                                         </ReactMarkdown>
                                                                     </div>
+                                                                </TableCell>
+                                                                <TableCell className="flex items-center justify-center">
+                                                                    <Link
+                                                                        href={`/convoLog/${question.userId}`}
+                                                                        target="_blank"
+                                                                        className="cursor-pointer"
+                                                                    >
+                                                                        <ArrowUpRightSquare
+                                                                            size={
+                                                                                26
+                                                                            }
+                                                                            color={
+                                                                                "#7EBA1B"
+                                                                            }
+                                                                        />
+                                                                    </Link>
                                                                 </TableCell>
                                                             </TableRow>
                                                         );
