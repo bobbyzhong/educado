@@ -169,6 +169,21 @@ export default function HWChat({
                 content:
                     "What do you think is the first step to solving this problem?",
             });
+
+            // LOGGING QUESTION
+            await fetch(`/api/logTutorQuestion`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: `Homework Upload: ${mathData.text}`,
+                    studentName: studentName,
+                    tutorId: tutorId,
+                    userId: userId,
+                    answer: "What do you think is the first step to solving this problem?",
+                }),
+            });
         } catch (e) {
             setSolveLoading(false);
             console.log("ERROR: ", e);

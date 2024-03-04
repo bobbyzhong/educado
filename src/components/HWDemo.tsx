@@ -100,14 +100,6 @@ export default function HWDemo({
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     useAutosizeTextArea(textAreaRef.current, input);
 
-    const handleChangeImage = (e: any) => {
-        if (e.target.files && e.target.files[0]) {
-            setCropModalOpen(true);
-            setSelectedImage(URL.createObjectURL(e.target.files[0]));
-            setImageFile(e.target.files[0]);
-        }
-    };
-
     const handleStartProblem = async () => {
         console.log("Problem Level: ", problemLevel);
         if (!problemLevel) return;

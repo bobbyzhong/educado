@@ -26,11 +26,13 @@ const DistrictAnalytics = async (props: Props) => {
     }
 
     return (
-        <main className="p-8 md:pt-8 xl:p-5 mx-auto max-w-7xl lg:max-w-[80rem] mt-3">
+        <main className="p-8 md:pt-8 xl:p-5 mx-auto  mt-3">
             <div className=" flex flex-col w-full items-center justify-center gap-1 ">
-                <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
-                    District Analytics
-                </h2>
+                <div className="max-w-7xl lg:max-w-[80rem]">
+                    <h2 className="mr-2 text-[26px] font-bold tracking-tight ">
+                        District Analytics
+                    </h2>
+                </div>
 
                 <AnalyticsDashboard />
             </div>
