@@ -79,6 +79,7 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
                 defaultPrompt={tutor.basePrompt}
                 tutorType={tutor.tutorType}
                 tutorGrade={tutor.grade}
+                isPremium={tutor.premium}
             />
         );
     }

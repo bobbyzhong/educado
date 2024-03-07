@@ -37,8 +37,8 @@ type Props = {
     studentId: string;
     defaultPrompt: string;
     tutorType: string;
-
     tutorGrade: string;
+    isPremium: string;
 };
 
 export default function HWChat({
@@ -54,6 +54,7 @@ export default function HWChat({
     defaultPrompt,
     tutorType,
     tutorGrade,
+    isPremium,
 }: Props) {
     const [selectedImage, setSelectedImage] = useState<any>(null);
     const [textResult, setTextResult] = useState<any>("");
@@ -93,6 +94,7 @@ export default function HWChat({
             homeworkQuestion: textResult,
             steps: steps,
             tutorGrade: tutorGrade,
+            isPremium: isPremium,
         },
     });
 

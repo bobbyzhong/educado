@@ -30,12 +30,6 @@ const Dashboard = async (props: Props) => {
         redirect("/dashboard-teacher");
     }
 
-    const checkIns = await prisma.checkIn.findMany({
-        where: {
-            userId: session.user.id,
-        },
-    });
-
     const recentCodes = user?.recentTutors;
     let tutorList: any = [];
     if (recentCodes === undefined || recentCodes === null) {
@@ -69,14 +63,27 @@ const Dashboard = async (props: Props) => {
             tutorObjList.push(tutorObject);
         }
     }
+    let mathTutor;
+    if (user?.premium) {
+        mathTutor = await prisma.tutor.findMany({
+            where: {
+                subject: "Math",
+                studentDistrict: user?.email?.split("@")[1],
+                isHomework: true,
+                premium: true,
+            },
+        });
+    } else {
+        mathTutor = await prisma.tutor.findMany({
+            where: {
+                subject: "Math",
+                studentDistrict: user?.email?.split("@")[1],
+                isHomework: true,
+                premium: false,
+            },
+        });
+    }
 
-    const mathTutor = await prisma.tutor.findMany({
-        where: {
-            subject: "Math",
-            studentDistrict: user?.email?.split("@")[1],
-            isHomework: true,
-        },
-    });
     let mathPageLink = "";
     if (mathTutor.length === 0) {
         mathPageLink = "none";
