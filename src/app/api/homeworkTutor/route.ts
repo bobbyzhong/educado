@@ -2,7 +2,7 @@
 
 import OpenAI from "openai";
 import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
-import { runFunction } from "../../../../tutorUtils";
+import { runFunction, functions } from "../../../../tutorUtils";
 
 export const runtime = "edge";
 
@@ -13,14 +13,10 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
     // Extract the `messages` from the body of the request
     let body = await req.json();
-    console.log("BODY", body);
 
     let messages = body.messages;
 
     console.log("MESSAGES ", messages);
-    console.log("messages last item", messages[messages.length - 1]);
-
-    console.log("TUTOR GRADE", body.tutorGrade);
 
     if (body.tutorGrade === "elementary") {
         messages.unshift({
@@ -54,16 +50,15 @@ export async function POST(req: Request) {
     const prompt = "STUDENT's QUESTION: " + latestQuestion;
 
     messages[messages.length - 1].content = prompt;
-    // messages = messages.slice(-4);
 
-    console.log("MESSAGES ", messages);
+    console.log("MESSAGES LENGTH", messages.length);
 
     const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-0125",
         stream: true,
         messages: messages,
-        // functions,
-        // function_call: "auto",
+        functions,
+        function_call: "auto",
     });
 
     // Convert the response into a friendly text-stream
@@ -78,9 +73,11 @@ export async function POST(req: Request) {
             const result = await runFunction(
                 name,
                 args,
-                body.teacherId,
+                body.admins,
                 body.studentName,
-                body.tutorDisplayName
+                body.studentId,
+                body.tutorDisplayName,
+                body.tutorId
             );
             const newMessages = createFunctionCallMessages(result!);
             console.log("NEW MESSAGES: ", newMessages);

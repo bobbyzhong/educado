@@ -5,8 +5,6 @@ export async function POST(req: Request, res: Response) {
     try {
         const body = await req.json();
 
-        console.log("GETTING LIMIT OF ", body.limit);
-
         const questions = await prisma.tutorQuestions.findMany({
             where: {
                 userId: body.studentId,

@@ -116,13 +116,14 @@ export const createPrompt = (
 };
 
 export async function detectEmotionalIssues(
-    complaint: string,
-    userId: string,
+    admins: string,
     studentName: string,
-    tutorName: string
+    studentId: string,
+    tutorName: string,
+    tutorId: string
 ) {
-    console.log("Detected emotional issues...");
-    console.log("Complaint is: ", complaint);
+    console.log("Detected emotional issue ...");
+
     try {
         await fetch(`${process.env.API_URL}/api/updateNotif`, {
             method: "POST",
@@ -130,53 +131,25 @@ export async function detectEmotionalIssues(
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                userId: userId,
+                admins: admins,
                 studentName: studentName,
-                complaint: complaint,
+                studentId: studentId,
                 tutorName: tutorName,
+                tutorId: tutorId,
             }),
         });
     } catch (e) {
         console.log("ERROR: ", e);
     }
-
-    return `Support the student and tell them you are sorry they are going through that. Advice them to seek Support
-    from a trusted adult or a counselor.`;
-}
-
-export async function detectEssayRequest(
-    essayTopic: string,
-    userId: string,
-    studentName: string,
-    tutorName: string
-) {
-    console.log("Detected essay request...");
-    console.log("Essay topic is: ", essayTopic);
-
-    try {
-        await fetch(`${process.env.API_URL}/api/updateNotifEssay`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                essayTopic: essayTopic,
-                userId: userId,
-                studentName: studentName,
-                tutorName: tutorName,
-            }),
-        });
-    } catch (e) {
-        console.log("ERROR: ", e);
-    }
-    return `Do not write the essay for the student. Only tell the student you cannot write an essay for them but 
-    you are happy to help them brainstorm. Say nothing more than that`;
+    return `Respond in a caring way and tell the student that they should not be afraid to seek help from a teacher or counselor.`;
 }
 
 export async function detectProfanity(
-    userId: string,
+    admins: string,
     studentName: string,
-    tutorName: string
+    studentId: string,
+    tutorName: string,
+    tutorId: string
 ) {
     console.log("Detected profanity ...");
 
@@ -187,9 +160,11 @@ export async function detectProfanity(
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                userId: userId,
+                admins: admins,
                 studentName: studentName,
+                studentId: studentId,
                 tutorName: tutorName,
+                tutorId: tutorId,
             }),
         });
     } catch (e) {
@@ -201,67 +176,48 @@ export async function detectProfanity(
 export async function runFunction(
     name: string,
     args: any,
-    userId: any,
+    admins: any,
     studentName: any,
-    tutorName: any
+    studentId: string,
+    tutorName: any,
+    tutorId: any
 ) {
     switch (name) {
-        case "detectEssayRequest":
-            return detectEssayRequest(
-                args.essayTopic,
-                userId,
+        case "detectEmotionalIssues":
+            return detectEmotionalIssues(
+                admins,
                 studentName,
-                tutorName
+                studentId,
+                tutorName,
+                tutorId
             );
-        // case "detectEmotionalIssues":
-        //     return detectEmotionalIssues(
-        //         args.complaint,
-        //         userId,
-        //         studentName,
-        //         tutorName
-        //     );
         case "detectProfanity":
-            return detectProfanity(userId, studentName, tutorName);
+            return detectProfanity(
+                admins,
+                studentName,
+                studentId,
+                tutorName,
+                tutorId
+            );
     }
 }
 
 export const functions = [
-    // {
-    //     name: "detectEmotionalIssues",
-    //     description: `Detects if the student is having emotional issues or
-    //     complaining about a problem in school and returns a specific response if they are
-    //      `,
-    //     parameters: {
-    //         type: "object",
-    //         properties: {
-    //             complaint: {
-    //                 type: "string",
-    //                 description:
-    //                     "The student's complaint or the problem they are having",
-    //             },
-    //         },
-    //         require: [],
-    //     },
-    // },
     {
-        name: "detectEssayRequest",
-        description: `Detects if student is asking tutor to write an essay for them and returns a specific 
-        response if they are.`,
+        name: "detectEmotionalIssues",
+        description: `Detects if the student talks about emotional or mental health issues that they have. If a student talks about 
+        depression, suicidal thoughts, self harm, sadness, loneliness, or other emotional issues, this function should be called and returns a specific response.`,
         parameters: {
             type: "object",
-            properties: {
-                essayTopic: {
-                    type: "string",
-                    description:
-                        "The topic of the essay the student wants an essay about",
-                },
-            },
+            properties: {},
             require: [],
         },
     },
     {
         name: "detectProfanity",
-        description: `Detects if the student uses profanity returns a specific response if they are.`,
+        description: `Detects if the student uses profanity returns a specific response if they are. Only called if one of the
+        following words are used: [fuck, fucking, shit, bullshit, dick, dickhead, bitch, bastard, ass, asshole, whore, goddamn, whore,
+        slut, cock, cocksucker, nigga, nigger]`,
         parameters: {
             type: "object",
             properties: {},

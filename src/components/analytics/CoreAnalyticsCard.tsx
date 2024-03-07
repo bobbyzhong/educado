@@ -69,11 +69,9 @@ const CoreAnalyticsCard = () => {
                                 </Tooltip>
                             </TooltipProvider>
                         </div>
-                        {numberOfQuestions && (
-                            <h1 className="text-2xl font-semibold tracking-tight text-zinc-700 mt-2 ml-1">
-                                {numberOfQuestions}
-                            </h1>
-                        )}
+                        <h1 className="text-2xl font-semibold tracking-tight text-zinc-700 mt-2 ml-1">
+                            {numberOfQuestions}
+                        </h1>
                     </div>
                     <div className="text-zinc-300 text-5xl font-[200] md:block hidden">
                         |

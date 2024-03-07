@@ -123,58 +123,15 @@ const DashboardAdmin = async (props: Props) => {
                 />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 items-start gap-5 max-h-[30rem] ">
-                <div>
-                    <div className="flex items-center justify-between space-y-2 mb-5">
-                        <div className="flex flex-col gap-1">
-                            <h2 className="mt-10 text-[28px] font-bold tracking-tight">
-                                Notifications
-                            </h2>
-                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
-                                Any notifications or updates will appear here
-                            </h1>
-                        </div>
-                    </div>
-                    <NotifCard userId={session.user.id} />
-                </div>
-                {/* <div className="md:pb-0 pb-10">
-                    <div className="flex items-center justify-between space-y-2 mb-5">
-                        <div className="flex flex-col gap-1">
-                            <h2 className="mt-10 text-[28px] font-bold tracking-tight">
-                                Your Tutors
-                            </h2>
-                            <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 ">
-                                Below you’ll see some of the tutors you've made
-                                or have access to
-                            </h1>
-                        </div>
-                    </div>
-                    <div className="max-w-[92vw] ">
-                        {tutors.length > 0 ? (
-                            <div className="relative flex items-center  overflow-x-auto  gap-5">
-                                {tutors.map((tutor, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <TutorCard
-                                                name={tutor.tutorDisplayName}
-                                                id={tutor.id}
-                                                description={
-                                                    tutor.tutorDescription!
-                                                }
-                                                joinCode={tutor.joinCode!}
-                                                type={tutor.tutorType!}
-                                            />
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        ) : (
-                            <div className="font-outfit">
-                                No tutors made yet{" "}
-                            </div>
-                        )}
-                    </div>
-                </div> */}
+            <div className="flex  flex-col w-full items-start justify-center max-h-[30rem] mt-10">
+                <h2 className="mr-2 text-[28px] font-bold tracking-tight">
+                    Notifications
+                </h2>
+                <h1 className="text-zinc-500 text-[15px] dark:text-zinc-300 mb-5">
+                    Any notifications will appear here. Click on one to view the
+                    conversation.
+                </h1>
+                <NotifCard userId={session.user.id} />
             </div>
         </main>
     );

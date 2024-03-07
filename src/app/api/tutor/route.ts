@@ -5,7 +5,6 @@ import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
 import {
     createPrompt,
     detectEmotionalIssues,
-    detectEssayRequest,
     functions,
     getContext,
     getDateInString,
@@ -93,9 +92,11 @@ export async function POST(req: Request) {
             const result = await runFunction(
                 name,
                 args,
-                body.teacherId,
+                body.admins,
                 body.studentName,
-                body.tutorDisplayName
+                body.studentId,
+                body.tutorDisplayName,
+                body.tutorId
             );
             const newMessages = createFunctionCallMessages(result!);
             console.log("NEW MESSAGES: ", newMessages);

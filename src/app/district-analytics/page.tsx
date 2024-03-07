@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
 import AnalyticsDashboard from "@/components/analytics/AnalyticsDashboard";
 import CoreAnalyticsCard from "@/components/analytics/CoreAnalyticsCard";
+import NotifCard from "@/components/dashboard/NotifCard";
 
 type Props = {};
 
@@ -36,6 +37,18 @@ const DistrictAnalytics = async (props: Props) => {
                 </div>
 
                 <CoreAnalyticsCard />
+
+                {/* <div className="flex  flex-col w-full items-center justify-center max-h-[30rem] mt-10">
+                    <h2 className="text-xl font-semibold tracking-tight text-center ">
+                        Notifications
+                    </h2>
+                    <p className="text-center text-sm text-zinc-500 w-[30%] mb-5">
+                        Any notifications or updates will appear here
+                    </p>
+
+                    <NotifCard userId={session.user.id} />
+                </div> */}
+
                 <AnalyticsDashboard />
             </div>
         </main>

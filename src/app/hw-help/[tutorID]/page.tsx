@@ -45,8 +45,6 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
         return redirect(`/tutor/${tutor.id}`);
     }
 
-    const tutorType = tutor.tutorType;
-
     if (!session?.user.id) {
         return (
             <div className="w-full mt-10 flex flex-col items-center justify-center ">
@@ -74,45 +72,13 @@ const HWHelper = async ({ params: { tutorID } }: Props) => {
                 tutorDisplayName={tutor.tutorDisplayName}
                 tutorDescription={tutor.tutorDescription}
                 tutorId={tutor.id}
-                teacherId={tutor.userId}
+                admins={tutor.admins}
                 userId={session.user.id}
                 studentName={session.user.name!}
+                studentId={session.user.id}
                 defaultPrompt={tutor.basePrompt}
                 tutorType={tutor.tutorType}
                 tutorGrade={tutor.grade}
-            />
-        );
-
-        // return (
-        //     <GeneralChatSection
-        //         tutorName={tutor.tutorName}
-        //         ownerName={tutor.ownerName}
-        //         tutorDisplayName={tutor.tutorDisplayName}
-        //         tutorId={tutor.id}
-        //         teacherId={tutor.userId}
-        //         userId={session.user.id}
-        //         studentName={session.user.name!}
-        //         placeholderQs={tutor.placeholderQs}
-        //         defaultPrompt={tutor.basePrompt}
-        //         tutorType={tutor.tutorType}
-        //         assistantId={tutor.assistantId}
-        //     />
-        // );
-    } else if (tutor.tutorType === "Writing") {
-        return (
-            <WritingChatSection
-                tutorName={tutor.tutorName}
-                ownerName={tutor.ownerName}
-                tutorDisplayName={tutor.tutorDisplayName}
-                tutorId={tutor.id}
-                teacherId={tutor.userId}
-                userId={session.user.id}
-                studentName={session.user.name!}
-                placeholderQs={tutor.placeholderQs}
-                defaultPrompt={tutor.basePrompt}
-                tutorType={tutor.tutorType}
-                essayPrompt={tutor.essayPrompt}
-                assistantId={tutor.assistantId}
             />
         );
     }

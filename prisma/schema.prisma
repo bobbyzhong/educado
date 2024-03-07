@@ -62,6 +62,7 @@ model User {
   sessions      Session[]
   tutors       Tutor[]
   questionAnswers TutorQuestions[]
+  notifications  Notifications[]
   uploadedContent String?
 }
 
@@ -163,6 +164,7 @@ model Tutor {
   id    String   @id @default(cuid())
   joinCode String? @unique
   userId String
+  admins String?
   tutorDisplayName String
   tutorName String 
   tutorDescription String? 
@@ -181,7 +183,9 @@ model Tutor {
   essayPrompt String?
   assistantId String?
   
+  
   questions  TutorQuestions[]
+  notifications  Notifications[]
 
   user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -195,6 +199,25 @@ model TutorQuestions {
   studentName String
   tutorId String
   date String?
+  userId String?
+  
+  
+  tutor        Tutor?       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  user        User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tutorId])
+  @@index([userId])
+}
+
+model Notifications {
+  id   String   @id @default(cuid())
+  type String 
+  content String? @db.Text
+  studentName String
+  studentId String?
+  tutorName String
+  date String?
+  tutorId String
   userId String?
   
   
