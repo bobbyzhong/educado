@@ -2,18 +2,6 @@
 export const maxDuration = 30; // 5 seconds
 export const dynamic = "force-dynamic";
 import OpenAI from "openai";
-import { JSONValue, OpenAIStream, StreamingTextResponse } from "ai";
-import {
-    createPrompt,
-    detectEmotionalIssues,
-    detectEssayRequest,
-    functions,
-    getContext,
-    getDateInString,
-    runFunction,
-} from "../../../../tutorUtils";
-import { PineconeClient } from "@pinecone-database/pinecone";
-import { indexName } from "../../../../config";
 import { NextResponse } from "next/server";
 
 const openai = new OpenAI({
