@@ -37,8 +37,8 @@ type Props = {
     studentId: string;
     defaultPrompt: string;
     tutorType: string;
-
     tutorGrade: string;
+    isPremium: string;
 };
 
 export default function HWChat({
@@ -54,6 +54,7 @@ export default function HWChat({
     defaultPrompt,
     tutorType,
     tutorGrade,
+    isPremium,
 }: Props) {
     const [selectedImage, setSelectedImage] = useState<any>(null);
     const [textResult, setTextResult] = useState<any>("");
@@ -93,6 +94,7 @@ export default function HWChat({
             homeworkQuestion: textResult,
             steps: steps,
             tutorGrade: tutorGrade,
+            isPremium: isPremium,
         },
     });
 
@@ -173,19 +175,19 @@ export default function HWChat({
             });
 
             // LOGGING QUESTION
-            // await fetch(`/api/logTutorQuestion`, {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         question: `Homework Upload: ${mathData.text}`,
-            //         studentName: studentName,
-            //         tutorId: tutorId,
-            //         userId: userId,
-            //         answer: "What do you think is the first step to solving this problem?",
-            //     }),
-            // });
+            await fetch(`/api/logTutorQuestion`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: `Homework Upload: ${mathData.text}`,
+                    studentName: studentName,
+                    tutorId: tutorId,
+                    userId: userId,
+                    answer: "What do you think is the first step to solving this problem?",
+                }),
+            });
         } catch (e) {
             setSolveLoading(false);
             console.log("ERROR: ", e);
@@ -234,30 +236,32 @@ export default function HWChat({
     const [transcript, setTranscript] = useState("");
 
     useEffect(() => {
-        const recognition = new window.webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.lang = language;
+        if (window) {
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.lang = language;
 
-        recognition.onresult = (event) => {
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                if (event.results[i].isFinal) {
-                    setTranscript(
-                        (transcript) =>
-                            transcript + event.results[i][0].transcript
-                    );
-                    recognition.abort();
-                    setIsRecording(false);
+            recognition.onresult = (event) => {
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        setTranscript(
+                            (transcript) =>
+                                transcript + event.results[i][0].transcript
+                        );
+                        recognition.abort();
+                        setIsRecording(false);
+                    }
                 }
+            };
+
+            if (isRecording) {
+                recognition.start();
+            } else {
+                recognition.stop();
             }
-        };
 
-        if (isRecording) {
-            recognition.start();
-        } else {
-            recognition.stop();
+            return () => recognition.abort();
         }
-
-        return () => recognition.abort();
     }, [isRecording, language]);
 
     const toggleRecording = () => {
@@ -370,11 +374,11 @@ export default function HWChat({
                                 </div>
                             ) : (
                                 <div>
-                                    <div className="fixed top-[74px] bg-white left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
-                                        <div className="grid grid-cols-3">
+                                    <div className="fixed md:top-[74px] top-[100px] bg-white w-full left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
+                                        <div className="grid md:grid-cols-3 grid-cols-1 ">
                                             <div></div>
                                             <PhotoProvider>
-                                                <div className="rounded-md w-full flex items-center justify-center flex-row h-[7.5rem]">
+                                                <div className="rounded-md w-full flex items-center justify-center flex-row md:h-[7.5rem]">
                                                     <PhotoView
                                                         src={croppedImage}
                                                     >
@@ -392,34 +396,34 @@ export default function HWChat({
                                                                 height={200}
                                                                 width={200}
                                                                 alt=""
-                                                                className="h-[7.5rem] w-full object-contain"
+                                                                className="h-[3.5rem] md:h-[7.5rem] w-full object-contain"
                                                             />
                                                         </div>
                                                     </PhotoView>
                                                 </div>
                                             </PhotoProvider>
-                                            <div className="flex flex-row items-center justify-end pr-10 ">
+                                            <div className="flex flex-row items-center justify-center md:justify-end md:pr-10 py-3 md:py-0">
                                                 <div
                                                     onClick={resetProblem}
-                                                    className="flex px-8 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
+                                                    className="flex px-5 md:px-8 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
                                 shadow-[1px_2px_1px_3px_rgba(0,0,0,0.10)] hover:shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] 
                                 transition ease-in-out py-1"
                                                 >
                                                     <div
-                                                        className={`py-3 mr-3 font-outfit text-[#505050]`}
+                                                        className={`py-2 md:py-3 mr-3 font-outfit text-[#505050]`}
                                                     >
                                                         Next Problem
                                                     </div>
                                                     <Play
                                                         color={"#797979"}
-                                                        size={26}
+                                                        size={23}
                                                     />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="h-[90px] "></div>
-                                    <div className="mt-[1.5rem]">
+                                    <div className="mt-[2.5rem] md:mt-[1.5rem]">
                                         {messages.length > 0 &&
                                             messages.map((m: any) => (
                                                 <div

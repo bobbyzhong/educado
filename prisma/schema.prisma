@@ -57,6 +57,7 @@ model User {
   recentTutors String? @db.Text
   notifs String? @db.Text
   emailVerified Boolean?
+  premium Boolean? @default(false)
   checkIns         CheckIn[]
   accounts      Account[]
   sessions      Session[]
@@ -178,6 +179,7 @@ model Tutor {
   basePrompt String? @db.Text
   dateCreated BigInt? 
   visibility String?
+  premium Boolean? @default(false)
   uploadedContent String?
   ownerName String?
   essayPrompt String?
