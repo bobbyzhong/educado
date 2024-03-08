@@ -118,20 +118,20 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        // const res = await fetch("/api/mathpix", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         base64: base64,
-        //     }),
-        // });
+        const res = await fetch("/api/mathpix", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                base64: base64,
+            }),
+        });
 
-        // const data: any = await res.json();
-        // const mathData = data.data;
-        // console.log("MATHPIX DATA:", mathData);
-        // setTextResult(mathData.text);
+        const data: any = await res.json();
+        const mathData = data.data;
+        console.log("MATHPIX DATA:", mathData);
+        setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
@@ -146,23 +146,23 @@ export default function HWChat({
             {
                 /* PRODUCTION ONLY */
             }
-            // const res = await axios.post("/api/ocrTest", {
-            //     textResult: mathData.text,
-            //     problemContext: problemContext,
-            // });
-            // const resObj = JSON.parse(res.data.data);
+            const res = await axios.post("/api/ocrTest", {
+                textResult: mathData.text,
+                problemContext: problemContext,
+            });
+            const resObj = JSON.parse(res.data.data);
 
-            const res = `{
-                "steps": [
-                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-                ]
-            }`;
-            const resObj = JSON.parse(res);
+            // const res = `{
+            //     "steps": [
+            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+            //     ]
+            // }`;
+            // const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -175,19 +175,19 @@ export default function HWChat({
             });
 
             // LOGGING QUESTION
-            // await fetch(`/api/logTutorQuestion`, {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         question: `Homework Upload: ${mathData.text}`,
-            //         studentName: studentName,
-            //         tutorId: tutorId,
-            //         userId: userId,
-            //         answer: "What do you think is the first step to solving this problem?",
-            //     }),
-            // });
+            await fetch(`/api/logTutorQuestion`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    question: `Homework Upload: ${mathData.text}`,
+                    studentName: studentName,
+                    tutorId: tutorId,
+                    userId: userId,
+                    answer: "What do you think is the first step to solving this problem?",
+                }),
+            });
         } catch (e) {
             setSolveLoading(false);
             console.log("ERROR: ", e);
