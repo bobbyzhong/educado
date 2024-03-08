@@ -118,20 +118,20 @@ export default function HWChat({
             /* PRODUCTION ONLY */
         }
 
-        const res = await fetch("/api/mathpix", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({
-                base64: base64,
-            }),
-        });
+        // const res = await fetch("/api/mathpix", {
+        //     method: "POST",
+        //     headers: {
+        //         "content-type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         base64: base64,
+        //     }),
+        // });
 
-        const data: any = await res.json();
-        const mathData = data.data;
-        console.log("MATHPIX DATA:", mathData);
-        setTextResult(mathData.text);
+        // const data: any = await res.json();
+        // const mathData = data.data;
+        // console.log("MATHPIX DATA:", mathData);
+        // setTextResult(mathData.text);
 
         {
             /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
@@ -146,23 +146,23 @@ export default function HWChat({
             {
                 /* PRODUCTION ONLY */
             }
-            const res = await axios.post("/api/ocrTest", {
-                textResult: mathData.text,
-                problemContext: problemContext,
-            });
-            const resObj = JSON.parse(res.data.data);
+            // const res = await axios.post("/api/ocrTest", {
+            //     textResult: mathData.text,
+            //     problemContext: problemContext,
+            // });
+            // const resObj = JSON.parse(res.data.data);
 
-            // const res = `{
-            //     "steps": [
-            //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
-            //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
-            //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
-            //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
-            //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
-            //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
-            //     ]
-            // }`;
-            // const resObj = JSON.parse(res);
+            const res = `{
+                "steps": [
+                    "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                    "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                    "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                    "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                    "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                    "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                ]
+            }`;
+            const resObj = JSON.parse(res);
 
             const steps = resObj.steps;
             setSteps(steps);
@@ -374,11 +374,11 @@ export default function HWChat({
                                 </div>
                             ) : (
                                 <div>
-                                    <div className="fixed top-[74px] bg-white left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
-                                        <div className="grid grid-cols-3">
+                                    <div className="fixed md:top-[74px] top-[100px] bg-white w-full left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
+                                        <div className="grid md:grid-cols-3 grid-cols-1 ">
                                             <div></div>
                                             <PhotoProvider>
-                                                <div className="rounded-md w-full flex items-center justify-center flex-row h-[7.5rem]">
+                                                <div className="rounded-md w-full flex items-center justify-center flex-row md:h-[7.5rem]">
                                                     <PhotoView
                                                         src={croppedImage}
                                                     >
@@ -396,34 +396,34 @@ export default function HWChat({
                                                                 height={200}
                                                                 width={200}
                                                                 alt=""
-                                                                className="h-[7.5rem] w-full object-contain"
+                                                                className="h-[3.5rem] md:h-[7.5rem] w-full object-contain"
                                                             />
                                                         </div>
                                                     </PhotoView>
                                                 </div>
                                             </PhotoProvider>
-                                            <div className="flex flex-row items-center justify-end pr-10 ">
+                                            <div className="flex flex-row items-center justify-center md:justify-end md:pr-10 py-3 md:py-0">
                                                 <div
                                                     onClick={resetProblem}
-                                                    className="flex px-8 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
+                                                    className="flex px-5 md:px-8 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
                                 shadow-[1px_2px_1px_3px_rgba(0,0,0,0.10)] hover:shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] 
                                 transition ease-in-out py-1"
                                                 >
                                                     <div
-                                                        className={`py-3 mr-3 font-outfit text-[#505050]`}
+                                                        className={`py-2 md:py-3 mr-3 font-outfit text-[#505050]`}
                                                     >
                                                         Next Problem
                                                     </div>
                                                     <Play
                                                         color={"#797979"}
-                                                        size={26}
+                                                        size={23}
                                                     />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="h-[90px] "></div>
-                                    <div className="mt-[1.5rem]">
+                                    <div className="mt-[2.5rem] md:mt-[1.5rem]">
                                         {messages.length > 0 &&
                                             messages.map((m: any) => (
                                                 <div
