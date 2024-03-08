@@ -236,30 +236,32 @@ export default function HWChat({
     const [transcript, setTranscript] = useState("");
 
     useEffect(() => {
-        const recognition = new window.webkitSpeechRecognition();
-        recognition.continuous = true;
-        recognition.lang = language;
+        if (window) {
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.lang = language;
 
-        recognition.onresult = (event) => {
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                if (event.results[i].isFinal) {
-                    setTranscript(
-                        (transcript) =>
-                            transcript + event.results[i][0].transcript
-                    );
-                    recognition.abort();
-                    setIsRecording(false);
+            recognition.onresult = (event) => {
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        setTranscript(
+                            (transcript) =>
+                                transcript + event.results[i][0].transcript
+                        );
+                        recognition.abort();
+                        setIsRecording(false);
+                    }
                 }
+            };
+
+            if (isRecording) {
+                recognition.start();
+            } else {
+                recognition.stop();
             }
-        };
 
-        if (isRecording) {
-            recognition.start();
-        } else {
-            recognition.stop();
+            return () => recognition.abort();
         }
-
-        return () => recognition.abort();
     }, [isRecording, language]);
 
     const toggleRecording = () => {
