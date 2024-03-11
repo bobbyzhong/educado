@@ -42,8 +42,8 @@ export const ImageCropModal = ({
         unit: "%",
         x: 0,
         y: 0,
-        width: 50,
-        height: 50,
+        width: 75,
+        height: 75,
     });
 
     const imgRef = useRef(null);
@@ -52,8 +52,8 @@ export const ImageCropModal = ({
         const canvas = document.createElement("canvas");
         const scaleX = image.naturalWidth / image.width;
         const scaleY = image.naturalHeight / image.height;
-        canvas.width = crop.width;
-        canvas.height = crop.height;
+        canvas.width = crop.width * scaleX;
+        canvas.height = crop.height * scaleY;
         const ctx: any = canvas.getContext("2d");
 
         ctx.drawImage(
@@ -64,8 +64,8 @@ export const ImageCropModal = ({
             crop.height * scaleY,
             0,
             0,
-            crop.width,
-            crop.height
+            canvas.width,
+            canvas.height
         );
 
         return new Promise((resolve) => {
