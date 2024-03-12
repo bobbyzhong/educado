@@ -8,7 +8,7 @@ export default function DemoPage() {
                 <iframe
                     width={1200}
                     height={800}
-                    src="https://calendly.com/bobbyzhong/30min"
+                    src="https://calendly.com/tryeducado"
                 ></iframe>
             </div>
         </div>
