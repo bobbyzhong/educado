@@ -79,6 +79,7 @@ const Dashboard = async (props: Props) => {
                 subject: "Math",
                 studentDistrict: user?.email?.split("@")[1],
                 isHomework: true,
+                premium: false,
             },
         });
     }
