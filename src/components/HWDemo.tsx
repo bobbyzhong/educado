@@ -112,7 +112,7 @@ export default function HWDemo({
             );
         } else if (problemLevel === "middle") {
             setTextResult(
-                "11. Ms. Green tells you that a right triangle has a hypotenuse of 13 and a leg of 5. She asks you to find the other leg of the triangle. What is your answer?"
+                "Solve the system of equations: \\( \\left\\{\\begin{array}{l}y=4 x-3 \\\\ y=-2 x+9\\end{array}\\right. \\)"
             );
         } else if (problemLevel === "high") {
             setTextResult(
@@ -137,17 +137,17 @@ export default function HWDemo({
             }`;
             } else if (problemLevel === "middle") {
                 res = `{
-                "steps":  [
-    "1. Identify the knowns and unknowns. Knowns: Hypotenuse of the triangle is 13, one leg of the triangle is 5. Unknown: The length of the other leg of the triangle.",
-    "2. Recall the Pythagorean theorem, which states that in a right triangle, the square of the length of the hypotenuse (c) is equal to the sum of the squares of the lengths of the other two sides (a and b). This can be represented as a^2 + b^2 = c^2.",
-    "3. Substitute the known values into the Pythagorean theorem equation. Since the hypotenuse (c) is 13 and one leg (a) is 5, the equation becomes 5^2 + b^2 = 13^2.",
-    "4. Calculate the square of 5 and 13 to simplify the equation. This results in 25 + b^2 = 169.",
-    "5. Subtract 25 from both sides of the equation to solve for b^2. This results in b^2 = 169 - 25.",
-    "6. Calculate the difference to find the value of b^2. This leads to b^2 = 144.",
-    "7. Find the square root of both sides of the equation to solve for b. Taking the square root of 144 gives b = 12.",
-    "8. Conclude that the length of the other leg of the right triangle is 12."
-  ] 
-            }`;
+                    "steps": [
+                        "1. The system of equations is given as: \\\\( \\\\left\\\\{\\\\begin{array}{l}y=4 x-3 \\\\ y=-2 x+9\\\\end{array}\\\\right. \\\\). To solve for the variables \\\\(x\\\\) and \\\\(y\\\\), we will equate the two equations since they both equal \\\\(y\\\\).",
+                        "2. Set \\\\(4 x - 3 = -2 x + 9\\\\).",
+                        "3. Add \\\\(2x\\\\) to both sides to get the \\\\(x\\\\)-terms on one side: \\\\(4x + 2x = 9 + 3\\\\).",
+                        "4. This simplifies to \\\\(6x = 12\\\\).",
+                        "5. Divide both sides by 6 to solve for \\\\(x\\\\): \\\\(x = 2\\\\).",
+                        "6. Substitute the value of \\\\(x\\\\) back into one of the original equations to solve for \\\\(y\\\\). Using the first equation: \\\\(y = 4(2) - 3\\\\).",
+                        "7. Simplify to find \\\\(y\\\\): \\\\(y = 8 - 3 = 5\\\\).",
+                        "8. Thus, the solution to the system of equations is \\\\(x = 2\\\\) and \\\\(y = 5\\\\)."
+                    ]
+                }`;
             } else {
                 res = `{
                 "steps": [
