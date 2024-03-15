@@ -24,6 +24,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeMathjax from "rehype-mathjax";
 import remarkMath from "remark-math";
 import "katex/dist/katex.min.css";
+import Link from "next/link";
 
 type Props = {
     tutorName: string;
@@ -325,11 +326,19 @@ export default function HWChat({
                                         {tutorDescription} Upload a picture of a
                                         specific question you need help with!
                                     </p>
-                                    <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-400 font-outfit">
-                                        *Please note, this feature is still in
-                                        beta and is limited in functionality
-                                        with graphs and charts. The team at
-                                        Educado is working hard to improve it!*
+                                    <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-500 font-outfit">
+                                        *Click{" "}
+                                        <Link
+                                            href={
+                                                "https://cyclic-authority-064.notion.site/For-the-First-Users-fe47610362814314827e5df572bd12a9"
+                                            }
+                                            target="_blank"
+                                            className="text-green underline font-medium"
+                                        >
+                                            here
+                                        </Link>{" "}
+                                        if you're using Educado for the first
+                                        time*
                                     </p>
 
                                     <Input
