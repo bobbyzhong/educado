@@ -792,7 +792,6 @@ export default function HWChat({
                                 ) : (
                                     <div className="flex w-full items-center justify-center">
                                         <div
-                                            onClick={handleStartProblem}
                                             className="flex px-16 items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
                                 shadow-[1px_2px_1px_3px_rgba(0,0,0,0.10)] hover:shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] 
                                 transition ease-in-out py-1"
@@ -831,7 +830,12 @@ export default function HWChat({
                                                             />
                                                         </div>
                                                     ) : (
-                                                        <div className="flex flex-row items-center justify-center">
+                                                        <div
+                                                            onClick={
+                                                                handleStartProblem
+                                                            }
+                                                            className="flex flex-row items-center justify-center"
+                                                        >
                                                             <div
                                                                 className={`py-3 mr-3 font-outfit ${
                                                                     !base64
