@@ -21,6 +21,9 @@ const NotifCard = async ({ userId }: Props) => {
         where: {
             userId: userId,
         },
+        orderBy: {
+            date: "desc",
+        },
     });
 
     return (
