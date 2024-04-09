@@ -41,12 +41,10 @@ export default async function Home() {
                         Giving every student instant & personalized homework
                         help
                     </h1>
-                    <p className="md:text-[21px] text-[16px] leading-snug md:my-5 my-4 md:w-9/12 lg:w-7/12 w-11/12 text-zinc-700">
-                        Integrate{" "}
-                        <b className="text-green">AI into learning </b>
-                        in a <b className="text-green">safe</b> and
-                        <b className="text-green"> monitored</b> way with a
-                        tutoring platform your students will actually use
+                    <p className="md:text-[21px] text-[16px] leading-snug md:my-5 my-4 md:w-8/12 lg:w-6/12 w-11/12 text-zinc-700">
+                        Our tutors guide students through math problems{" "}
+                        <b className="text-green">step by step</b> and help them
+                        actually understand math
                     </p>
                 </div>
                 <div className="flex flex-row gap-3 lg:justify-start justify-center ">

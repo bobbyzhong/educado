@@ -131,7 +131,7 @@ const Dashboard = async (props: Props) => {
                     pageLink={mathPageLink}
                 />
             </div>
-
+            {/* 
             <div className="flex items-center mt-8">
                 <div className="flex flex-col gap-1">
                     <h2 className="mr-2 text-[28px] font-bold tracking-tight">
@@ -163,7 +163,7 @@ const Dashboard = async (props: Props) => {
                     description="Feel free to reach out to us at Educado for any questions, concerns, or feedback. We're here to help anytime you need!"
                     pageLink="/contact"
                 />
-            </div>
+            </div> */}
 
             <div className="flex items-center justify-between space-y-2">
                 <div className="flex flex-col gap-1">
