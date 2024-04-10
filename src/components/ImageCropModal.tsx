@@ -49,7 +49,7 @@ export const ImageCropModal = ({
     const imgRef = useRef(null);
 
     const getCroppedImg = async (image: any, crop: any) => {
-        const canvas = document.createElement("canvas");
+      const canvas = document.createElement("canvas");
         const scaleX = image.naturalWidth / image.width;
         const scaleY = image.naturalHeight / image.height;
         canvas.width = crop.width * scaleX;

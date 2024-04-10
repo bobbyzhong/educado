@@ -15,22 +15,16 @@ import { Button } from "../ui/button";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-import { ArrowUpRightSquare } from "lucide-react";
+import { ArrowUpRightSquare, Search } from "lucide-react";
 import Link from "next/link";
+import { Input } from "../ui/input";
 
 const AnalyticsDashboard = () => {
     const [tutorQuestions, setTutorQuestions] = useState<TutorQuestions[]>([]);
     const [limitQuestions, setLimitQuestions] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [numberOfQuestions, setNumberOfQuestions] = useState<number>(0);
-
-    const getQuestionCount = async () => {
-        const res = await fetch("/api/adminDashboard/find-question-count", {
-            method: "GET",
-        });
-        const data = await res.json();
-        setNumberOfQuestions(data.count);
-    };
+    const [searchInput, setSearchInput] = useState<string>("");
+    const [filteredQuestions, setFilteredQuestions] = useState<TutorQuestions[]>([]);
 
     const getRecentQuestions = async () => {
         const res = await fetch("/api/adminDashboard/find-recent-questions", {
@@ -65,20 +59,42 @@ const AnalyticsDashboard = () => {
         setLimitQuestions(false);
     };
 
+    useEffect(() => {
+        setFilteredQuestions(
+            tutorQuestions.filter((question) =>
+                question.studentName.toLowerCase().includes(searchInput.toLowerCase())
+            )
+        );
+    }, [searchInput, tutorQuestions]);
+
+    console.log("filteredQuestions", filteredQuestions);
+
     return (
         <div className="w-full">
             <div className="flex items-center mb-5 pl-2 mt-10">
-                <div className=" flex flex-col items-center w-full gap-1">
-                    <h2 className="text-xl font-semibold tracking-tight text-center ">
-                        Recent Questions
-                    </h2>
-                    <p className="text-center text-sm text-zinc-500 w-[30%] mb-5">
-                        Click on a student name or the View Chat section to see
-                        the full conversation between a student and a tutor!
-                    </p>
+                <div className=" flex flex-col w-full">
+                    <div className="flex flex-col items-center gap-1">
+                      <h2 className="text-xl font-semibold tracking-tight text-center ">
+                          Recent Questions
+                      </h2>
+                      <p className="text-center text-sm text-zinc-500 md:w-[30%] mb-5">
+                          Click on a student name or the View Chat section to see
+                          the full conversation between a student and a tutor!
+                      </p>
+                    </div>
+
+                    <div className="w-full max-w-[70%] lg:max-w-[40%] flex flex-row items-center py-4">
+                      <Search size={16} color={"#727272"} className="absolute ml-2" />
+                      <Input 
+                        placeholder="Search student name" 
+                        className="pl-8" 
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                      />
+                    </div>
 
                     <div className="w-full">
-                        {tutorQuestions.length === 0 ? (
+                        {filteredQuestions.length === 0 ? (
                             <div>
                                 <Table className="mt-4 w-full">
                                     <TableCaption className="">
@@ -142,8 +158,8 @@ const AnalyticsDashboard = () => {
                                     </TableHeader>
                                     <TableBody>
                                         <>
-                                            {tutorQuestions.length > 0 &&
-                                                tutorQuestions?.map(
+                                            {filteredQuestions.length > 0 &&
+                                                filteredQuestions?.map(
                                                     (
                                                         question: any,
                                                         index: any

@@ -68,6 +68,7 @@ export default function HWChat({
     const [imageFile, setImageFile] = useState<any>(null);
     const [base64, setBase64] = useState<any>();
     const [problemContext, setProblemContext] = useState("");
+    const [imageError, setImageError] = useState(false);
 
     const handleSecInputChange = (e: any) => {
         setSecInput(e.target.value);
@@ -103,17 +104,20 @@ export default function HWChat({
     useAutosizeTextArea(textAreaRef.current, input);
 
     const handleChangeImage = (e: any) => {
-        if (e.target.files && e.target.files[0]) {
-            setCropModalOpen(true);
-            setSelectedImage(URL.createObjectURL(e.target.files[0]));
-            setImageFile(e.target.files[0]);
-        }
+      setImageError(false);
+      
+      if (e.target.files && e.target.files[0]) {
+        setCropModalOpen(true);
+        setSelectedImage(URL.createObjectURL(e.target.files[0]));
+        setImageFile(e.target.files[0]);
+      }
     };
 
     const handleStartProblem = async () => {
         if (!croppedImage) return;
         setProcessingImg(true);
         setTextResult("");
+        setImageError(false);
 
         {
             /* PRODUCTION ONLY */
@@ -132,6 +136,13 @@ export default function HWChat({
         const data: any = await res.json();
         const mathData = data.data;
         console.log("MATHPIX DATA:", mathData);
+
+        if(mathData.error == "Content not found") {
+            setImageError(true);
+            setProcessingImg(false);
+            return;
+        }
+
         setTextResult(mathData.text);
 
         {
@@ -347,9 +358,9 @@ export default function HWChat({
                                         accept="image/*"
                                         onChange={handleChangeImage}
                                     />
-                                    <div className="mt-5 p-3 border rounded-md w-full flex items-center justify-center">
+                                    <div className="mt-5 p-3 border rounded-md w-full flex flex-col items-center justify-center">
                                         {croppedImage && (
-                                            <div>
+                                            <div className={`${imageError && 'border-4 border-red-600'}`}>
                                                 <Image
                                                     src={croppedImage}
                                                     height={500}
@@ -357,6 +368,12 @@ export default function HWChat({
                                                     alt=""
                                                 />
                                             </div>
+                                        )}
+
+                                        {imageError && (
+                                          <div className="mt-3 text-red-600">
+                                            Math problem not detected. Please try again.
+                                          </div>
                                         )}
                                     </div>
 
