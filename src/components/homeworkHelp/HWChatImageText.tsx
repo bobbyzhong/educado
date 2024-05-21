@@ -1,0 +1,899 @@
+"use client";
+import React, { useRef, useEffect, useState, useCallback } from "react";
+import { useChat } from "ai/react";
+import Image from "next/image";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import useAutosizeTextArea from "@/components/tutor/useAutosizeTextarea";
+import { Expand, Globe, Loader2, Mic, Play, SendHorizonal, ImagePlus } from "lucide-react";
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Input } from "../ui/input";
+import { ImageCropModal } from "../ImageCropModal";
+import Latex from "react-latex-next";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import rehypeKatex from "rehype-katex";
+import rehypeMathjax from "rehype-mathjax";
+import remarkMath from "remark-math";
+import "katex/dist/katex.min.css";
+import Link from "next/link";
+
+type Props = {
+    tutorName: string;
+    tutorDisplayName: string;
+    tutorDescription: string;
+    ownerName: string;
+    tutorId: string;
+    admins: string;
+    userId: string;
+    studentName: string;
+    studentId: string;
+    defaultPrompt: string;
+    tutorType: string;
+    tutorGrade: string;
+    isPremium: string;
+};
+
+export default function HWChatImageText({
+    tutorName,
+    tutorDisplayName,
+    tutorDescription,
+    ownerName,
+    tutorId,
+    admins,
+    userId,
+    studentName,
+    studentId,
+    defaultPrompt,
+    tutorType,
+    tutorGrade,
+    isPremium,
+}: Props) {
+    const [selectedImage, setSelectedImage] = useState<any>(null);
+    const [textResult, setTextResult] = useState<any>("");
+    const [steps, setSteps] = useState<any>([]);
+    const [solveLoading, setSolveLoading] = useState(false);
+    const [processingImg, setProcessingImg] = useState(false);
+    const [secInput, setSecInput] = useState("");
+    const [cropModalOpen, setCropModalOpen] = useState(false);
+    const [croppedImage, setCroppedImage] = useState<any>(null);
+    const [imageFile, setImageFile] = useState<any>(null);
+    const [base64, setBase64] = useState<any>();
+    const [problemContext, setProblemContext] = useState("");
+    const [initialQuestion, setInitialQuestion] = useState<string | null>(null);
+
+    const handleSecInputChange = (e: any) => {
+        setSecInput(e.target.value);
+        setInput(e.target.value);
+    };
+
+    const {
+        messages,
+        input,
+        handleInputChange,
+        setInput,
+        handleSubmit,
+        isLoading,
+    } = useChat({
+        api: "/api/homeworkTutor",
+        body: {
+            tutorId: tutorId,
+            tutorName: tutorName,
+            studentName: studentName,
+            studentId: studentId,
+            userId: userId,
+            admins: admins,
+            tutorDisplayName: tutorDisplayName,
+            tutorType: tutorType,
+            homeworkQuestion: textResult,
+            steps: steps,
+            tutorGrade: tutorGrade,
+            isPremium: isPremium,
+        },
+    });
+
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    useAutosizeTextArea(textAreaRef.current, input);
+
+    const handleChangeImage = (e: any) => {
+        if (e.target.files && e.target.files[0]) {
+            setCropModalOpen(true);
+            setSelectedImage(URL.createObjectURL(e.target.files[0]));
+            setImageFile(e.target.files[0]);
+
+            console.log(croppedImage, "YES OR NO")
+        }
+    };
+
+    useEffect(() => {
+        if (croppedImage) {
+            handleStartProblem();
+        }
+    }, [croppedImage]);
+
+    const handleImagePlusClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleStartProblem = async () => {
+        console.log(messages.length);
+        setTextResult("");
+        setTextResult(secInput);
+        setInitialQuestion(secInput); // Capture the initial question
+        setSecInput(""); // Assuming `setInput` is the setter for the state bound to the textarea
+        console.log("this is handlestartproblem")
+
+        if (croppedImage) {
+            console.log("CROPPED IMAGE")
+            const res = await fetch("/api/mathpix", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    base64: base64,
+                }),
+            });
+    
+            const data: any = await res.json();
+            const mathData = data.data;
+            console.log("MATHPIX DATA:", mathData);
+            setTextResult("For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?");
+
+            {
+                /* USE THIS FOR TESTING TO AVOID MAKING CALL TO MATHPIX */
+            }
+            // setTextResult(
+            //     "For \\( i=\\sqrt{-1} \\), what is the sum \\( (7+3 i)+(-8+9 i) \\) ?"
+            // );
+    
+            setSolveLoading(true);
+            setProcessingImg(false);
+            try {
+                {
+                    /* PRODUCTION ONLY */
+                }
+                const res = await axios.post("/api/ocrTest", {
+                    textResult: mathData.text,
+                    problemContext: problemContext,
+                });
+                const resObj = JSON.parse(res.data.data);
+    
+                // const res = `{
+                //     "steps": [
+                //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                //     ]
+                // }`;
+                // const resObj = JSON.parse(res);
+    
+                const steps = resObj.steps;
+                setSteps(steps);
+                setSolveLoading(false);
+                messages.push({
+                    id: "1",
+                    role: "system",
+                    content:
+                        "What do you think is the first step to solving this problem?",
+                });
+    
+                // LOGGING QUESTION
+                await fetch(`/api/logTutorQuestion`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        question: `Homework Upload: ${mathData.text}`,
+                        studentName: studentName,
+                        tutorId: tutorId,
+                        userId: userId,
+                        answer: "What do you think is the first step to solving this problem?",
+                    }),
+                });
+            } catch (e) {
+                setSolveLoading(false);
+                console.log("ERROR: ", e);
+            }
+        } else {
+            console.log("NO CROPPED IMAGE")
+            try {
+                {
+                    /* PRODUCTION ONLY */
+                }
+                const res = await axios.post("/api/ocrTest", {
+                    textResult: secInput,
+                    problemContext: problemContext,
+                });
+                const resObj = JSON.parse(res.data.data);
+    
+                // const res = `{
+                //     "steps": [
+                //         "1. Identify the knowns and unknowns: Knowns are the complex numbers to be added: (7+3i) and (-8+9i). The unknown is the sum of these complex numbers.",
+                //         "2. Write down the formula for adding two complex numbers: If we have two complex numbers in the form (a+bi) and (c+di), their sum is (a+c) + (b+d)i.",
+                //         "3. Apply the formula to the given complex numbers: For (7+3i) and (-8+9i), a=7, b=3, c=-8, and d=9.",
+                //         "4. Calculate the real parts and the imaginary parts separately: Real part: 7 + (-8) = -1, Imaginary part: 3 + 9 = 12.",
+                //         "5. Combine the results from step 4: The sum is (-1) + (12)i.",
+                //         "6. Simplify the answer (if necessary): In this case, the answer is already in its simplest form, so no further simplification is needed. The final answer is -1 + 12i."
+                //     ]
+                // }`;
+                // const resObj = JSON.parse(res);
+    
+                const steps = resObj.steps;
+                setSteps(steps);
+                setSolveLoading(false);
+                messages.push({
+                    id: "1",
+                    role: "system",
+                    content:
+                        "What do you think is the first step to solving this problem?",
+                });
+    
+                // LOGGING QUESTION
+                await fetch(`/api/logTutorQuestion`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        question: `Homework Upload: ${secInput}`,
+                        studentName: studentName,
+                        tutorId: tutorId,
+                        userId: userId,
+                        answer: "What do you think is the first step to solving this problem?",
+                    }),
+                });
+            } catch (e) {
+                setSolveLoading(false);
+                console.log("ERROR: ", e);
+            }
+        }
+        console.log(messages.length);
+    };
+
+    const handleKeypress = (e: any) => {
+        // It triggers by pressing the enter key
+        console.log("this is handlekeypress console logged");
+    
+        if (e.keyCode === 13 && !e.shiftKey) {
+            e.preventDefault(); // Prevent the default action to stop form submission or any other unwanted behavior
+            if (messages.length === 0) {
+                handleStartProblem(); // Call handleStartProblem if no messages yet
+            } else {
+                handleSubmit(e); // Existing behavior for when there are messages
+                setSecInput("");
+                setInput("");
+            }
+        }
+    };
+
+    const onHandleSubmit = async (e: any) => {
+        // if (messages.length >= 10) {
+        //     messages.splice(2, 4);
+        // }
+        // console.log("MESSAGES LENGTH", messages.length);
+        console.log("this is onhandlesubmit console logged");
+        handleSubmit(e);
+        setSecInput("");
+        setInput("");
+    };
+
+    const resetProblem = () => {
+        setSteps([]);
+        setSelectedImage("");
+        setCroppedImage("");
+        setTextResult("");
+        messages.splice(0, messages.length);
+        setSecInput("");
+        setInput("");
+        setBase64("");
+        setProblemContext("");
+    };
+
+    const [isRecording, setIsRecording] = useState(false);
+    const [language, setLanguage] = useState("en-US");
+    const [transcript, setTranscript] = useState("");
+
+    useEffect(() => {
+        if (window) {
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.lang = language;
+
+            recognition.onresult = (event) => {
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    if (event.results[i].isFinal) {
+                        setTranscript(
+                            (transcript) =>
+                                transcript + event.results[i][0].transcript
+                        );
+                        recognition.abort();
+                        setIsRecording(false);
+                    }
+                }
+            };
+
+            if (isRecording) {
+                recognition.start();
+            } else {
+                recognition.stop();
+            }
+
+            return () => recognition.abort();
+        }
+    }, [isRecording, language]);
+
+    const toggleRecording = () => {
+        setIsRecording(!isRecording);
+    };
+    useEffect(() => {
+        setSecInput(transcript);
+        setInput(transcript);
+    }, [transcript]);
+
+    const convertLatexDeliminators = (text: string) => {
+        // replace \\( with $ and \\) with $, and also \\[ with $$ and \\] with $$
+        return text.replace(/(\\\[)|(\\\()|(\\\])|(\\\))/g, (match) => {
+            switch (match) {
+                case "\\[":
+                    return "$$";
+                case "\\(":
+                    return "$";
+                case "\\]":
+                    return "$$";
+                case "\\)":
+                    return "$";
+                default:
+                    return match; // should not be reached, but added for robustness
+            }
+        });
+    };
+
+    // messages.push({
+    //     id: "1",
+    //     role: "system",
+    //     content: "What do you think the first step to solving this problem is?",
+    // });
+
+    // ----------------
+    // Tutor Chat Section
+    // ----------------
+    return (
+        <main>
+            <div className="w-full flex justify-between items-center flex-col">
+                <div
+                    // onScroll={(e) => {
+                    //     handleScrollMode(e);
+                    // }}
+                    className="flex items-center w-full mb-5 flex-1 flex-col overflow-y-scroll"
+                >
+                    <div className="max-w-[50rem] ">
+                        <div className="mt-12 md:mt-10 mx-3 flex flex-col items-center justify-center">
+                            <div className="flex w-full items-center justify-center flex-col font-outfit">
+                                {messages.length === 0 && !croppedImage ? (
+                                    <div className="z-10 inset-0 flex justify-center items-center">
+                                        <Card className="hover:cursor-pointer hover:opacity-60 flex flex-col justify-between items-center text-center rounded-md shadow-sm p-6 mb-4" 
+                                            onClick={handleImagePlusClick}
+                                        >
+                                            <CardHeader>
+                                                <CardTitle>
+                                                    Start a new problem by {" "}
+                                                    <span className="text-green">
+                                                        adding an image here {" "}
+                                                    </span>
+                                                    <br />
+                                                    or {" "}
+                                                    <span className="text-green">
+                                                        typing in the problem below.
+                                                    </span>
+                                                </CardTitle>
+                                            </CardHeader>
+                                            {/*<CardContent className="flex flex-col justify-between p-0">
+                                                <p className="text-[14.5px] text-muted-foreground leading-6 w-[98%]">
+                                                    Add an image
+                                                </p>
+                                                <br />
+                                </CardContent>*/}
+                                            <ImagePlus
+                                                color={"#d3d3d3"}
+                                                size={32}
+                                            />
+                                            
+                                        </Card>
+                                        <Input
+                                            ref={fileInputRef}
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleChangeImage}
+                                            style={{ display: 'none' }}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className="fixed md:top-[74px] top-[100px] bg-white w-full left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
+                                        <div className="grid md:grid-cols-3 grid-cols-1 ">
+                                            <div></div>
+                                            <div className="flex flex-col items-center justify-center overflow-auto">
+                                                <div className="flex flex-col items-center justify-center md:min-h-[7.5rem]">
+                                                    <h1 className="text-3xl font-semibold text-center">
+                                                        Hey, I’m{" "}
+                                                        <span className="text-green">
+                                                            {tutorDisplayName}!
+                                                        </span>
+                                                    </h1>
+                                                    <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
+                                                        I'm your AI math tutor!
+                                                    </p>
+                                                    {croppedImage ? (
+                                                        <PhotoProvider>
+                                                            <div className="rounded-md flex items-center justify-center flex-row">
+                                                                <PhotoView src={croppedImage}>
+                                                                    <div className="cursor-pointer">
+                                                                        <Expand className="absolute" color="#151515" />
+                                                                        <Image
+                                                                            src={croppedImage}
+                                                                            height={200}
+                                                                            width={200}
+                                                                            alt=""
+                                                                            className="h-[3.5rem] md:h-[7.5rem] w-full object-contain"
+                                                                        />
+                                                                    </div>
+                                                                </PhotoView>
+                                                            </div>
+                                                        </PhotoProvider>
+                                                    ) : ( 
+                                                        <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
+                                                            Type your answer or add a screenshot below!
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/*<div className="fixed md:top-[74px] top-[100px] bg-white w-full left-1/2 -translate-x-1/2 md:min-w-full border-b-2 z-[99] py-1">
+                                    <div className="grid md:grid-cols-3 grid-cols-1 ">
+                                    <div></div>
+                                        <div className="flex flex-col items-center justify-center overflow-auto">
+                                            <div className="flex flex-col items-center justify-center md:min-h-[7.5rem]">
+                                                <h1 className="text-3xl font-semibold text-center">
+                                                    Hey, I’m{" "}
+                                                    <span className="text-green">
+                                                        {tutorDisplayName}!
+                                                    </span>
+                                                </h1>
+                                                <p className="text-base text-center font-light mt-3 w-[60%] font-outfit ">
+                                                    Type your answer or add a screenshot below!
+                                                </p>
+                                            </div>
+                                            {croppedImage ? (
+                                                <div>
+                                                    <PhotoProvider>
+                                                        <div className="rounded-md flex items-center justify-center flex-row">
+                                                            <PhotoView src={croppedImage}>
+                                                                <div className="cursor-pointer">
+                                                                    <Expand className="absolute" color="#151515" />
+                                                                    <Image
+                                                                        src={croppedImage}
+                                                                        height={200}
+                                                                        width={200}
+                                                                        alt=""
+                                                                        className="h-[3.5rem] md:h-[7.5rem] w-full object-contain"
+                                                                    />
+                                                                </div>
+                                                            </PhotoView>
+                                                        </div>
+                                                    </PhotoProvider>
+                                                </div>
+                                            ) : (
+                                                <p className="text-base text-center font-light mt-3 w-[70%] text-zinc-500 font-outfit">
+                                                    *Click{" "}
+                                                    <Link
+                                                        href="https://cyclic-authority-064.notion.site/For-the-First-Users-fe47610362814314827e5df572bd12a9"
+                                                        target="_blank"
+                                                        className="text-green underline font-medium"
+                                                    >
+                                                        here
+                                                    </Link>{" "}
+                                                    if you're using Educado for the first time*
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+                                            </div>*/}
+                            </div>
+                                <div>
+                                    <div className="h-[175px] "></div>
+                                    <div className="mt-[2.5rem] md:mt-[1.5rem]">
+                                        {initialQuestion && (
+                                            <div className="px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                                <Image
+                                                    src={
+                                                        "/userIcon.png"
+                                                    }
+                                                    height={45}
+                                                    width={45}
+                                                    alt={"User: "}
+                                                    className="object-contain"
+                                                />
+                                                <ReactMarkdown
+                                                    className="flex flex-col leading-8 prose"
+                                                    remarkPlugins={[remarkMath]}
+                                                    rehypePlugins={[rehypeKatex, rehypeMathjax]}
+                                                >
+                                                    {convertLatexDeliminators(initialQuestion)}
+                                                </ReactMarkdown>
+                                            </div>
+                                        )}
+                                        {messages.length > 0 &&
+                                            messages.map((m: any) => (
+                                                <div
+                                                    key={m.id}
+                                                    className="my-3 "
+                                                >
+                                                    {m.role === "user" ? (
+                                                        <div className=" px-5 rounded-lg md:min-w-[48rem] flex flex-row items-start py-5 gap-4">
+                                                            <Image
+                                                                src={
+                                                                    "/userIcon.png"
+                                                                }
+                                                                height={45}
+                                                                width={45}
+                                                                alt={"User: "}
+                                                                className="object-contain"
+                                                            />
+                                                            <ReactMarkdown
+                                                                className="flex flex-col leading-8 prose"
+                                                                remarkPlugins={[
+                                                                    remarkMath,
+                                                                ]}
+                                                                rehypePlugins={[
+                                                                    rehypeKatex,
+                                                                    rehypeMathjax,
+                                                                ]}
+                                                            >
+                                                                {convertLatexDeliminators(
+                                                                    m.content
+                                                                )}
+                                                            </ReactMarkdown>
+                                                        </div>
+                                                    ) : (
+                                                        <div className=" bg-green3 px-5 md:min-w-[48rem] rounded-lg flex flex-row items-start py-5 gap-4">
+                                                            <Image
+                                                                src={
+                                                                    "/educadoIcon.png"
+                                                                }
+                                                                height={45}
+                                                                width={45}
+                                                                alt={"Steve: "}
+                                                                className="object-contain "
+                                                            />
+                                                            <ReactMarkdown
+                                                                className="flex flex-col leading-8 prose"
+                                                                remarkPlugins={[
+                                                                    remarkMath,
+                                                                ]}
+                                                                rehypePlugins={[
+                                                                    rehypeKatex,
+                                                                    rehypeMathjax,
+                                                                ]}
+                                                            >
+                                                                {convertLatexDeliminators(
+                                                                    m.content
+                                                                )}
+                                                            </ReactMarkdown>
+                                                            {/* <Latex>
+                                                                {m.content}
+                                                            </Latex> */}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ))}
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div className=" h-[12px] w-full "></div>
+                    </div>
+                </div>
+                <div className="w-full min-h-[7rem] "></div>
+
+                <div
+                    className=" w-full fixed bottom-0
+              bg-green3 dark:bg-inherit dark:border-t-2 "
+                >
+                    {isLoading && messages.length > 2 && (
+                        <div className="w-full flex justify-center">
+                            <div className="absolute -translate-y-14 font-outfit text-white1 text-[15px]">
+                                <div className="flex flex-row gap-1 animate-pulse rounded-full bg-green px-3 py-[1px]">
+                                    <h1>Scroll Down </h1>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    <form
+                        onSubmit={onHandleSubmit}
+                        className="stretch mx-2 flex flex-col gap-3 last:mb-2 md:mx-4  lg:mx-auto lg:max-w-2xl xl:max-w-3xl -translate-y-6"
+                    >
+                        <div className="relative flex flex-col h-full flex-1 items-stretch md:flex-col">
+                            <div className="flex flex-row">
+                                <div
+                                    className="flex flex-row justify-center items-center pr-5 w-full py-3 flex-grow md:py-4 text-[18px] pl-2 md:pl-4 relative 
+                            bg-white bg-gradient-to-b dark:border-gray-900/50 rounded-lg
+                        shadow-[1px_1px_2px_2px_rgba(0,0,0,0.1)] 
+                    "
+                                >
+                                    <div className="mr-2 cursor-pointer">
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Globe
+                                                    size={23}
+                                                    color="#D3D3D3"
+                                                />
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent className="w-56">
+                                                <DropdownMenuLabel>
+                                                    Audio Language
+                                                </DropdownMenuLabel>
+                                                <DropdownMenuSeparator />
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("ar-AE")
+                                                    }
+                                                    disabled={
+                                                        language === "ar-AE"
+                                                    }
+                                                >
+                                                    Arabic
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("zh-CN")
+                                                    }
+                                                    disabled={
+                                                        language === "zh-CN"
+                                                    }
+                                                >
+                                                    Chinese
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage(
+                                                            "yue-Hant-HK"
+                                                        )
+                                                    }
+                                                    disabled={
+                                                        language ===
+                                                        "yue-Hant-HK"
+                                                    }
+                                                >
+                                                    Chinese (Cantonese)
+                                                </DropdownMenuCheckboxItem>
+
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("cs")
+                                                    }
+                                                    disabled={
+                                                        language === "cs"
+                                                    }
+                                                >
+                                                    Czech
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("nl-NL")
+                                                    }
+                                                    disabled={
+                                                        language === "nl-NL"
+                                                    }
+                                                >
+                                                    Dutch
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("en-US")
+                                                    }
+                                                    disabled={
+                                                        language === "en-US"
+                                                    }
+                                                >
+                                                    English
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("fr-FR")
+                                                    }
+                                                    disabled={
+                                                        language === "fr-FR"
+                                                    }
+                                                >
+                                                    French
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("de-DE")
+                                                    }
+                                                    disabled={
+                                                        language === "de-DE"
+                                                    }
+                                                >
+                                                    German
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("it-IT")
+                                                    }
+                                                    disabled={
+                                                        language === "it-IT"
+                                                    }
+                                                >
+                                                    Italian
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("ja")
+                                                    }
+                                                    disabled={
+                                                        language === "ja"
+                                                    }
+                                                >
+                                                    Japanese
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("ko")
+                                                    }
+                                                    disabled={
+                                                        language === "ko"
+                                                    }
+                                                >
+                                                    Korean
+                                                </DropdownMenuCheckboxItem>
+
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("pt-PT")
+                                                    }
+                                                    disabled={
+                                                        language === "pt-PT"
+                                                    }
+                                                >
+                                                    Portuguese
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("ru")
+                                                    }
+                                                    disabled={
+                                                        language === "ru"
+                                                    }
+                                                >
+                                                    Russian
+                                                </DropdownMenuCheckboxItem>
+
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("es-US")
+                                                    }
+                                                    disabled={
+                                                        language === "es-US"
+                                                    }
+                                                >
+                                                    Spanish
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("tr")
+                                                    }
+                                                    disabled={
+                                                        language === "tr"
+                                                    }
+                                                >
+                                                    Turkish
+                                                </DropdownMenuCheckboxItem>
+                                                <DropdownMenuCheckboxItem
+                                                    onClick={() =>
+                                                        setLanguage("vi-VN")
+                                                    }
+                                                    disabled={
+                                                        language === "vi-VN"
+                                                    }
+                                                >
+                                                    Vietnamese
+                                                </DropdownMenuCheckboxItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
+                                    <Textarea
+                                        value={secInput}
+                                        tabIndex={0}
+                                        ref={textAreaRef}
+                                        style={{
+                                            height: "24px",
+                                            maxHeight: "175px",
+                                            overflowY: "hidden",
+                                        }}
+                                        placeholder="Ask me anything ..."
+                                        className="m-0 w-full min-h-0 shadow-none  resize-none  border-0 bg-transparent p-0 pr-7
+                                focus:ring focus:ring-green text-[17px] rounded-none focus-visible:ring-0  pl-2 dark:text-black
+                                md:pl-0"
+                                        onChange={handleSecInputChange}
+                                        onKeyDown={handleKeypress}
+                                    />
+
+                                    {true ? (
+                                        <div>
+                                            {isRecording ? (
+                                                <Mic
+                                                    className="cursor-pointer"
+                                                    color="#86D20A"
+                                                    onClick={() => {
+                                                        toggleRecording();
+                                                    }}
+                                                />
+                                            ) : (
+                                                <Mic
+                                                    className="cursor-pointer "
+                                                    color="#D3D3D3"
+                                                    onClick={() => {
+                                                        toggleRecording();
+                                                    }}
+                                                />
+                                            )}
+                                        </div>
+                                    ) : null}
+                                </div>
+                                <div>
+                                    <div
+                                        onClick={
+                                            messages.length === 0 
+                                                ? handleStartProblem 
+                                                : onHandleSubmit
+                                        }
+                                        className="flex items-center justify-center cursor-pointer bg-white rounded-xl ml-2 
+                        shadow-[1px_2px_1px_3px_rgba(0,0,0,0.10)] hover:shadow-[1px_1px_1px_1px_rgba(0,0,0,0.1)] 
+                        transition ease-in-out h-full px-4 py-1"
+                                    >
+                                        <SendHorizonal
+                                            color={
+                                                secInput.length === 0
+                                                    ? "#D3D3D3"
+                                                    : "#86D20A"
+                                            }
+                                            size={26}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <ImageCropModal
+                    open={cropModalOpen}
+                    setOpen={setCropModalOpen}
+                    selectedImage={selectedImage}
+                    setSelectedImage={setSelectedImage}
+                    setCroppedImage={setCroppedImage}
+                    setBase64={setBase64}
+                />
+            </div>
+        </main>
+    );
+}

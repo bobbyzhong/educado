@@ -91,6 +91,8 @@ const Dashboard = async (props: Props) => {
         mathPageLink = `/hw-help/${mathTutor[0].id}`;
     }
 
+    let aiTutorPageLink = "/aitutor";
+
     return (
         <main className="p-8 mx-auto max-w-7xl">
             <div className="flex flex-col md:flex-row gap-0 md:gap-8 justify-center items-center ">
@@ -129,6 +131,12 @@ const Dashboard = async (props: Props) => {
                     title="Math HW Help"
                     description="Upload a picture of the math problem you are stuck on and get a step by step explanation on how to solve it!"
                     pageLink={mathPageLink}
+                />
+                <DashboardCard
+                    icon={"hw-math"}
+                    title="AI Tutor"
+                    description="Chat with your AI Math Tutor!"
+                    pageLink={aiTutorPageLink}
                 />
             </div>
             {/* 
