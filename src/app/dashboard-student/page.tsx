@@ -85,13 +85,13 @@ const Dashboard = async (props: Props) => {
     }
 
     let mathPageLink = "";
+    let aiTutorPageLink = "/";
     if (mathTutor.length === 0) {
         mathPageLink = "none";
     } else {
         mathPageLink = `/hw-help/${mathTutor[0].id}`;
+        mathPageLink = `/aitutor`
     }
-
-    let aiTutorPageLink = "/aitutor";
 
     return (
         <main className="p-8 mx-auto max-w-7xl">
