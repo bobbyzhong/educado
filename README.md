@@ -1,8 +1,5 @@
 # tryeducado.com
-
-Lets educators create AI agents (tutors) to support their students
-
-Also allows students to upload pictures of their homework and work through it step by step with an AI tutor
+https://www.youtube.com/watch?v=n7wH43FNPFM
 
 Technologies Used:
 - Typescript
